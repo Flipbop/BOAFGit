@@ -12,5 +12,6 @@
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.AssemblyInfoInputs.cache
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.AssemblyInfo.cs
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.csproj.CoreCompileInputs.cache
-/Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.sourcelink.json
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.dll
+/Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/bin/Debug/net8.0/BOAF.deps.json
+/Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/bin/Debug/net8.0/BOAF.dll

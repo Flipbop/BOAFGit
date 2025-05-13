@@ -119,8 +119,8 @@ public sealed class ModEntry : SimpleMod
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
-		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png")).Sprite; 
-		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png")).Sprite;
+		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Improved.png")).Sprite; 
+		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Impaired.png")).Sprite;
 		this.helper = helper;
 
 		Instance = this;
@@ -166,11 +166,11 @@ public sealed class ModEntry : SimpleMod
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		DontLetCleoBecomeAnNPC.Apply(Harmony);
 		
-		CullDeck = helper.Content.Decks.RegisterDeck("Cleo", new()
+		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
-			Definition = new() { color = new("8A3388"), titleColor = Colors.white },
-			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Default.png")).Sprite,
-			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/CardFrame.png")).Sprite,
+			Definition = new() { color = new("000000"), titleColor = Colors.white },
+			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Cards/Default.png")).Sprite,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["character", "name"]).Localize
 		});
 
@@ -183,17 +183,17 @@ public sealed class ModEntry : SimpleMod
 			Name = AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
 		});
 		
-		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cleo", new()
+		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cull", new()
 		{
 			Deck = CullDeck.Deck,
 			Description = this.AnyLocalizations.Bind(["character", "description"]).Localize,
-			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/CharacterFrame.png")).Sprite,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/CharacterFrame.png")).Sprite,
 			NeutralAnimation = new()
 			{
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "neutral",
 				Frames = Enumerable.Range(0, 5)
-					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Neutral/{i}.png")).Sprite)
+					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Neutral/{i}.png")).Sprite)
 					.ToList()
 			},
 			MiniAnimation = new()
@@ -201,7 +201,7 @@ public sealed class ModEntry : SimpleMod
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "mini",
 				Frames = [
-					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Character/mini.png")).Sprite
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Character/mini.png")).Sprite
 				]
 			},
 			Starters = new()
@@ -232,7 +232,7 @@ public sealed class ModEntry : SimpleMod
 			Frames = Enumerable.Range(0, 1)
 				.Select(i =>
 					helper.Content.Sprites
-						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Kiwi/{i}.png")).Sprite)
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Kiwi/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -240,7 +240,7 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "gameover",
 			Frames = Enumerable.Range(0, 1)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Squint/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -248,7 +248,7 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "squint",
 			Frames = Enumerable.Range(0, 3)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Squint/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -256,7 +256,7 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "explain",
 			Frames = Enumerable.Range(0, 5)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Explain/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Explain/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -264,23 +264,23 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "nervous",
 			Frames = Enumerable.Range(0, 5)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Character/Nervous/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});
 
-		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveA.png"));
-		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveB.png"));
-		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Impaired.png"));
-		ImproveAHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveAHand.png"));
-		ImproveBHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImproveBHand.png"));
-		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairHand.png"));
-		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/Improved.png"));
-		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/DiscountHand.png"));
-		UpgradesInHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInHand.png"));
-		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDraw.png"));
-		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInDiscard.png"));
-		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/UpgradesInExhaust.png"));
-		ImpairCostIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Icons/ImpairedCost.png"));
+		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveA.png"));
+		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveB.png"));
+		ImpairedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Impaired.png"));
+		ImproveAHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveAHand.png"));
+		ImproveBHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveBHand.png"));
+		ImpairHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImpairHand.png"));
+		ImprovedIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Improved.png"));
+		DiscountHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/DiscountHand.png"));
+		UpgradesInHandIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/UpgradesInHand.png"));
+		UpgradesInDrawIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/UpgradesInDraw.png"));
+		UpgradesInDiscardIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/UpgradesInDiscard.png"));
+		UpgradesInExhaustIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/UpgradesInExhaust.png"));
+		ImpairCostIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImpairedCost.png"));
 
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
