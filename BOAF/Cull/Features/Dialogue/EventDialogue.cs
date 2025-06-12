@@ -5,91 +5,13 @@ using HarmonyLib;
 
 
 namespace Flipbop.BOAF;
-
-
-internal static class DontLetCleoBecomeAnNPC
-{
-	public static void Apply(IHarmony harmony)
-	{
-		harmony.Patch(
-			original: typeof(Events).GetMethod(nameof(Events.ShopFightBackOut))!,
-			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopFightBackOutCleoEdition))
-		);
-		harmony.Patch(
-			original: typeof(Events).GetMethod(nameof(Events.ShopSkipConfirm))!,
-			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(ShopSkipConfirmCleoEdition))
-		);
-		harmony.Patch(
-			original: typeof(Shopkeep).GetMethod(nameof(Shopkeep.BuildShipForSelf))!,
-			postfix: new HarmonyMethod(typeof(DontLetCleoBecomeAnNPC), nameof(NoneOfYourBusinessCleoEdition))
-		);
-	}
-
-    private static void ShopSkipConfirmCleoEdition(State s, ref List<Choice> __result)
-    {
-		foreach (Character character in s.characters)  
-		{
-			if (character.type == ModEntry.Instance.CullCharacter.CharacterType)  
-			{
-				for (int x = 0; x < __result.Count; x++)
-				{
-					if (__result[x] is Choice c && c.key == "ShopSkipConfirm_No")
-					{
-						__result[x] = new Choice
-						{
-							label = "Nevermind",
-							key = "Flipbop.BOAF::Shop.3"
-						};
-						return;
-					}
-				}
-			}
-		}
-    }
-
-    private static void ShopFightBackOutCleoEdition(State s, ref List<Choice> __result)
-    {
-		foreach (Character character in s.characters)
-		{
-			if (character.type == ModEntry.Instance.CullCharacter.CharacterType)
-			{
-				for (int x = 0; x < __result.Count; x++)
-				{
-					if (__result[x] is Choice c && c.key == "ShopFightBackOut_No")
-					{
-						__result[x] = new Choice
-						{
-							label = "mmmmaybe not...",
-							key = "Flipbop.BOAF::Shop.3"
-						};
-						return;
-					}
-				}
-			}
-		}
-    }
-
-    private static void NoneOfYourBusinessCleoEdition(State s, ref Shopkeep __instance)
-    {
-	    var cleoKiwi = ModEntry.Instance.KiwiCharacter.CharacterType;
-
-	    foreach (Character crew in s.characters)
-	    {
-		    if (crew.type == ModEntry.Instance.CullCharacter.CharacterType)
-		    {
-			    __instance.character = new Character() { type = cleoKiwi };
-		    }
-	    }
-    }
-}
-
 internal sealed class EventDialogue : BaseDialogue
 {
 
 	public EventDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-event-{locale}.json").OpenRead())
 	{
 		var cullDeck = ModEntry.Instance.CullDeck.Deck;
-		var cleoType = ModEntry.Instance.CullCharacter.CharacterType;
+		var cullType = ModEntry.Instance.CullCharacter.CharacterType;
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var newHardcodedNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var saySwitchNodes = new Dictionary<IReadOnlyList<string>, Say>();
@@ -104,9 +26,9 @@ internal sealed class EventDialogue : BaseDialogue
 		{
 			foreach (KeyValuePair<string, StoryNode> node in DB.story.all)
 			{
-				if (node.Value.lookup?.Contains("shopBefore") == true && node.Value.allPresent?.Contains(cleoType) == false)
+				if (node.Value.lookup?.Contains("shopBefore") == true && node.Value.allPresent?.Contains(cullType) == false)
 				{
-					node.Value.nonePresent = [cleoType];
+					node.Value.nonePresent = [cullType];
 				}
 			}
 

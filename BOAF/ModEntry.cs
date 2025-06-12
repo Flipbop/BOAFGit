@@ -23,7 +23,6 @@ public sealed class ModEntry : SimpleMod
 
 	internal IDeckEntry CullDeck { get; }
 	internal IPlayableCharacterEntryV2 CullCharacter { get; }
-	internal INonPlayableCharacterEntryV2 KiwiCharacter { get; }
 	internal ISpriteEntry ImproveAIcon { get; }
 	internal ISpriteEntry ImproveBIcon { get; }
 	internal ISpriteEntry ImpairedIcon { get; }
@@ -164,8 +163,8 @@ public sealed class ModEntry : SimpleMod
 		
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
-		DontLetCleoBecomeAnNPC.Apply(Harmony);
-		
+
+		#region Cull Character
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
 			Definition = new() { color = new("000000"), titleColor = Colors.white },
@@ -176,12 +175,7 @@ public sealed class ModEntry : SimpleMod
 
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
-
-		KiwiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kiwi", new NonPlayableCharacterConfigurationV2()
-		{
-			CharacterType = "kiwi",
-			Name = AnyLocalizations.Bind(["character", "nameKiwi"]).Localize,
-		});
+		
 		
 		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cull", new()
 		{
@@ -224,17 +218,7 @@ public sealed class ModEntry : SimpleMod
 			},
 			ExeCardType = typeof(CullExeCard)
 		});
-
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
-		{
-			CharacterType = KiwiCharacter.CharacterType,
-			LoopTag = "neutral",
-			Frames = Enumerable.Range(0, 1)
-				.Select(i =>
-					helper.Content.Sprites
-						.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Kiwi/{i}.png")).Sprite)
-				.ToList()
-		});
+		
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CullDeck.UniqueName,
@@ -267,6 +251,10 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"Cull/assets/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});
+		
+
+		#endregion
+		
 
 		ImproveAIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveA.png"));
 		ImproveBIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/ImproveB.png"));
@@ -297,19 +285,7 @@ public sealed class ModEntry : SimpleMod
 				}
 			)
 		);
-		helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatStart), (State state, Combat combat) =>
-		{
-				foreach (Character crew in state.characters)
-				{
-					if (crew.type == CullCharacter.CharacterType)
-					{
-						if (combat.otherShip.ai is Shopkeep)
-						{ 
-							state.rewardsQueue.Add(new BRINGITBACK());
-						}
-					}
-				}
-			});
+		
 		_ = new ImprovedAManager();
 		_ = new ImprovedBManager();
 		_ = new ImpairedManager();
