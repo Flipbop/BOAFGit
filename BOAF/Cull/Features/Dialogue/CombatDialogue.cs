@@ -8,7 +8,7 @@ internal sealed class CombatDialogue : BaseDialogue
 	public CombatDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-combat-{locale}.json").OpenRead())
 	{
 		var cullDeck = ModEntry.Instance.CullDeck.Deck;
-		var cleoType = ModEntry.Instance.CullCharacter.CharacterType;
+		var cullType = ModEntry.Instance.CullCharacter.CharacterType;
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 		var saySwitchNodes = new Dictionary<IReadOnlyList<string>, Say>();
 
@@ -27,7 +27,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				enemyShotJustHit = true,
 				minDamageDealtToPlayerThisTurn = 1,
 				lines = [
-					new Say { who = cleoType, loopTag = "squint" },
+					new Say { who = cullType, loopTag = "squint" },
 				],
 			};
 
@@ -35,9 +35,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.dizzy.Key()],
+			allPresent = [cullType, Deck.dizzy.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
 			],
 		};
@@ -45,9 +45,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.riggs.Key()],
+			allPresent = [cullType, Deck.riggs.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
 			],
 		};
@@ -55,39 +55,39 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.goat.Key()],
+			allPresent = [cullType, Deck.goat.Key()],
 			lines = [
 				new Say { who = Deck.goat.Key(), loopTag = "squint" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["TookDamage", "Drake"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.eunice.Key()],
+			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
 				new Say { who = Deck.eunice.Key(), loopTag = "squint" },
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newNodes[["TookDamage", "Max"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.hacker.Key()],
+			allPresent = [cullType, Deck.hacker.Key()],
 			lines = [
 				new Say { who = Deck.hacker.Key(), loopTag = "mad" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["TookDamage", "Books"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, Deck.shard.Key()],
+			allPresent = [cullType, Deck.shard.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.shard.Key(), loopTag = "intense" },
 			],
 		};
@@ -95,9 +95,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
-			allPresent = [cleoType, "comp"],
+			allPresent = [cullType, "comp"],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = "comp", loopTag = "grumpy" },
 			],
 		};
@@ -108,9 +108,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				enemyShotJustHit = true,
 				maxDamageDealtToPlayerThisTurn = 0,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -120,9 +120,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				playerShotJustHit = true,
 				minDamageDealtToEnemyThisTurn = 1,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -131,19 +131,19 @@ internal sealed class CombatDialogue : BaseDialogue
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
 			whoDidThat = cullDeck,
-			allPresent = [cleoType, Deck.dizzy.Key()],
+			allPresent = [cullType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = Deck.dizzy.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "explain" },
 			],
 		};
 		newNodes[["DealtDamage", "Riggs"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
-			allPresent = [cleoType, Deck.riggs.Key()],
+			allPresent = [cullType, Deck.riggs.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
 			],
 		};
@@ -152,10 +152,10 @@ internal sealed class CombatDialogue : BaseDialogue
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
 			whoDidThat = cullDeck,
-			allPresent = [cleoType, Deck.peri.Key()],
+			allPresent = [cullType, Deck.peri.Key()],
 			lines = [
 				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "explain" },
 			],
 		};
 		newNodes[["DealtDamage", "Isaac"]] = new()
@@ -163,19 +163,19 @@ internal sealed class CombatDialogue : BaseDialogue
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
 			whoDidThat = cullDeck,
-			allPresent = [cleoType, Deck.goat.Key()],
+			allPresent = [cullType, Deck.goat.Key()],
 			lines = [
 				new Say { who = Deck.goat.Key(), loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["DealtDamage", "Drake"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
-			allPresent = [cleoType, Deck.eunice.Key()],
+			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "explain" },
 				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
@@ -183,9 +183,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
-			allPresent = [cleoType, Deck.hacker.Key()],
+			allPresent = [cullType, Deck.hacker.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = Deck.hacker.Key(), loopTag = "neutral" },
 			],
 		};
@@ -193,9 +193,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
-			allPresent = [cleoType, Deck.shard.Key()],
+			allPresent = [cullType, Deck.shard.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = Deck.shard.Key(), loopTag = "blush" },
 			],
 		};
@@ -203,10 +203,10 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
-			allPresent = [cleoType, "comp"],
+			allPresent = [cullType, "comp"],
 			lines = [
 				new Say { who = "comp", loopTag = "smug" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 		#endregion
@@ -217,9 +217,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				playerShotJustHit = true,
 				minDamageDealtToEnemyThisTurn = 6,
 				whoDidThat = cullDeck,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -228,34 +228,34 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				enemyShotJustHit = true,
 				maxDamageDealtToPlayerThisTurn = 0,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			}.SetMinShieldLostThisTurn(1);
 
 		newNodes[["Missed", "Basic", "0"]] = new()
 		{
 			playerShotJustMissed = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newNodes[["Missed", "Basic", "1"]] = new()
 		{
 			playerShotJustMissed = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newNodes[["Missed", "Basic", "2"]] = new()
 		{
 			playerShotJustMissed = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 
@@ -265,9 +265,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Basic", "1"]] = new()
@@ -275,9 +275,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Basic", "2"]] = new()
@@ -285,9 +285,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 
@@ -296,10 +296,10 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.dizzy.Key()],
+			allPresent = [cullType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Riggs"]] = new()
@@ -307,10 +307,10 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.riggs.Key()],
+			allPresent = [cullType, Deck.riggs.Key()],
 			lines = [
 				new Say { who = Deck.riggs.Key(), loopTag = "nervous" },
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 		newNodes[["AboutToDie", "Peri"]] = new()
@@ -318,10 +318,10 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.peri.Key()],
+			allPresent = [cullType, Deck.peri.Key()],
 			lines = [
 				new Say { who = Deck.peri.Key(), loopTag = "mad" },
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
 		newNodes[["AboutToDie", "Isaac"]] = new()
@@ -329,9 +329,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.goat.Key()],
+			allPresent = [cullType, Deck.goat.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 				new Say { who = Deck.goat.Key(), loopTag = "sad" },
 			],
 		};
@@ -340,9 +340,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.eunice.Key()],
+			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.eunice.Key(), loopTag = "mad" },
 			],
 		};
@@ -351,9 +351,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, Deck.shard.Key()],
+			allPresent = [cullType, Deck.shard.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.shard.Key(), loopTag = "squint" },
 			],
 		};
@@ -362,9 +362,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
 			oncePerRun = true,
-			allPresent = [cleoType, "comp"],
+			allPresent = [cullType, "comp"],
 			lines = [
-				new Say { who = cleoType, loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "nervous" },
 				new Say { who = "comp", loopTag = "mad" },
 			],
 		};
@@ -377,9 +377,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				minDamageBlockedByEnemyArmorThisTurn = 1,
 				oncePerCombat = true,
 				oncePerRun = true,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "squint" },
+					new Say { who = cullType, loopTag = "squint" },
 				],
 			};
 
@@ -388,9 +388,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				handEmpty = true,
 				minEnergy = 1,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "squint" },
+					new Say { who = cullType, loopTag = "squint" },
 				],
 			};
 
@@ -398,9 +398,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			newNodes[["EmptyHand", "Basic", i.ToString()]] = new()
 			{
 				handEmpty = true,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -408,9 +408,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			newNodes[["TrashHand", "Basic", i.ToString()]] = new()
 			{
 				handFullOfTrash = true,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -421,9 +421,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				maxTurnsThisCombat = 1,
 				oncePerCombat = true,
 				oncePerRun = true,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -435,9 +435,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerCombatTags = ["NoOverlapBetweenShips"],
 				oncePerRun = true,
 				nonePresent = ["crab", "scrap"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -450,9 +450,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerRun = true,
 				anyDronesHostile = ["missile_seeker"],
 				nonePresent = ["crab"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "squint" },
+					new Say { who = cullType, loopTag = "squint" },
 				],
 			};
 
@@ -463,9 +463,9 @@ internal sealed class CombatDialogue : BaseDialogue
 				oncePerCombatTags = ["manyTurns"],
 				oncePerRun = true,
 				turnStart = true,
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -476,7 +476,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::ReturningFromMissing"],
 				oncePerRun = true,
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -486,9 +486,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				goingToOverheat = true,
 				oncePerCombatTags = ["OverheatGeneric"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "squint" },
+					new Say { who = cullType, loopTag = "squint" },
 				],
 			};
 
@@ -496,9 +496,9 @@ internal sealed class CombatDialogue : BaseDialogue
 		{
 			goingToOverheat = true,
 			oncePerCombatTags = ["OverheatGeneric"],
-			allPresent = [cleoType, Deck.eunice.Key()],
+			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
@@ -509,9 +509,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			{
 				playerShotJustMissed = true,
 				hasArtifacts = ["Recalibrator"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -521,9 +521,9 @@ internal sealed class CombatDialogue : BaseDialogue
 			turnStart = true,
 			maxTurnsThisCombat = 1,
 			oncePerCombat = true,
-			allPresent = [cleoType, "skunk"],
+			allPresent = [cullType, "skunk"],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 				new Say { who = "skunk", loopTag = "neutral" },
 			],
 		};
@@ -534,10 +534,10 @@ internal sealed class CombatDialogue : BaseDialogue
 			turnStart = true,
 			maxTurnsThisCombat = 1,
 			oncePerCombat = true,
-			allPresent = [cleoType, "bandit"],
+			allPresent = [cullType, "bandit"],
 			lines = [
 				new Say { who = "bandit", loopTag = "neutral" },
-				new Say { who = cleoType, loopTag = "squint" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 
@@ -548,20 +548,20 @@ internal sealed class CombatDialogue : BaseDialogue
 			oncePerRun = true,
 			requiredScenes = ["Crystal_1", "Crystal_1_1"],
 			excludedScenes = ["Crystal_2"],
-			allPresent = [cleoType, "crystal"],
+			allPresent = [cullType, "crystal"],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 
 		saySwitchNodes[["CrabFacts1_Multi_0"]] = new()
 		{
-			who = cleoType,
+			who = cullType,
 			loopTag = "squint"
 		};
 		saySwitchNodes[["CrabFacts2_Multi_0"]] = new()
 		{
-			who = cleoType,
+			who = cullType,
 			loopTag = "squint"
 		};
 	}

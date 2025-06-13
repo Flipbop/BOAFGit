@@ -8,7 +8,7 @@ internal sealed class CardDialogue : BaseDialogue
 	public CardDialogue() : base(locale => ModEntry.Instance.Package.PackageRoot.GetRelativeFile($"i18n/dialogue-card-{locale}.json").OpenRead())
 	{
 		var cullDeck = ModEntry.Instance.CullDeck.Deck;
-		var cleoType = ModEntry.Instance.CullCharacter.CharacterType;
+		var cullType = ModEntry.Instance.CullCharacter.CharacterType;
 		var newNodes = new Dictionary<IReadOnlyList<string>, StoryNode>();
 
 		ModEntry.Instance.Helper.Events.OnModLoadPhaseFinished += (_, phase) =>
@@ -24,9 +24,9 @@ internal sealed class CardDialogue : BaseDialogue
 			lookup = [$"Played::{new SmallRepairsCard().Key()}"],
 			priority = true,
 			oncePerRun = true,
-			allPresent = [cleoType],
+			allPresent = [cullType],
 			lines = [
-				new Say { who = cleoType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
 
@@ -37,9 +37,9 @@ internal sealed class CardDialogue : BaseDialogue
 				priority = true,
 				oncePerRun = true,
 				oncePerCombatTags = [$"Played::{new ApologizeNextLoopCard().Key()}"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 
@@ -50,9 +50,9 @@ internal sealed class CardDialogue : BaseDialogue
 				priority = true,
 				oncePerRun = true,
 				oncePerCombatTags = [$"Played::{new SeekerBarrageCard().Key()}"],
-				allPresent = [cleoType],
+				allPresent = [cullType],
 				lines = [
-					new Say { who = cleoType, loopTag = "neutral" },
+					new Say { who = cullType, loopTag = "neutral" },
 				],
 			};
 	}
