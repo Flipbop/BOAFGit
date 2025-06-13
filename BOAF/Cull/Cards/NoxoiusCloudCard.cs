@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class NecessarySacrificeCard : Card, IRegisterable
+internal sealed class NoxoiusCloudCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/NecessarySacrifice.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "NecessarySacrifice", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "NoxoiusCloud", "name"]).Localize
 		});
 	}
 
@@ -27,14 +27,25 @@ internal sealed class NecessarySacrificeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = upgrade == Upgrade.A ? 1 : 2,
-			retain = upgrade == Upgrade.B,
+			cost = 2,
 			exhaust = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=>
-		[
-			ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.perfectShield, statusAmount = 1}).AsCardAction,
-		];
+		=>upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AStatus() {targetPlayer = true, statusAmount = 2, status = Status.droneShift},
+				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+			],
+			Upgrade.B => [
+				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}},
+				//ADD STOP COMMAND
+				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+			],
+			_ => [
+				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+			]
+		};
 }

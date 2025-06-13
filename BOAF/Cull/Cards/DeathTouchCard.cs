@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class RewriteCard : Card, IRegisterable
+internal sealed class DeathTouchCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +18,8 @@ internal sealed class RewriteCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Rewrite.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Rewrite", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/FlexibleDefense.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "DeathTouch", "name"]).Localize
 		});
 	}
 
@@ -27,25 +27,23 @@ internal sealed class RewriteCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 1,
-			retain = upgrade == Upgrade.B,
+			cost = 3,
+			exhaust = true,
+			retain = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AReverseHand(),
-				new AAttack { damage = GetDmg(s, 2) },
+			Upgrade.A => [
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
+				new AStatus {targetPlayer = true, status = Status.tempShield, statusAmount = 2},
 			],
 			Upgrade.B => [
-				new AReverseHand(),
-				new AAttack { damage = GetDmg(s, 1) },
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 4},
 			],
 			_ => [
-				new AReverseHand(),
-				new AAttack { damage = GetDmg(s, 1) },
+				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
 			]
 		};
 }

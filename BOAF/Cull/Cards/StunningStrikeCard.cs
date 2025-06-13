@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ImprovedCannonCard : Card, IRegisterable
+internal sealed class StunningStrikeCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,7 +20,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ImprovedCannons.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ImprovedCannon", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "StunningStrike", "name"]).Localize
 		});
 	}
 
@@ -28,7 +28,7 @@ internal sealed class ImprovedCannonCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
+			cost = upgrade == Upgrade.A ? 0 : 1,
 			
 		};
 

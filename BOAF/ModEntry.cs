@@ -46,37 +46,37 @@ public sealed class ModEntry : SimpleMod
 	
 	
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
-		typeof(QuickBoostCard),
-		typeof(TurtleShotCard),
-		typeof(ChoicesCard),
-		typeof(MemoryRecoveryCard),
-		typeof(ShuffleUpgradeCard),
-		typeof(ResourceSwapCard),
-		typeof(ReroutePowerCard),
-		typeof(RewriteCard),
-		typeof(SlipShotCard),
+		typeof(QuickCastCard),
+		typeof(HarvestCard),
+		typeof(WillOWispCard),
+		typeof(FontOfStrengthCard),
+		typeof(TelekinesisCard),
+		typeof(NecromancyCard),
+		typeof(ExcessiveForceCard),
+		typeof(RealignCard),
+		typeof(FlightyCard),
 	];
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
-		typeof(PowerSurgeCard),
-		typeof(ImprovedCannonCard),
-		typeof(DoItYourselfCard),
-		typeof(RepairedGlassesCard),
-		typeof(ScalpedPartsCard),
-		typeof(MaximumEffortCard), 
-		typeof(NecessarySacrificeCard),
+		typeof(BargainCard),
+		typeof(StunningStrikeCard),
+		typeof(WispArrayCard),
+		typeof(SoulBlastCard),
+		typeof(TauntCard),
+		typeof(PlayingWithFireCard), 
+		typeof(NoxoiusCloudCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
-		typeof(SeekerBarrageCard),
-		typeof(PermaFixCard),
-		typeof(CleanSlateCard),
-		typeof(ApologizeNextLoopCard),
-		typeof(FlexibleDefenseCard),
+		typeof(VanishCard),
+		typeof(CripppleCard),
+		typeof(ReapCard),
+		typeof(UnstableSpiritCard),
+		typeof(DeathTouchCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
-		typeof(SmallRepairsCard),
+		typeof(HarmlessSiphonCard),
 	];
 
 	internal static IEnumerable<Type> AllCardTypes { get; }
@@ -170,7 +170,7 @@ public sealed class ModEntry : SimpleMod
 			Definition = new() { color = new("000000"), titleColor = Colors.white },
 			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Cards/Default.png")).Sprite,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/CardFrame.png")).Sprite,
-			Name = this.AnyLocalizations.Bind(["character", "name"]).Localize
+			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize
 		});
 
 		foreach (var registerableType in RegisterableTypes)
@@ -180,7 +180,7 @@ public sealed class ModEntry : SimpleMod
 		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cull", new()
 		{
 			Deck = CullDeck.Deck,
-			Description = this.AnyLocalizations.Bind(["character", "description"]).Localize,
+			Description = this.AnyLocalizations.Bind(["Cull","character", "description"]).Localize,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/CharacterFrame.png")).Sprite,
 			NeutralAnimation = new()
 			{
@@ -201,17 +201,17 @@ public sealed class ModEntry : SimpleMod
 			Starters = new()
 			{
 				cards = [
-					new QuickBoostCard(),
-					new TurtleShotCard()
+					new QuickCastCard(),
+					new HarvestCard()
 				]
 			},
 			SoloStarters = new StarterDeck()
 			{
 				cards = [
-					new QuickBoostCard(),
-					new TurtleShotCard(),
-					new RewriteCard(),
-					new ShuffleUpgradeCard(),
+					new QuickCastCard(),
+					new HarvestCard(),
+					new RealignCard(),
+					new TelekinesisCard(),
 					new CannonColorless(),
 					new DodgeColorless()
 					]
@@ -279,8 +279,8 @@ public sealed class ModEntry : SimpleMod
 				starterDeck: new StarterDeck
 				{
 					cards = [
-						new ShuffleUpgradeCard(),
-						new SlipShotCard()
+						new RealignCard(),
+						new NecromancyCard()
 					]
 				}
 			)

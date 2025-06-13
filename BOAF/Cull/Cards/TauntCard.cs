@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ScalpedPartsCard : Card, IRegisterable
+internal sealed class TauntCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,7 +20,7 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ScalpedParts.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ScalpedParts", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "Taunt", "name"]).Localize
 		});
 	}
 
@@ -28,7 +28,7 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
+			cost = upgrade == Upgrade.A ? 1: 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -36,17 +36,17 @@ internal sealed class ScalpedPartsCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ADrawCard { count = 3},
-				new ImprovedCannonCard.AUpgradeHint{hand = true},
+				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
 				new AImpairHand()
 			],
 			Upgrade.A => [
-				new ImprovedCannonCard.AUpgradeHint{hand = true},
+				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 3},
 				new AImpairHand()
 			],
 			_ => [
-				new ImprovedCannonCard.AUpgradeHint{hand = true},
+				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
 				new AImpairHand()
 			],

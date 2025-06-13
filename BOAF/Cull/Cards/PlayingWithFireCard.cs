@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class MaximumEffortCard : Card, IRegisterable
+internal sealed class PlayingWithFireCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class MaximumEffortCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/MaximumEffort.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "MaximumEffort", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "PlayingWithFire", "name"]).Localize
 		});
 	}
 
@@ -27,7 +27,8 @@ internal sealed class MaximumEffortCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
+			cost = upgrade == Upgrade.B ? 1: 2,
+			flippable = upgrade == Upgrade.A
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

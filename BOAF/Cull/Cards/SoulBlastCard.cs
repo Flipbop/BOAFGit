@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Flipbop.BOAF;
 
-internal sealed class RepairedGlassesCard : Card, IRegisterable
+internal sealed class SoulBlastCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,7 +20,7 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/RepairedGlasses.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "RepairedGlasses", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "SoulBlast", "name"]).Localize
 		});
 	}
 
@@ -30,8 +30,7 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
-			exhaust = true,
+			cost = upgrade == Upgrade.A ? 1: 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -39,17 +38,17 @@ internal sealed class RepairedGlassesCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new ImprovedCannonCard.AUpgradeHint{hand = true},
+				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 				new AStatus { targetPlayer = true, status = Status.drawNextTurn, statusAmount = 2}
 			],
 			Upgrade.B => [
 				new ADiscard {count = 2},
-				new ImprovedCannonCard.AUpgradeDiscardHint{hand = true},
+				new StunningStrikeCard.AUpgradeDiscardHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.discard.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			],
 			_ => [
-				new ImprovedCannonCard.AUpgradeHint{hand = true},
+				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			]
 			

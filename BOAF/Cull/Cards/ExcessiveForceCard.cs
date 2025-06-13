@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ReroutePowerCard : Card, IRegisterable
+internal sealed class ExcessiveForceCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,7 +19,7 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ReroutePower.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ReroutePower", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "ExcessiveForce", "name"]).Localize
 		});
 	}
 
@@ -27,7 +27,7 @@ internal sealed class ReroutePowerCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = upgrade == Upgrade.A ? 0 : 1,
+			cost = 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

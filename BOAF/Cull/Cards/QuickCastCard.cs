@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class TurtleShotCard : Card, IRegisterable
+internal sealed class QuickCastCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +18,8 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "TurtleShot", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/QuickBoost.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "QuickCast", "name"]).Localize
 		});
 	}
 
@@ -27,8 +27,7 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
-			exhaust = upgrade == Upgrade.B ? true : false,
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -36,17 +35,16 @@ internal sealed class TurtleShotCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAttack { damage = GetDmg(s, 2) },
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+				new AImproveA { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
 			],
 			Upgrade.B => [
-				new AAttack { damage = GetDmg(s, 3) },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3 },
+				new AImproveB { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
 			],
 			_ => [
-				new AAttack { damage = GetDmg(s, 2) },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
+				new AImproveA { Amount = 1 },
+				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
 			]
 		};
 }

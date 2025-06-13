@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class SmallRepairsCard : Card, IRegisterable
+internal sealed class FontOfStrengthCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -16,12 +16,10 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 			{
 				deck = ModEntry.Instance.CullDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				upgradesTo = [Upgrade.A, Upgrade.B],
-				dontOffer = true,
+				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/TurtleShot.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SmallRepairs", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/MemoryRecovery.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "FontOfStrength", "name"]).Localize
 		});
 	}
 
@@ -30,13 +28,16 @@ internal sealed class SmallRepairsCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 1,
-			temporary = true,
-			exhaust = upgrade != Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=>
-		[
-			new AHeal { canRunAfterKill = true, targetPlayer = true, healAmount = upgrade == Upgrade.A ? 3 : 2 },
-		];
-};
+		=> upgrade switch
+		{
+			Upgrade.B => [
+				new ADrawUpgrade {Amount = 3},
+			],
+			_ => [
+				new ADrawUpgrade {Amount = 1},
+			]
+		};
+}

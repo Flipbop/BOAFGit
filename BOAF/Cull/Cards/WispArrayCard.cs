@@ -6,7 +6,7 @@ using HarmonyLib;
 
 namespace Flipbop.BOAF;
 
-internal sealed class DoItYourselfCard : Card, IRegisterable
+internal sealed class WispArrayCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,7 +20,7 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/DoItYourself.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "DoItYourself", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "WispArray", "name"]).Localize
 		});
 	}
 
@@ -29,9 +29,6 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 2,
-			exhaust = upgrade != Upgrade.B,
-			singleUse = upgrade == Upgrade.B,
-			description = ModEntry.Instance.Localizations.Localize(["card", "DoItYourself", "description", upgrade.ToString()])
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -39,12 +36,12 @@ internal sealed class DoItYourselfCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAddCard { amount = 1, card = new SmallRepairsCard { upgrade = Upgrade.A }, destination = CardDestination.Deck},
+				new AAddCard { amount = 1, card = new HarmlessSiphonCard { upgrade = Upgrade.A }, destination = CardDestination.Deck},
 				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
 			],
 			_ =>
 			[
-				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new SmallRepairsCard(), destination = CardDestination.Deck },
+				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new HarmlessSiphonCard(), destination = CardDestination.Deck },
 				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
 			]
 		};

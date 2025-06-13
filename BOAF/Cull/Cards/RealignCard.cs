@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class PowerSurgeCard : Card, IRegisterable
+internal sealed class RealignCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +18,8 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/PowerSurge.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PowerSurge", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Rewrite.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "Realign", "name"]).Localize
 		});
 	}
 
@@ -27,28 +27,20 @@ internal sealed class PowerSurgeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 3,
-			exhaust = true
+			cost = upgrade == Upgrade.A ? 0 : 1,
+			flippable = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new ADrawCard {count = 2},
-				new AImproveAHand(),
-				new ADiscard {count = 3}
-			],
 			Upgrade.B => [
-				new ADrawCard {count = 1},
-				new AImproveBHand(),
-				new ADiscountHand { Amount = -1},
-				new ADiscard(),
+				new ADroneMove() {dir = 2},
+				new AMove() {dir = -2}
 			],
 			_ => [
-				new ADrawCard {count = 2},
-				new AImproveAHand(),
-				new ADiscard(),
+				new ADroneMove() {dir = 1},
+				new AMove() {dir = -1}
 			]
 		};
 }

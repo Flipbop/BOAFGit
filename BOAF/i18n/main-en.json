@@ -1,278 +1,1045 @@
 {
-    "character": {
-        "name": "Cull",
-        "description": [
-            "<c=8A3388>CULL</c>",
-            "Your necromancer.",
-            "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
-        ],
-        "nameKiwi": "Kiwi"
-    },
-    "action": {
-        "UpgradesInHand": {
-            "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+    "Cull": {
+        "character": {
+            "name": "Cull",
+            "description": [
+                "<c=8A3388>CULL</c>",
+                "Your necromancer.",
+                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+            ]
         },
-        "UpgradesInDiscard": {
-            "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+        "action": {
+            "UpgradesInHand": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+            },
+            "UpgradesInDiscard": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+            },
+            "UpgradesInExhaust": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
+            },
+            "UpgradesInDraw": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
+            },
+            "ImproveA": {
+                "name": "   Improve A",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveB": {
+                "name": "   Improve B",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "Impair": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveAHand": {
+                "name": "      Improve Hand A",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveBHand": {
+                "name": "      Improve Hand B",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImpairHand": {
+                "name": "    Impair Hand",
+                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "DiscountHand": {
+                "name": "    Discount Hand",
+                "description": "<c=cardtrait>Discount</c> every card in your hand."
+            },
+            "SelfImproveA": {
+                "name": "Self Improve A",
+                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImproveB": {
+                "name": "Self Improve B",
+                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImpair": {
+                "name": "Self Impair",
+                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
+            },
+            "ImpairCost": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+            }
         },
-        "UpgradesInExhaust": {
-            "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
+        "cardTrait": {
+            "ImprovedA": {
+                "name": "Improved A",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "ImprovedB": {
+                "name": "Improved B",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "Impaired": {
+                "name": "Impaired",
+                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            }
         },
-        "UpgradesInDraw": {
-            "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
+
+        "artifact": {
+            "EnhancedTools": {
+                "name": "ENHANCED TOOLS",
+                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            },
+            "ReusableMaterials": {
+                "name": "REUSABLE MATERIALS",
+                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            },
+            "Kickstart": {
+                "name": "KICKSTART",
+                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            },
+            "MagnifiedLasers": {
+                "name": "MAGNIFIED LASERS",
+                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            },
+            "UpgradedTerminal": {
+                "name": "UPGRADED TERMINAL",
+                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            },
+            "Retainer": {
+                "name": "RETAINER",
+                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            },
+            "ExpensiveEquipment": {
+                "name": "EXPENSIVE EQUIPMENT",
+                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            },
+            "PowerEcho": {
+                "name": "POWER ECHO",
+                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            },
+            "Duo": {
+                "CleoBooks": {
+                    "name": "SUMMONING STAFF",
+                    "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+                },
+                "CleoCat": {
+                    "name": "NEVERMIND",
+                    "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+                },
+                "CleoDizzy": {
+                    "name": "FORTIFY",
+                    "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+                },
+                "CleoDrake": {
+                    "name": "ICED COFFEE",
+                    "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+                },
+                "CleoIsaac": {
+                    "name": "CARE PACKAGE",
+                    "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+                },
+                "CleoMax": {
+                    "name": "TREND CHASER",
+                    "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
+                    "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
+                    "hasNoEffect": "Currently has no effect."
+                },
+                "CleoPeri": {
+                    "name": "MILITARY SPENDING",
+                    "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+                },
+                "CleoRiggs": {
+                    "name": "PLAN B",
+                    "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+                }
+            }
         },
-        "ImproveA": {
-            "name": "   Improve A",
-            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-        },
-        "ImproveB": {
-            "name": "   Improve B",
-            "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-        },
-        "Impair": {
-            "name": "Impair",
-            "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-        },
-        "ImproveAHand": {
-            "name": "      Improve Hand A",
-            "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-        },
-        "ImproveBHand": {
-            "name": "      Improve Hand B",
-            "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-        },
-        "ImpairHand": {
-            "name": "    Impair Hand",
-            "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-        },
-        "DiscountHand": {
-            "name": "    Discount Hand",
-            "description": "<c=cardtrait>Discount</c> every card in your hand."
-        },
-        "SelfImproveA": {
-            "name": "Self Improve A",
-            "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
-        },
-        "SelfImproveB": {
-            "name": "Self Improve B",
-            "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
-        },
-        "SelfImpair": {
-            "name": "Self Impair",
-            "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
-        },
-        "ImpairCost": {
-            "name": "Impair",
-            "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+
+
+
+        "card": {
+            "Harvest": {
+                "name": "Harvest"
+            },
+            "Quick Cast": {
+                "name": "Quick Cast"
+            },
+            "WillOWisp": {
+                "name": "Will O Wisp"
+            },
+            "FontOfStrength": {
+                "name": "Font Of Strength"
+            },
+            "Telekinesis": {
+                "name": "Telekinesis"
+            },
+            "Necromancy": {
+                "name": "Necromancy"
+            },
+            "Realign": {
+                "name": "Realign"
+            },
+            "ExcessiveForce": {
+                "name": "Excessive Force"
+            },
+            "Flighty": {
+                "name": "Flighty"
+            },
+            "Bargain": {
+                "name": "Bargain"
+            },
+            "StunningStrike": {
+                "name": "Stunning Strike"
+            },
+            "WispArray": {
+                "name": "Wisp Array"
+            },
+            "NoxiousCloud": {
+                "name": "Noxious Cloud"
+            },
+            "SoulBlast": {
+                "name": "Soul Blast"
+            },
+            "Taunt": {
+                "name": "Taunt"
+            },
+            "PlayingWithFire": {
+                "name": "Playing With Fire"
+            },
+            "Vanish": {
+                "name": "Vanish"
+            },
+            "DeathTouch": {
+                "name": "Death Touch"
+            },
+            "Reap": {
+                "name": "Reap"
+            },
+            "Cripple": {
+                "name": "Cripple",
+                "description": {
+                    "None": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead.",
+                    "A": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead.",
+                    "B": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 5 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead."
+                }
+            },
+
+            "UnstableSpirit": {
+                "name": "UnstableSpirit"
+            },
+            "HarmlessSiphon": {
+                "name": "HarmlessSiphon"
+            },
+
+
+            "CullExe": {
+                "name": "Cull.EXE",
+                "description": {
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                }
+            }
         }
     },
-    "cardTrait": {
-        "ImprovedA": {
-            "name": "Improved A",
-            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+    "Jay": {
+        "character": {
+            "name": "Jay",
+            "description": [
+                "<c=8A3388>JAY</c>",
+                "Your necromancer.",
+                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+            ]
         },
-        "ImprovedB": {
-            "name": "Improved B",
-            "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+        "action": {
+            "UpgradesInHand": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+            },
+            "UpgradesInDiscard": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+            },
+            "UpgradesInExhaust": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
+            },
+            "UpgradesInDraw": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
+            },
+            "ImproveA": {
+                "name": "   Improve A",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveB": {
+                "name": "   Improve B",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "Impair": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveAHand": {
+                "name": "      Improve Hand A",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveBHand": {
+                "name": "      Improve Hand B",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImpairHand": {
+                "name": "    Impair Hand",
+                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "DiscountHand": {
+                "name": "    Discount Hand",
+                "description": "<c=cardtrait>Discount</c> every card in your hand."
+            },
+            "SelfImproveA": {
+                "name": "Self Improve A",
+                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImproveB": {
+                "name": "Self Improve B",
+                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImpair": {
+                "name": "Self Impair",
+                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
+            },
+            "ImpairCost": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+            }
         },
-        "Impaired": {
-            "name": "Impaired",
-            "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+        "cardTrait": {
+            "ImprovedA": {
+                "name": "Improved A",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "ImprovedB": {
+                "name": "Improved B",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "Impaired": {
+                "name": "Impaired",
+                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            }
+        },
+
+        "artifact": {
+            "EnhancedTools": {
+                "name": "ENHANCED TOOLS",
+                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            },
+            "ReusableMaterials": {
+                "name": "REUSABLE MATERIALS",
+                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            },
+            "Kickstart": {
+                "name": "KICKSTART",
+                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            },
+            "MagnifiedLasers": {
+                "name": "MAGNIFIED LASERS",
+                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            },
+            "UpgradedTerminal": {
+                "name": "UPGRADED TERMINAL",
+                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            },
+            "Retainer": {
+                "name": "RETAINER",
+                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            },
+            "ExpensiveEquipment": {
+                "name": "EXPENSIVE EQUIPMENT",
+                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            },
+            "PowerEcho": {
+                "name": "POWER ECHO",
+                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            },
+            "Duo": {
+                "CleoBooks": {
+                    "name": "SUMMONING STAFF",
+                    "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+                },
+                "CleoCat": {
+                    "name": "NEVERMIND",
+                    "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+                },
+                "CleoDizzy": {
+                    "name": "FORTIFY",
+                    "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+                },
+                "CleoDrake": {
+                    "name": "ICED COFFEE",
+                    "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+                },
+                "CleoIsaac": {
+                    "name": "CARE PACKAGE",
+                    "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+                },
+                "CleoMax": {
+                    "name": "TREND CHASER",
+                    "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
+                    "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
+                    "hasNoEffect": "Currently has no effect."
+                },
+                "CleoPeri": {
+                    "name": "MILITARY SPENDING",
+                    "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+                },
+                "CleoRiggs": {
+                    "name": "PLAN B",
+                    "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+                }
+            }
+        },
+
+
+
+        "card": {
+            "QuickBoost": {
+                "name": "Quick Boost"
+            },
+            "TurtleShot": {
+                "name": "Turtle Shot"
+            },
+            "Choices": {
+                "name": "Choices"
+            },
+            "MemoryRecovery": {
+                "name": "Memory Recovery",
+                "description": {
+                    "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                }
+            },
+            "ShuffleUpgrade": {
+                "name": "Shuffle Upgrade"
+            },
+            "ResourceSwap": {
+                "name": "Resource Swap"
+            },
+            "ReroutePower": {
+                "name": "Reroute Power"
+            },
+            "Rewrite": {
+                "name": "Rewrite"
+            },
+            "SlipShot": {
+                "name": "Slip Shot"
+            },
+            "PowerSurge": {
+                "name": "Power Surge"
+            },
+            "ImprovedCannon": {
+                "name": "Improved Cannon"
+            },
+            "DoItYourself": {
+                "name": "Do It Yourself",
+                "description": {
+                    "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
+                }
+            },
+            "RepairedGlasses": {
+                "name": "Repaired Glasses"
+            },
+            "ScalpedParts": {
+                "name": "Scalped Parts"
+            },
+            "MaximumEffort": {
+                "name": "Maximum Effort"
+            },
+            "NecessarySacrifice": {
+                "name": "Necessary Sacrifice"
+            },
+            "SeekerBarrage": {
+                "name": "Seeker Barrage",
+                "description": {
+                    "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
+                    "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
+                    "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                }
+            },
+            "PermaFix": {
+                "name": "Perma-Fix",
+                "description": {
+                    "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
+                }
+            },
+            "CleanSlate": {
+                "name": "Clean Slate",
+                "description": {
+                    "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
+                }
+            },
+            "ApologizeNextLoop": {
+                "name": "Apologize Next Loop",
+                "description": {
+                    "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
+                    "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
+                    "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
+                }
+            },
+
+            "FlexibleDefense": {
+                "name": "Flexible Defense"
+            },
+            "SmallRepairs": {
+                "name": "Small Repairs"
+            },
+
+
+            "CullExe": {
+                "name": "Cull.EXE",
+                "description": {
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                }
+            }
         }
     },
+    "Luna": {
+        "character": {
+            "name": "Luna",
+            "description": [
+                "<c=8A3388>LUNA</c>",
+                "Your necromancer.",
+                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+            ]
+        },
+        "action": {
+            "UpgradesInHand": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+            },
+            "UpgradesInDiscard": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+            },
+            "UpgradesInExhaust": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
+            },
+            "UpgradesInDraw": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
+            },
+            "ImproveA": {
+                "name": "   Improve A",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveB": {
+                "name": "   Improve B",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "Impair": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveAHand": {
+                "name": "      Improve Hand A",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveBHand": {
+                "name": "      Improve Hand B",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImpairHand": {
+                "name": "    Impair Hand",
+                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "DiscountHand": {
+                "name": "    Discount Hand",
+                "description": "<c=cardtrait>Discount</c> every card in your hand."
+            },
+            "SelfImproveA": {
+                "name": "Self Improve A",
+                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImproveB": {
+                "name": "Self Improve B",
+                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImpair": {
+                "name": "Self Impair",
+                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
+            },
+            "ImpairCost": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+            }
+        },
+        "cardTrait": {
+            "ImprovedA": {
+                "name": "Improved A",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "ImprovedB": {
+                "name": "Improved B",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "Impaired": {
+                "name": "Impaired",
+                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            }
+        },
 
-    "artifact": {
-        "EnhancedTools": {
-            "name": "ENHANCED TOOLS",
-            "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
-        },
-        "ReusableMaterials": {
-            "name": "REUSABLE MATERIALS",
-            "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."                                                              
-        },
-        "Kickstart": {
-            "name": "KICKSTART",
-            "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
-        },
-        "MagnifiedLasers": {
-            "name": "MAGNIFIED LASERS",
-            "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
-        },
-        "UpgradedTerminal": {
-            "name": "UPGRADED TERMINAL",
-            "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
-        },
-        "Retainer": {
-            "name": "RETAINER",
-            "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
-        },
-        "ExpensiveEquipment": {
-            "name": "EXPENSIVE EQUIPMENT",
-            "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
-        },
-        "PowerEcho": {
-            "name": "POWER ECHO",
-            "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
-        },
-        "Duo": {
-            "CleoBooks": {
-                "name": "SUMMONING STAFF",
-                "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+        "artifact": {
+            "EnhancedTools": {
+                "name": "ENHANCED TOOLS",
+                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
             },
-            "CleoCat": {
-                "name": "NEVERMIND",
-                "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+            "ReusableMaterials": {
+                "name": "REUSABLE MATERIALS",
+                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
             },
-            "CleoDizzy": {
-                "name": "FORTIFY",
-                "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+            "Kickstart": {
+                "name": "KICKSTART",
+                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
             },
-            "CleoDrake": {
-                "name": "ICED COFFEE",
-                "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+            "MagnifiedLasers": {
+                "name": "MAGNIFIED LASERS",
+                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
             },
-            "CleoIsaac": {
-                "name": "CARE PACKAGE",
-                "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+            "UpgradedTerminal": {
+                "name": "UPGRADED TERMINAL",
+                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
             },
-            "CleoMax": {
-                "name": "TREND CHASER",
-                "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
-                "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
-                "hasNoEffect": "Currently has no effect."
+            "Retainer": {
+                "name": "RETAINER",
+                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
             },
-            "CleoPeri": {
-                "name": "MILITARY SPENDING",
-                "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+            "ExpensiveEquipment": {
+                "name": "EXPENSIVE EQUIPMENT",
+                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
             },
-            "CleoRiggs": {
-                "name": "PLAN B",
-                "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+            "PowerEcho": {
+                "name": "POWER ECHO",
+                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            },
+            "Duo": {
+                "CleoBooks": {
+                    "name": "SUMMONING STAFF",
+                    "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+                },
+                "CleoCat": {
+                    "name": "NEVERMIND",
+                    "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+                },
+                "CleoDizzy": {
+                    "name": "FORTIFY",
+                    "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+                },
+                "CleoDrake": {
+                    "name": "ICED COFFEE",
+                    "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+                },
+                "CleoIsaac": {
+                    "name": "CARE PACKAGE",
+                    "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+                },
+                "CleoMax": {
+                    "name": "TREND CHASER",
+                    "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
+                    "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
+                    "hasNoEffect": "Currently has no effect."
+                },
+                "CleoPeri": {
+                    "name": "MILITARY SPENDING",
+                    "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+                },
+                "CleoRiggs": {
+                    "name": "PLAN B",
+                    "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+                }
+            }
+        },
+
+
+
+        "card": {
+            "QuickBoost": {
+                "name": "Quick Boost"
+            },
+            "TurtleShot": {
+                "name": "Turtle Shot"
+            },
+            "Choices": {
+                "name": "Choices"
+            },
+            "MemoryRecovery": {
+                "name": "Memory Recovery",
+                "description": {
+                    "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                }
+            },
+            "ShuffleUpgrade": {
+                "name": "Shuffle Upgrade"
+            },
+            "ResourceSwap": {
+                "name": "Resource Swap"
+            },
+            "ReroutePower": {
+                "name": "Reroute Power"
+            },
+            "Rewrite": {
+                "name": "Rewrite"
+            },
+            "SlipShot": {
+                "name": "Slip Shot"
+            },
+            "PowerSurge": {
+                "name": "Power Surge"
+            },
+            "ImprovedCannon": {
+                "name": "Improved Cannon"
+            },
+            "DoItYourself": {
+                "name": "Do It Yourself",
+                "description": {
+                    "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
+                }
+            },
+            "RepairedGlasses": {
+                "name": "Repaired Glasses"
+            },
+            "ScalpedParts": {
+                "name": "Scalped Parts"
+            },
+            "MaximumEffort": {
+                "name": "Maximum Effort"
+            },
+            "NecessarySacrifice": {
+                "name": "Necessary Sacrifice"
+            },
+            "SeekerBarrage": {
+                "name": "Seeker Barrage",
+                "description": {
+                    "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
+                    "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
+                    "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                }
+            },
+            "PermaFix": {
+                "name": "Perma-Fix",
+                "description": {
+                    "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
+                }
+            },
+            "CleanSlate": {
+                "name": "Clean Slate",
+                "description": {
+                    "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
+                }
+            },
+            "ApologizeNextLoop": {
+                "name": "Apologize Next Loop",
+                "description": {
+                    "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
+                    "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
+                    "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
+                }
+            },
+
+            "FlexibleDefense": {
+                "name": "Flexible Defense"
+            },
+            "SmallRepairs": {
+                "name": "Small Repairs"
+            },
+
+
+            "CullExe": {
+                "name": "Cull.EXE",
+                "description": {
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                }
             }
         }
     },
-
-
-
-    "card": {
-        "QuickBoost": {
-            "name": "Quick Boost"
+    "Centi":{
+        "character": {
+            "name": "Centi",
+            "description": [
+                "<c=8A3388>CENTI</c>",
+                "Your necromancer.",
+                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+            ]
         },
-        "TurtleShot": {
-            "name": "Turtle Shot"
-        },
-        "Choices": {
-            "name": "Choices"
-        },
-        "MemoryRecovery": {
-            "name": "Memory Recovery",
-            "description": {
-                "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
-            }
-        },
-        "ShuffleUpgrade": {
-            "name": "Shuffle Upgrade"
-        },
-        "ResourceSwap": {
-            "name": "Resource Swap"
-        },
-        "ReroutePower": {
-            "name": "Reroute Power"
-        },
-        "Rewrite": {
-            "name": "Rewrite"
-        },
-        "SlipShot": {
-            "name": "Slip Shot"
-        },
-        "PowerSurge": {
-            "name": "Power Surge"
-        },
-        "ImprovedCannon": {
-            "name": "Improved Cannon"
-        },
-        "DoItYourself": {
-            "name": "Do It Yourself",
-            "description": {
-                "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
-            }
-        },
-        "RepairedGlasses": {
-            "name": "Repaired Glasses"
-        },
-        "ScalpedParts": {
-            "name": "Scalped Parts"
-        },
-        "MaximumEffort": {
-            "name": "Maximum Effort"
-        },
-        "NecessarySacrifice": {
-            "name": "Necessary Sacrifice"
-        },
-        "SeekerBarrage": {
-            "name": "Seeker Barrage",
-            "description": {
-                "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
-                "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
-                "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
-            }
-        },
-        "PermaFix": {
-            "name": "Perma-Fix",
-            "description": {
-                "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
-            }
-        },
-        "CleanSlate": {
-            "name": "Clean Slate",
-            "description": {
-                "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
-            }
-        },
-        "ApologizeNextLoop": {
-            "name": "Apologize Next Loop",
-            "description": {                                                                       
-                "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
-                "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
-                "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
-            }
-        },
-
-        "FlexibleDefense": {
-            "name": "Flexible Defense"
-        },
-        "SmallRepairs": {
-            "name": "Small Repairs"
-        },
-
-        
-        "CullExe": {
-            "name": "Cull.EXE",
-            "description": {
-                "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
-            }
-        },
-
-        "Duo": {
-            "CullCatNoneOfTheAbove": {
-                "name": "None of the Above"
+        "action": {
+            "UpgradesInHand": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
             },
-            "CullIsaacSupply": {
-                "name": "Supply"
+            "UpgradesInDiscard": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
             },
-            "CullIsaacDemand": {
-                "name": "Demand"
+            "UpgradesInExhaust": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
+            },
+            "UpgradesInDraw": {
+                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
+            },
+            "ImproveA": {
+                "name": "   Improve A",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveB": {
+                "name": "   Improve B",
+                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "Impair": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveAHand": {
+                "name": "      Improve Hand A",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImproveBHand": {
+                "name": "      Improve Hand B",
+                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
+            },
+            "ImpairHand": {
+                "name": "    Impair Hand",
+                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
+            },
+            "DiscountHand": {
+                "name": "    Discount Hand",
+                "description": "<c=cardtrait>Discount</c> every card in your hand."
+            },
+            "SelfImproveA": {
+                "name": "Self Improve A",
+                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImproveB": {
+                "name": "Self Improve B",
+                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
+            },
+            "SelfImpair": {
+                "name": "Self Impair",
+                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
+            },
+            "ImpairCost": {
+                "name": "Impair",
+                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
             }
+        },
+        "cardTrait": {
+            "ImprovedA": {
+                "name": "Improved A",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "ImprovedB": {
+                "name": "Improved B",
+                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            },
+            "Impaired": {
+                "name": "Impaired",
+                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            }
+        },
+
+        "artifact": {
+            "EnhancedTools": {
+                "name": "ENHANCED TOOLS",
+                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            },
+            "ReusableMaterials": {
+                "name": "REUSABLE MATERIALS",
+                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            },
+            "Kickstart": {
+                "name": "KICKSTART",
+                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            },
+            "MagnifiedLasers": {
+                "name": "MAGNIFIED LASERS",
+                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            },
+            "UpgradedTerminal": {
+                "name": "UPGRADED TERMINAL",
+                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            },
+            "Retainer": {
+                "name": "RETAINER",
+                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            },
+            "ExpensiveEquipment": {
+                "name": "EXPENSIVE EQUIPMENT",
+                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            },
+            "PowerEcho": {
+                "name": "POWER ECHO",
+                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            },
+            "Duo": {
+                "CleoBooks": {
+                    "name": "SUMMONING STAFF",
+                    "description": "The first time you play a <c=cardtrait>temporary</c> card each turn, gain 1 <c=status>SHARD</c>."
+                },
+                "CleoCat": {
+                    "name": "NEVERMIND",
+                    "description": "During combat, when choosing a card to add to your deck, you may choose <c=card>None of the Above</c> instead."
+                },
+                "CleoDizzy": {
+                    "name": "FORTIFY",
+                    "description": "<c=cardtrait>Strengthen</c> also increases the amount of <c=status>SHIELD</c> cards give. Each combat, choose a card in your deck to <c=cardtrait>Strengthen</c>."
+                },
+                "CleoDrake": {
+                    "name": "ICED COFFEE",
+                    "description": "Whenever you play <c=card>Burn Out</c>, lose 1 <c=status>HEAT</c>."
+                },
+                "CleoIsaac": {
+                    "name": "CARE PACKAGE",
+                    "description": "On the first turn of each combat, add either a <c=card>Supply</c> or a <c=card>Demand</c> to your draw pile."
+                },
+                "CleoMax": {
+                    "name": "TREND CHASER",
+                    "description": "Every 3 turns, <c=cardtrait>discount</c> all copies of the most abundant card in your deck. Ties result in no discount.",
+                    "hasEffect": "Currently affects <c=card>{{CardName}}</c>.",
+                    "hasNoEffect": "Currently has no effect."
+                },
+                "CleoPeri": {
+                    "name": "MILITARY SPENDING",
+                    "description": "<c=cardtrait>Strengthened</c> cards deal 1 more damage."
+                },
+                "CleoRiggs": {
+                    "name": "PLAN B",
+                    "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
+                }
+            }
+        },
+
+
+
+        "card": {
+            "QuickBoost": {
+                "name": "Quick Boost"
+            },
+            "TurtleShot": {
+                "name": "Turtle Shot"
+            },
+            "Choices": {
+                "name": "Choices"
+            },
+            "MemoryRecovery": {
+                "name": "Memory Recovery",
+                "description": {
+                    "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
+                    "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                }
+            },
+            "ShuffleUpgrade": {
+                "name": "Shuffle Upgrade"
+            },
+            "ResourceSwap": {
+                "name": "Resource Swap"
+            },
+            "ReroutePower": {
+                "name": "Reroute Power"
+            },
+            "Rewrite": {
+                "name": "Rewrite"
+            },
+            "SlipShot": {
+                "name": "Slip Shot"
+            },
+            "PowerSurge": {
+                "name": "Power Surge"
+            },
+            "ImprovedCannon": {
+                "name": "Improved Cannon"
+            },
+            "DoItYourself": {
+                "name": "Do It Yourself",
+                "description": {
+                    "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
+                    "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
+                }
+            },
+            "RepairedGlasses": {
+                "name": "Repaired Glasses"
+            },
+            "ScalpedParts": {
+                "name": "Scalped Parts"
+            },
+            "MaximumEffort": {
+                "name": "Maximum Effort"
+            },
+            "NecessarySacrifice": {
+                "name": "Necessary Sacrifice"
+            },
+            "SeekerBarrage": {
+                "name": "Seeker Barrage",
+                "description": {
+                    "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
+                    "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
+                    "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                }
+            },
+            "PermaFix": {
+                "name": "Perma-Fix",
+                "description": {
+                    "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
+                    "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
+                }
+            },
+            "CleanSlate": {
+                "name": "Clean Slate",
+                "description": {
+                    "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
+                    "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
+                }
+            },
+            "ApologizeNextLoop": {
+                "name": "Apologize Next Loop",
+                "description": {
+                    "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
+                    "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
+                    "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
+                }
+            },
+
+            "FlexibleDefense": {
+                "name": "Flexible Defense"
+            },
+            "SmallRepairs": {
+                "name": "Small Repairs"
+            },
+
+
+            "CullExe": {
+                "name": "Cull.EXE",
+                "description": {
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                }
+            }
+        }
+    },
+    "Duo": {
+        "artifact": {
+                
+        },
+        "card": {
+                
         }
     }
 }

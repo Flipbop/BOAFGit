@@ -7,7 +7,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class PermaFixCard : Card, IRegisterable
+internal sealed class CripppleCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -23,7 +23,7 @@ internal sealed class PermaFixCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/PermaFix.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PermaFix", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Cripple", "name"]).Localize
 		});
 	}
 
@@ -31,17 +31,11 @@ internal sealed class PermaFixCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = upgrade switch
-			{
-				Upgrade.B => 3,
-				Upgrade.A => 1,
-				_ => 2
-			},
-			singleUse = true,
-			retain = upgrade == Upgrade.A,
+			cost = upgrade == Upgrade.A ? 2 : 3,
+			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
-					"card", "PermaFix", "description", upgrade.ToString()
+					"Cull", "card", "Cripple", "description", upgrade.ToString()
 				]),
 		};
 
@@ -60,7 +54,7 @@ internal sealed class PermaFixCard : Card, IRegisterable
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not PermaFixCard || args.Card.upgrade != Upgrade.B)
+			if (args.Card is not CripppleCard || args.Card.upgrade != Upgrade.B)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}

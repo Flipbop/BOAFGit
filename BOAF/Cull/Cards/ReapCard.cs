@@ -1,4 +1,6 @@
 using Nanoray.PluginManager;
+
+
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,15 +9,13 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ApologizeNextLoopCard : Card, IRegisterable
+internal sealed class ReapCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
-			
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
@@ -23,9 +23,8 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ApologizeNextLoop.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ApologizeNextLoop", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleanSlate.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Reap", "name"]).Localize
 		});
 	}
 
@@ -33,37 +32,29 @@ internal sealed class ApologizeNextLoopCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 3,
-			description =
-				ModEntry.Instance.Localizations.Localize([
-					"card", "ApologizeNextLoop", "description", upgrade.ToString()
-				]),
-			exhaust = true,
+			cost = upgrade switch
+			{
+				Upgrade.A => 2,
+				Upgrade.B => 4,
+				_ => 3,
+			},
+			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
-		{
-			Upgrade.A =>
-			[
-				new AApologize {dmgRamp = 2, peirce = false},
-			],
-			Upgrade.B => [
-				new AApologize {dmgRamp = 1, peirce = true},
-			],
-			_ => [
-				new AApologize {dmgRamp = 1, peirce = false},
-			]
-		};
+		=>
+		[
+			new ACleanSlate(),
+			new ADiscountHand {Amount = -1}
+		];
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not ApologizeNextLoopCard)
+			if (args.Card is not ReapCard)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}
 	}
 }
-	
 

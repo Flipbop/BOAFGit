@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class FlexibleDefenseCard : Card, IRegisterable
+internal sealed class BargainCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +18,8 @@ internal sealed class FlexibleDefenseCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/FlexibleDefense.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FlexibleDefense", "name"]).Localize
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/PowerSurge.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Bargain", "name"]).Localize
 		});
 	}
 
@@ -27,22 +27,27 @@ internal sealed class FlexibleDefenseCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = upgrade == Upgrade.B? 3 : 2,
-			exhaust = upgrade == Upgrade.B
+			cost = 1
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
-				new AStatus {targetPlayer = true, status = Status.tempShield, statusAmount = 2},
+				new ADrawCard {count = 2},
+				new AImproveAHand(),
+				new ADiscard {count = 3}
 			],
 			Upgrade.B => [
-				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 4},
+				new ADrawCard {count = 1},
+				new AImproveBHand(),
+				new ADiscountHand { Amount = -1},
+				new ADiscard(),
 			],
 			_ => [
-				new AStatus {targetPlayer = true, status = Status.libra, statusAmount = 2},
+				new ADrawCard {count = 2},
+				new AImproveAHand(),
+				new ADiscard(),
 			]
 		};
 }

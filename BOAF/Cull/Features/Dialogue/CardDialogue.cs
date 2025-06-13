@@ -21,7 +21,7 @@ internal sealed class CardDialogue : BaseDialogue
 
 		newNodes[["Played", "SmallRepairs"]] = new()
 		{
-			lookup = [$"Played::{new SmallRepairsCard().Key()}"],
+			lookup = [$"Played::{new HarmlessSiphonCard().Key()}"],
 			priority = true,
 			oncePerRun = true,
 			allPresent = [cullType],
@@ -33,10 +33,10 @@ internal sealed class CardDialogue : BaseDialogue
 		for (var i = 0; i < 3; i++)
 			newNodes[["Played", "ApologizeNextLoop", i.ToString()]] = new()
 			{
-				lookup = [$"Played::{new ApologizeNextLoopCard().Key()}"],
+				lookup = [$"Played::{new UnstableSpiritCard().Key()}"],
 				priority = true,
 				oncePerRun = true,
-				oncePerCombatTags = [$"Played::{new ApologizeNextLoopCard().Key()}"],
+				oncePerCombatTags = [$"Played::{new UnstableSpiritCard().Key()}"],
 				allPresent = [cullType],
 				lines = [
 					new Say { who = cullType, loopTag = "neutral" },
@@ -46,10 +46,10 @@ internal sealed class CardDialogue : BaseDialogue
 		for (var i = 0; i < 2; i++)
 			newNodes[["Played", "SeekerBarrage", i.ToString()]] = new()
 			{
-				lookup = [$"Played::{new SeekerBarrageCard().Key()}"],
+				lookup = [$"Played::{new VanishCard().Key()}"],
 				priority = true,
 				oncePerRun = true,
-				oncePerCombatTags = [$"Played::{new SeekerBarrageCard().Key()}"],
+				oncePerCombatTags = [$"Played::{new VanishCard().Key()}"],
 				allPresent = [cullType],
 				lines = [
 					new Say { who = cullType, loopTag = "neutral" },
