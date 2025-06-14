@@ -66,53 +66,53 @@
                 "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
             }
         },
-        "cardTrait": {
-            "ImprovedA": {
-                "name": "Improved A",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+        "status": {
+            "SoulEnergy": {
+                "name": "Soul Energy",
+                "description": "You can have up to 10 <c=status>Soul Energy</c>. Soul Energy is necessary to use certain actions on certain cards <c=ffffff>Cull</c> has."
             },
-            "ImprovedB": {
-                "name": "Improved B",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
-            },
-            "Impaired": {
-                "name": "Impaired",
-                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            "Fear": {
+                "name": "Fear",
+                "description": "Take <c=keyword>+1 damage</c> from all sources. <c=downside>Lost at the end of your turn.</c>"
             }
         },
 
         "artifact": {
-            "EnhancedTools": {
-                "name": "ENHANCED TOOLS",
-                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            "SoulSiphon": {
+                "name": "SOUL SIPHON", 
+                "description": "Every time you deal damage to your opponent you gain 1 <c=status>SOUL ENERGY</c>. Every time you take damage you lose 1 <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
             },
-            "ReusableMaterials": {
-                "name": "REUSABLE MATERIALS",
-                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            "MercifulReaper": {
+                "name": "MERCIFUL REAPER",
+                "description": "At the start of combat, gain a <c=card>Harmless Siphon</c>."
             },
-            "Kickstart": {
-                "name": "KICKSTART",
-                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            "SoulReserves": {
+                "name": "SOUL RESERVES",
+                "description": "Start each combat with 2 <c=status>SOUL ENERGY</c>."
             },
-            "MagnifiedLasers": {
-                "name": "MAGNIFIED LASERS",
-                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            "ThreateningAura": {
+                "name": "THREATENING AURA",
+                "description": "The enemy has <c=status>FEAR</c> at the start of combat."
             },
-            "UpgradedTerminal": {
-                "name": "UPGRADED TERMINAL",
-                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            "EnhancedFocus": {
+                "name": "ENHANCED FOCUS",
+                "description": "The first time you take damage each turn, gain 1 <c=status>SOUL ENERGY</c>."
             },
-            "Retainer": {
-                "name": "RETAINER",
-                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            "OverclockedSiphon": {
+                "name": "OVERCLOCKED SIPHON",
+                "description": "Every third turn, gain 1 <c=status>SOUL ENERGY</c>."
             },
-            "ExpensiveEquipment": {
-                "name": "EXPENSIVE EQUIPMENT",
-                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            "CursedLantern": {
+                "name": "CURSED LANTERN",
+                "description": "You gain <c=keyword>+1 Energy every turn</c>, <c=downside>BUT you lose 2</c> <c=status>SOUL ENERGY</c> <c=downside>when taking damage instead of 1.</c>"
             },
-            "PowerEcho": {
-                "name": "POWER ECHO",
-                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            "EnchantedScythe": {
+                "name": "ENCHANTED SCYTHE",
+                "description": "If you have at least 5 <c=status>SOUL ENERGY</c>, all attacks deal <c=keyword>+1 damage</c>."
+            },
+            "Animism": {
+                "name": "ANIMISM",
+                "description": "Gain 1 <c=status>SOUL ENERGY</c> when a midrow object is destroyed."
             },
             "Duo": {
                 "CleoBooks": {
@@ -232,9 +232,9 @@
             "CullExe": {
                 "name": "Cull.EXE",
                 "description": {
-                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                    "None": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "A": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
+                    "B": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
                 }
             }
         }

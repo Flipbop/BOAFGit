@@ -34,20 +34,16 @@ internal sealed class BargainCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ADrawCard {count = 2},
-				new AImproveAHand(),
-				new ADiscard {count = 3}
+				new AHurt() {hurtAmount = 1},
+				new AAttack() {damage = GetDmg(s,2)},
+				new AAttack() {damage = GetDmg(s,2)}
 			],
 			Upgrade.B => [
-				new ADrawCard {count = 1},
-				new AImproveBHand(),
-				new ADiscountHand { Amount = -1},
-				new ADiscard(),
+				
 			],
 			_ => [
-				new ADrawCard {count = 2},
-				new AImproveAHand(),
-				new ADiscard(),
+				new AHurt() {hurtAmount = 1},
+				new AAttack() {damage = GetDmg(s,3)},
 			]
 		};
 }

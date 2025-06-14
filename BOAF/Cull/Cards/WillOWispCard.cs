@@ -33,14 +33,6 @@ internal sealed class WillOWispCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AImproveA { Amount = 1 },
-				new AImproveB { Amount = 1 },
-			],
-			_ => [
-				new AImproveA { Amount = 1, disabled = flipped},
-				new ADummyAction(),
-				new AImproveB { Amount = 1, disabled = !flipped }
-			]
+			
 		};
 }

@@ -6,65 +6,22 @@ public sealed class ApiImplementation : IBOAFApi
 {
 	public IDeckEntry CullDeck
 		=> ModEntry.Instance.CullDeck;
-
-	public ICardTraitEntry ImprovedACardTrait
-		=> ImprovedAManager.Trait;
-	public ICardTraitEntry ImprovedBCardTrait
-		=> ImprovedBManager.Trait;
 	
-	public ICardTraitEntry ImpairedTrait
-		=> ImpairedManager.Trait;
-
-	public Tooltip GetImprovedATooltip(bool amount)
-		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedA")
+	public Tooltip GetSoulEnergyTooltip(bool amount)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedA", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedA", "description"])
+			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "description"])
 		};
-	
-	public Tooltip GetImprovedBTooltip(bool amount)
-		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::ImprovedB")
+	public Tooltip GetFearTooltip(bool amount)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Fear")
 		{
 			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
 			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedB", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "ImprovedB", "description"])
+			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "description"])
 		};
-	public Tooltip GetImpairedTooltip(bool amount)
-		=> new GlossaryTooltip($"cardtrait.{ModEntry.Instance.Package.Manifest.UniqueName}::Impaired")
-		{
-			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
-			TitleColor = Colors.cardtrait,
-			Title = ModEntry.Instance.Localizations.Localize(["cardTrait", "Impaired", "name"]),
-			Description = ModEntry.Instance.Localizations.Localize(["cardTrait", "Impaired", "description"])
-		};
-	
-	public bool GetImprovedA(Card card)
-		=> card.GetImprovedA();
-
-	public void SetImprovedA(Card card, bool value)
-		=> card.SetImprovedA(value);
-
-	public void AddImprovedA(Card card, State s)
-		=> card.AddImprovedA(s);
-	
-	public bool GetImprovedB(Card card)
-		=> card.GetImprovedB();
-
-	public void SetImprovedB(Card card, bool value)
-		=> card.SetImprovedB(value);
-
-	public void AddImprovedB(Card card, State s)
-		=> card.AddImprovedB(s);
-	public bool GetImpaired(Card card)
-		=> card.GetImprovedB();
-
-	public void SetImpaired(Card card, bool value)
-		=> card.SetImprovedB(value);
-
-	public void AddImpaired(Card card, State s)
-		=> card.AddImprovedB(s);
 
 }

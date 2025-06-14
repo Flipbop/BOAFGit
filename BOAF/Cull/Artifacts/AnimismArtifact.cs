@@ -7,11 +7,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class RetainerArtifact : Artifact, IRegisterable
+internal sealed class AnimismArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("Retainer", new()
+		helper.Content.Artifacts.RegisterArtifact("Animism", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -20,8 +20,8 @@ internal sealed class RetainerArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Retainer.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Retainer", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Retainer", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "Animism", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "Animism", "description"]).Localize
 		});
 	}
 	public override List<Tooltip>? GetExtraTooltips()

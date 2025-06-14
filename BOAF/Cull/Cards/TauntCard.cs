@@ -34,21 +34,6 @@ internal sealed class TauntCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new ADrawCard { count = 3},
-				new StunningStrikeCard.AUpgradeHint{hand = true},
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
-				new AImpairHand()
-			],
-			Upgrade.A => [
-				new StunningStrikeCard.AUpgradeHint{hand = true},
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 3*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 3},
-				new AImpairHand()
-			],
-			_ => [
-				new StunningStrikeCard.AUpgradeHint{hand = true},
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2*c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 2},
-				new AImpairHand()
-			],
+			
 		};
 }

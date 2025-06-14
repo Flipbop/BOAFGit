@@ -34,20 +34,6 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AAttack{ damage = GetDmg(s, 2)},
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-			],
-			Upgrade.B => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AAttack{ damage = GetDmg(s, 3)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AAttack{ damage = GetDmg(s, 4)}).AsCardAction,
-			],
-			_ => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AAttack{ damage = GetDmg(s, 2)}).AsCardAction,
-			]
+			
 		};
 }

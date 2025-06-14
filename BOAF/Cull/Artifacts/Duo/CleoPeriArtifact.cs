@@ -27,7 +27,4 @@ internal sealed class CleoPeriArtifact : Artifact, IRegisterable
 
 		api.RegisterDuoArtifact(MethodBase.GetCurrentMethod()!.DeclaringType!, [ModEntry.Instance.CullDeck.Deck, Deck.peri]);
 	}
-
-	public override List<Tooltip>? GetExtraTooltips()
-		=> [ModEntry.Instance.Api.GetImprovedATooltip(true)];
 }

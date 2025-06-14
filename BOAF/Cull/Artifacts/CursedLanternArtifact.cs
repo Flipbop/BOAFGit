@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
+internal sealed class CursedLanternArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("ExpensiveEquipment", new()
+		helper.Content.Artifacts.RegisterArtifact("CursedLantern", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -18,8 +18,8 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/ExpensiveEquipment.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ExpensiveEquipment", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ExpensiveEquipment", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "CursedLantern", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "CursedLantern", "description"]).Localize
 		});
 	}
 
@@ -36,7 +36,6 @@ internal sealed class ExpensiveEquipmentArtifact : Artifact, IRegisterable
 				if (card.upgrade == Upgrade.None)
 				{
 					combat.Queue([
-						new AImproveASelf {id = card.uuid},
 					]);
 				}
 				else

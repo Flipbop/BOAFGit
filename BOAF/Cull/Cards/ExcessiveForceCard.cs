@@ -33,11 +33,6 @@ internal sealed class ExcessiveForceCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 2), new AStatus{targetPlayer = true, status = Status.tempShield, statusAmount = 6}).AsCardAction,
-			],
-			_ => [
-				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new ImpairedCost(), 1), new AStatus{targetPlayer = true, status = Status.tempShield, statusAmount = 3}).AsCardAction,
-			]
+			
 		};
 }

@@ -38,10 +38,9 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry UpgradesInExhaustIcon { get; }
 	internal ISpriteEntry ImpairCostIcon { get; }
 
+	internal IStatusEntry SoulEnergyStatus { get; }
+	internal IStatusEntry FearStatus { get; }
 
-	internal ICardTraitEntry ImprovedATrait { get; }
-	internal ICardTraitEntry ImprovedBTrait { get; }
-	internal ICardTraitEntry ImpairedTrait { get; }
 	public IModHelper helper { get; }
 	
 	
@@ -83,17 +82,17 @@ public sealed class ModEntry : SimpleMod
 		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(CullExeCard), ..SpecialCardTypes];
 
 	internal static IReadOnlyList<Type> CommonArtifacts { get; } = [
-		typeof(EnhancedToolsArtifact),
-		typeof(ReusableMaterialsArtifact),
-		typeof(KickstartArtifact),
-		typeof(MagnifiedLasersArtifact),
-		typeof(UpgradedTerminalArtifact), 
+		typeof(MercifulReaperArtifact),
+		typeof(ThreateningAuraArtifact),
+		typeof(OverclockedSiphonArtifact),
+		typeof(SoulReservesArtifact),
+		typeof(EnhancedFocusArtifact), 
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
-		typeof(RetainerArtifact),
-		typeof(ExpensiveEquipmentArtifact),
-		typeof(PowerEchoArtifact), 
+		typeof(AnimismArtifact),
+		typeof(CursedLanternArtifact),
+		typeof(EnchantedScytheArtifact), 
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -107,8 +106,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(CleoRiggsArtifact), */
 	];
 
+	internal static IReadOnlyList<Type> StarterArtifacts { get; } = [
+		typeof(SoulSiphonArtifact),
+	];
+
 	internal static IEnumerable<Type> AllArtifactTypes
-		=> [..CommonArtifacts, ..BossArtifacts];
+		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
 		= [..AllCardTypes, ..AllArtifactTypes];
@@ -116,12 +119,12 @@ public sealed class ModEntry : SimpleMod
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= DuoArtifacts;
 
-	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
+	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger, IStatusEntry soulEnergyStatus) : base(package, helper, logger)
 	{
 		Spr improvedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Improved.png")).Sprite; 
 		Spr impairedSpr = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("Cull/assets/Icons/Impaired.png")).Sprite;
 		this.helper = helper;
-
+		
 		Instance = this;
 		Harmony = helper.Utilities.Harmony;
 		KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!.V2;
@@ -143,24 +146,6 @@ public sealed class ModEntry : SimpleMod
 		this.Localizations = new MissingPlaceholderLocalizationProvider<IReadOnlyList<string>>(
 			new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
 		);
-		
-		
-		ImprovedATrait = helper.Content.Cards.RegisterTrait("Improved A", new()
-		{
-			Name = this.AnyLocalizations.Bind(["status", "ImproveA", "name"]).Localize,
-			Icon = (state, card) => improvedSpr,
-		});
-		ImprovedBTrait = helper.Content.Cards.RegisterTrait("Improved B", new()
-		{
-			Name = this.AnyLocalizations.Bind(["status", "ImproveB", "name"]).Localize,
-			Icon = (state, card) => improvedSpr,
-		});
-		ImpairedTrait = helper.Content.Cards.RegisterTrait("ImpairedTrait", new()
-		{
-			Name = this.AnyLocalizations.Bind(["status", "Impaired", "name"]).Localize,
-			Icon = (state, card) => impairedSpr,
-		});
-		
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 
@@ -200,6 +185,9 @@ public sealed class ModEntry : SimpleMod
 			},
 			Starters = new()
 			{
+				artifacts = [
+					new SoulSiphonArtifact()
+				],
 				cards = [
 					new QuickCastCard(),
 					new HarvestCard()
@@ -211,7 +199,7 @@ public sealed class ModEntry : SimpleMod
 					new QuickCastCard(),
 					new HarvestCard(),
 					new RealignCard(),
-					new TelekinesisCard(),
+					new WillOWispCard(),
 					new CannonColorless(),
 					new DodgeColorless()
 					]
@@ -252,7 +240,36 @@ public sealed class ModEntry : SimpleMod
 				.ToList()
 		});
 		
-
+		SoulEnergyStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SoulEnergy", new()
+		{
+			Definition = new()
+			{
+				icon = ModEntry.Instance.Helper.Content.Sprites
+					.RegisterSprite(
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("Cull/assets/Status/SoulEnergy.png"))
+					.Sprite,
+				color = new("301934"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Cull", "status", "SoulEnergy", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Cull", "status", "SoulEnergy", "description"])
+				.Localize
+		});
+		FearStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Fear", new()
+		{
+			Definition = new()
+			{
+				icon = ModEntry.Instance.Helper.Content.Sprites
+					.RegisterSprite(
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("Cull/assets/Status/SoulEnergy.png"))
+					.Sprite,
+				color = new("000435"),
+				isGood = false,
+			},
+			Name = AnyLocalizations.Bind(["Cull", "status", "Fear", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Cull", "status", "Fear", "description"])
+				.Localize
+		});
 		#endregion
 		
 
@@ -278,6 +295,9 @@ public sealed class ModEntry : SimpleMod
 				deck: CullDeck.Deck,
 				starterDeck: new StarterDeck
 				{
+					artifacts = [
+						new SoulSiphonArtifact()
+					],
 					cards = [
 						new RealignCard(),
 						new NecromancyCard()
@@ -286,10 +306,8 @@ public sealed class ModEntry : SimpleMod
 			)
 		);
 		
-		_ = new ImprovedAManager();
-		_ = new ImprovedBManager();
-		_ = new ImpairedManager();
-		_ = new ImpairedCostManager();
+		_ = new SoulEnergyManager();
+		_ = new FearManager();
 		_ = new DialogueExtensions();
 		_ = new CombatDialogue();
 		_ = new EventDialogue();

@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class PowerEchoArtifact : Artifact, IRegisterable
+internal sealed class EnchantedScytheArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("PowerEcho", new()
+		helper.Content.Artifacts.RegisterArtifact("EnchantedScythe", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -18,8 +18,8 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/PowerEcho.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "PowerEcho", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "PowerEcho", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnchantedScythe", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnchantedScythe", "description"]).Localize
 		});
 	}
 
@@ -38,7 +38,6 @@ internal sealed class PowerEchoArtifact : Artifact, IRegisterable
 				{
 					card = newCard, destination = CardDestination.Hand
 				},
-				new AImpair {Amount = 1}
 			]);
 		}
 	}

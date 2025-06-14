@@ -33,18 +33,6 @@ internal sealed class QuickCastCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AImproveA { Amount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
-			],
-			Upgrade.B => [
-				new AImproveB { Amount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-			],
-			_ => [
-				new AImproveA { Amount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 1 },
-			]
+			
 		};
 }

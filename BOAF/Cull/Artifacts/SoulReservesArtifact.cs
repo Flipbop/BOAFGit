@@ -6,11 +6,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class MagnifiedLasersArtifact : Artifact, IRegisterable
+internal sealed class SoulReservesArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("MagnifiedLasers", new()
+		helper.Content.Artifacts.RegisterArtifact("SoulReserves", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -19,8 +19,8 @@ internal sealed class MagnifiedLasersArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/MagnifiedLasers.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "MagnifiedLasers", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "MagnifiedLasers", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulReserves", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulReserves", "description"]).Localize
 		});
 	}
 	public override int ModifyBaseDamage( int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)

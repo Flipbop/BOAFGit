@@ -33,21 +33,6 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AImproveB { Amount = 1 },
-				new AShuffleHand(),
-				new AImproveB { Amount = 1 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-			],
-			Upgrade.A => [
-				new AShuffleHand(),
-				new AImproveA { Amount = 2 },
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
-			],
-			_ => [
-				new AShuffleHand(),
-				new AImproveA { Amount = 2 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-			]
+			
 		};
 }

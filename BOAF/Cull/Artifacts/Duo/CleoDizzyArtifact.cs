@@ -37,7 +37,6 @@ internal sealed class CleoDizzyArtifact : Artifact, IRegisterable
 
 	public override List<Tooltip>? GetExtraTooltips()
 		=> [
-			ModEntry.Instance.Api.GetImprovedATooltip(true),
 			..StatusMeta.GetTooltips(Status.shield, 1)
 		];
 

@@ -4,11 +4,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ReusableMaterialsArtifact : Artifact, IRegisterable
+internal sealed class ThreateningAuraArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("ReusableMaterials", new()
+		helper.Content.Artifacts.RegisterArtifact("ThreateningAura", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -17,19 +17,14 @@ internal sealed class ReusableMaterialsArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/ReusableMaterials.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ReusableMaterials", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ReusableMaterials", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "ThreateningAura", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "ThreateningAura", "description"]).Localize
 		});
 	}
 
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.GetImprovedA() || card.GetImprovedB())
-		{
-			combat.Queue([
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 1 }
-			]);
-		}
+		
 	}
 }

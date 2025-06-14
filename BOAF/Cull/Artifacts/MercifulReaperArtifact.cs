@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
+internal sealed class MercifulReaperArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("EnhancedTools", new()
+		helper.Content.Artifacts.RegisterArtifact("MercifulReaper", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -18,8 +18,8 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/EnhancedTools.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "EnhancedTools", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "EnhancedTools", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "MercifulReaper", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "MercifulReaper", "description"]).Localize
 		});
 	}
 
@@ -27,20 +27,7 @@ internal sealed class EnhancedToolsArtifact : Artifact, IRegisterable
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.GetImprovedA() && firstCard)
-		{
-			firstCard = false;
-			combat.Queue([
-				new AImproveA { Amount = 1}
-			]);
-		}
-		if (card.GetImprovedB() && firstCard)
-		{
-			firstCard = false;
-			combat.Queue([
-				new AImproveB { Amount = 1}
-			]);
-		}
+		
 	}
 	
 	public override void OnCombatEnd(State state)

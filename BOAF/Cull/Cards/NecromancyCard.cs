@@ -36,21 +36,6 @@ internal sealed class NecromancyCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
-				new AStatus { targetPlayer = true, status = Status.tempShield, statusAmount = 2 },
-				new AImpairSelf{id = this.uuid},
-			],
-			Upgrade.B => [
-				new AStatus { targetPlayer = true, status = Status.evade, statusAmount = 2 },
-				new AImpairSelf{id = this.uuid},
-			],
-			_ => [
-				new AAttack {disabled = flipped, damage = GetDmg(s, 2) },
-				new AImproveASelf {disabled = flipped, id = this.uuid},
-				new ADummyAction(),
-				new AAttack {disabled = !flipped, damage = GetDmg(s, 2) },
-				new AImproveBSelf {disabled = !flipped, id = this.uuid},
-			]
+			
 		};
 }

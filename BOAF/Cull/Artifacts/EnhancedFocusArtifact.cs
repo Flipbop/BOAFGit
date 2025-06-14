@@ -6,11 +6,11 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
+internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("UpgradedTerminal", new()
+		helper.Content.Artifacts.RegisterArtifact("EnhancedFocus", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -19,8 +19,8 @@ internal sealed class UpgradedTerminalArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/UpgradedTerminal.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "UpgradedTerminal", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "UpgradedTerminal", "description"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnhancedFocus", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnhancedFocus", "description"]).Localize
 		});
 	}
 	public bool _used = false;
