@@ -23,5 +23,13 @@ public sealed class ApiImplementation : IBOAFApi
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "description"])
 		};
+	public Tooltip GetSoulDrainTooltip(bool amount)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulDrain")
+		{
+			Icon = ModEntry.Instance.ImprovedIcon.Sprite,
+			TitleColor = Colors.cardtrait,
+			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "description"])
+		};
 
 }

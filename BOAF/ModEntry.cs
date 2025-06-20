@@ -40,6 +40,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal IStatusEntry SoulEnergyStatus { get; }
 	internal IStatusEntry FearStatus { get; }
+	internal IStatusEntry SoulDrainStatus { get; }
 
 	public IModHelper helper { get; }
 	
@@ -270,6 +271,21 @@ public sealed class ModEntry : SimpleMod
 			Description = AnyLocalizations.Bind(["Cull", "status", "Fear", "description"])
 				.Localize
 		});
+		SoulDrainStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SoulDrain", new()
+		{
+			Definition = new()
+			{
+				icon = ModEntry.Instance.Helper.Content.Sprites
+					.RegisterSprite(
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("Cull/assets/Status/SoulEnergy.png"))
+					.Sprite,
+				color = new("2A0134"),
+				isGood = false,
+			},
+			Name = AnyLocalizations.Bind(["Cull", "status", "SoulDrain", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Cull", "status", "SoulDrain", "description"])
+				.Localize
+		});
 		#endregion
 		
 
@@ -308,6 +324,7 @@ public sealed class ModEntry : SimpleMod
 		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
+		_ = new SoulDrainManager();
 		_ = new DialogueExtensions();
 		_ = new CombatDialogue();
 		_ = new EventDialogue();

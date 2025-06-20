@@ -35,7 +35,7 @@ internal sealed class EventDialogue : BaseDialogue
 		};
 		
 		
-		newNodes[["Shop", "0"]] = new()
+		newNodes[["Cull", "Shop", "0"]] = new()
 		{
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
@@ -47,7 +47,7 @@ internal sealed class EventDialogue : BaseDialogue
 			],
 			choiceFunc = "NewShop",
 		};
-		newNodes[["Shop", "1"]] = new()
+		newNodes[["Cull", "Shop", "1"]] = new()
 		{
 			lookup = ["shopBefore"],
 			bg = typeof(BGShop).Name,
@@ -60,7 +60,7 @@ internal sealed class EventDialogue : BaseDialogue
 			choiceFunc = "NewShop",
 		};
 		
-		newHardcodedNodes[["LoseCharacterCard_{{CharacterType}}"]] = new()
+		newHardcodedNodes[["Cull", "LoseCharacterCard_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGSupernova).Name,
@@ -69,7 +69,7 @@ internal sealed class EventDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newHardcodedNodes[["CrystallizedFriendEvent_{{CharacterType}}"]] = new()
+		newHardcodedNodes[["Cull", "CrystallizedFriendEvent_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGCrystalizedFriend).Name,
@@ -79,7 +79,7 @@ internal sealed class EventDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newHardcodedNodes[["ChoiceCardRewardOfYourColorChoice_{{CharacterType}}"]] = new()
+		newHardcodedNodes[["Cull", "ChoiceCardRewardOfYourColorChoice_{{CharacterType}}"]] = new()
 		{
 			oncePerRun = true,
 			bg = typeof(BGBootSequence).Name,
@@ -90,47 +90,47 @@ internal sealed class EventDialogue : BaseDialogue
 			],
 		};
 
-		saySwitchNodes[["GrandmaShop"]] = new()
+		saySwitchNodes[["Cull", "GrandmaShop"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"
 		};
-		saySwitchNodes[["LoseCharacterCard"]] = new()
+		saySwitchNodes[["Cull", "LoseCharacterCard"]] = new()
 		{
 			who = cullType,
 			loopTag = "nervous"
 		};
-		saySwitchNodes[["CrystallizedFriendEvent"]] = new()
+		saySwitchNodes[["Cull", "CrystallizedFriendEvent"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"
 		};
-		saySwitchNodes[["ShopKeepBattleInsult"]] = new()
+		saySwitchNodes[["Cull", "ShopKeepBattleInsult"]] = new()
 		{
 			who = cullType,
 			loopTag = "nervous"
 		};
-		saySwitchNodes[["DraculaTime"]] = new()
+		saySwitchNodes[["Cull", "DraculaTime"]] = new()
 		{
 			who = cullType,
 			loopTag = "squint"
 		};
-		saySwitchNodes[["Soggins_Infinite"]] = new()
+		saySwitchNodes[["Cull", "Soggins_Infinite"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"
 		};
-		saySwitchNodes[["Soggins_Missile_Shout_1"]] = new()
+		saySwitchNodes[["Cull", "Soggins_Missile_Shout_1"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"
 		};
-		saySwitchNodes[["SogginsEscapeIntent_1"]] = new()
+		saySwitchNodes[["Cull", "SogginsEscapeIntent_1"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"
 		};
-		saySwitchNodes[["SogginsEscape_1"]] = new()
+		saySwitchNodes[["Cull", "SogginsEscape_1"]] = new()
 		{
 			who = cullType,
 			loopTag = "neutral"

@@ -14,12 +14,8 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 
 	public FearManager()
 	{
-		
 		ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this);
-		//ModEntry.Instance.Harmony.Patch(
-		//	original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
-		//	postfix: new HarmonyMethod(GetType(), nameof(AStatus_Begin_Postfix))
-		//);
+		
 	}
 	
 

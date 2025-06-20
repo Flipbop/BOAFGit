@@ -22,7 +22,7 @@ internal sealed class CombatDialogue : BaseDialogue
 
 		#region TookDamage
 		for (var i = 0; i < 3; i++)
-			newNodes[["TookDamage", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "TookDamage", "Basic", i.ToString()]] = new()
 			{
 				enemyShotJustHit = true,
 				minDamageDealtToPlayerThisTurn = 1,
@@ -31,7 +31,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				],
 			};
 
-		newNodes[["TookDamage", "Dizzy"]] = new()
+		newNodes[["Cull", "TookDamage", "Dizzy"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -41,7 +41,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
 			],
 		};
-		newNodes[["TookDamage", "Riggs"]] = new()
+		newNodes[["Cull", "TookDamage", "Riggs"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -51,7 +51,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
 			],
 		};
-		newNodes[["TookDamage", "Isaac"]] = new()
+		newNodes[["Cull", "TookDamage", "Isaac"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -61,7 +61,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newNodes[["TookDamage", "Drake"]] = new()
+		newNodes[["Cull", "TookDamage", "Drake"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -71,7 +71,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
-		newNodes[["TookDamage", "Max"]] = new()
+		newNodes[["Cull", "TookDamage", "Max"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -81,7 +81,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newNodes[["TookDamage", "Books"]] = new()
+		newNodes[["Cull", "TookDamage", "Books"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -91,7 +91,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.shard.Key(), loopTag = "intense" },
 			],
 		};
-		newNodes[["TookDamage", "CAT"]] = new()
+		newNodes[["Cull", "TookDamage", "CAT"]] = new()
 		{
 			enemyShotJustHit = true,
 			minDamageDealtToPlayerThisTurn = 1,
@@ -104,7 +104,7 @@ internal sealed class CombatDialogue : BaseDialogue
 		#endregion
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["TookNonHullDamage", "Basic", i.ToString()]] = new StoryNode()
+			newNodes[["Cull", "TookNonHullDamage", "Basic", i.ToString()]] = new StoryNode()
 			{
 				enemyShotJustHit = true,
 				maxDamageDealtToPlayerThisTurn = 0,
@@ -116,7 +116,7 @@ internal sealed class CombatDialogue : BaseDialogue
 
 		#region DealtDamage
 		for (var i = 0; i < 4; i++)
-			newNodes[["DealtDamage", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "DealtDamage", "Basic", i.ToString()]] = new()
 			{
 				playerShotJustHit = true,
 				minDamageDealtToEnemyThisTurn = 1,
@@ -126,7 +126,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				],
 			};
 
-		newNodes[["DealtDamage", "Dizzy"]] = new()
+		newNodes[["Cull", "DealtDamage", "Dizzy"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -137,7 +137,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "explain" },
 			],
 		};
-		newNodes[["DealtDamage", "Riggs"]] = new()
+		newNodes[["Cull", "DealtDamage", "Riggs"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -147,7 +147,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
 			],
 		};
-		newNodes[["DealtDamage", "Peri"]] = new()
+		newNodes[["Cull", "DealtDamage", "Peri"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -158,7 +158,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "explain" },
 			],
 		};
-		newNodes[["DealtDamage", "Isaac"]] = new()
+		newNodes[["Cull", "DealtDamage", "Isaac"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -169,7 +169,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newNodes[["DealtDamage", "Drake"]] = new()
+		newNodes[["Cull", "DealtDamage", "Drake"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -179,7 +179,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
-		newNodes[["DealtDamage", "Max"]] = new()
+		newNodes[["Cull", "DealtDamage", "Max"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -189,7 +189,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.hacker.Key(), loopTag = "neutral" },
 			],
 		};
-		newNodes[["DealtDamage", "Books"]] = new()
+		newNodes[["Cull", "DealtDamage", "Books"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -199,7 +199,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.shard.Key(), loopTag = "blush" },
 			],
 		};
-		newNodes[["DealtDamage", "CAT"]] = new()
+		newNodes[["Cull", "DealtDamage", "CAT"]] = new()
 		{
 			playerShotJustHit = true,
 			minDamageDealtToEnemyThisTurn = 1,
@@ -212,7 +212,7 @@ internal sealed class CombatDialogue : BaseDialogue
 		#endregion
 
 		for (var i = 0; i < 3; i++)
-			newNodes[["DealtBigDamage", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "DealtBigDamage", "Basic", i.ToString()]] = new()
 			{
 				playerShotJustHit = true,
 				minDamageDealtToEnemyThisTurn = 6,
@@ -224,7 +224,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["ShieldedDamage", "Basic", i.ToString()]] = new StoryNode()
+			newNodes[["Cull", "ShieldedDamage", "Basic", i.ToString()]] = new StoryNode()
 			{
 				enemyShotJustHit = true,
 				maxDamageDealtToPlayerThisTurn = 0,
@@ -234,7 +234,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				],
 			}.SetMinShieldLostThisTurn(1);
 
-		newNodes[["Missed", "Basic", "0"]] = new()
+		newNodes[["Cull", "Missed", "Basic", "0"]] = new()
 		{
 			playerShotJustMissed = true,
 			allPresent = [cullType],
@@ -242,7 +242,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
-		newNodes[["Missed", "Basic", "1"]] = new()
+		newNodes[["Cull", "Missed", "Basic", "1"]] = new()
 		{
 			playerShotJustMissed = true,
 			allPresent = [cullType],
@@ -250,7 +250,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
-		newNodes[["Missed", "Basic", "2"]] = new()
+		newNodes[["Cull", "Missed", "Basic", "2"]] = new()
 		{
 			playerShotJustMissed = true,
 			allPresent = [cullType],
@@ -260,7 +260,7 @@ internal sealed class CombatDialogue : BaseDialogue
 		};
 
 		#region AboutToDie
-		newNodes[["AboutToDie", "Basic", "0"]] = new()
+		newNodes[["Cull", "AboutToDie", "Basic", "0"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -270,7 +270,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
-		newNodes[["AboutToDie", "Basic", "1"]] = new()
+		newNodes[["Cull", "AboutToDie", "Basic", "1"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -280,7 +280,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
-		newNodes[["AboutToDie", "Basic", "2"]] = new()
+		newNodes[["Cull", "AboutToDie", "Basic", "2"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -291,7 +291,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			],
 		};
 
-		newNodes[["AboutToDie", "Dizzy"]] = new()
+		newNodes[["Cull", "AboutToDie", "Dizzy"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -302,7 +302,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
-		newNodes[["AboutToDie", "Riggs"]] = new()
+		newNodes[["Cull", "AboutToDie", "Riggs"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -313,7 +313,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "neutral" },
 			],
 		};
-		newNodes[["AboutToDie", "Peri"]] = new()
+		newNodes[["Cull", "AboutToDie", "Peri"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -324,7 +324,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = cullType, loopTag = "nervous" },
 			],
 		};
-		newNodes[["AboutToDie", "Isaac"]] = new()
+		newNodes[["Cull", "AboutToDie", "Isaac"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -335,7 +335,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.goat.Key(), loopTag = "sad" },
 			],
 		};
-		newNodes[["AboutToDie", "Drake"]] = new()
+		newNodes[["Cull", "AboutToDie", "Drake"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -346,7 +346,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.eunice.Key(), loopTag = "mad" },
 			],
 		};
-		newNodes[["AboutToDie", "Books"]] = new()
+		newNodes[["Cull", "AboutToDie", "Books"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -357,7 +357,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				new Say { who = Deck.shard.Key(), loopTag = "squint" },
 			],
 		};
-		newNodes[["AboutToDie", "CAT"]] = new()
+		newNodes[["Cull", "AboutToDie", "CAT"]] = new()
 		{
 			maxHull = 2,
 			oncePerCombatTags = ["aboutToDie"],
@@ -371,7 +371,7 @@ internal sealed class CombatDialogue : BaseDialogue
 		#endregion
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["HitArmor", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "HitArmor", "Basic", i.ToString()]] = new()
 			{
 				playerShotJustHit = true,
 				minDamageBlockedByEnemyArmorThisTurn = 1,
@@ -384,7 +384,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["ExcessEnergy", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "ExcessEnergy", "Basic", i.ToString()]] = new()
 			{
 				handEmpty = true,
 				minEnergy = 1,
@@ -395,7 +395,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["EmptyHand", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "EmptyHand", "Basic", i.ToString()]] = new()
 			{
 				handEmpty = true,
 				allPresent = [cullType],
@@ -405,7 +405,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["TrashHand", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "TrashHand", "Basic", i.ToString()]] = new()
 			{
 				handFullOfTrash = true,
 				allPresent = [cullType],
@@ -415,7 +415,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["StartedBattle", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "StartedBattle", "Basic", i.ToString()]] = new()
 			{
 				turnStart = true,
 				maxTurnsThisCombat = 1,
@@ -428,7 +428,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 2; i++)
-			newNodes[["NoOverlap", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "NoOverlap", "Basic", i.ToString()]] = new()
 			{
 				priority = true,
 				shipsDontOverlapAtAll = true,
@@ -442,7 +442,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 2; i++)
-			newNodes[["NoOverlapButSeeker", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "NoOverlapButSeeker", "Basic", i.ToString()]] = new()
 			{
 				priority = true,
 				shipsDontOverlapAtAll = true,
@@ -457,7 +457,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 2; i++)
-			newNodes[["LongFight", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "LongFight", "Basic", i.ToString()]] = new()
 			{
 				minTurnsThisCombat = 9,
 				oncePerCombatTags = ["manyTurns"],
@@ -470,7 +470,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			};
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["ReturningFromMissing", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "ReturningFromMissing", "Basic", i.ToString()]] = new()
 			{
 				priority = true,
 				lookup = [$"{ModEntry.Instance.Package.Manifest.UniqueName}::ReturningFromMissing"],
@@ -505,7 +505,7 @@ internal sealed class CombatDialogue : BaseDialogue
 		#endregion
 
 		for (var i = 0; i < 1; i++)
-			newNodes[["Recalibrator", "Basic", i.ToString()]] = new()
+			newNodes[["Cull", "Recalibrator", "Basic", i.ToString()]] = new()
 			{
 				playerShotJustMissed = true,
 				hasArtifacts = ["Recalibrator"],
@@ -515,7 +515,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				],
 			};
 
-		newNodes[["StartedBattleAgainstDuncan"]] = new()
+		newNodes[["Cull", "StartedBattleAgainstDuncan"]] = new()
 		{
 			priority = true,
 			turnStart = true,
@@ -528,7 +528,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			],
 		};
 
-		newNodes[["StartedBattleAgainstDahlia"]] = new()
+		newNodes[["Cull", "StartedBattleAgainstDahlia"]] = new()
 		{
 			priority = true,
 			turnStart = true,
@@ -541,7 +541,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			],
 		};
 
-		newNodes[["StartedBattleAgainstBigCrystal"]] = new()
+		newNodes[["Cull", "StartedBattleAgainstBigCrystal"]] = new()
 		{
 			priority = true,
 			turnStart = true,
@@ -554,12 +554,12 @@ internal sealed class CombatDialogue : BaseDialogue
 			],
 		};
 
-		saySwitchNodes[["CrabFacts1_Multi_0"]] = new()
+		saySwitchNodes[["Cull", "CrabFacts1_Multi_0"]] = new()
 		{
 			who = cullType,
 			loopTag = "squint"
 		};
-		saySwitchNodes[["CrabFacts2_Multi_0"]] = new()
+		saySwitchNodes[["Cull", "CrabFacts2_Multi_0"]] = new()
 		{
 			who = cullType,
 			loopTag = "squint"

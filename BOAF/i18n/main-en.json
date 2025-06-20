@@ -74,6 +74,10 @@
             "Fear": {
                 "name": "Fear",
                 "description": "Take <c=keyword>+1 damage</c> from all sources. <c=downside>Lost at the end of your turn.</c>"
+            },
+            "SoulDrain" : {
+                "name": "Soul Drain",
+                "description": "At the end of your turn lose {0} <c=status>Soul Energy</c>, then reduce this by 1."
             }
         },
 

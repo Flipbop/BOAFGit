@@ -8,4 +8,5 @@ public interface IBOAFApi
 	
 	Tooltip GetSoulEnergyTooltip(bool onOrOff);
 	Tooltip GetFearTooltip(bool onOrOff);
+	Tooltip GetSoulDrainTooltip(bool onOrOff);
 }

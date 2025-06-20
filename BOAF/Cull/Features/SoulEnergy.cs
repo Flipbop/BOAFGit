@@ -43,7 +43,8 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 		var ship = __instance.targetPlayer ? s.ship : c.otherShip;
 		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) <= 10) return;
 		ship.Set(SoulEnergyStatus.Status, 10);
-
+		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 0) return;
+		ship.Set(SoulEnergyStatus.Status, 0);
 	}
 
 }
