@@ -3,11 +3,13 @@ using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class StunningStrikeCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -19,8 +21,9 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ImprovedCannons.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "StunningStrike", "name"]).Localize
+			Art = helper.Content.Sprites
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ImprovedCannons.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "StunningStrike", "name"]).Localize
 		});
 	}
 
@@ -29,63 +32,39 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 0 : 1,
-			
+
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A =>
+			Upgrade.B =>
 			[
-				new AUpgradeDiscardHint{hand = true},
-				new AAttack { damage = GetDmg(s, c.discard.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 2}
+				).AsCardAction,
+				new AAttack() {damage = GetDmg(s, 2)}
 			],
-			Upgrade.B => [
-				new AUpgradeExhaustHint{hand = true},
-				new AAttack { damage = GetDmg(s, 2*(c.exhausted.Count(card => card.upgrade != Upgrade.None))), xHint = 2},
-			],
-			_ => [
-				new AUpgradeHint{hand = true},
-				new AAttack { damage = GetDmg(s, c.hand.Count(card => card.upgrade != Upgrade.None)), xHint = 1},
+			_ =>
+			[
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1}
+				).AsCardAction,
+				new AAttack() {damage = GetDmg(s, 2)}
 			]
-			
+
 		};
-	
-	public sealed class AUpgradeHint : AVariableHint
-	{
-		public override Icon? GetIcon(State s)
-			=> new(ModEntry.Instance.UpgradesInHandIcon.Sprite, null, Colors.textMain);
 
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInHand")
-			{
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInHand", "description"])
-			}];
-	}
-	
-	public sealed class AUpgradeDiscardHint : AVariableHint
-	{
-		public override Icon? GetIcon(State s)
-			=> new(ModEntry.Instance.UpgradesInDiscardIcon.Sprite, null, Colors.textMain);
-
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInDiscard")
-			{
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInDiscard", "description"])
-			}];
-	}
-	public sealed class AUpgradeExhaustHint : AVariableHint
-	{
-		public override Icon? GetIcon(State s)
-			=> new(ModEntry.Instance.UpgradesInExhaustIcon.Sprite, null, Colors.textMain);
-
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::UpgradesInExhaust")
-			{
-				Description = ModEntry.Instance.Localizations.Localize(["action", "UpgradesInExhaust", "description"])
-			}];
-	}
 }

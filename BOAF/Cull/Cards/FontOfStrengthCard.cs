@@ -2,11 +2,13 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class FontOfStrengthCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -33,11 +35,40 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new AAttack() {damage = GetDmg(s, 1)},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
+				).AsCardAction,
+			],
 			Upgrade.B => [
-				new ADrawUpgrade {Amount = 3},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(7),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
+				).AsCardAction,
+				new AAttack() {damage = GetDmg(s, 0)}
 			],
 			_ => [
-				new ADrawUpgrade {Amount = 1},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
+				).AsCardAction
 			]
 		};
 }

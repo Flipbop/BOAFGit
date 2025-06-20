@@ -38,17 +38,14 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 				new AStatus { targetPlayer = true, status = Status.drawNextTurn, statusAmount = 2}
 			],
 			Upgrade.B => [
 				new ADiscard {count = 2},
-				new StunningStrikeCard.AUpgradeDiscardHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.discard.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			],
 			_ => [
-				new StunningStrikeCard.AUpgradeHint{hand = true},
 				new AStatus { targetPlayer = true, status = Status.energyNextTurn, statusAmount = c.hand.Count(card => card.upgrade != Upgrade.None), xHint = 1},
 			]
 			

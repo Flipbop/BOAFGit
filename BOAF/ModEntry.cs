@@ -263,7 +263,7 @@ public sealed class ModEntry : SimpleMod
 					.RegisterSprite(
 						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("Cull/assets/Status/SoulEnergy.png"))
 					.Sprite,
-				color = new("000435"),
+				color = new("2A0134"),
 				isGood = false,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "Fear", "name"]).Localize,

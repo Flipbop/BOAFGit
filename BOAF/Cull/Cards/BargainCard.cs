@@ -2,11 +2,13 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class BargainCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -39,7 +41,16 @@ internal sealed class BargainCard : Card, IRegisterable
 				new AAttack() {damage = GetDmg(s,2)}
 			],
 			Upgrade.B => [
-				
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AHurt() {hurtAmount = 1}
+				).AsCardAction,
+				new AAttack() {damage = GetDmg(s,3)},
 			],
 			_ => [
 				new AHurt() {hurtAmount = 1},

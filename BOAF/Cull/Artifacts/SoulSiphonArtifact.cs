@@ -36,4 +36,13 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
 		combat.Queue(new AStatus() {statusAmount = -1, status = SoulEnergyManager.SoulEnergyStatus.Status, targetPlayer = true});
 	}
+
+	public override void OnTurnStart(State state, Combat combat)
+	{
+		base.OnTurnStart(state, combat);
+		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 10)
+		{
+			combat.Queue(new AStatus() {statusAmount = 1, status = FearManager.FearStatus.Status, targetPlayer = false});
+		}
+	}
 }

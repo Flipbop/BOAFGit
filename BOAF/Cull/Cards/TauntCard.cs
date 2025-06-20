@@ -3,11 +3,14 @@ using Nickel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class TauntCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -34,6 +37,39 @@ internal sealed class TauntCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			
+			Upgrade.B =>[
+				new AMove() {dir = -2, targetPlayer = true},
+				new ASpawn() {fromPlayer = true, thing = new SpaceMine() {bigMine = true}},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AMove() {dir = 1, targetPlayer = true}
+				).AsCardAction,
+			],
+			_ => [
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AMove() {dir = 1, targetPlayer = true}
+				).AsCardAction,
+				new ASpawn() {fromPlayer = true, thing = new SpaceMine() {bigMine = true}},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AMove() {dir = 1, targetPlayer = true}
+				).AsCardAction,
+			]
 		};
 }

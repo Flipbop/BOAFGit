@@ -2,11 +2,14 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class NoxoiusCloudCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -19,7 +22,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/NecessarySacrifice.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "NoxoiusCloud", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "NoxiousCloud", "name"]).Localize
 		});
 	}
 
@@ -40,8 +43,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
 			],
 			Upgrade.B => [
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}},
-				//ADD STOP COMMAND
+				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}, offset = -1},
 				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
 			],
 			_ => [

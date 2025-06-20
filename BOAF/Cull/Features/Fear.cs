@@ -10,7 +10,7 @@ namespace Flipbop.BOAF;
 
 internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 {
-	internal static IStatusEntry SoulEnergyStatus { get; private set; } = null!;
+	internal static IStatusEntry FearStatus { get; private set; } = null!;
 
 	public FearManager()
 	{

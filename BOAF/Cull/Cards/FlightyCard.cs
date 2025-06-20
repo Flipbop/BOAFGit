@@ -2,11 +2,13 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class FlightyCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -36,13 +38,40 @@ internal sealed class FlightyCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AAttack { damage = GetDmg(s, 3), moveEnemy = 2},
+				new AMove() {isRandom = true, targetPlayer = true, dir = 4},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 1}
+				).AsCardAction
 			],
 			Upgrade.A => [
-				new AAttack { damage = GetDmg(s, 3), moveEnemy = -2},
+				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 3}
+				).AsCardAction
 			],
 			_ => [
-				new AAttack { damage = GetDmg(s, 2), moveEnemy = -1},
+				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 2}
+				).AsCardAction
 			]
 		};
 }

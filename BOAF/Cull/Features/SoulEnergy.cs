@@ -27,7 +27,7 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 
 		var ship = args.Ship;
 		var expected = 10;
-		var current = ship.Get(ModEntry.Instance.SoulEnergyStatus.Status);
+		var current = ship.Get(SoulEnergyStatus.Status);
 
 		var filled = Math.Min(expected, current);
 		var empty = Math.Max(expected - current, 0);
@@ -38,10 +38,10 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 	}
 	public static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{
-		if (__instance.status != ModEntry.Instance.SoulEnergyStatus.Status) return;
+		if (__instance.status != SoulEnergyStatus.Status) return;
         
 		var ship = __instance.targetPlayer ? s.ship : c.otherShip;
-		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) < 10) return;
+		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) <= 10) return;
 		ship.Set(SoulEnergyStatus.Status, 10);
 
 	}
