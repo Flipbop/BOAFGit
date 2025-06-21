@@ -20,7 +20,7 @@ internal sealed class BargainCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/PowerSurge.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/PowerSurge.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Bargain", "name"]).Localize
 		});
 	}

@@ -22,7 +22,7 @@ internal sealed class CleoDizzyArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoDizzy.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoDizzy.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoDizzy", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoDizzy", "description"]).Localize
 		});

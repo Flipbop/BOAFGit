@@ -22,7 +22,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/ImprovedCannons.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ImprovedCannons.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "StunningStrike", "name"]).Localize
 		});
 	}

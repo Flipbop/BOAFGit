@@ -22,7 +22,7 @@ internal sealed class CleoRiggsArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoRiggs.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoRiggs.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoRiggs", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoRiggs", "description"]).Localize
 		});

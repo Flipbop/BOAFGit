@@ -34,7 +34,7 @@ public sealed class AApologize : DynamicWidthCardAction
 	}
 
 	public override Icon? GetIcon(State s)
-		=> new(ModEntry.Instance.ImpairHandIcon.Sprite, null, Colors.textMain);
+		=> new(ModEntry.Instance.placeholderSprite.Sprite, null, Colors.textMain);
 	
 	public override List<Tooltip> GetTooltips(State s)
       {

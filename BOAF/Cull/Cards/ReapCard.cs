@@ -23,7 +23,7 @@ internal sealed class ReapCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleanSlate.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/CleanSlate.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Reap", "name"]).Localize
 		});
 	}
@@ -45,7 +45,6 @@ internal sealed class ReapCard : Card, IRegisterable
 		=>
 		[
 			new ACleanSlate(),
-			new ADiscountHand {Amount = -1}
 		];
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{

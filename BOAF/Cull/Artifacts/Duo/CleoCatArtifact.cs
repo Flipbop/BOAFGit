@@ -22,7 +22,7 @@ internal sealed class CleoCatArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoCat.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoCat.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoCat", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoCat", "description"]).Localize
 		});
@@ -76,7 +76,7 @@ internal sealed class CleoCatArtifact : Artifact, IRegisterable
 					upgradesTo = [Upgrade.A, Upgrade.B],
 					dontOffer = true,
 				},
-				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Duo/CleoCatNoneOfTheAbove.png")).Sprite,
+				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/Duo/CleoCatNoneOfTheAbove.png")).Sprite,
 				Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "CleoCatNoneOfTheAbove", "name"]).Localize
 			});
 		}

@@ -24,7 +24,7 @@ internal sealed class VanishCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/SeekerBarrage.png")).Sprite,
+				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/SeekerBarrage.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Vanish", "name"]).Localize
 		});
 	}

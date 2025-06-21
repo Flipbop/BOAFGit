@@ -19,8 +19,8 @@ internal sealed class CleoBooksArtifact : Artifact, IRegisterable
 		if (ModEntry.Instance.DuoArtifactsApi is not { } api)
 			return;
 
-		ActiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoBooks.png"));
-		InactiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoBooksInactive.png"));
+		ActiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoBooks.png"));
+		InactiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoBooksInactive.png"));
 
 		helper.Content.Artifacts.RegisterArtifact("CleoBooks", new()
 		{

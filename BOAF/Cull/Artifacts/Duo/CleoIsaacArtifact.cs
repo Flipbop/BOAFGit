@@ -20,7 +20,7 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 				owner = api.DuoArtifactVanillaDeck,
 				pools = [ArtifactPool.Common]
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Artifacts/Duo/CleoIsaac.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Duo/CleoIsaac.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoIsaac", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "Duo", "CleoIsaac", "description"]).Localize
 		});
@@ -62,7 +62,7 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 					upgradesTo = [Upgrade.A, Upgrade.B],
 					dontOffer = true,
 				},
-				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Duo/CleoIsaacSupply.png")).Sprite,
+				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/Duo/CleoIsaacSupply.png")).Sprite,
 				Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "CleoIsaacSupply", "name"]).Localize
 			});
 		}
@@ -137,7 +137,7 @@ internal sealed class CleoIsaacArtifact : Artifact, IRegisterable
 					upgradesTo = [Upgrade.A, Upgrade.B],
 					dontOffer = true,
 				},
-				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/Duo/CleoIsaacDemand.png")).Sprite,
+				Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/Duo/CleoIsaacDemand.png")).Sprite,
 				Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Duo", "CleoIsaacDemand", "name"]).Localize
 			});
 		}

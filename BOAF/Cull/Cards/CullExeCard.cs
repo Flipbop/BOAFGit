@@ -18,7 +18,7 @@ internal sealed class CullExeCard : Card, IRegisterable
 				rarity = Rarity.common,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cards/CleanSlate.png")).Sprite,
+			Art = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/CleanSlate.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CullExe", "name"]).Localize
 		});
 	}
