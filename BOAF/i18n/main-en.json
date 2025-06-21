@@ -3,9 +3,9 @@
         "character": {
             "name": "Cull",
             "description": [
-                "<c=8A3388>CULL</c>",
+                "<c=FFFFFF>CULL</c>",
                 "Your necromancer.",
-                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+                "Can cast <c=keyword>powerful and dangerous spells</c>, but requires <c=status>SOUL ENERGY</c> to cast them."
             ]
         },
         "action": {
@@ -162,7 +162,7 @@
             "Harvest": {
                 "name": "Harvest"
             },
-            "Quick Cast": {
+            "QuickCast": {
                 "name": "Quick Cast"
             },
             "WillOWisp": {

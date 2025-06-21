@@ -19,8 +19,7 @@ internal sealed class HarmlessSiphonCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/TurtleShot.png")).Sprite,
+			Art = StableSpr.cards_colorless,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "HarmlessSiphon", "name"]).Localize
 		});
 	}

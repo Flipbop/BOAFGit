@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
+using Microsoft.Extensions.Logging;
 using Nickel;
 using Shockah.Kokoro;
 
@@ -14,11 +16,14 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 
 	public SoulEnergyManager()
 	{
-		
 		ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this);
+	}
+
+	public static void ApplyPatches(IHarmony harmony, ILogger logger)
+	{
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
-			postfix: new HarmonyMethod(GetType(), nameof(AStatus_Begin_Postfix))
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatus_Begin_Postfix))
 		);
 	}
 	public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusRenderingAsBarsArgs args)

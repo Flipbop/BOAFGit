@@ -134,12 +134,13 @@ public sealed class ModEntry : SimpleMod
 		);
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
+		SoulEnergyManager.ApplyPatches(Harmony, logger);
 
 		#region Cull Character
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
 			Definition = new() { color = new("000000"), titleColor = Colors.white },
-			DefaultCardArt = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/Default.png")).Sprite,
+			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize
 		});
@@ -158,7 +159,7 @@ public sealed class ModEntry : SimpleMod
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "neutral",
 				Frames = Enumerable.Range(0, 5)
-					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Culls/Character/Neutral/{i}.png")).Sprite)
+					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Neutral/{i}.png")).Sprite)
 					.ToList()
 			},
 			MiniAnimation = new()
@@ -198,7 +199,7 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "gameover",
 			Frames = Enumerable.Range(0, 1)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Squint/{i}.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/GameOver/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -247,7 +248,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				icon = ModEntry.Instance.Helper.Content.Sprites
 					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"))
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Fear.png"))
 					.Sprite,
 				color = new("2A0134"),
 				isGood = false,
@@ -262,7 +263,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				icon = ModEntry.Instance.Helper.Content.Sprites
 					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"))
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
 					.Sprite,
 				color = new("2A0134"),
 				isGood = false,
