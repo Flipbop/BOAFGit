@@ -72,7 +72,7 @@ internal sealed class ExcessiveForceCard : Card, IRegisterable
 						Conditional.Constant(9),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AStatus() {targetPlayer = true, statusAmount = 1, status = SoulDrainManager.SoulDrainStatus.Status}
+					new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status}
 				).AsCardAction
 			],
 			Upgrade.B => [
@@ -111,7 +111,7 @@ internal sealed class ExcessiveForceCard : Card, IRegisterable
 						Conditional.Constant(8),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AStatus() {targetPlayer = true, statusAmount = 2, status = SoulDrainManager.SoulDrainStatus.Status}
+					new AStatus() {targetPlayer = true, statusAmount = 2, status = ModEntry.Instance.SoulDrainStatus.Status}
 				).AsCardAction
 			],
 			_ => [
@@ -150,7 +150,7 @@ internal sealed class ExcessiveForceCard : Card, IRegisterable
 						Conditional.Constant(9),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AStatus() {targetPlayer = true, statusAmount = 1, status = SoulDrainManager.SoulDrainStatus.Status}
+					new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status}
 				).AsCardAction
 			]
 		};

@@ -10,7 +10,6 @@ namespace Flipbop.BOAF;
 
 internal sealed class SoulDrainManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 {
-	internal static IStatusEntry SoulDrainStatus { get; private set; } = null!;
 
 	public SoulDrainManager()
 	{
@@ -24,8 +23,8 @@ internal sealed class SoulDrainManager : IKokoroApi.IV2.IStatusRenderingApi.IHoo
 			if (stacks <= 0)
 				return;
 
-			combat.Queue(new AStatus(){status = SoulEnergyManager.SoulEnergyStatus.Status, statusAmount = -1*stacks, targetPlayer = true});
-			combat.Queue(new AStatus(){status = SoulDrainStatus.Status, statusAmount = -1, targetPlayer = true});
+			combat.Queue(new AStatus(){status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = -1*stacks, targetPlayer = true});
+			combat.Queue(new AStatus(){status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = -1, targetPlayer = true});
 		});
 	}
 }

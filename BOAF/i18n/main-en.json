@@ -9,61 +9,9 @@
             ]
         },
         "action": {
-            "UpgradesInHand": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
-            },
-            "UpgradesInDiscard": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
-            },
-            "UpgradesInExhaust": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
-            },
-            "UpgradesInDraw": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
-            },
-            "ImproveA": {
-                "name": "   Improve A",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveB": {
-                "name": "   Improve B",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "Impair": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveAHand": {
-                "name": "      Improve Hand A",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveBHand": {
-                "name": "      Improve Hand B",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImpairHand": {
-                "name": "    Impair Hand",
-                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "DiscountHand": {
-                "name": "    Discount Hand",
-                "description": "<c=cardtrait>Discount</c> every card in your hand."
-            },
-            "SelfImproveA": {
-                "name": "Self Improve A",
-                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImproveB": {
-                "name": "Self Improve B",
-                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImpair": {
-                "name": "Self Impair",
-                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
-            },
-            "ImpairCost": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+            "HarvestAttack": {
+                "name": "HARVEST ATTACK",
+                "description": "This attack will give you 1 <c=status>Soul Energy</c> if it does damage, even to shields."
             }
         },
         "status": {
@@ -84,7 +32,7 @@
         "artifact": {
             "SoulSiphon": {
                 "name": "SOUL SIPHON", 
-                "description": "Every time you deal damage to your opponent you gain 1 <c=status>SOUL ENERGY</c>. Every time you take damage you lose 1 <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
+                "description": "Every time you opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take ANY damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
             },
             "MercifulReaper": {
                 "name": "MERCIFUL REAPER",

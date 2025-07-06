@@ -28,13 +28,13 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 	public override void OnEnemyGetHit(State state, Combat combat, Part? part)
 	{
 		base.OnEnemyGetHit(state, combat, part);
-		combat.Queue(new AStatus() {statusAmount = 1, status = SoulEnergyManager.SoulEnergyStatus.Status, targetPlayer = true});
+		combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
 	}
 
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		combat.Queue(new AStatus() {statusAmount = -1, status = SoulEnergyManager.SoulEnergyStatus.Status, targetPlayer = true});
+		combat.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
 	}
 
 	public override void OnTurnStart(State state, Combat combat)
@@ -42,7 +42,7 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 		base.OnTurnStart(state, combat);
 		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 10)
 		{
-			combat.Queue(new AStatus() {statusAmount = 1, status = FearManager.FearStatus.Status, targetPlayer = false});
+			combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.FearStatus.Status, targetPlayer = false});
 		}
 	}
 }

@@ -49,7 +49,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 					),
 					new AAttack(){damage = GetDmg(s, 12)}
 				).AsCardAction,
-				new AStatus {targetPlayer = true, status = SoulDrainManager.SoulDrainStatus.Status, statusAmount = 5},
+				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			],
 			Upgrade.B => [
 				Conditional.MakeAction(
@@ -61,7 +61,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 					),
 					new AAttack(){damage = GetDmg(s, 10)}
 				).AsCardAction,
-				new AStatus {targetPlayer = true, status = SoulDrainManager.SoulDrainStatus.Status, statusAmount = 3},
+				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 3},
 			],
 			_ => [
 				Conditional.MakeAction(
@@ -73,7 +73,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 					),
 					new AAttack(){damage = GetDmg(s, 10)}
 				).AsCardAction,
-				new AStatus {targetPlayer = true, status = SoulDrainManager.SoulDrainStatus.Status, statusAmount = 5},
+				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			]
 		};
 }
