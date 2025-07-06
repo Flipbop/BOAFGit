@@ -6,3 +6,4 @@
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Release/net8.0/BOAF.AssemblyInfo.cs
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Release/net8.0/BOAF.csproj.CoreCompileInputs.cache
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Release/net8.0/BOAF.dll
+/Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Release/net8.0/BOAF.sourcelink.json
