@@ -23,8 +23,7 @@ internal sealed class VanishCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/SeekerBarrage.png")).Sprite,
+			Art = ModEntry.Instance.placeholderSprite.Sprite,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/SeekerBarrage.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Vanish", "name"]).Localize
 		});
 	}

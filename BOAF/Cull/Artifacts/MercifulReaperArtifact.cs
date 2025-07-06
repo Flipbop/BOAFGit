@@ -23,16 +23,9 @@ internal sealed class MercifulReaperArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public bool firstCard = true;
-	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		
-	}
-	
-	public override void OnCombatEnd(State state)
-	{
-		base.OnCombatEnd(state);
-		firstCard = true;
+		base.OnCombatStart(state, combat);
+		combat.Queue(new AAddCard { amount = 1, card = new HarmlessSiphonCard(), destination = CardDestination.Hand });
 	}
 }

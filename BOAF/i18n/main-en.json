@@ -11,7 +11,7 @@
         "action": {
             "HarvestAttack": {
                 "name": "HARVEST ATTACK",
-                "description": "This attack will give you 1 <c=status>Soul Energy</c> if it does damage, even to shields."
+                "description": "This attack will give you 1 <c=status>Soul Energy</c> if it does damage to shields."
             }
         },
         "status": {
@@ -36,7 +36,7 @@
             },
             "MercifulReaper": {
                 "name": "MERCIFUL REAPER",
-                "description": "At the start of combat, gain a <c=card>Harmless Siphon</c>."
+                "description": "At the start of combat, add a <c=card>Harmless Siphon</c> to your hand."
             },
             "SoulReserves": {
                 "name": "SOUL RESERVES",
@@ -174,19 +174,19 @@
             },
 
             "UnstableSpirit": {
-                "name": "UnstableSpirit"
+                "name": "Unstable Spirit"
             },
             "HarmlessSiphon": {
-                "name": "HarmlessSiphon"
+                "name": "Harmless Siphon"
             },
 
 
             "CullExe": {
                 "name": "Cull.EXE",
                 "description": {
-                    "None": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "A": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "B": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                    "None": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=FFFFFF>Cull</c> cards to your hand.",
+                    "A": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=FFFFFF>Cull</c> cards to your hand.",
+                    "B": "Gain 1 <c=status>EMPOWERED</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=FFFFFF>Cull</c> cards to your hand."
                 }
             }
         }

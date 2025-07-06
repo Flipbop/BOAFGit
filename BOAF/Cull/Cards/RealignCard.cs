@@ -36,11 +36,11 @@ internal sealed class RealignCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ADroneMove() {dir = 2},
-				new AMove() {dir = -2}
+				new AMove() {dir = -2, targetPlayer = true}
 			],
 			_ => [
 				new ADroneMove() {dir = 1},
-				new AMove() {dir = -1}
+				new AMove() {dir = -1, targetPlayer = true}
 			]
 		};
 }

@@ -21,8 +21,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = helper.Content.Sprites
-				.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ImprovedCannons.png")).Sprite,
+			Art = ModEntry.Instance.placeholderSprite.Sprite,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ImprovedCannons.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "StunningStrike", "name"]).Localize
 		});
 	}

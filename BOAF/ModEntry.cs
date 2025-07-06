@@ -139,7 +139,7 @@ public sealed class ModEntry : SimpleMod
 		#region Cull Character
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
-			Definition = new() { color = new("000000"), titleColor = Colors.white },
+			Definition = new() { color = new("222222"), titleColor = Colors.white },
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize
