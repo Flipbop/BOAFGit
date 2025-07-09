@@ -43,9 +43,9 @@ internal sealed class EventDialogue : BaseDialogue
 			priority = true,
 			lines = [
 				new Say { who = cullType, loopTag = "neutral" },
-				new Say { who = cullType, loopTag = "neutral", flipped = true},
+				new Say { who = "nerd", loopTag = "neutral", flipped = true},
+				new Jump() { key = "NewShop" }
 			],
-			choiceFunc = "NewShop",
 		};
 		newNodes[["Cull", "Shop", "1"]] = new()
 		{
@@ -55,9 +55,9 @@ internal sealed class EventDialogue : BaseDialogue
 			priority = true,
 			lines = [
 				new Say { who = cullType, loopTag = "neutral" },
-				new Say { who = cullType, loopTag = "neutral", flipped = true},
+				new Say { who = "nerd", loopTag = "neutral", flipped = true},
+				new Jump() { key = "NewShop" }
 			],
-			choiceFunc = "NewShop",
 		};
 		
 		newHardcodedNodes[["Cull", "LoseCharacterCard_{{CharacterType}}"]] = new()
@@ -76,7 +76,7 @@ internal sealed class EventDialogue : BaseDialogue
 			allPresent = [cullType],
 			lines = [
 				new Wait() { secs = 1.5 },
-				new Say { who = cullType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newHardcodedNodes[["Cull", "ChoiceCardRewardOfYourColorChoice_{{CharacterType}}"]] = new()

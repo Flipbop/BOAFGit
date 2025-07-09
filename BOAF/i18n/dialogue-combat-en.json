@@ -32,7 +32,7 @@
             ],
             "Books": [
                 /*Cull*/ "Dang, I still needed that.",
-                /*Books*/ "Your magic can do that?"
+                /*Books*/ "Your magic does that?"
             ],
             "CAT": [
                 /*Cull*/ "I was using that.",
@@ -93,7 +93,7 @@
         },
         "ShieldedDamage": {
             "Basic": [
-                [ "Better than hull damage I guess..." ]
+                [ "That's annoying." ]
             ]
         },
         "Missed": {
@@ -183,7 +183,7 @@
         },
         "ReturningFromMissing": {
             "Basic": [
-                [ "Wah, what's going on?" ]
+                [ "Huh, what's going on?" ]
             ]
         },
         "GoingToOverheat": {
@@ -215,6 +215,11 @@
         "CrabFacts1_Multi_0": "Woah.",
         "CrabFacts2_Multi_0": "That's so cool!"
     },
+    
+    
+    
+    
+    
     "Jay": {
         "TookDamage": {
             "Basic": [

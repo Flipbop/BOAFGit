@@ -167,9 +167,9 @@
             "Cripple": {
                 "name": "Cripple",
                 "description": {
-                    "None": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead.",
-                    "A": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead.",
-                    "B": "Attack for 1 damage and make the hit part <c=downside>Weak</c>. If you have 5 <c=status>Soul Energy</c> make it <c=downside>Brittle</c> instead."
+                    "None": "Attack for 1, inflicting <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c>, inflict <c=downside>Brittle</c> instead.",
+                    "A": "Attack for 1, inflicting <c=downside>Weak</c>. If you have 7 <c=status>Soul Energy</c>, inflict <c=downside>Brittle</c> instead.",
+                    "B": "Attack for 1, inflicting <c=downside>Weak</c>. If you have 5 <c=status>Soul Energy</c>, inflict <c=downside>Brittle</c> instead."
                 }
             },
 

@@ -19,7 +19,7 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = ModEntry.Instance.placeholderSprite.Sprite,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/RepairedGlasses.png")).Sprite,
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/RepairedGlasses.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "SoulBlast", "name"]).Localize
 		});
 	}

@@ -3,6 +3,7 @@ using Nickel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using HarmonyLib;
 
 namespace Flipbop.BOAF;
 
@@ -23,12 +24,30 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulSiphon", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulSiphon", "description"]).Localize
 		});
+		ModEntry.Instance.Harmony.Patch(
+			original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.DirectHullDamage)),
+			prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Ship_DirectHullDamage_Prefix)),
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Ship_DirectHullDamage_Postfix))
+		);
 	}
 
-	public override void OnEnemyGetHit(State state, Combat combat, Part? part)
+	private static void Ship_DirectHullDamage_Prefix(Ship __instance, out int __state)
+		=> __state = __instance.hull;
+
+	private static void Ship_DirectHullDamage_Postfix(Ship __instance, State s, Combat c, in int __state)
 	{
-		base.OnEnemyGetHit(state, combat, part);
-		combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+		var damageTaken = __state - __instance.hull;
+		if (damageTaken <= 0)
+			return;
+		if (__instance.isPlayerShip)
+			return;
+
+		var artifact = s.EnumerateAllArtifacts().OfType<SoulSiphonArtifact>().FirstOrDefault();
+		if (artifact is null)
+			return;
+		
+		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true, artifactPulse = artifact.Key()});
+		
 	}
 
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
@@ -45,4 +64,5 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 			combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.FearStatus.Status, targetPlayer = false});
 		}
 	}
+	
 }

@@ -37,8 +37,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cullType, Deck.dizzy.Key()],
 			lines = [
-				new Say { who = cullType, loopTag = "squint" },
 				new Say { who = Deck.dizzy.Key(), loopTag = "nervous" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "Riggs"]] = new()
@@ -47,8 +47,18 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cullType, Deck.riggs.Key()],
 			lines = [
+				new Say { who = Deck.riggs.Key(), loopTag = "nervous" },
 				new Say { who = cullType, loopTag = "squint" },
-				new Say { who = Deck.riggs.Key(), loopTag = "neutral" },
+			],
+		};
+		newNodes[["Cull", "TookDamage", "Peri"]] = new()
+		{
+			enemyShotJustHit = true,
+			minDamageDealtToPlayerThisTurn = 1,
+			allPresent = [cullType, Deck.peri.Key()],
+			lines = [
+				new Say { who = cullType, loopTag = "squint" },
+				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "Isaac"]] = new()
@@ -58,7 +68,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cullType, Deck.goat.Key()],
 			lines = [
 				new Say { who = Deck.goat.Key(), loopTag = "squint" },
-				new Say { who = cullType, loopTag = "neutral" },
+				new Say { who = cullType, loopTag = "squint" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "Drake"]] = new()
@@ -67,8 +77,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = Deck.eunice.Key(), loopTag = "squint" },
 				new Say { who = cullType, loopTag = "squint" },
+				new Say { who = Deck.eunice.Key(), loopTag = "neutral" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "Max"]] = new()
@@ -88,7 +98,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cullType, Deck.shard.Key()],
 			lines = [
 				new Say { who = cullType, loopTag = "squint" },
-				new Say { who = Deck.shard.Key(), loopTag = "intense" },
+				new Say { who = Deck.shard.Key(), loopTag = "paws" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "CAT"]] = new()
@@ -98,7 +108,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cullType, "comp"],
 			lines = [
 				new Say { who = cullType, loopTag = "neutral" },
-				new Say { who = "comp", loopTag = "grumpy" },
+				new Say { who = "comp", loopTag = "neutral" },
 			],
 		};
 		#endregion

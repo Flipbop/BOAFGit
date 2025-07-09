@@ -21,7 +21,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = ModEntry.Instance.placeholderSprite.Sprite,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/NecessarySacrifice.png")).Sprite,
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/NecessarySacrifice.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "NoxiousCloud", "name"]).Localize
 		});
 	}
