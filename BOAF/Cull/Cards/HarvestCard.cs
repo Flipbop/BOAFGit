@@ -27,7 +27,7 @@ internal sealed class HarvestCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -35,19 +35,16 @@ internal sealed class HarvestCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAttack { damage = GetDmg(s, 2) },
-				new AAttack { damage = GetDmg(s, 2) },
-				new AAttack { damage = GetDmg(s, 1) }
+				new AHarvestAttack { damage = GetDmg(s, 2) },
+				new AHarvestAttack { damage = GetDmg(s, 2) },
 			],
 			Upgrade.B => [
 				new AAttack { damage = GetDmg(s, 1), piercing = true},
 				new AAttack { damage = GetDmg(s, 1), piercing = true},
-				new AAttack { damage = GetDmg(s, 1), piercing = true}
 			],
 			_ => [
-				new AAttack { damage = GetDmg(s, 1) },
-				new AAttack { damage = GetDmg(s, 1) },
-				new AAttack { damage = GetDmg(s, 1) }
+				new AHarvestAttack { damage = GetDmg(s, 1) },
+				new AHarvestAttack { damage = GetDmg(s, 1) },
 			]
 		};
 }

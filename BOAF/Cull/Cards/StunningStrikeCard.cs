@@ -48,7 +48,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 					),
 					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 2}
 				).AsCardAction,
-				new AAttack() {damage = GetDmg(s, 2)}
+				new AHarvestAttack() {damage = GetDmg(s, 2)}
 			],
 			_ =>
 			[
@@ -61,7 +61,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 					),
 					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1}
 				).AsCardAction,
-				new AAttack() {damage = GetDmg(s, 2)}
+				new AHarvestAttack() {damage = GetDmg(s, 2)}
 			]
 
 		};

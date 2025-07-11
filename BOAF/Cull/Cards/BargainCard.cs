@@ -37,8 +37,8 @@ internal sealed class BargainCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AHurt() {hurtAmount = 1},
-				new AAttack() {damage = GetDmg(s,2)},
-				new AAttack() {damage = GetDmg(s,2)}
+				new AHarvestAttack() {damage = GetDmg(s,2)},
+				new AHarvestAttack() {damage = GetDmg(s,2)}
 			],
 			Upgrade.B => [
 				Conditional.MakeAction(
@@ -50,11 +50,11 @@ internal sealed class BargainCard : Card, IRegisterable
 					),
 					new AHurt() {hurtAmount = 1}
 				).AsCardAction,
-				new AAttack() {damage = GetDmg(s,3)},
+				new AHarvestAttack() {damage = GetDmg(s,3)},
 			],
 			_ => [
 				new AHurt() {hurtAmount = 1},
-				new AAttack() {damage = GetDmg(s,3)},
+				new AHarvestAttack() {damage = GetDmg(s,3)},
 			]
 		};
 }

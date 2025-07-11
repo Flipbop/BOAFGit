@@ -27,6 +27,7 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry FearStatus { get; }
 	internal IStatusEntry SoulDrainStatus { get; }
 	internal ISpriteEntry placeholderSprite { get; }
+	internal ISpriteEntry harvestAttackSprite { get; }
 
 	public IModHelper helper { get; }
 	
@@ -109,6 +110,7 @@ public sealed class ModEntry : SimpleMod
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
 		placeholderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/Impaired.png"));
+		harvestAttackSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/HarvestAttack.png"));
 		this.helper = helper;
 		
 		Instance = this;

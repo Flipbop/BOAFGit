@@ -44,7 +44,7 @@ internal sealed class ReapCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new ACleanSlate(),
+			new ADummyAction(),
 		];
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{

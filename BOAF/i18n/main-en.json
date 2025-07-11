@@ -26,6 +26,10 @@
             "SoulDrain" : {
                 "name": "Soul Drain",
                 "description": "At the end of your turn lose <c=keyword>{0}</c> <c=status>Soul Energy</c>, then reduce this by 1."
+            },
+            "Empowered": {
+                "name": "Empowered",
+                "description": "Gain <c=keyword>{0}</c> <c=status>Soul Energy</c> when you deal damage, even to shields."
             }
         },
 

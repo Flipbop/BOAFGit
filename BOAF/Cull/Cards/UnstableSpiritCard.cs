@@ -38,15 +38,8 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AApologize {dmgRamp = 2, peirce = false},
-			],
-			Upgrade.B => [
-				new AApologize {dmgRamp = 1, peirce = true},
-			],
 			_ => [
-				new AApologize {dmgRamp = 1, peirce = false},
+				new ADummyAction(),
 			]
 		};
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook

@@ -40,12 +40,12 @@ internal sealed class HarmlessSiphonCard : Card, IRegisterable
 			Upgrade.A =>
 			[
 				new AStatus() {status = Status.tempShield, statusAmount = 2},
-				new AAttack { damage = GetDmg(s, 1) },
-				new AAttack { damage = GetDmg(s, 1) }
+				new AHarvestAttack { damage = GetDmg(s, 1) },
+				new AHarvestAttack { damage = GetDmg(s, 1) }
 			],
 			_ => [
 				new AStatus() {status = Status.tempShield, statusAmount = 1},
-				new AAttack { damage = GetDmg(s, 1) }
+				new AHarvestAttack { damage = GetDmg(s, 1) }
 			]
 		};
 };
