@@ -20,11 +20,11 @@ public sealed class AHarvestAttack : AAttack
 	}
 
 	private static void Ship_ShieldDamage_Prefix(Ship __instance, out int __state)
-		=> __state = __instance.statusEffects[Status.shield] + __instance.statusEffects[Status.tempShield];
+		=> __state = __instance.Get(Status.shield) + __instance.Get(Status.tempShield);
 
 	private static void Ship_ShieldDamage_Postfix(Ship __instance, State s, Combat c, in int __state)
 	{
-		var damageTaken = __state - __instance.statusEffects[Status.shield] + __instance.statusEffects[Status.tempShield];
+		var damageTaken = __state - __instance.Get(Status.shield) + __instance.Get(Status.tempShield);
 		if (damageTaken <= 0)
 			return;
 		if (__instance.isPlayerShip)
