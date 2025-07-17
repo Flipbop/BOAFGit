@@ -137,6 +137,7 @@ public sealed class ModEntry : SimpleMod
 
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
+		AHarvestAttack.ApplyPatches(Harmony, logger);
 
 		#region Cull Character
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
@@ -160,7 +161,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "neutral",
-				Frames = Enumerable.Range(0, 5)
+				Frames = Enumerable.Range(0, 4)
 					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Neutral/{i}.png")).Sprite)
 					.ToList()
 			},
@@ -208,23 +209,23 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "squint",
-			Frames = Enumerable.Range(0, 3)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CullDeck.UniqueName,
-			LoopTag = "explain",
-			Frames = Enumerable.Range(0, 5)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Explain/{i}.png")).Sprite)
+			LoopTag = "glow",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "nervous",
-			Frames = Enumerable.Range(0, 5)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});

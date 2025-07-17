@@ -47,8 +47,8 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToPlayerThisTurn = 1,
 			allPresent = [cullType, Deck.riggs.Key()],
 			lines = [
-				new Say { who = Deck.riggs.Key(), loopTag = "nervous" },
 				new Say { who = cullType, loopTag = "squint" },
+				new Say { who = Deck.riggs.Key(), loopTag = "nervous" },
 			],
 		};
 		newNodes[["Cull", "TookDamage", "Peri"]] = new()
@@ -144,7 +144,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cullType, Deck.dizzy.Key()],
 			lines = [
 				new Say { who = Deck.dizzy.Key(), loopTag = "neutral" },
-				new Say { who = cullType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "glow" },
 			],
 		};
 		newNodes[["Cull", "DealtDamage", "Riggs"]] = new()
@@ -165,7 +165,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			allPresent = [cullType, Deck.peri.Key()],
 			lines = [
 				new Say { who = Deck.peri.Key(), loopTag = "neutral" },
-				new Say { who = cullType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "glow" },
 			],
 		};
 		newNodes[["Cull", "DealtDamage", "Isaac"]] = new()
@@ -185,7 +185,7 @@ internal sealed class CombatDialogue : BaseDialogue
 			minDamageDealtToEnemyThisTurn = 1,
 			allPresent = [cullType, Deck.eunice.Key()],
 			lines = [
-				new Say { who = cullType, loopTag = "explain" },
+				new Say { who = cullType, loopTag = "glow" },
 				new Say { who = Deck.eunice.Key(), loopTag = "sly" },
 			],
 		};
@@ -492,7 +492,7 @@ internal sealed class CombatDialogue : BaseDialogue
 
 		#region DealtDamage
 		for (var i = 0; i < 2; i++)
-			newNodes[["GoingToOverheat", "Basic", i.ToString()]] = new()
+			newNodes[["Cull","GoingToOverheat", "Basic", i.ToString()]] = new()
 			{
 				goingToOverheat = true,
 				oncePerCombatTags = ["OverheatGeneric"],
@@ -502,7 +502,7 @@ internal sealed class CombatDialogue : BaseDialogue
 				],
 			};
 
-		newNodes[["GoingToOverheat", "Drake"]] = new()
+		newNodes[["Cull","GoingToOverheat", "Drake"]] = new()
 		{
 			goingToOverheat = true,
 			oncePerCombatTags = ["OverheatGeneric"],

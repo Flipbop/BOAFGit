@@ -51,7 +51,7 @@ internal sealed class CripppleCard : Card, IRegisterable
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not CripppleCard || args.Card.upgrade != Upgrade.B)
+			if (args.Card is not CripppleCard)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}

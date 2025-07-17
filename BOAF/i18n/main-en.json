@@ -11,7 +11,10 @@
         "action": {
             "HarvestAttack": {
                 "name": "HARVEST ATTACK",
-                "description": "This attack will give you 1 <c=status>Soul Energy</c> if it does damage to shields."
+                "description": "This attack will give you 1 <c=status>SOUL ENERGY</c> if it does damage to shields."
+            },
+            "CurrentSoul": {
+                "description": "<c=action>X</c> = The amount of <c=status>SOUL ENERGY</c> you currently have."
             }
         },
         "status": {
