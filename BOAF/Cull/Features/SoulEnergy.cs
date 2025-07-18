@@ -35,7 +35,7 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 
 		var filled = Math.Min(expected, current);
 		var empty = Math.Max(expected - current, 0);
-		return (Enumerable.Repeat(new Color("301934"), filled)
+		return (Enumerable.Repeat(new Color("670099"), filled)
 				.Concat(Enumerable.Repeat(new Color("7a3045"), empty))
 				.ToImmutableList(),
 			null);

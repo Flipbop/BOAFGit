@@ -229,6 +229,14 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Nervous/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CullDeck.UniqueName,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Angry/{i}.png")).Sprite)
+				.ToList()
+		});
 		
 		SoulEnergyStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SoulEnergy", new()
 		{
@@ -238,7 +246,7 @@ public sealed class ModEntry : SimpleMod
 					.RegisterSprite(
 						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"))
 					.Sprite,
-				color = new("301934"),
+				color = new("670099"),
 				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "SoulEnergy", "name"]).Localize,
@@ -253,7 +261,7 @@ public sealed class ModEntry : SimpleMod
 					.RegisterSprite(
 						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Fear.png"))
 					.Sprite,
-				color = new("2A0134"),
+				color = new("008c81"),
 				isGood = false,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "Fear", "name"]).Localize,
