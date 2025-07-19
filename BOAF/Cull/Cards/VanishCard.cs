@@ -10,10 +10,10 @@ namespace Flipbop.BOAF;
 
 internal sealed class VanishCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -38,20 +38,57 @@ internal sealed class VanishCard : Card, IRegisterable
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
-		{
-			_ => [
-				new ADummyAction()
-			]
+			{
+				Upgrade.A =>
+				[
+					Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(5),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						),
+						new AStatus()
+							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
+					).AsCardAction,
+				],
+				Upgrade.B =>
+				[
+					Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(6),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						),
+						new AStatus()
+							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
+					).AsCardAction,
+					Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(8),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						),
+						new AStatus() { targetPlayer = true, statusAmount = 1, status = Status.perfectShield }
+					).AsCardAction,
+				],
+				_ =>
+				[
+					Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(6),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						),
+						new AStatus()
+							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
+					).AsCardAction,
+				]
+			
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not VanishCard)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
+
 }
 

@@ -13,7 +13,6 @@ internal sealed class ReapCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -42,18 +41,14 @@ internal sealed class ReapCard : Card, IRegisterable
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=>
-		[
-			new ADummyAction(),
-		];
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
+		=> upgrade switch
 		{
-			if (args.Card is not ReapCard)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
+			Upgrade.B => [
+				new AStatus() {targetPlayer = true, status = ModEntry.Instance.EmpoweredStatus.Status, statusAmount = 2}
+			],
+			_ => [
+				new AStatus() {targetPlayer = true, status = ModEntry.Instance.EmpoweredStatus.Status, statusAmount = 1}
+			]
+		};
 }
 

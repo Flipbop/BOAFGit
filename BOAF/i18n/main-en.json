@@ -32,7 +32,11 @@
             },
             "Empowered": {
                 "name": "Empowered",
-                "description": "Gain <c=keyword>{0}</c> <c=status>Soul Energy</c> when you deal damage, even to shields."
+                "description": "Gain <c=keyword>{0}</c> <c=status>Soul Energy</c> when you hit the enemy, even if they have shields."
+            },
+            "Cloaked": {
+                "name": "Cloaked",
+                "description": "The enemy does nothing next turn. <c=downside>Lost immediately if you take any damage and at the start of your next turn.</c>"
             }
         },
 

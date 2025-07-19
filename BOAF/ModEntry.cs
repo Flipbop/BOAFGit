@@ -26,6 +26,8 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry SoulEnergyStatus { get; }
 	internal IStatusEntry FearStatus { get; }
 	internal IStatusEntry SoulDrainStatus { get; }
+	internal IStatusEntry EmpoweredStatus { get; }
+	internal IStatusEntry CloakedStatus { get; }
 	internal ISpriteEntry placeholderSprite { get; }
 	internal ISpriteEntry harvestAttackSprite { get; }
 
@@ -35,10 +37,10 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickCastCard),
 		typeof(HarvestCard),
-		typeof(WillOWispCard),
+		//typeof(WillOWispCard),
 		typeof(FontOfStrengthCard),
 		typeof(TelekinesisCard),
-		typeof(NecromancyCard),
+		//typeof(NecromancyCard),
 		typeof(ExcessiveForceCard),
 		typeof(RealignCard),
 		typeof(FlightyCard),
@@ -47,18 +49,18 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
 		typeof(BargainCard),
 		typeof(StunningStrikeCard),
-		typeof(WispArrayCard),
-		typeof(SoulBlastCard),
+		//typeof(WispArrayCard),
+		//typeof(SoulBlastCard),
 		typeof(TauntCard),
-		typeof(PlayingWithFireCard), 
+		//typeof(PlayingWithFireCard), 
 		typeof(NoxoiusCloudCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
 		typeof(VanishCard),
-		typeof(CripppleCard),
+		//typeof(CripppleCard),
 		typeof(ReapCard),
-		typeof(UnstableSpiritCard),
+		//typeof(UnstableSpiritCard),
 		typeof(DeathTouchCard),
 	];
 
@@ -283,6 +285,36 @@ public sealed class ModEntry : SimpleMod
 			Description = AnyLocalizations.Bind(["Cull", "status", "SoulDrain", "description"])
 				.Localize
 		});
+		EmpoweredStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Empowered", new()
+		{
+			Definition = new()
+			{
+				icon = ModEntry.Instance.Helper.Content.Sprites
+					.RegisterSprite(
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
+					.Sprite,
+				color = new("2A0134"),
+				isGood = false,
+			},
+			Name = AnyLocalizations.Bind(["Cull", "status", "Empowered", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Cull", "status", "Empowered", "description"])
+				.Localize
+		});
+		CloakedStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Cloaked", new()
+		{
+			Definition = new()
+			{
+				icon = ModEntry.Instance.Helper.Content.Sprites
+					.RegisterSprite(
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
+					.Sprite,
+				color = new("2A0134"),
+				isGood = false,
+			},
+			Name = AnyLocalizations.Bind(["Cull", "status", "Cloaked", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Cull", "status", "Cloaked", "description"])
+				.Localize
+		});
 		#endregion
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
@@ -306,6 +338,8 @@ public sealed class ModEntry : SimpleMod
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
 		_ = new SoulDrainManager();
+		_ = new EmpoweredManager();
+		_ = new CloakedManager();
 		_ = new DialogueExtensions();
 		_ = new CombatDialogue();
 		_ = new EventDialogue();
