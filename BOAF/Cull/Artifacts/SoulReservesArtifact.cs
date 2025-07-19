@@ -23,13 +23,9 @@ internal sealed class SoulReservesArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulReserves", "description"]).Localize
 		});
 	}
-	public override int ModifyBaseDamage( int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		if (combat?.hand?.Count == 0) return 0; 
-		if (combat?.hand != null && combat.hand[^1].upgrade != Upgrade.None && card?.Equals(combat.hand[^1]) == true)
-		{
-			return 1;
-		}
-		return 0;
+		base.OnCombatStart(state, combat);
+		combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 2, mode = AStatusMode.Set});
 	}
 }

@@ -22,9 +22,9 @@ internal sealed class ThreateningAuraArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		
+		base.OnCombatStart(state, combat);
+		combat.Queue(new AStatus(){targetPlayer = false, status = ModEntry.Instance.FearStatus.Status, statusAmount = 1, mode = AStatusMode.Set});
 	}
 }
