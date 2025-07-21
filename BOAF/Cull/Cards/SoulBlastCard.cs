@@ -31,6 +31,8 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 1: 2,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
+
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

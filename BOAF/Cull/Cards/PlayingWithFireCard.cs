@@ -28,7 +28,9 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.B ? 1: 2,
-			flippable = upgrade == Upgrade.A
+			flippable = upgrade == Upgrade.A,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
+
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -34,6 +34,7 @@ internal sealed class VanishCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = 2,
 			exhaust = true,
+			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

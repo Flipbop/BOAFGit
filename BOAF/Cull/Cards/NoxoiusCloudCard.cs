@@ -32,6 +32,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = 2,
 			exhaust = true,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

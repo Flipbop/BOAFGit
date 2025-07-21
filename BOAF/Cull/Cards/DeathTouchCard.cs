@@ -34,6 +34,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 			cost = 3,
 			exhaust = true,
 			retain = true,
+			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

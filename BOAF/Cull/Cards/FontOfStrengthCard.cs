@@ -57,7 +57,7 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 					),
 					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
 				).AsCardAction,
-				new AAttack() {damage = GetDmg(s, 0)}
+				new AAttack() {damage = GetDmg(s, 1)}
 			],
 			_ => [
 				Conditional.MakeAction(

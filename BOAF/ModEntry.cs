@@ -30,6 +30,9 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry CloakedStatus { get; }
 	internal ISpriteEntry placeholderSprite { get; }
 	internal ISpriteEntry harvestAttackSprite { get; }
+	internal Spr UncommonCullBorder { get; }
+	internal Spr RareCullBorder { get; }
+
 
 	public IModHelper helper { get; }
 	
@@ -146,10 +149,13 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new() { color = new("272727"), titleColor = Colors.white },
 			DefaultCardArt = StableSpr.cards_colorless,
-			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/CardFrame.png")).Sprite,
-			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameCommon.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize,
+			ShineColorOverride = _ => new Color(0, 0, 0),
 		});
-
+		UncommonCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameUncommon.png")).Sprite;
+		RareCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameRare.png")).Sprite;
+		
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 		
@@ -194,7 +200,8 @@ public sealed class ModEntry : SimpleMod
 					new WillOWispCard(),
 					new CannonColorless(),
 					new DodgeColorless()
-					]
+					],
+				artifacts = [new SoulSiphonArtifact()]
 			},
 			ExeCardType = typeof(CullExeCard)
 		});
@@ -239,6 +246,30 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Angry/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CullDeck.UniqueName,
+			LoopTag = "cry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Cry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CullDeck.UniqueName,
+			LoopTag = "sad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Sad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CullDeck.UniqueName,
+			LoopTag = "sob",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Sob/{i}.png")).Sprite)
+				.ToList()
+		});
 		
 		SoulEnergyStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SoulEnergy", new()
 		{
@@ -278,7 +309,7 @@ public sealed class ModEntry : SimpleMod
 					.RegisterSprite(
 						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
 					.Sprite,
-				color = new("2A0134"),
+				color = new("b80000"),
 				isGood = false,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "SoulDrain", "name"]).Localize,
@@ -291,10 +322,10 @@ public sealed class ModEntry : SimpleMod
 			{
 				icon = ModEntry.Instance.Helper.Content.Sprites
 					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"))
 					.Sprite,
-				color = new("2A0134"),
-				isGood = false,
+				color = new("0062ff"),
+				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "Empowered", "name"]).Localize,
 			Description = AnyLocalizations.Bind(["Cull", "status", "Empowered", "description"])
@@ -306,10 +337,10 @@ public sealed class ModEntry : SimpleMod
 			{
 				icon = ModEntry.Instance.Helper.Content.Sprites
 					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
+						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"))
 					.Sprite,
-				color = new("2A0134"),
-				isGood = false,
+				color = new("312351"),
+				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Cull", "status", "Cloaked", "name"]).Localize,
 			Description = AnyLocalizations.Bind(["Cull", "status", "Cloaked", "description"])

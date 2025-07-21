@@ -29,6 +29,7 @@ internal sealed class WispArrayCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 2,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

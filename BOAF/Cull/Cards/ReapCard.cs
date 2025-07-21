@@ -37,7 +37,8 @@ internal sealed class ReapCard : Card, IRegisterable
 				Upgrade.B => 4,
 				_ => 3,
 			},
-			exhaust = true
+			exhaust = true,
+			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -29,14 +29,15 @@ internal sealed class BargainCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 1
+			cost = 1,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AHurt() {hurtAmount = 1},
+				new AHurt() {hurtAmount = 1, targetPlayer = true},
 				new AHarvestAttack() {damage = GetDmg(s,2)},
 				new AHarvestAttack() {damage = GetDmg(s,2)}
 			],
@@ -48,12 +49,12 @@ internal sealed class BargainCard : Card, IRegisterable
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AHurt() {hurtAmount = 1}
+					new AHurt() {hurtAmount = 1, targetPlayer = true}
 				).AsCardAction,
 				new AHarvestAttack() {damage = GetDmg(s,3)},
 			],
 			_ => [
-				new AHurt() {hurtAmount = 1},
+				new AHurt() {hurtAmount = 1, targetPlayer = true},
 				new AHarvestAttack() {damage = GetDmg(s,3)},
 			]
 		};

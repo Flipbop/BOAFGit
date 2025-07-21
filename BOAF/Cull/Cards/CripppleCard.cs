@@ -37,6 +37,7 @@ internal sealed class CripppleCard : Card, IRegisterable
 				ModEntry.Instance.Localizations.Localize([
 					"Cull", "card", "Cripple", "description", upgrade.ToString()
 				]),
+			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

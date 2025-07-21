@@ -33,6 +33,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 2,
+			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

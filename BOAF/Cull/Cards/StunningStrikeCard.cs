@@ -31,7 +31,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 0 : 1,
-
+			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
