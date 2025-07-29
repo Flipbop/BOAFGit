@@ -43,7 +43,7 @@ public sealed class ModEntry : SimpleMod
 		//typeof(WillOWispCard),
 		typeof(FontOfStrengthCard),
 		typeof(TelekinesisCard),
-		//typeof(NecromancyCard),
+		typeof(NecromancyCard),
 		typeof(ExcessiveForceCard),
 		typeof(RealignCard),
 		typeof(FlightyCard),
