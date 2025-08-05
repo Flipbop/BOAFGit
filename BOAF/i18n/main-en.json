@@ -17,6 +17,28 @@
                 "description": "<c=action>X</c> = The amount of <c=status>SOUL ENERGY</c> you currently have."
             }
         },
+        "midrow": {
+            "Wisp" : {
+                "name" : "WISP",
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Wisp</c> at it's previous location."
+            },
+            "DormantWisp" : {
+                "name": "DORMANT WISP",
+                "description": "Shoots a <c=redd>1</c> damage shot once per turn, then destroys itself. <c=downside>Cannot move, and attacks will pass through it.</c>"
+            },
+            "GreaterWisp" : {
+                "name": "GREATER WISP",
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c. at it's previous location."
+            },
+            "DormantGreaterWisp" : {
+                "name": "DORMANT GREATER WISP",
+                "description" : "Shoots a <c=redd>2</c> damage shot once per turn, then destroys itself. <c=downside>Cannot move, and attacks will pass through it.</c>"
+            },
+            "SkullBomb": {
+                "name": "SKULL BOMB",
+                "de3scription": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself after 1 turn.</c>"
+            }
+        },
         "status": {
             "SoulEnergy": {
                 "name": "Soul Energy",

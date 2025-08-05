@@ -33,6 +33,15 @@ internal sealed class WillOWispCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			_=>[]
+			Upgrade.A => [
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
+				new ASpawn(){fromPlayer = true, thing = new Wisp()}],
+			Upgrade.B => [
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
+				new ASpawn(){fromPlayer = true, thing = new Wisp() {bubbleShield = true}}],
+			_=>[
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
+				new ASpawn(){fromPlayer = true, thing = new Wisp()}
+			]
 		};
 }

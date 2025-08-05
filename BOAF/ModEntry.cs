@@ -40,10 +40,10 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> CommonCardTypes { get; } = [
 		typeof(QuickCastCard),
 		typeof(HarvestCard),
-		//typeof(WillOWispCard),
+		typeof(WillOWispCard),
 		typeof(FontOfStrengthCard),
 		typeof(TelekinesisCard),
-		typeof(NecromancyCard),
+		//typeof(NecromancyCard),
 		typeof(ExcessiveForceCard),
 		typeof(RealignCard),
 		typeof(FlightyCard),
@@ -107,7 +107,7 @@ public sealed class ModEntry : SimpleMod
 		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
-		= [..AllCardTypes, ..AllArtifactTypes];
+		= [..AllCardTypes, ..AllArtifactTypes, typeof(Wisp)];
 
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= DuoArtifacts;
@@ -360,7 +360,7 @@ public sealed class ModEntry : SimpleMod
 					],
 					cards = [
 						new RealignCard(),
-						new NecromancyCard()
+						new WillOWispCard()
 					]
 				}
 			)
