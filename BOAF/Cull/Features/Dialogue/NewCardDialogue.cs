@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Flipbop.BOAF;
 using Microsoft.Xna.Framework.Graphics;
 using Nanoray.PluginManager;
 using Nickel;
-using Flipbop.BOAF;
+using static Flipbop.BOAF.CommonDefinitions;
 
-namespace Cull.Conversation;
+
+namespace Flipbop.BOAF;
 
 internal class NewCardDialogue : IRegisterable
 {

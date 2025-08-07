@@ -22,7 +22,7 @@ public sealed class ModEntry : SimpleMod
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
 	internal IDeckEntry CullDeck { get; }
-	internal IPlayableCharacterEntryV2 CullCharacter { get; }
+	internal static IPlayableCharacterEntryV2? CullCharacter { get; set; }
 	internal IStatusEntry SoulEnergyStatus { get; }
 	internal IStatusEntry FearStatus { get; }
 	internal IStatusEntry SoulDrainStatus { get; }

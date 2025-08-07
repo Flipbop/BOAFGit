@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Nanoray.PluginManager;
 using Nickel;
+using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 

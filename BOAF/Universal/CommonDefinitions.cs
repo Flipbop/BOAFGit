@@ -1,8 +1,3 @@
-using System.Linq;
-using Flipbop.BOAF;
-using Microsoft.Extensions.Logging;
-using Nickel;
-
 namespace Flipbop.BOAF;
 
 /// <summary>
@@ -19,6 +14,7 @@ static class CommonDefinitions
 
     internal static string AmCull => Instance.CullDeck.UniqueName;
     internal static Deck AmCullDeck => Instance.CullDeck.Deck;
+    internal static Status MissingCull => ModEntry.CullCharacter!.MissingStatus.Status;
     internal const string AmUnknown = "johndoe";
     internal const string AmCat = "comp";
     internal static string AmDizzy => Deck.dizzy.Key();

@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Nanoray.PluginManager;
 using Nickel;
 using Flipbop.BOAF;
+using static Flipbop.BOAF.CommonDefinitions;
+
 namespace Flipbop.BOAF;
 
 internal class NewCombatDialogue : IRegisterable
@@ -835,94 +837,7 @@ internal class NewCombatDialogue : IRegisterable
                     new(EMod.countFromStart, 1, AmCull, "mad", "You're messing up my experiments!")
                 ]
             }},
-            {"WeAreTarnished_Multi_0", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmIsaac ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmIsaac, "panic", "That's not good..."),
-                    new(AmCull, "sly", "Oh relax, just don't get hit.")
-                ]
-            }},
-            {"WeAreTarnished_Multi_1", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmPeri, AmCull ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmPeri, "mad", "What do you think you're doing?!"),
-                    new(AmCull, "silly", "My best!")
-                ]
-            }},
-            {"WeAreTarnished_Multi_2", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmPeri ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmPeri, "mad", "We can't afford to get hit now."),
-                    new([
-                        new(AmCull, "intense", "I'll throw the useless things out the airlock!"),
-                        new(AmCull, "sly", "Then don't."),
-                        new(AmCull, "Nah, I bet I can patch it right back up.")
-                    ])
-                ]
-            }},
-            {"WeAreTarnished_Multi_3", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmDrake ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmDrake, "panic", "The heat isn't doing anything.")
-                ]
-            }},
-            {"WeAreTarnished_Multi_4", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmDizzy ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmDizzy, "squint", "The ship is falling apart.")
-                ]
-            }},
-            {"WeAreTarnished_Multi_5", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmCat ],
-                lastTurnPlayerStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmCat, "squint", "We need to get away NOW.")
-                ]
-            }},
-            {"TheyGotTarnished_Multi_0", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmCull ],
-                lastTurnEnemyStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmCull, "They're not taking enough damage! Get some headshots!")
-                ]
-            }},
-            {"TheyGotTarnished_Multi_1", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmCull ],
-                lastTurnEnemyStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmCull, "Their hull is weakened, blast 'em!")
-                ]
-            }},
-            {"TheyGotTarnished_Multi_2", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmPeri ],
-                lastTurnEnemyStatuses = [ Tarnished ],
-                dialogue = [
-                    new(AmPeri, "My turn!")
-                ]
-            }},
+            
             {"CullHatesChunk_Multi_0", new(){
                 type = NodeType.combat,
                 oncePerRun = true,

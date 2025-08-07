@@ -1,3 +1,4 @@
+using static Flipbop.BOAF.CommonDefinitions;
 namespace Flipbop.BOAF;
 
 internal static class MemoryDialogue
@@ -34,7 +35,7 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "curious".Check(),  // Curious
+                    loopTag = "curious",  // Curious
                     what = "I don't?"
                 },
                 new CustomSay
@@ -45,14 +46,14 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmIllAmCulleana,
-                    loopTag = "solemn".Check(),
+                    who = AmCull,
+                    loopTag = "solemn",
                     what = "..."
                 },
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "solemn".Check(),
+                    loopTag = "solemn",
                     what = "Am I free to leave then?"
                 },
                 new CustomSay
@@ -84,7 +85,7 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "curious".Check(),  // Curious
+                    loopTag = "curious",  // Curious
                     what = "Why am I here?"
                 },
                 new CustomSay
@@ -96,7 +97,7 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "curious".Check(),  // Eyebrow raise
+                    loopTag = "curious",  // Eyebrow raise
                     what = "Why do I feel like these memories aren't mine?"
                 },
                 new CustomSay
@@ -108,19 +109,19 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "shocked".Check(),
+                    loopTag = "shocked",
                     what = "What?"
                 },
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "blinkrapid".Check(),
+                    loopTag = "blinkrapid" ,
                     what = "............................."
                 },
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "panic".Check(),
+                    loopTag = "panic" ,
                     what = "WHAT?!"
                 },
             }
@@ -146,13 +147,13 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "tired".Check(),  // Tired animated
+                    loopTag = "tired" ,  // Tired animated
                     what = "Sorry, can you give me a moment?"
                 },
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "tired".Check(),  // Tired animated
+                    loopTag = "tired" ,  // Tired animated
                     what = "I'm having an identity crisis."
                 },
                 new CustomSay
@@ -164,7 +165,7 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "neutral".Check(),  // Desperate
+                    loopTag = "neutral" ,  // Desperate
                     what = "Really?"
                 },
                 new CustomSay
@@ -176,13 +177,13 @@ internal static class MemoryDialogue
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "blinkrapid".Check(),  // Thousand mile stare
+                    loopTag = "blinkrapid" ,  // Thousand mile stare
                     what = "..................."
                 },
                 new CustomSay
                 {
                     who = AmCull,
-                    loopTag = "silly".Check(),  // Smile
+                    loopTag = "silly" ,  // Smile
                     what = "..."
                 },
                 new CustomSay
@@ -233,7 +234,7 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
+                    who = AmCull ,
                     what = "Give me something big this time."
                 },
                 new CustomSay
@@ -243,19 +244,19 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigEyeroll".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Eyeroll" ,
                     what = "Yeah yeah, since I got a full-time job and all."
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
+                    who = AmCull ,
                     what = "Listen, people don't need professional dockers anymore. Their silly little computer chips that come standard in the modern space ships is enough for them."
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigGlare".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Glare" ,
                     what = "And don't you dare call me a hypocrite, the artificial intelligence I'M working on can't even orient the ship correctly."
                 },
                 new CustomSay
@@ -265,7 +266,7 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
+                    who = AmCull ,
                     what = "Anyways, enterprises aren't hiring me, I'm running low on money, I need a big fish to catch."
                 },
                 new CustomSay
@@ -280,14 +281,14 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigExplain".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Explain" ,
                     what = "You're talking to a professional docker."
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigExcited".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Excited" ,
                     what = "I'm sure I can compensate by grabbing the target ship with my giant docking hands!"
                 },
                 new CustomSay
@@ -297,8 +298,8 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigSly".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Sly" ,
                     what = "Oh the face you'll make when I return from this bounty alive and rich."
                 }
                     
@@ -336,20 +337,20 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigInjured".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Injured" ,
                     what = "Agh.. who would've known they had a decent sharpshooter aboard that ship..."
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigInjuredButDetermined".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull InjuredButDetermined" ,
                     what = "But this won't stop me from living another day!"
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigInjured".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Injured" ,
                     what = "Computer, initiate emergency escape protocal."
                 },
                 new CustomSay
@@ -359,8 +360,8 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigInjured".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Injured" ,
                     what = "... What have I said about irrelevant information?"
                 },
                 new CustomSay
@@ -370,14 +371,14 @@ internal static class MemoryDialogue
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigClosed".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Closed" ,
                     what = "..."
                 },
                 new CustomSay
                 {
-                    who = AmCraig,
-                    loopTag = "craigInjured".Check(),
+                    who = AmCull ,
+                    loopTag = "Cull Injured" ,
                     what = "Damn... guess I'll die..."
                 }
             }
