@@ -29,6 +29,8 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry EmpoweredStatus { get; }
 	internal IStatusEntry CloakedStatus { get; }
 	internal ISpriteEntry placeholderSprite { get; }
+	internal ISpriteEntry CullFullBody { get; set; }
+
 	internal ISpriteEntry harvestAttackSprite { get; }
 	internal Spr UncommonCullBorder { get; }
 	internal Spr RareCullBorder { get; }
@@ -127,7 +129,6 @@ public sealed class ModEntry : SimpleMod
 		{
 			if (phase != ModLoadPhase.AfterDbInit)
 				return;
-
 			foreach (var registerableType in LateRegisterableTypes)
 				AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 		};
@@ -346,6 +347,10 @@ public sealed class ModEntry : SimpleMod
 			Description = AnyLocalizations.Bind(["Cull", "status", "Cloaked", "description"])
 				.Localize
 		});
+		
+		Vault.charsWithLore.Add(CullDeck.Deck);
+		CullFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Character/FullBody.png"));
+		BGRunWin.charFullBodySprites.Add(CullDeck.Deck, CullFullBody.Sprite);
 		#endregion
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
@@ -371,11 +376,8 @@ public sealed class ModEntry : SimpleMod
 		_ = new SoulDrainManager();
 		_ = new EmpoweredManager();
 		_ = new CloakedManager();
-		_ = new DialogueExtensions();
-		_ = new CombatDialogue();
-		_ = new EventDialogue();
-		_ = new CardDialogue();
 	}
+
 
 	public override object? GetApi(IModManifest requestingMod)
 		=> new ApiImplementation();
