@@ -18,7 +18,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToPlayerThisTurn = 3,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "panic", "Too much damage! Too much damage!")
+                    new(AmCull, "nervous", "Too much damage! Too much damage!")
                 ]
             }},
             {"ThatsALotOfDamageToUs_Cull_1", new(){
@@ -27,7 +27,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToPlayerThisTurn = 3,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "shocked", "That's too big of a hole to patch, even for me.")
+                    new(AmCull, "squint", "I needed that!")
                 ]
             }},
             {"ThatsALotOfDamageToUs_Cull_2", new(){
@@ -36,7 +36,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToPlayerThisTurn = 3,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "intense", "I can fix it... I can fix it...")
+                    new(AmCull, "nervous", "Will the ship hold?")
                 ]
             }},
             {"ThatsALotOfDamageToThem_Cull_0", new(){
@@ -45,7 +45,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToEnemyThisTurn = 10,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "shocked", "That's a lot of damage!")
+                    new(AmCull, "neutral", "You'll regret fighting us.")
                 ]
             }},
             {"ThatsALotOfDamageToThem_Cull_1", new(){
@@ -54,7 +54,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToEnemyThisTurn = 10,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "silly", "Booyah!")
+                    new(AmCull, "squint", "Too bad that's only a small amount of Soul Energy.")
                 ]
             }},
             {"WeGotShotButTookNoDamage_Cull_0", new(){
@@ -66,7 +66,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "explain", "The results of my constant experimentions. Behold, perfection.")
+                    new(AmCull, "squint", "Are they even trying?")
                 ]
             }},
             {"WeGotShotButTookNoDamage_Cull_1", new(){
@@ -78,7 +78,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "explain", "See? All that hull perforation wasn't in vain.")
+                    new(AmCull, "squint", "Did something happen?")
                 ]
             }},
             {"WeGotShotButTookNoDamage_Cull_2", new(){
@@ -90,7 +90,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "explain", "That could've been really bad... if you didn't believe in my research.")
+                    new(AmCull, "nervous", "Ok good, no Soul Energy lost.")
                 ]
             }},
             {"WeAreMovingAroundALot_Cull_0", new(){
@@ -99,16 +99,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "mad", "Dodge and weave! Dodge and weave!")
-                ]
-            }},
-            {"WeAreMovingAroundALot_Cull_1", new(){
-                type = NodeType.combat,
-                minMovesThisTurn = 3,
-                oncePerRun = true,
-                allPresent = [ AmCull ],
-                dialogue = [
-                    new(AmCull, "explain", "The best form of defence is running away... wait no I meant movement.")
+                    new(AmCull, "neutral", "Better to not get hit at all so I don't lose Soul Energy.")
                 ]
             }},
             {"ShopKeepBattleInsult", new(){
@@ -122,7 +113,7 @@ internal class CombatDialogueCull : IRegisterable
                 handFullOfTrash = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "intense", "The trash is overflowing into my workspace!")
+                    new(AmCull, "squint", "Ew.")
                 ]
             }},
             {"HandOnlyHasUnplayableCards_Cull_0", new(){
@@ -131,7 +122,7 @@ internal class CombatDialogueCull : IRegisterable
                 handFullOfUnplayableCards = true,
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmCull, "squint", "I can't do anything with this.")
+                    new(AmCull, "squint", "What do you think I am supposed to do with this?")
                 ]
             }},
             {"BooksWentMissing_Cull_0", new(){
@@ -142,7 +133,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["booksWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingBooks],
                 dialogue = [
-                    new(AmCull, "shocked", "Hey, where'd Books go?")
+                    new(AmCull, "squint", "Hey, where'd Books go?")
                 ]
             }},
             {"CatWentMissing_Cull_0", new(){
@@ -153,9 +144,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["CatWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingCat],
                 dialogue = [
-                    new(who: AmCull,
-                        loopTag: "panic",
-                        what: "Uhh maybe if I upload myself to the computer...")
+                    new(who: AmCull, "nervous", "CAT is missing. Don't we need her?")
                 ]
             }},
             {"DizzyWentMissing_Cull_0", new(){
@@ -166,7 +155,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["dizzyWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingDizzy],
                 dialogue = [
-                    new(AmCull, "intense", "Oh no.")
+                    new(AmCull, "nervous", "Oh no.")
                 ]
             }},
             {"DrakeWentMissing_Cull_0", new(){
@@ -177,7 +166,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["drakeWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingDrake],
                 dialogue = [
-                    new(AmCull, "intense", "Why does it suddenly feel so... lonely?")
+                    new(AmCull, "squint", "Ok this might be bad.")
                 ]
             }},
             {"IsaacWentMissing_Cull_0", new(){
@@ -189,7 +178,7 @@ internal class CombatDialogueCull : IRegisterable
                 lastTurnPlayerStatuses = [Status.missingIsaac],
 
                 dialogue = [
-                    new(AmCull, "panic", "Ah!")
+                    new(AmCull, "nervous", "Bring the goat back!")
                 ]
             }},
             {"MaxWentMissing_Cull_0", new(){
@@ -200,7 +189,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["maxWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingMax],
                 dialogue = [
-                    new(AmCull, "intense", "Now who's gonna fix my broken equipment?")
+                    new(AmCull, "neutral", "Ah man, I liked him.")
                 ]
             }},
             {"PeriWentMissing_Cull_0", new(){
@@ -211,7 +200,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["periWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingPeri],
                 dialogue = [
-                    new(AmCull, "shocked", "Wait no I already miss her!")
+                    new(AmCull, "nervous", "Hey, where did Peri go?")
                 ]
             }},
             {"RiggsWentMissing_Cull_0", new(){
@@ -222,7 +211,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["riggsWentMissing"],
                 lastTurnPlayerStatuses = [Status.missingRiggs],
                 dialogue = [
-                    new(AmCull, "panic", "BUDDY NOOOOOO!!")
+                    new(AmCull, "nervous", "Riggs?!")
                 ]
             }},
             {"WeDontOverlapWithEnemyAtAll_Cull_0", new(){
@@ -234,7 +223,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 oncePerRunTags = [ "NoOverlapBetweenShips" ],
                 dialogue = [
-                    new(AmCull, "silly", "Gone. Goodbye!")
+                    new(AmCull, "neutral", "Try hitting us now!")
                 ]
             }},
             {"WeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Cull_0", new(){
@@ -246,7 +235,7 @@ internal class CombatDialogueCull : IRegisterable
                 anyDronesHostile = [ "missile_seeker" ],
                 nonePresent = [ "crab" ],
                 dialogue = [
-                    new(AmCull, "squint", "What's the point of evasive maneuvers if we're gonna get hit anyways?")
+                    new(AmCull, "squint", "I'm not a fan of seekers. This is why.")
                 ]
             }},
             {"BlockedALotOfAttackWithArmor_Cull_0", new(){
@@ -257,7 +246,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["YowzaThatWasALOTofArmorBlock"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "squint", "It would've been better if we just avoided getting hit in the first place.")
+                    new(AmCull, "nervous", "Wow, they really want to kill us don't they?")
                 ]
             }},
             {"BlockedAnEnemyAttackWithArmor_Cull_0", new(){
@@ -268,7 +257,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["WowArmorISPrettyCoolHuh"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "Hey, less work for me!")
+                    new(AmCull, "squint","Still could lose soul energy from that.")
                 ]
             }},
             {"Duo_AboutToDieAndLoop_Cull_0", new(){
@@ -279,8 +268,8 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmDizzy, "frown", "Time loop?"),
-                    new(AmCull, "solemn", "Despite everything.")
+                    new(AmCull, "nervous", "I don't want to die!"),
+                    new(AmDizzy, "frown", "You'll get used to it.")
                 ]
             }},
             {"Duo_AboutToDieAndLoop_Cull_1", new(){
@@ -291,8 +280,8 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmPeri, "mad", "Is that it?"),
-                    new(AmCull, "mad", "I hope not.")
+                    new(AmPeri, "mad", "Not dead yet!"),
+                    new(AmCull, "squint", "Too close.")
                 ]
             }},
             {"Duo_AboutToDieAndLoop_Cull_2", new(){
@@ -303,8 +292,8 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "squint", "Next time, I'm taking the wheel."),
-                    new(AmRiggs, "No.")
+                    new(AmRiggs, "nervous", "I'm not ready to go just yet!"),
+                    new(AmCull, "squint", "They don't seem to care.")
                 ]
             }},
             {"Duo_AboutToDieAndLoop_Cull_3", new(){
@@ -315,23 +304,11 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmDrake, "This is all your fault."),
-                    new(AmCull, "tired", "...")
+                    new(AmCull,"squint", "This doesn't look good."),
+                    new(AmDrake, "squint", "Could be worse.")
                 ]
             }},
             {"Duo_AboutToDieAndLoop_Cull_4", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull, AmIsaac ],
-                enemyShotJustHit = true,
-                maxHull = 2,
-                oncePerCombatTags = ["aboutToDie"],
-                oncePerRun = true,
-                dialogue = [
-                    new(AmIsaac, "Dang."),
-                    new(AmCull, "explain", "Oh well.")
-                ]
-            }},
-            {"Duo_AboutToDieAndLoop_Cull_5", new(){
                 type = NodeType.combat,
                 allPresent = [ AmCull, AmBooks ],
                 enemyShotJustHit = true,
@@ -339,11 +316,11 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmBooks, "Failure!"),
-                    new(AmCull, "sad", "Noooooooooowuh!")
+                    new(AmBooks, "paws","Cull, use your necromancy to bring us back!"),
+                    new(AmCull, "squint", "It's doesn't work like that!")
                 ]
             }},
-            {"Duo_AboutToDieAndLoop_Cull_6", new(){
+            {"Duo_AboutToDieAndLoop_Cull_5", new(){
                 type = NodeType.combat,
                 allPresent = [ AmCull, AmMax ],
                 enemyShotJustHit = true,
@@ -351,11 +328,11 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmMax, "mad", "We've lost!"),
-                    new(AmCull, "squint", "Not yet we haven't.")
+                    new(AmMax, "squint", "Run it back?"),
+                    new(AmCull, "squint", "If we have to.")
                 ]
             }},
-            {"Duo_AboutToDieAndLoop_Cull_7", new(){
+            {"Duo_AboutToDieAndLoop_Cull_6", new(){
                 type = NodeType.combat,
                 allPresent = [ AmCull, AmCat ],
                 enemyShotJustHit = true,
@@ -363,8 +340,8 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["aboutToDie"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCat, "grumpy", "Reset incoming."),
-                    new(AmCull, "panic", "Not yet!")
+                    new(AmCull, "nervous", "Is this what our enemies are supposed to feel like?"),
+                    new(AmCat, "grumpy", "I sure hope so.")
                 ]
             }},
             {"EmptyHandWithEnergy_Cull_0", new(){
@@ -373,17 +350,16 @@ internal class CombatDialogueCull : IRegisterable
                 handEmpty = true,
                 minEnergy = 1,
                 dialogue = [
-                    new(AmCull, "curious", "That it?")
+                    new(AmCull, "neutral", "nothing left?")
                 ]
             }},
             {"EmptyHandWithEnergy_Cull_1", new(){
                 type = NodeType.combat,
-                allPresent = [ AmCull, AmDrake ],
+                allPresent = [ AmCull ],
                 handEmpty = true,
                 minEnergy = 1,
                 dialogue = [
-                    new(AmCull, "squint", "The one time my hands are free, there's nothing to do."),
-                    new(AmDrake, "sly", "You don't have hands.")
+                    new(AmCull, "squint", "Having this much extra energy is wasteful."),
                 ]
             }},
             {"EnemyArmorHitLots_Cull_0", new(){
@@ -394,7 +370,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombat = true,
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "tired", "You know, if you're gonna be wasting resources doing dumb schenanigans, might as well give them to me for my experiments.")
+                    new(AmCull, "squint", "Stop hitting the armor.")
                 ]
             }},
             {"EnemyArmorHit_Cull_0", new(){
@@ -405,7 +381,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombat = true,
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "squint", "I thought I gave you enough fuel.")
+                    new(AmCull, "squint", "That's annoying.")
                 ]
             }},
             {"EnemyHasBrittle_Cull_0", new(){
@@ -423,7 +399,7 @@ internal class CombatDialogueCull : IRegisterable
                 enemyHasBrittlePart = true,
                 oncePerRunTags = ["yelledAboutBrittle"],
                 dialogue = [
-                    new(AmCull, "explain", "If only they were also tarnished. That'd mean double DOUBLE damage. Four times!")
+                    new(AmCull,  "That brittle spot is begging to be blasted.")
                 ]
             }},
             {"EnemyHasWeakness_Cull_0", new(){
@@ -432,7 +408,7 @@ internal class CombatDialogueCull : IRegisterable
                 enemyHasWeakPart = true,
                 oncePerRunTags = ["yelledAboutWeakness"],
                 dialogue = [
-                    new(AmCull, "Hit the weak point!")
+                    new(AmCull, "Ooh, ooh, hit that weak spot!")
                 ]
             }},
             {"ExpensiveCardPlayed_Cull_0", new(){
@@ -442,7 +418,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["ExpensiveCardPlayed"],
                 oncePerRun = true,
                 dialogue = [
-                    new(AmCull, "intense", "Did anyone else's lights just flicker?")
+                    new(AmCull, "neutral", "Hope that was worth the energy.")
                 ]
             }},
             {"FreezeIsMaxSize_Cull_0", new(){
@@ -452,7 +428,7 @@ internal class CombatDialogueCull : IRegisterable
                 enemyIntent = "biggestCrystal",
                 oncePerCombatTags = ["biggestCrystalShout"],
                 dialogue = [
-                    new(AmCull, "panic", "Okay, who let the death crystal get this big?")
+                    new(AmCull, "angry", "How have we not killed this thing yet?")
                 ]
             }},
             {"JustHitGeneric_Cull_0", new(){
@@ -461,7 +437,7 @@ internal class CombatDialogueCull : IRegisterable
                 playerShotJustHit = true,
                 minDamageDealtToEnemyThisAction = 1,
                 dialogue = [
-                    new(AmCull, "That's a hit!")
+                    new(AmCull, "Keep going!")
                 ]
             }},
             {"JustHitGeneric_Cull_1", new(){
@@ -470,7 +446,7 @@ internal class CombatDialogueCull : IRegisterable
                 playerShotJustHit = true,
                 minDamageDealtToEnemyThisAction = 1,
                 dialogue = [
-                    new(AmCull, "You got 'em.")
+                    new(AmCull, "Nice!")
                 ]
             }},
             {"JustHitGeneric_Cull_2", new(){
@@ -479,7 +455,7 @@ internal class CombatDialogueCull : IRegisterable
                 playerShotJustHit = true,
                 minDamageDealtToEnemyThisAction = 1,
                 dialogue = [
-                    new(AmCull, "Blam!")
+                    new(AmCull, "Yes! More!")
                 ]
             }},
             {"JustPlayedADraculaCard_Cull_0", new(){
@@ -488,16 +464,7 @@ internal class CombatDialogueCull : IRegisterable
                 whoDidThat = Deck.dracula,
                 nonePresent = [ "dracula" ],
                 dialogue = [
-                    new(AmCull, "explain", "Now that's utility I strive for.")
-                ]
-            }},
-            {"JustPlayedASashaCard_Cull_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                nonePresent = [ "sasha" ],
-                whoDidThat = Deck.sasha,
-                dialogue = [
-                    new(AmCull, "sad", "If only I too could sports.")
+                    new(AmCull, "neutral", "A different flavor of dark magic.")
                 ]
             }},
             {"JustPlayedAnEphemeralCard_Cull_0", new(){
@@ -506,7 +473,7 @@ internal class CombatDialogueCull : IRegisterable
                 whoDidThat = Deck.ephemeral,
                 priority = true,
                 dialogue = [
-                    new(AmCull, "stareatcamera", "Was it worth it?")
+                    new(AmCull, "squint", "Was it worth it?")
                 ]
             }},
             {"LookOutMissile_Cull_0", new(){
@@ -515,10 +482,10 @@ internal class CombatDialogueCull : IRegisterable
                 priority = true,
                 once = true,
                 oncePerRunTags = ["goodMissileAdvice"],
-                anyDronesHostile = ["missile_normal", "missile_heavy", "missile_corrode", "missile_breacher"],
+                anyDronesHostile = ["missile_corrode"],
                 dialogue = [
                     new(AmPeri, "mad", "Shoot it down!"),
-                    new(AmCull, "No! Full throttle!")
+                    new(AmCull,"nervous", "Especially that corrode missile!")
                 ]
             }},
             {"ManyFlips_Cull_0", new(){
@@ -536,7 +503,7 @@ internal class CombatDialogueCull : IRegisterable
                 minTurnsThisCombat = 9,
                 oncePerCombatTags = ["manyTurns"],
                 dialogue = [
-                    new(AmCull, "explain", "Slow and steady wins the race.")
+                    new(AmCull, "squint", "Are we done yet?")
                 ]
             }},
             {"ManyTurns_Cull_1", new(){
@@ -545,29 +512,7 @@ internal class CombatDialogueCull : IRegisterable
                 minTurnsThisCombat = 9,
                 oncePerCombatTags = ["manyTurns"],
                 dialogue = [
-                    new(AmCull, "tired", "What time is it?")
-                ]
-            }},
-            {"OldSpikeChattyPostRenameGeorge_Cull_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull, "spike" ],
-                oncePerCombatTags = ["OldSpikeNewName"],
-                maxTurnsThisCombat = 1,
-                spikeName = "george",
-                dialogue = [
-                    new("spike", "George time!"),
-                    new(AmCull, "Would've sounded better if you were Spike.")
-                ]
-            }},
-            {"OldSpikeChattyPostRenameSpikeTwo_Cull_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull, "spike" ],
-                oncePerCombatTags = ["OldSpikeNewName"],
-                maxTurnsThisCombat = 1,
-                spikeName = "spiketwo",
-                dialogue = [
-                    new("spike", "Get ready! Spike Two is here!"),
-                    new(AmCull, "squint", "What kind of name is Spike Two? Are you a sequel or something?")
+                    new(AmCull, "squint", "This is taking too long, just blow them up.")
                 ]
             }},
             {"OneHitPointThisIsFine_Cull_0", new(){
@@ -578,7 +523,7 @@ internal class CombatDialogueCull : IRegisterable
                 enemyShotJustHit = true,
                 maxHull = 1,
                 dialogue = [
-                    new(AmCull, "panic",  "We're losing hull faster than I can patch them!")
+                    new(AmCull, "nervous",  "Come on...")
                 ]
             }},
             {"OneHitPointThisIsFine_Cull_1", new(){
@@ -590,7 +535,7 @@ internal class CombatDialogueCull : IRegisterable
                 maxHull = 1,
                 lastTurnPlayerStatuses = [Status.corrode],
                 dialogue = [
-                    new(AmCull, "panic", "Uhhh... maybe I shouldn't have experimented this much.")
+                    new(AmCull, "nervous", "Not when we're this close...")
                 ]
             }},
             {"OverheatGeneric_Cull_0", new(){
@@ -599,27 +544,7 @@ internal class CombatDialogueCull : IRegisterable
                 goingToOverheat = true,
                 oncePerCombatTags = ["OverheatGeneric"],
                 dialogue = [
-                    new(AmCull, "My corrosive solution has boiled away.")
-                ]
-            }},
-            {"PlayedManyCards_Cull_0", new(){
-                type = NodeType.combat,
-                handEmpty = true,
-                minCardsPlayedThisTurn = 6,
-                allPresent = [ AmCull ],
-                dialogue = [
-                    new(AmCull, "Wow! Many things done! Good job.")
-                ]
-            }},
-            {"StrafeHit_Cull_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                playerShotJustHit = true,
-                minDamageDealtToEnemyThisAction = 1,
-                playerShotWasFromStrafe = true,
-                oncePerCombat = true,
-                dialogue = [
-                    new(AmCull, "explain", "You know, I might invest in this strafe tech.")
+                    new(AmCull, "This heat makes my feathers sticky.")
                 ]
             }},
             {"StrafeMissedGood_Cull_0", new(){
@@ -630,7 +555,7 @@ internal class CombatDialogueCull : IRegisterable
                 hasArtifacts = [ "Recalibrator", "GrazerBeam"],
                 oncePerCombat = true,
                 dialogue = [
-                    new(AmCull, "Nothing wasted.")
+                    new(AmCull, "I suppose that works.")
                 ]
             }},
             {"TookZeroDamageAtLowHealth_Cull_0", new(){
@@ -640,7 +565,7 @@ internal class CombatDialogueCull : IRegisterable
                 maxHull = 2,
                 maxDamageDealtToPlayerThisTurn = 0,
                 dialogue = [
-                    new(AmCull, "Keep 'em busy! I'm working my magic.")
+                    new(AmCull, "Too close for comfort!")
                 ]
             }},
             {"VeryManyTurns_Cull_0", new(){
@@ -651,7 +576,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerRun = true,
                 turnStart = true,
                 dialogue = [
-                    new(AmCull, "tired", "Okay this is getting ridiculous.")
+                    new(AmCull, "squint", "WOW we've been here a LONG time.")
                 ]
             }},
             {"WeGotHurtButNotTooBad_Cull_0", new(){
@@ -661,7 +586,7 @@ internal class CombatDialogueCull : IRegisterable
                 minDamageDealtToPlayerThisTurn = 1,
                 maxDamageDealtToPlayerThisTurn = 1,
                 dialogue = [
-                    new(AmCull, "Totally fixable.")
+                    new(AmCull, "angry","Hey! Watch it!")
                 ]
             }},
             {"WeMissedOopsie_Cull_0", new(){
@@ -671,7 +596,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombat = true,
                 doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                 dialogue = [
-                    new(AmCull, "explain", "Good thing I'm not the one shooting.")
+                    new(AmCull, "squint", "...")
                 ]
             }},
             {"WeMissedOopsie_Cull_1", new(){
@@ -681,76 +606,64 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombat = true,
                 doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                 dialogue = [
-                    new(AmCull, "Realign and try again.")
+                    new(AmCull, "No hit, no soul.")
                 ]
             }},
             {"WeAreCorroded_Multi_0", new(){
                 dialogue = [
-                    new(),
                     new(AmCull, "squint", "This is gonna hurt.")
                 ]
             }},
             {"WeAreCorroded_Multi_1", new(){
                 dialogue = [
-                    new(),
                     new(AmCull, "angry","OKAY WHO IS MELTING THE SHIP?")
-                ]
-            }},
-            {"ChunkThreats_Multi_3", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "mad", "It's you, the one who's living in my head rent free!")
                 ]
             }},
             {"BanditThreats_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "panic", "Uhh I didn't order that.")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "Please no seekers.")
                 ]
             }},
             {"CrabFacts1_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 2, AmCull, "And I haven't had my breakfast today.")
+                    new(EMod.countFromStart, 2, AmCull, "Woah.")
                 ]
             }},
             {"CrabFacts2_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 2, AmCull, "salavating", "You look very delicious.")
+                    new(EMod.countFromStart, 2, AmCull, "neutral", "That's so cool!")
                 ]
             }},
             {"CrabFactsAreOverNow_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "readytoeat", "...")
+                    new(EMod.countFromStart, 1, AmCull, "sad", "Aw man.")
                 ]
             }},
             {"DillianShouts", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "solemn", "The feeling's not mutual.")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "Do I know you?")
                 ]
             }},
             {"OverheatDrakeFix_Multi_6", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "Good job. Don't ever do that again."),
-                    new(EMod.countFromStart, 1, AmCull, "solemn", "You know, I had the patchkit ready.")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "You're lucky. Don't try that again."),
                 ]
             }},
             {"OverheatDrakesFault_Multi_9", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "tired", "I'll get the fire extinguisher.")
+                    new(EMod.countFromStart, 1, AmCull, "angry", "I really don't like this heat.")
                 ]
             }},
             {"RiderAvast", new(){
                 edit = [
-                    new(EMod.countFromStart, 2, AmCull, "curious", "A vest?")
-                ]
-            }},
-            {"RiderTiderunnerShouts", new(){
-                edit = [
-                    new(EMod.countFromStart, 2, AmCull, "squint", "You're not allowed to have it.")
+                    new(EMod.countFromStart, 2, AmCull, "squint", "What does that even mean?")
                 ]
             }},
             {"SkunkFirstTurnShouts_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 2, AmCull, "I'm not an errosion engineer you know.")
+                    new(EMod.countFromStart, 2, AmCull, "Why do you want these rocks?"),
+                    new(EMod.countFromStart, 2, AmDuncan, "Cause they're cool!")
+
                 ]
             }},
             {"SogginsEscapeIntent_1", new(){
@@ -763,19 +676,10 @@ internal class CombatDialogueCull : IRegisterable
                     new(EMod.countFromStart, 1, AmCull, "squint", "How does this even happen?")
                 ]
             }},
-            {"SpikeGetsChatty_Multi_0", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "Here I come.")
-                ]
-            }},
-            {"TookDamageHave2HP_Multi_1", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "mad", "I'm on it!")
-                ]
-            }},
             {"WeJustGainedHeatAndDrakeIsHere_Multi_0", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "mad", "You're messing up my experiments!")
+                    new(EMod.countFromStart, 1, AmCull, "angry", "Can we please cool the ship down?"),
+                    new(EMod.countFromStart, 1, AmDrake, "sly", "Oh it will cool down, it's just gonna hurt.")
                 ]
             }},
             {"CullWentMissing_Multi_0", new(){
@@ -841,7 +745,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmDrake, "Uh, Cull? Where did you go?")
+                    new(AmDrake, "Uh, Cull? Where are you?")
                 ]
             }},
             {"CullWentMissing_Multi_6", new(){
@@ -863,7 +767,7 @@ internal class CombatDialogueCull : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmBooks, "Magic crow?")
+                    new(AmBooks, "Magic crow? Where did you go?")
                 ]
             }},
             {"CullJustHit_Multi_0", new(){
@@ -874,29 +778,7 @@ internal class CombatDialogueCull : IRegisterable
                 whoDidThat = AmCullDeck,
                 oncePerCombatTags = [ "CullShotAGuy"],
                 dialogue = [
-                    new(AmCull, "shocked", "Woah! I didn't know I had it in me!")
-                ]
-            }},
-            {"CullJustHit_Multi_1", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                playerShotJustHit = true,
-                minDamageDealtToEnemyThisAction = 1,
-                whoDidThat = AmCullDeck,
-                oncePerCombatTags = [ "CullShotAGuy"],
-                dialogue = [
-                    new(AmCull, "solemn", "Aw man, I'm probably getting my certification revoked for this.")
-                ]
-            }},
-            {"CullJustHit_Multi_2", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                playerShotJustHit = true,
-                minDamageDealtToEnemyThisAction = 1,
-                whoDidThat = AmCullDeck,
-                oncePerCombatTags = [ "CullShotAGuy"],
-                dialogue = [
-                    new(AmCull, "explain", "At least I'm not a doctor. Imagine signing a hypocratic oath.")
+                    new(AmCull, "angry", "Your soul is mine!")
                 ]
             }},
             {"CullGotPerfect_Multi_0", new(){
