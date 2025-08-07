@@ -361,7 +361,7 @@ public sealed class ModEntry : SimpleMod
 				.Localize
 		});
 		
-		Vault.charsWithLore.Add(CullDeck.Deck);
+		//Vault.charsWithLore.Add(CullDeck.Deck);
 		CullFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CullDeck.Deck, CullFullBody.Sprite);
 		#endregion

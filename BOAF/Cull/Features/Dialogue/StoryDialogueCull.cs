@@ -11,7 +11,9 @@ internal class StoryDialogueCull : IRegisterable
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>(){
-            {"Cull_Intro_0", new(){
+            
+            //Remove the _PREEMPTIVE from every tag when everything is finished
+            {"Cull_Intro_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
@@ -24,79 +26,79 @@ internal class StoryDialogueCull : IRegisterable
                     new(AmCull, "nervous", "AH I'M UP!"),
                     new(AmCull, "squint", "Uh, where am I? And what are you doing here?"),
                     new(AmCat, "Time loop, do you remember anything?"),
-                    new(AmCull, "worried","Oh right uhhhh..."),
-                    new(AmCull, "worried", "No nope nothing comes to mind hehe..."),
+                    new(AmCull, "nervous","Oh right uhhhh..."),
+                    new(AmCull, "nervous", "No nope nothing comes to mind hehe..."),
                     new(AmCat, "Sounds normal, we'll get those memories back soon enough!")
                 ]
             }},
-            {"Cull_Intro_1", new(){
+            {"Cull_Intro_1_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
                 allPresent = [ AmCull ],
-                requiredScenes = ["Cull_Intro_0", "Cull_Memory_1"],
+                requiredScenes = ["Cull_Intro_0_PREEMPTIVE", "Cull_Memory_1"],
                 bg = "BGRunStart",
                 dialogue = [
                     new (AmCull, "neutral", "Sorry, I'm not gonna reveal any lore for my mod until EVERYTHING is finished!" ),
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"Cull_Intro_2", new(){
+            {"Cull_Intro_2_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
                 allPresent = [ AmCull ],
-                requiredScenes = ["Cull_Intro_1", "Cull_Memory_2"],
+                requiredScenes = ["Cull_Intro_1_PREEMPTIVE", "Cull_Memory_2"],
                 bg = "BGRunStart",
                 dialogue = [
                     new (AmCull, "neutral", "Sorry, I'm not gonna reveal any lore for my mod until EVERYTHING is finished!" ),
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"Cull_Peri_0", new(){
+            {"Cull_Peri_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
                 allPresent = [ AmCull, AmPeri ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Cull_Intro_0", "Peri_1" ],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Peri_1" ],
                 dialogue = [
                     new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Peri yet." ),
                     new (AmCull,"neutral","You are just gonna have to wait as usual!" )
                 ]
             }},
-            {"Cull_Isaac_0", new(){
+            {"Cull_Isaac_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = ["after_crystal"],
                 bg = "BGCrystalNebula",
                 allPresent = [AmCull, AmIsaac],
                 once = true,
                 priority = true,
-                requiredScenes = ["Cull_Intro_0"],
+                requiredScenes = ["Cull_Intro_0_PREEMPTIVE"],
                 dialogue = [
                     new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Isaac yet." ),
                     new (AmCull,"neutral","You are just gonna have to wait as usual!" )
                 ]
             }},
-            {"Cull_Riggs_0", new(){
+            {"Cull_Riggs_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
                 allPresent = [ AmCull, AmRiggs ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Cull_Intro_0"],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE"],
                 dialogue = [
                     new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Riggs yet." ),
                     new (AmCull,"neutral","You are just gonna have to wait as usual!" )
                 ]
             }},
-            {"Cull_Drake_0", new(){
+            {"Cull_Drake_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
                 allPresent = [ AmCull, AmDrake ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Cull_Intro_0"],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE"],
                 dialogue = [
                     new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Drake yet." ),
                     new (AmCull,"neutral","You are just gonna have to wait as usual!" )

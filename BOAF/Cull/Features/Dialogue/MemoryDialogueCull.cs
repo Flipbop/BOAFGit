@@ -13,7 +13,8 @@ internal class MemoryDialogueCull : IRegisterable
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
-            {"RunWinWho_Cull_1", new(){
+            //Remove the _PREEMPTIVE from every tag when everything is finished
+            {"RunWinWho_Cull_1_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmCull],
@@ -27,7 +28,7 @@ internal class MemoryDialogueCull : IRegisterable
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"RunWinWho_Cull_2", new(){
+            {"RunWinWho_Cull_2_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmCull],
@@ -36,7 +37,7 @@ internal class MemoryDialogueCull : IRegisterable
                     $"runWin_{AmCull}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Cull_1"
+                    "RunWinWho_Cull_1_PREEMPTIVE"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
@@ -44,7 +45,7 @@ internal class MemoryDialogueCull : IRegisterable
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"RunWinWho_Cull_3", new(){
+            {"RunWinWho_Cull_3_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmCull],
@@ -53,7 +54,7 @@ internal class MemoryDialogueCull : IRegisterable
                     $"runWin_{AmCull}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Cull_2"
+                    "RunWinWho_Cull_2_PREEMPTIVE"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
@@ -85,7 +86,7 @@ internal class MemoryDialogueCull : IRegisterable
                 lookup = [
                     "vault", $"vault_{AmCull}"
                 ],
-                requiredScenes = ["Cull_Memory_1"],
+                requiredScenes = ["Cull_Memory_1_PREEMPTIVE"],
                 dialogue = [
                     new("T+??? days"),
                     new(new Wait{secs = 2}),
@@ -102,7 +103,7 @@ internal class MemoryDialogueCull : IRegisterable
                 lookup = [
                     "vault", $"vault_{AmCull}"
                 ],
-                requiredScenes = ["Cull_Memory_2"],
+                requiredScenes = ["Cull_Memory_2_PREEMPTIVE"],
                 dialogue = [
                     new (AmCull, "neutral", "Sorry, I'm not gonna reveal any lore for my mod until EVERYTHING is finished!" ),
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
