@@ -7,7 +7,7 @@ using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 
-internal class NewEventDialogue : IRegisterable
+internal class EventDialogueCull : IRegisterable
 {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
     {
@@ -18,7 +18,7 @@ internal class NewEventDialogue : IRegisterable
                 allPresent = [ AmCull ],
                 bg = "BGBootSequence",
                 dialogue = [
-                    new(AmCull, "squint", "Ow... I felt that in my bones."),
+                    new(AmCull, "squint", "That felt weird."),
                     new(AmCat, "Energy readings are back to normal.")
                 ]
             }},
@@ -28,8 +28,8 @@ internal class NewEventDialogue : IRegisterable
                 bg = "BGShop",
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmShopkeeper, "Howdy", true),
-                    new(AmCull, "squint", "Have we met before?"),
+                    new(AmCull, "neutral", "Hi Cleo!"),
+                    new(AmShopkeeper, "Hey bud!", true),
                     new(new Jump{key = "NewShop"})
                 ]
             }},
@@ -39,19 +39,8 @@ internal class NewEventDialogue : IRegisterable
                 bg = "BGShop",
                 allPresent = [ AmCull ],
                 dialogue = [
-                    new(AmShopkeeper, "Back again, are we?", true),
-                    new(AmCull, "explain", "Yeah, need more material to experiment with."),
-                    new(new Jump{key = "NewShop"})
-                ]
-            }},
-            {"ShopkeeperInfinite_Cull_Multi_2", new(){
-                type = NodeType.@event,
-                lookup = [ "shopBefore" ],
-                bg = "BGShop",
-                allPresent = [ AmCull ],
-                dialogue = [
-                    new(AmShopkeeper, "Hey.", true),
-                    new(AmCull, "sly", "Hey."),
+                    new(AmCull, "neutral", "Cool shop!"),
+                    new(AmShopkeeper, "Thank you!", true),
                     new(new Jump{key = "NewShop"})
                 ]
             }},
@@ -62,7 +51,7 @@ internal class NewEventDialogue : IRegisterable
                 bg = "BGCrystalizedFriend",
                 dialogue = [
                     new(new Wait{secs = 1.5}),
-                    new(AmCull, "sly", "Hey.")
+                    new(AmCull, "squint", "Huh? Wuh? What's going on?")
                 ]
             }},
             {$"LoseCharacterCard_{AmCull}", new(){
@@ -71,72 +60,62 @@ internal class NewEventDialogue : IRegisterable
                 oncePerRun = true,
                 bg = "BGSupernova",
                 dialogue = [
-                    new(AmCull, "shocked", "My research!")
+                    new(AmCull, "squint", "Not the worst outcome.")
                 ]
+            }},
+            {"CrystallizedFriendEvent", new () {
+                    edit = [    
+                        new (EMod.countFromStart, 1, AmCull, "squint", "I think I might be due for a nap.")
+                    ]
             }},
             {"DraculaTime", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "No, I don't recall any Dracula in my friends list...")
-                ]
-            }},
-            {"AbandonedShipyard_Repaired", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "I helped!")
-                ]
-            }},
-            {"EphemeralCardGift", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "screamB", "AAAAAAAAAAaaaaaaaagh!")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "An undead? In this region of space?")
                 ]
             }},
             {"ForeignCardOffering_After", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "curious", "What's this?")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "Interesting. Could be useful.")
                 ]
             }},
             {"ForeignCardOffering_Refuse", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "Get out of my head.")
-                ]
-            }},
-            {"Freeze_1", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "curious", "I wonder what it tastes like?")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "Nuh uh.")
                 ]
             }},
             {"GrandmaShop", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "salavating", "Kitten.")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "Chocolate peanut butter cups!.")
                 ]
             }},
             {"Knight_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "intense", "Such glory!")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "A knight versus a necromancer, huh?")
                 ]
             }},
             {"LoseCharacterCard", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "Abort? Abort!")
+                    new(EMod.countFromStart, 1, AmCull, "nervous","That's not good!")
                 ]
             }},
             {"LoseCharacterCard_No", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "explain", "That wasn't so bad.")
+                    new(EMod.countFromStart, 1, AmCull, "angry", "At least it wasn't during a fight.")
                 ]
             }},
             {"Sasha_2_Multi_2", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "sad", "Can't play sports...")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "We can play a little bit.")
                 ]
             }},
             {"SogginsEscape_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "knife", "...")
+                    new(EMod.countFromStart, 1, AmCull, "angry", "So you want to be blown up?")
                 ]
             }},
             {"Soggins_Infinite", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "tired", "Do we really have to help him?")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "I don't like this frogs' vibes.")
                 ]
             }},
         });

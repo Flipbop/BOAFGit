@@ -22,7 +22,7 @@ public sealed class ModEntry : SimpleMod
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 
 	internal IDeckEntry CullDeck { get; }
-	internal static IPlayableCharacterEntryV2? CullCharacter { get; set; }
+	internal IPlayableCharacterEntryV2 CullCharacter { get; }
 	internal IStatusEntry SoulEnergyStatus { get; }
 	internal IStatusEntry FearStatus { get; }
 	internal IStatusEntry SoulDrainStatus { get; }
@@ -105,11 +105,24 @@ public sealed class ModEntry : SimpleMod
 		typeof(SoulSiphonArtifact),
 	];
 
+	internal static IReadOnlyList<Type> Dialogue { get; } = [
+		typeof(CardDialogueCull),
+		typeof(CombatDialogueCull),
+		typeof(EventDialogueCull),
+		typeof(MemoryDialogueCull),
+		typeof(StoryDialogueCull),
+	];
+
+	internal static IReadOnlyList<Type> MidrowObjects { get; } =
+	[
+		typeof(Wisp)
+	];
+	
 	internal static IEnumerable<Type> AllArtifactTypes
 		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
-		= [..AllCardTypes, ..AllArtifactTypes, typeof(Wisp)];
+		= [..AllCardTypes, ..AllArtifactTypes, ..Dialogue, ..MidrowObjects, ];
 
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= DuoArtifacts;
@@ -250,7 +263,7 @@ public sealed class ModEntry : SimpleMod
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CullDeck.UniqueName,
-			LoopTag = "cry",
+			LoopTag = "tear",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Cry/{i}.png")).Sprite)
 				.ToList()

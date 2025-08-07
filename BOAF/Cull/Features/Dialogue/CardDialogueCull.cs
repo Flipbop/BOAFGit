@@ -7,7 +7,7 @@ using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 
-internal class NewCardDialogue : IRegisterable
+internal class CardDialogueCull : IRegisterable
 {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
     {
@@ -37,8 +37,8 @@ internal class NewCardDialogue : IRegisterable
                     oncePerCombatTags = ["summonCullTag"],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Are you copying me?"),
-                        new(AmCat, "ArE yOu CoPyInG mE?")
+                        new(AmCat, "Little bit of dark magic."),
+                        new(AmCull, "angry", "But that's MY shtick!")
                     ]
                 }
             },

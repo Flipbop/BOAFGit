@@ -7,7 +7,7 @@ using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 
-internal class NewCombatDialogue : IRegisterable
+internal class CombatDialogueCull : IRegisterable
 {
     public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
     {
@@ -113,8 +113,7 @@ internal class NewCombatDialogue : IRegisterable
             }},
             {"ShopKeepBattleInsult", new(){
                 edit = [
-                    new("66ea84d6", AmCull, "panic", "Who said yes? WHO SAID YES?!"),
-                    new("66ea84d6", AmCull, "shocked", "I'm so sorry, my crewmates are idiots! Please forgive us!")
+                    new("66ea84d6", AmCull, "nervous", "Oh, that's... that's a lot of guns."),
                 ]
             }},
             {"HandOnlyHasTrashCards_Cull_0", new(){
@@ -528,7 +527,7 @@ internal class NewCombatDialogue : IRegisterable
                 minTimesYouFlippedACardThisTurn = 4,
                 oncePerCombat = true,
                 dialogue = [
-                    new(AmCull, "mad", "Oh my word. Can you pick a side already?!")
+                    new(AmCull, "mad", "Hehe, flip flip!")
                 ]
             }},
             {"ManyTurns_Cull_0", new(){
@@ -688,61 +687,13 @@ internal class NewCombatDialogue : IRegisterable
             {"WeAreCorroded_Multi_0", new(){
                 dialogue = [
                     new(),
-                    new(AmCull, "intense", "No wait, stay! I got it.")
+                    new(AmCull, "squint", "This is gonna hurt.")
                 ]
             }},
             {"WeAreCorroded_Multi_1", new(){
                 dialogue = [
                     new(),
-                    new(AmCull, "Hold on, I got it under control!")
-                ]
-            }},
-            {"WeAreCorroded_Multi_2", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "sly", "We can totally fix that in the middle of a fight.")
-                ]
-            }},
-            {"WeAreCorroded_Multi_3", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "mad", "Nuh uh.")
-                ]
-            }},
-            {"WeAreCorroded_Multi_4", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "squint", "Hush, I'm concentrating.")
-                ]
-            }},
-            {"WeAreCorroded_Multi_5", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "explain", "It's all part of the plan.")
-                ]
-            }},
-            {"WeAreCorroded_Multi_6", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "mad", "I'm working on it!")
-                ]
-            }},
-            {"WeAreCorroded_Multi_7", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "solemn", "Computer, snooze.")
-                ]
-            }},
-            {"WeAreCorroded_Multi_8", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "curious", "Uh yes?")
-                ]
-            }},
-            {"TheyGotCorroded_Multi_5", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "sly", "Did I do that?")
+                    new(AmCull, "angry","OKAY WHO IS MELTING THE SHIP?")
                 ]
             }},
             {"ChunkThreats_Multi_3", new(){
@@ -776,11 +727,6 @@ internal class NewCombatDialogue : IRegisterable
                     new(EMod.countFromStart, 1, AmCull, "solemn", "The feeling's not mutual.")
                 ]
             }},
-            {"DualNotEnoughDronesShouts_Multi_2", new(){
-                edit = [
-                    new("9b0ce906", AmCull, "panic", "How did you know I was a robot?")
-                ]
-            }},
             {"OverheatDrakeFix_Multi_6", new(){
                 edit = [
                     new(EMod.countFromStart, 1, AmCull, "squint", "Good job. Don't ever do that again."),
@@ -809,17 +755,12 @@ internal class NewCombatDialogue : IRegisterable
             }},
             {"SogginsEscapeIntent_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "tired", "Just get out of here.")
-                ]
-            }},
-            {"SogginsEscapeIntent_3", new(){
-                edit = [
-                    new(EMod.countFromStart, 1, AmCull, "giggle", "Hee hee heeeeeee.")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "Hold one moment, we aren't finished.")
                 ]
             }},
             {"Soggins_Missile_Shout_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "mad", "Shoot you with what?")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "How does this even happen?")
                 ]
             }},
             {"SpikeGetsChatty_Multi_0", new(){
@@ -837,17 +778,6 @@ internal class NewCombatDialogue : IRegisterable
                     new(EMod.countFromStart, 1, AmCull, "mad", "You're messing up my experiments!")
                 ]
             }},
-            
-            {"CullHatesChunk_Multi_0", new(){
-                type = NodeType.combat,
-                oncePerRun = true,
-                allPresent = [ AmCull, "chunk" ],
-                lastTurnEnemyStatuses = [ Status.corrode ],
-                minTurnsThisCombat = 8,
-                dialogue = [
-                    new(AmCull, "solemn", "Good riddance.")
-                ]
-            }},
             {"CullWentMissing_Multi_0", new(){
                 type = NodeType.combat,
                 allPresent = [ AmPeri ],
@@ -856,7 +786,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmPeri, "mad", "Hey, give us back our crew!")
+                    new(AmPeri, "mad", "Hey, give us back our necromancer!")
                 ]
             }},
             {"CullWentMissing_Multi_1", new(){
@@ -867,7 +797,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmRiggs, "nervous", "Where did the space snake go?")
+                    new(AmRiggs, "nervous", "Where did the crow go?")
                 ]
             }},
             {"CullWentMissing_Multi_2", new(){
@@ -889,7 +819,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmCat, "That's not normal.")
+                    new(AmCat, "Wuh oh.")
                 ]
             }},
             {"CullWentMissing_Multi_4", new(){
@@ -911,7 +841,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmDrake, "Hey, I was kidding about turning you into wine. Cull?")
+                    new(AmDrake, "Uh, Cull? Where did you go?")
                 ]
             }},
             {"CullWentMissing_Multi_6", new(){
@@ -933,7 +863,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerCombatTags = ["CullWentMissing"],
                 lastTurnPlayerStatuses = [MissingCull],
                 dialogue = [
-                    new(AmBooks, "Snake lady?")
+                    new(AmBooks, "Magic crow?")
                 ]
             }},
             {"CullJustHit_Multi_0", new(){
@@ -975,69 +905,7 @@ internal class NewCombatDialogue : IRegisterable
                 oncePerRun = true,
                 lastTurnPlayerStatuses = [Status.perfectShield],
                 dialogue = [
-                    new(AmCull, "explain", "Thanks to this new thing, we can safely do reckless behavior."),
-                    new([
-                        new(AmDizzy, "squint", "I don't think you were the one to come up with this."),
-                        new(AmPeri, "mad", "Don't."),
-                        new(AmDrake, "Turning up the heat! Don't complain!")
-                    ])
-                ]
-            }},
-            {"CullGotBoots_Multi_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                oncePerRun = true,
-                lastTurnPlayerStatuses = [Status.hermes],
-                dialogue = [
-                    new(AmCull, "Boosters boosted!")
-                ]
-            }},
-            {"CullGotBoots_Multi_1", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                oncePerRun = true,
-                lastTurnPlayerStatuses = [Status.hermes],
-                dialogue = [
-                    new(AmCull, "Engines boosted, full throttle!")
-                ]
-            }},
-
-            // {"", new(){
-
-            //     dialogue = [
-
-            //     ]
-            // }},
-        });
-        LocalDB.DumpStoryToLocalLocale("en", "TheJazMaster.EnemyPack", new Dictionary<string, DialogueMachine>(){
-            {"EnemyPack_GooseEscape_Cull_0", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                enemyIntent = "gooseEscape",
-                turnStart = true,
-                dialogue = [
-                    new("Goose", "Honk!"),
-                    new(AmCull, "mad", "It's getting away!")
-                ]
-            }},
-            {"EnemyPack_GooseEscape_Cull_1", new(){
-                type = NodeType.combat,
-                allPresent = [ AmCull ],
-                enemyIntent = "gooseEscape",
-                turnStart = true,
-                dialogue = [
-                    new("Goose", "Honk!"),
-                    new(AmCull, "sad", "No... I wanted turkey for dinner...")
-                ]
-            }},
-        });
-
-        LocalDB.DumpStoryToLocalLocale("en", "urufudoggo.Weth", new Dictionary<string, DialogueMachine>()
-        {
-            {"JustPlayedASashaCard_Weth_0", new(){
-                dialogue = [
-                    new(),
-                    new(AmCull, "mad", "In front of me?!")
+                    new(AmCull, "neutral", "This shield is a lifesaver! Too bad it doesn't protect or normal shields."),
                 ]
             }},
         });
