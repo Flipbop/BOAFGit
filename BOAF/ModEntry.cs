@@ -18,9 +18,10 @@ public sealed class ModEntry : SimpleMod
 	internal IHarmony Harmony { get; }
 	internal IKokoroApi.IV2 KokoroApi { get; }
 	internal IDuoArtifactsApi? DuoArtifactsApi { get; }
+	public LocalDB localDB { get; set; } = null!;
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
-
+	
 	internal IDeckEntry CullDeck { get; }
 	internal IPlayableCharacterEntryV2 CullCharacter { get; }
 	internal IStatusEntry SoulEnergyStatus { get; }
@@ -105,14 +106,6 @@ public sealed class ModEntry : SimpleMod
 		typeof(SoulSiphonArtifact),
 	];
 
-	internal static IReadOnlyList<Type> Dialogue { get; } = [
-		typeof(CardDialogueCull),
-		typeof(CombatDialogueCull),
-		typeof(EventDialogueCull),
-		typeof(MemoryDialogueCull),
-		typeof(StoryDialogueCull),
-	];
-
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
 	[
 		typeof(Wisp)
@@ -122,10 +115,10 @@ public sealed class ModEntry : SimpleMod
 		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
-		= [..AllCardTypes, ..AllArtifactTypes, ..Dialogue, ..MidrowObjects, ];
+		= [..AllCardTypes, ..AllArtifactTypes, ..MidrowObjects, ];
 
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
-		= DuoArtifacts;
+		= [..DuoArtifacts];
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
@@ -144,7 +137,16 @@ public sealed class ModEntry : SimpleMod
 				return;
 			foreach (var registerableType in LateRegisterableTypes)
 				AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
+			localDB = new(helper, package);
 		};
+		helper.Events.OnLoadStringsForLocale += (_, thing) =>
+		{
+			foreach (KeyValuePair<string, string> entry in localDB.GetLocalizationResults())
+			{
+				thing.Localizations[entry.Key] = entry.Value;
+			}
+		};
+
 
 		this.AnyLocalizations = new JsonLocalizationProvider(
 			tokenExtractor: new SimpleLocalizationTokenExtractor(),
@@ -153,7 +155,7 @@ public sealed class ModEntry : SimpleMod
 		this.Localizations = new MissingPlaceholderLocalizationProvider<IReadOnlyList<string>>(
 			new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
 		);
-
+		
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
@@ -384,11 +386,20 @@ public sealed class ModEntry : SimpleMod
 			)
 		);
 		
+		_ = new DialogueMachine();
+		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
 		_ = new SoulDrainManager();
 		_ = new EmpoweredManager();
 		_ = new CloakedManager();
+		_ = new CardDialogueCull();
+		_ = new CombatDialogueCull();
+		_ = new EventDialogueCull();
+		_ = new MemoryDialogueCull();		
+		_ = new StoryDialogueCull();
+		
+		
 	}
 
 
