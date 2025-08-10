@@ -7,9 +7,9 @@ using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 
-internal class CardDialogueCull : IRegisterable
+internal class CardDialogueCull
 {
-    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    public CardDialogueCull()
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {

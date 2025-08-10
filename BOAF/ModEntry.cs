@@ -386,8 +386,6 @@ public sealed class ModEntry : SimpleMod
 			)
 		);
 		
-		_ = new DialogueMachine();
-		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
 		_ = new SoulDrainManager();

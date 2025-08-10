@@ -7,9 +7,9 @@ using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
 
-internal class EventDialogueCull : IRegisterable
+internal class EventDialogueCull
 {
-    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    public EventDialogueCull()
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>(){
             {$"ChoiceCardRewardOfYourColorChoice_{AmCull}", new(){
