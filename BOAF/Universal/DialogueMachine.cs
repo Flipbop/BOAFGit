@@ -8,30 +8,6 @@ using Nickel;
 
 namespace Flipbop.BOAF;
 
-/**
-ver.0.18
-
-To get DialogueMachine and the custom dialogue stuff working:
-- edit the namespace of this file to at least match your project namespace
-- Instantiate LocalDB in ModEntry.cs *after* all the dialogue has been added (or in a helper.Events.OnModLoadFinished AfterDbInit presented as such below):
-        helper.Events.OnModLoadPhaseFinished += (_, phase) =>
-        {
-            if (phase == ModLoadPhase.AfterDbInit)
-            {
-                localDB = new(helper, package);
-            }
-        };
-- Then register the locale of your dialogue by calling the instantiated LocalDB's GetLocalizationResults() in helper.Events.OnLoadStringsForLocale:
-        helper.Events.OnLoadStringsForLocale += (_, thing) =>
-        {
-            foreach (KeyValuePair<string, string> entry in localDB.GetLocalizationResults())
-            {
-                thing.Localizations[entry.Key] = entry.Value;
-            }
-        };
-- You're all set!
-(when you're adding dialogue, you should use LocalDB.DumpStoryToLocalLocale())
-*/
 
 public enum DMod
 {

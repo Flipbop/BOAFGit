@@ -42,4 +42,6 @@ static class CommonDefinitions
     internal const string AmShopkeeper = "nerd";
     internal const string AmBrimford = "walrus";
     internal const string AmDuncan = "skunk";
+    internal const string AmJumbo = "miner";
+
 }

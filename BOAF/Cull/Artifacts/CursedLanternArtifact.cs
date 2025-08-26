@@ -23,26 +23,9 @@ internal sealed class CursedLanternArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override List<Tooltip>? GetExtraTooltips()
-		=> [new TTGlossary("cardtrait.discount")];
-
-	public override void OnCombatStart(State state, Combat combat)
+	public override void OnReceiveArtifact(State state)
 	{
-		base.OnCombatStart(state, combat);
-		
-		foreach (var card in state.deck)
-			if (card.GetCurrentCost(state) >= 3 && card.IsUpgradable())
-			{
-				if (card.upgrade == Upgrade.None)
-				{
-					combat.Queue([
-					]);
-				}
-				else
-				{
-					card.discount -= -1;
-				}
-			}
-		
+		base.OnReceiveArtifact(state);
+		state.ship.baseEnergy += 1;
 	}
 }

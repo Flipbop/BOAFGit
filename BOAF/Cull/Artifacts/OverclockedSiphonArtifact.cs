@@ -22,16 +22,24 @@ internal sealed class OverclockedSiphonArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "OverclockedSiphon", "description"]).Localize
 		});
 	}
-	
 
-	public override void OnCombatStart(State state, Combat combat)
+	public int turnCounter = 0;
+
+	public override void OnTurnStart(State state, Combat combat)
 	{
-		base.OnCombatStart(state, combat);
-		int Amount = 2;
-		int index = state.deck.Count -1;
-		while (index >= 0 && Amount > 0)
+		base.OnTurnStart(state, combat);
+		if (turnCounter >= 3)
 		{
-			
+			combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1});
+			turnCounter = 0;
 		}
+		else
+		{
+			turnCounter++;
+		}
+	}
+	public override int? GetDisplayNumber(State s)
+	{
+		return turnCounter;
 	}
 }

@@ -80,16 +80,19 @@ internal class StoryDialogueCull
                     new (AmCull,"neutral","You are just gonna have to wait as usual!" )
                 ]
             }},
-            {"Cull_Riggs_0_PREEMPTIVE", new(){
+            {"Cull_Riggs_0__PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
                 allPresent = [ AmCull, AmRiggs ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE"],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Cull_Memory_2"],
                 dialogue = [
-                    new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Riggs yet." ),
-                    new (AmCull,"neutral","You are just gonna have to wait as usual!" )
+                    new (AmCull, "squint", "Now that I think about it, you were never one of the targets I was sent to kill." ),
+                    new (AmRiggs,"neutral","Why's that?" ),
+                    new (AmCull, "I'm only sent to kill those that have died before, so unless you've never died you should be a target." ),
+                    new (AmRiggs,"neutral","Well I guess I didn't die then." ),
+                    new (AmCull, "squint", "Strange." ),
                 ]
             }},
             {"Cull_Drake_0_PREEMPTIVE", new(){
@@ -100,8 +103,26 @@ internal class StoryDialogueCull
                 bg = "BGRunStart",
                 requiredScenes = [ "Cull_Intro_0_PREEMPTIVE"],
                 dialogue = [
-                    new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Drake yet." ),
-                    new (AmCull,"neutral","You are just gonna have to wait as usual!" )
+                    new (AmDrake, "That necromancy you have is some powerful stuff. I bet you would make a great pirate." ),
+                    new (AmCull,"squint","Piracy isn't my thing. I'm not too fond of stealing what belongs to others." ),
+                    new (AmDrake, "squint", "Oh come on! You've taken lives before! What's a little credits compared to that?" ),
+                    new (AmCull,"angry","Hey! The lives I took didn't belong to them, they had already died once before!" ),
+                    new (AmDrake, "squint", "And what about yours?"),
+                    new (AmCull, "nervous", "Oh.")
+                ]
+            }},
+            {"Cull_Isaac_Animism_PREEMPTIVE", new(){
+                type = NodeType.@event,
+                once = true,
+                allPresent = [ AmCull, AmIsaac ],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Cull_Isaac_0_PREEMPTIVE"],
+                hasArtifactTypes = [typeof(AnimismArtifact)],
+                dialogue = [
+                    new (AmIsaac, "squint", "How do you plan on getting Soul Energy when an object out there is destroyed?" ),
+                    new (AmCull,"squint","Not sure. I think the objects have souls that can be harvested when they are destroyed."),
+                    new (AmIsaac, "panic", "Are you telling me that my drones have souls?!"),
+                    new (AmCull, "nervous", "Oh, I didn't even think about that. I guess they do."),
+                    new (AmIsaac, "squint", "I'm not sure how I feel about my drones getting shot down anymore.")
                 ]
             }}
         });

@@ -24,27 +24,16 @@ internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 		});
 	}
 	public bool _used = false;
-	public override void OnDrawCard(State state, Combat combat, int count)
+	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
-		int index = combat.hand.Count -1;
-		int upgradeCount = 0;
-		
-		while (index >= 0)
+		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
+		if (_used == false)
 		{
-			if (combat.hand[index].upgrade != Upgrade.None)
-			{
-				upgradeCount++;
-			} 
-			index--;
+			combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1});
 		}
-		if (upgradeCount >= 3 && !_used)
-		{
-			_used = true;
-			combat.Queue([
-				new ADrawCard {count = 1}
-			]);
-		}
+		_used = true;
 	}
+
 	public override void OnTurnEnd(State state, Combat combat)
 	{
 		base.OnTurnEnd(state, combat);

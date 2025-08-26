@@ -23,33 +23,12 @@ internal sealed class EnchantedScytheArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public bool _firstCard = true;
-	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition, int handCount)
+	public override int ModifyBaseDamage(int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
 	{
-		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		Card newCard = card.CopyWithNewId();
-		if ((card.upgrade != Upgrade.None) && _firstCard)
+		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5)
 		{
-			newCard.temporaryOverride = true;
-			newCard.singleUseOverride = true;
-			_firstCard = false;
-			combat.Queue([
-				new AAddCard
-				{
-					card = newCard, destination = CardDestination.Hand
-				},
-			]);
+			return base.ModifyBaseDamage(baseDamage, card, state, combat, fromPlayer) +1;
 		}
-	}
-
-	public override void OnTurnStart(State state, Combat combat)
-	{
-		base.OnTurnStart(state, combat);
-		_firstCard = true;
-	}
-	public override void OnCombatEnd(State state)
-	{
-		base.OnCombatEnd(state);
-		_firstCard = true;
+		return base.ModifyBaseDamage(baseDamage, card, state, combat, fromPlayer);
 	}
 }

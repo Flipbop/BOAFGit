@@ -53,7 +53,14 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		combat.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+		if (state.EnumerateAllArtifacts().OfType<CursedLanternArtifact>().FirstOrDefault() != null)
+		{
+			combat.Queue(new AStatus() {statusAmount = -2, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+		}
+		else
+		{
+			combat.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+		}
 	}
 
 	public override void OnTurnStart(State state, Combat combat)

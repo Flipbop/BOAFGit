@@ -108,7 +108,8 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
 	[
-		typeof(Wisp)
+		typeof(Wisp),
+		typeof(SkullBomb)
 	];
 	
 	internal static IEnumerable<Type> AllArtifactTypes
