@@ -3,11 +3,13 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class NecromancyCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -30,12 +32,40 @@ internal sealed class NecromancyCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B ? 2: 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			_=> []
+			Upgrade.A => [
+				new AStatus() {status = Status.droneShift, statusAmount = 1},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
+			],
+			Upgrade.B => [
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {status = Status.droneShift, statusAmount = 1}
+				).AsCardAction,
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}, offset = -1},
+			],
+			_ => [
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(5),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new AStatus() {status = Status.droneShift, statusAmount = 1}
+				).AsCardAction,
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
+			]
 		};
 }
