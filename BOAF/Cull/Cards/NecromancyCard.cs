@@ -47,7 +47,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
+						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {status = Status.droneShift, statusAmount = 1}
@@ -60,7 +60,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
+						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {status = Status.droneShift, statusAmount = 1}
