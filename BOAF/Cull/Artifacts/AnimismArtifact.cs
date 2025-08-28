@@ -27,4 +27,10 @@ internal sealed class AnimismArtifact : Artifact, IRegisterable
 				.Localize
 		});
 	}
+
+	public override void OnPlayerDestroyDrone(State state, Combat combat)
+	{
+		base.OnPlayerDestroyDrone(state, combat);
+		combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+	}
 }

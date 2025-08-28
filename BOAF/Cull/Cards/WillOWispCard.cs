@@ -35,13 +35,13 @@ internal sealed class WillOWispCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn(){fromPlayer = true, thing = new Wisp()}],
+				new ASpawn(){fromPlayer = true, thing = new GreaterWisp(){ DeathTurn = 2}}],
 			Upgrade.B => [
 				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn(){fromPlayer = true, thing = new Wisp() {bubbleShield = true}}],
+				new ASpawn(){fromPlayer = true, thing = new Wisp() {bubbleShield = true, DeathTurn = 2}}],
 			_=>[
 				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn(){fromPlayer = true, thing = new Wisp()}
+				new ASpawn(){fromPlayer = true, thing = new Wisp() { DeathTurn = 2}}
 			]
 		};
 }

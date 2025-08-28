@@ -40,4 +40,16 @@ internal sealed class SkullBomb : SpaceMine, IRegisterable
 			.. (bubbleShield ? [new TTGlossary("midrow.bubbleShield")] : Array.Empty<Tooltip>())
 		];
 
+	public required int DeathTurn {get;set;}
+
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = [
+			new AAttack() {damage = 3, fromDroneX = worldX, targetPlayer = false}, 
+			new AAttack() {damage = 3, fromDroneX = worldX, targetPlayer = true}
+		];
+		if (c.turn >= DeathTurn)
+			actions.Add(new AKillThisDrone{droneX = this.x});
+		return actions;
+	}
 }

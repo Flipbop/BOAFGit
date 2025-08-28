@@ -20,19 +20,19 @@
         "midrow": {
             "Wisp" : {
                 "name" : "WISP",
-                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Wisp</c> at it's previous location."
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after 2 turns.</c>"
             },
             "DormantWisp" : {
                 "name": "DORMANT WISP",
-                "description": "Shoots a <c=redd>1</c> damage shot once per turn, then destroys itself. <c=downside>Cannot move, and attacks will pass through it.</c>"
+                "description": "Shoots a <c=redd>1</c> damage shot once per turn, then destroys itself."
             },
             "GreaterWisp" : {
                 "name": "GREATER WISP",
-                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c. at it's previous location."
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after 2 turns.</c>"
             },
             "DormantGreaterWisp" : {
                 "name": "DORMANT GREATER WISP",
-                "description" : "Shoots a <c=redd>2</c> damage shot once per turn, then destroys itself. <c=downside>Cannot move, and attacks will pass through it.</c>"
+                "description" : "Shoots a <c=redd>2</c> damage shot once per turn, then destroys itself."
             },
             "SkullBomb": {
                 "name": "SKULL BOMB",
@@ -97,7 +97,7 @@
             },
             "Animism": {
                 "name": "ANIMISM",
-                "description": "Gain 1 <c=status>SOUL ENERGY</c> when a midrow object is destroyed."
+                "description": "Gain 1 <c=status>SOUL ENERGY</c> when you destroy a midrow object."
             },
             "Duo": {
                 "CleoBooks": {

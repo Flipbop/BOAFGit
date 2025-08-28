@@ -61,23 +61,36 @@ internal class StoryDialogueCull
                 once = true,
                 allPresent = [ AmCull, AmPeri ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Peri_1" ],
+                requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Peri_1", "Cull_Memory_2" ],
                 dialogue = [
-                    new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Peri yet." ),
-                    new (AmCull,"neutral","You are just gonna have to wait as usual!" )
+                    new (AmPeri, "Cull, I was hoping to say I'm sorry when I got the chance." ),
+                    new (AmCull,"What for?" ),
+                    new (AmPeri, "For blowing you up." ),
+                    new (AmCull,"squint","Oh, that." ),
+                    new (AmCull,"It's alright. If you didn't then I would have just blown you up." ),
+                    new (AmCull,"Besides, I wouldn't have ever gotten to meet you all if I lived!" ),
+                    new (AmPeri,"nap", "That's true, I am pretty great." ),
+                    new (AmPeri, "Thanks for understanding. Glad you aren't taking your death too hard." ),
+                    new (AmCull, "Of course!"),
+                    new (AmCull, "sad", "..."),
+                    new (AmCull, "sad", "...of course."),
                 ]
             }},
             {"Cull_Isaac_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
-                lookup = ["after_crystal"],
-                bg = "BGCrystalNebula",
+                lookup = [ "zone_first"],
+                bg = "BGRunStart",
                 allPresent = [AmCull, AmIsaac],
                 once = true,
                 priority = true,
-                requiredScenes = ["Cull_Intro_0_PREEMPTIVE"],
+                requiredScenes = ["Cull_Intro_0_PREEMPTIVE", "Goat_1"],
                 dialogue = [
-                    new (AmCull, "squint", "Ok this time it's not cause I'm hiding anything, but because I haven't written any dialogue for Isaac yet." ),
-                    new (AmCull,"neutral","You are just gonna have to wait as usual!" )
+                    new (AmCull, "I was wondering how you make your drones, it might come in handy one day for me." ),
+                    new (AmIsaac,"Oh! I'm glad you asked! They are all premade, but I assemble them myself. I just order the parts online." ),
+                    new (AmCull, "That's cool! Are they easy to modify?" ),
+                    new (AmIsaac,"Very easy." ),
+                    new (AmCull, "I wonder how they would respond to a bit of Soul Energy..." ),
+                    new (AmIsaac,"panic","..." ),
                 ]
             }},
             {"Cull_Riggs_0__PREEMPTIVE", new(){
@@ -91,16 +104,16 @@ internal class StoryDialogueCull
                     new (AmCull, "squint", "Now that I think about it, you were never one of the targets I was sent to kill." ),
                     new (AmRiggs,"neutral","Why's that?" ),
                     new (AmCull, "I'm only sent to kill those that have died before, so unless you've never died you should be a target." ),
-                    new (AmRiggs,"neutral","Well I guess I didn't die then." ),
-                    new (AmCull, "squint", "Strange." ),
+                    new (AmRiggs,"Well I guess I didn't die then." ),
+                    new (AmCull, "squint", "Strange. You aren't even in my database now that I look closer. Like you ceased to exist." ),
                 ]
             }},
             {"Cull_Drake_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
-                lookup = [ "zone_first"],
+                lookup = ["after_crystal"],
+                bg = "BGCrystalNebula",
                 once = true,
                 allPresent = [ AmCull, AmDrake ],
-                bg = "BGRunStart",
                 requiredScenes = [ "Cull_Intro_0_PREEMPTIVE"],
                 dialogue = [
                     new (AmDrake, "That necromancy you have is some powerful stuff. I bet you would make a great pirate." ),
