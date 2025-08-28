@@ -20,7 +20,7 @@ internal sealed class AnimismArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites
-				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Retainer.png"))
+				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/Animism.png"))
 				.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "artifact", "Animism", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "artifact", "Animism", "description"])

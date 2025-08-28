@@ -27,7 +27,7 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = upgrade == Upgrade.B ? 1: 2,
+			cost = upgrade == Upgrade.B ? 2: 1,
 			flippable = upgrade == Upgrade.A,
 			artOverlay = ModEntry.Instance.UncommonCullBorder
 
@@ -36,6 +36,14 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			_=>[]
+			Upgrade.B => [
+				new ASpawn(){offset = 1, thing = new SkullBomb(){DeathTurn = 1}, fromPlayer = true},
+				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1}, fromPlayer = true},
+				new AMove() {dir = -1, targetPlayer = true, }
+			],
+			_=>[
+				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1}, fromPlayer = true},
+				new AMove() {dir = -2, targetPlayer = true, }
+			]
 		};
 }

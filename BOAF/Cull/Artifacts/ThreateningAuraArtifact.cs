@@ -16,7 +16,7 @@ internal sealed class ThreateningAuraArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.CullDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/ReusableMaterials.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/ThreateningAura.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "ThreateningAura", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "ThreateningAura", "description"]).Localize
 		});

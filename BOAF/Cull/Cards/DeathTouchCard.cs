@@ -31,7 +31,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 3,
+			cost = upgrade == Upgrade.A? 2:3,
 			exhaust = true,
 			retain = true,
 			artOverlay = ModEntry.Instance.RareCullBorder
@@ -48,7 +48,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 						Conditional.Constant(10),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AAttack(){damage = GetDmg(s, 12)}
+					new AAttack(){damage = GetDmg(s, 20)}
 				).AsCardAction,
 				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			],
@@ -60,7 +60,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 						Conditional.Constant(10),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AAttack(){damage = GetDmg(s, 10)}
+					new AAttack(){damage = GetDmg(s, 20)}
 				).AsCardAction,
 				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 3},
 			],
@@ -72,7 +72,7 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 						Conditional.Constant(10),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AAttack(){damage = GetDmg(s, 10)}
+					new AAttack(){damage = GetDmg(s, 20)}
 				).AsCardAction,
 				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			]

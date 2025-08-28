@@ -17,7 +17,7 @@ internal sealed class CursedLanternArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.CullDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/ExpensiveEquipment.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/CursedLantern.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "CursedLantern", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "CursedLantern", "description"]).Localize
 		});

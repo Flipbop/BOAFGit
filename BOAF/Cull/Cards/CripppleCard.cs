@@ -43,8 +43,11 @@ internal sealed class CripppleCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				new ACripple() {bUpgrade = true}
+			],
 			_ => [
-				new ADummyAction()
+				new ACripple()
 			],
 		};
 	

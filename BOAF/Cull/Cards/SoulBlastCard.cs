@@ -38,13 +38,33 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new ASoulHint(),
+				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1},
+				new AHarvestAttack() {damage = GetDmg(s, 1)}
+			],
 			Upgrade.B => [
-				
+				new ASoulHint(),
+				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status))*2, xHint = 2},
+				new AStatus(){status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5}
 			],
 			_ => [
-				
+				new ASoulHint(),
+				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1}
 			]
 			
 		};
+	public sealed class ASoulHint : AVariableHint
+	{
+		public override Icon? GetIcon(State s)
+			=> new(ModEntry.Instance.soulEnergySprite.Sprite, null, Colors.textMain);
+
+
+		public override List<Tooltip> GetTooltips(State s)
+			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergyX")
+			{
+				Description = ModEntry.Instance.Localizations.Localize(["Cull","action", "CurrentSoul", "description"])
+			}];
+	}
 	
 }

@@ -3,11 +3,14 @@ using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
 internal sealed class WispArrayCard : Card, IRegisterable
 {
+	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -37,13 +40,68 @@ internal sealed class WispArrayCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AAddCard { amount = 1, card = new HarmlessSiphonCard { upgrade = Upgrade.A }, destination = CardDestination.Deck},
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = -1}
+				).AsCardAction,
+				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2}},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = 1}
+				).AsCardAction,
 			],
+			Upgrade.B => [
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = -1}
+				).AsCardAction,
+				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2}},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = 1}
+				).AsCardAction,
+				],
 			_ =>
 			[
-				new AAddCard { amount = upgrade == Upgrade.B ? 2 : 1, card = new HarmlessSiphonCard(), destination = CardDestination.Deck },
-				new AStatus { targetPlayer = true, status = Status.shield, statusAmount = 2 },
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = -1}
+				).AsCardAction,
+				new ASpawn() {thing = new Wisp(){DeathTurn = 2}},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 2}, offset = 1}
+				).AsCardAction,
 			]
 		};
 	

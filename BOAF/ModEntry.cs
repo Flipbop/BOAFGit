@@ -29,10 +29,16 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry SoulDrainStatus { get; }
 	internal IStatusEntry EmpoweredStatus { get; }
 	internal IStatusEntry CloakedStatus { get; }
-	internal ISpriteEntry placeholderSprite { get; }
 	internal ISpriteEntry CullFullBody { get; set; }
 
 	internal ISpriteEntry harvestAttackSprite { get; }
+	internal ISpriteEntry soulEnergySprite { get; }
+	internal ISpriteEntry soulDrainSprite { get; }
+	internal ISpriteEntry fearSprite { get; }
+	internal ISpriteEntry empoweredSprite { get; }
+	internal ISpriteEntry cloakedSprite { get; }
+
+
 	internal Spr UncommonCullBorder { get; }
 	internal Spr RareCullBorder { get; }
 
@@ -55,18 +61,18 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
 		typeof(BargainCard),
 		typeof(StunningStrikeCard),
-		//typeof(WispArrayCard),
-		//typeof(SoulBlastCard),
+		typeof(WispArrayCard),
+		typeof(SoulBlastCard),
 		typeof(TauntCard),
-		//typeof(PlayingWithFireCard), 
+		typeof(PlayingWithFireCard), 
 		typeof(NoxoiusCloudCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
 		typeof(VanishCard),
-		//typeof(CripppleCard),
+		typeof(CripppleCard),
 		typeof(ReapCard),
-		//typeof(UnstableSpiritCard),
+		typeof(UnstableSpiritCard),
 		typeof(DeathTouchCard),
 	];
 
@@ -123,8 +129,13 @@ public sealed class ModEntry : SimpleMod
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
-		placeholderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/Impaired.png"));
 		harvestAttackSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/HarvestAttack.png"));
+		soulEnergySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"));
+		soulDrainSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"));
+		fearSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Fear.png"));
+		empoweredSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"));
+		cloakedSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"));
+
 		this.helper = helper;
 		
 		Instance = this;
@@ -292,10 +303,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = ModEntry.Instance.Helper.Content.Sprites
-					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"))
-					.Sprite,
+				icon = soulEnergySprite.Sprite,
 				color = new("670099"),
 				isGood = true,
 			},
@@ -307,10 +315,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = ModEntry.Instance.Helper.Content.Sprites
-					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Fear.png"))
-					.Sprite,
+				icon = fearSprite.Sprite,
 				color = new("008c81"),
 				isGood = false,
 			},
@@ -322,10 +327,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = ModEntry.Instance.Helper.Content.Sprites
-					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"))
-					.Sprite,
+				icon = soulDrainSprite.Sprite,
 				color = new("b80000"),
 				isGood = false,
 			},
@@ -337,10 +339,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = ModEntry.Instance.Helper.Content.Sprites
-					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"))
-					.Sprite,
+				icon = empoweredSprite.Sprite,
 				color = new("0062ff"),
 				isGood = true,
 			},
@@ -352,10 +351,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = ModEntry.Instance.Helper.Content.Sprites
-					.RegisterSprite(
-						ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"))
-					.Sprite,
+				icon = cloakedSprite.Sprite,
 				color = new("312351"),
 				isGood = true,
 			},
