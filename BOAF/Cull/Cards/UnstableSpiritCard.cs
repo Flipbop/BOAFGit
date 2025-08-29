@@ -41,7 +41,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2}, fromPlayer = true},
+				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 3}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -80,7 +80,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 				).AsCardAction,
 			],
 			Upgrade.B => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 2}, fromPlayer = true},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 3}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -119,7 +119,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 				).AsCardAction,
 			],
 			_ => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 2}, fromPlayer = true},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 3}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),

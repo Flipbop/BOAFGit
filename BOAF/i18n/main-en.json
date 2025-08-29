@@ -20,7 +20,7 @@
         "midrow": {
             "Wisp" : {
                 "name" : "WISP",
-                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after 2 turns.</c>"
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after it's third turn.</c>"
             },
             "DormantWisp" : {
                 "name": "DORMANT WISP",
@@ -28,7 +28,7 @@
             },
             "GreaterWisp" : {
                 "name": "GREATER WISP",
-                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after 2 turns.</c>"
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after it's third turn.</c>"
             },
             "DormantGreaterWisp" : {
                 "name": "DORMANT GREATER WISP",
@@ -36,7 +36,7 @@
             },
             "SkullBomb": {
                 "name": "SKULL BOMB",
-                "description": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself after 1 turn.</c>"
+                "description": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself on it's second turn.</c>"
             }
         },
         "status": {
