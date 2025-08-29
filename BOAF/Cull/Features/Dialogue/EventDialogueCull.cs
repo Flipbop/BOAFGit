@@ -115,7 +115,7 @@ internal class EventDialogueCull
             }},
             {"Soggins_Infinite", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "I don't like this frogs' vibes.")
+                    new(EMod.countFromStart, 1, AmCull, "squint", "I don't like this frog's vibes.")
                 ]
             }},
         });

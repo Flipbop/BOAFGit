@@ -28,7 +28,7 @@ internal sealed class OverclockedSiphonArtifact : Artifact, IRegisterable
 	public override void OnTurnStart(State state, Combat combat)
 	{
 		base.OnTurnStart(state, combat);
-		if (turnCounter >= 3)
+		if (turnCounter >= 2)
 		{
 			combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1});
 			turnCounter = 0;

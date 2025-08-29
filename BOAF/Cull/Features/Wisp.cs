@@ -75,13 +75,13 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 		bool openSpace = false; 
 		while(!openSpace)
 		{
-			if (!c.stuff.TryGetValue(x, out var _))
+			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
 			{
 				openSpace = true;
 			}else
 			{
 				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x, out var _))
+				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
 				{
 					openSpace = true;
 				}
@@ -93,7 +93,39 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 			}
 		}
 		List<CardAction> actions = [
-		new ASpawn() {fromX = this.x, thing = new DormantWisp(){ DeathTurn = 1}, offset = offsetVal}];
+			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
+		return actions;
+	}
+
+	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
+	{
+		int offsetVal = -1;
+		bool openSpace = false; 
+		while(!openSpace)
+		{
+			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
+			{
+				openSpace = true;
+			}else
+			{
+				offsetVal *= -1;
+				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
+				{
+					openSpace = true;
+				}
+				else
+				{
+					offsetVal += 1;
+					offsetVal *= -1;
+				}
+			}
+			if (offsetVal <= -20)
+			{
+				openSpace = true;
+			}
+		}
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
 	}
 }
@@ -132,9 +164,7 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 			},
 			.. (bubbleShield ? [new TTGlossary("midrow.bubbleShield")] : Array.Empty<Tooltip>())
 		];
-
-	public required int DeathTurn { get; set; }
-
+	
 	public override List<CardAction> GetActions(State s, Combat c)
 	{
 		List<CardAction> actions =
@@ -146,8 +176,7 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 				targetPlayer = targetPlayer,
 			}
 		];
-		if (c.turn >= DeathTurn)
-			actions.Add(new AKillThisDrone { droneX = this.x });
+		actions.Add(new AKillThisDrone { droneX = this.x });
 		return actions;
 	}
 }
@@ -215,13 +244,46 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 		bool openSpace = false; 
 		while(!openSpace)
 		{
-			if (!c.stuff.TryGetValue(x, out var _))
+			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
 			{
 				openSpace = true;
 			}else
 			{
 				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x, out var _))
+				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
+				{
+					openSpace = true;
+				}
+				else
+				{
+					offsetVal += 1;
+					offsetVal *= -1;
+				}
+			}
+
+			if (offsetVal <= -20)
+			{
+				openSpace = true;
+			}
+		}
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
+		return actions;
+	}
+
+	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
+	{
+		int offsetVal = -1;
+		bool openSpace = false; 
+		while(!openSpace)
+		{
+			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
+			{
+				openSpace = true;
+			}else
+			{
+				offsetVal *= -1;
+				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
 				{
 					openSpace = true;
 				}
@@ -233,7 +295,7 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 			}
 		}
 		List<CardAction> actions = [
-		new ASpawn() {fromX = this.x, thing = new DormantGreaterWisp(){ DeathTurn = 1}, offset = offsetVal}];
+			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
 	}
 }
@@ -272,9 +334,7 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 			},
 			.. (bubbleShield ? [new TTGlossary("midrow.bubbleShield")] : Array.Empty<Tooltip>())
 		];
-
-	public required int DeathTurn { get; set; }
-
+	
 	public override List<CardAction> GetActions(State s, Combat c)
 	{
 		List<CardAction> actions =
@@ -286,8 +346,7 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 				targetPlayer = targetPlayer,
 			}
 		];
-		if (c.turn >= DeathTurn)
-			actions.Add(new AKillThisDrone { droneX = this.x });
+		actions.Add(new AKillThisDrone { droneX = this.x });
 		return actions;
 	}
 }
