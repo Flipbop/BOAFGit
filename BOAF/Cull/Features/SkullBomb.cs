@@ -30,11 +30,11 @@ internal sealed class SkullBomb : SpaceMine, IRegisterable
 
 	public override List<Tooltip> GetTooltips()
 		=> [
-			new GlossaryTooltip($"midrow.{ModEntry.Instance.Package.Manifest.UniqueName}::Wisp")
+			new GlossaryTooltip($"midrow.{ModEntry.Instance.Package.Manifest.UniqueName}::SkullBomb")
 			{
 				Icon = BombIcon.Sprite,
 				TitleColor = Colors.midrow,
-				Title = ModEntry.Instance.Localizations.Localize(["Cull","midrow", "Skullbomb", "name"]),
+				Title = ModEntry.Instance.Localizations.Localize(["Cull","midrow", "SkullBomb", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Cull","midrow", "SkullBomb", "description"]),
 			},
 			.. (bubbleShield ? [new TTGlossary("midrow.bubbleShield")] : Array.Empty<Tooltip>())
@@ -42,14 +42,20 @@ internal sealed class SkullBomb : SpaceMine, IRegisterable
 
 	public required int DeathTurn {get;set;}
 
+	public override List<CardAction>? GetActions(State s, Combat c)
+	{
+		List<CardAction> actions = [];
+		if (c.turn >= DeathTurn)
+			actions.Add(new AKillThisDrone{droneX = this.x});
+		return actions;
+	}
+
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
 	{
 		List<CardAction> actions = [
-			new AAttack() {damage = 3, fromDroneX = worldX, targetPlayer = false}, 
-			new AAttack() {damage = 3, fromDroneX = worldX, targetPlayer = true}
+			new ASpaceMineAttack() {targetPlayer = false, hurtAmount = 3}, 
+			new ASpaceMineAttack() {targetPlayer = true, hurtAmount = 3}, 
 		];
-		if (c.turn >= DeathTurn)
-			actions.Add(new AKillThisDrone{droneX = this.x});
 		return actions;
 	}
 }

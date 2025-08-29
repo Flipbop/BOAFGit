@@ -39,7 +39,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus() {status = Status.droneShift, statusAmount = 1},
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
 				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
 			],
 			Upgrade.B => [
@@ -50,7 +50,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AStatus() {status = Status.droneShift, statusAmount = 1}
+					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
 				).AsCardAction,
 				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
 				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}, offset = -1},
@@ -63,7 +63,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new AStatus() {status = Status.droneShift, statusAmount = 1}
+					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
 				).AsCardAction,
 				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1}},
 			]

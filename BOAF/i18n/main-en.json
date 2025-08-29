@@ -36,7 +36,7 @@
             },
             "SkullBomb": {
                 "name": "SKULL BOMB",
-                "de3scription": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself after 1 turn.</c>"
+                "description": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself after 1 turn.</c>"
             }
         },
         "status": {

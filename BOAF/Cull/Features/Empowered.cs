@@ -19,7 +19,7 @@ internal sealed class EmpoweredManager : IKokoroApi.IV2.IStatusRenderingApi.IHoo
 			var stacks = state.ship.Get(ModEntry.Instance.EmpoweredStatus.Status);
 			if (stacks <= 0)
 				return;
-			combat.Queue(new AStatus(){status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1*stacks, targetPlayer = true});
+			combat.Queue(new AStatus(){status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = stacks, targetPlayer = true});
 		});
 	}
 }

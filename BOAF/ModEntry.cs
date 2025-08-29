@@ -115,6 +115,9 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
 	[
 		typeof(Wisp),
+		typeof(GreaterWisp),
+		typeof(DormantWisp),
+		typeof(DormantGreaterWisp),
 		typeof(SkullBomb)
 	];
 	

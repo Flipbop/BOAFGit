@@ -39,17 +39,17 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ASoulHint(),
+				new ASoulHint() {hand = true},
 				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1},
 				new AHarvestAttack() {damage = GetDmg(s, 1)}
 			],
 			Upgrade.B => [
-				new ASoulHint(),
+				new ASoulHint() {hand = true},
 				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status))*2, xHint = 2},
-				new AStatus(){status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5}
+				new AStatus(){status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5, targetPlayer = true}
 			],
 			_ => [
-				new ASoulHint(),
+				new ASoulHint() {hand = true},
 				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1}
 			]
 			
