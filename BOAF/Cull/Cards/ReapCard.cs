@@ -33,9 +33,9 @@ internal sealed class ReapCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = upgrade switch
 			{
-				Upgrade.A => 2,
-				Upgrade.B => 4,
-				_ => 3,
+				Upgrade.A => 1,
+				Upgrade.B => 3,
+				_ => 2,
 			},
 			exhaust = true,
 			artOverlay = ModEntry.Instance.RareCullBorder

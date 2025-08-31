@@ -42,7 +42,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
+						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
@@ -51,7 +51,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
+						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
@@ -71,7 +71,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
+						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2}
@@ -80,7 +80,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(9),
+						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2}
@@ -92,7 +92,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
+						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
@@ -101,7 +101,7 @@ internal sealed class TelekinesisCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
+						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
 					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}

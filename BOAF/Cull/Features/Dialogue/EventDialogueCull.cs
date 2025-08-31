@@ -85,7 +85,7 @@ internal class EventDialogueCull
             }},
             {"GrandmaShop", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "neutral", "Chocolate peanut butter cups!.")
+                    new(EMod.countFromStart, 1, AmCull, "neutral", "Chocolate peanut butter cups!")
                 ]
             }},
             {"Knight_1", new(){

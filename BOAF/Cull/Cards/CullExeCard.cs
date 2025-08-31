@@ -19,7 +19,7 @@ internal sealed class CullExeCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CullExe", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "CullExe", "name"]).Localize
 		});
 	}
 
@@ -32,11 +32,12 @@ internal sealed class CullExeCard : Card, IRegisterable
 			artTint = "ffffff",
 			cost = upgrade == Upgrade.A ? 0 : 1,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["card", "CleoExe", "description", upgrade.ToString()], new { Count = GetChoiceCount() })
+			description = ModEntry.Instance.Localizations.Localize(["Cull","card", "CullExe", "description", upgrade.ToString()], new { Count = GetChoiceCount() })
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> [
+			new AStatus() {status = ModEntry.Instance.EmpoweredStatus.Status, targetPlayer = true, statusAmount = 1},
 			new ACardOffering
 			{
 				amount = GetChoiceCount(),

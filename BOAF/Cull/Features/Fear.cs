@@ -23,10 +23,10 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 					return;
 				
 				if (!combat.isPlayerTurn)
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
+					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = false, mode = AStatusMode.Set});
 				else
 				{
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = false, mode = AStatusMode.Set});
+					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
 				}
 			});
 		ModEntry.Instance.Harmony.Patch(
