@@ -18,7 +18,7 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 			{
 				owner = ModEntry.Instance.CullDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				
+				unremovable = true
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/SoulSiphon.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "SoulSiphon", "name"]).Localize,

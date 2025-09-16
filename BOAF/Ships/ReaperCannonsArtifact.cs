@@ -1,4 +1,5 @@
-﻿using Nanoray.PluginManager;
+﻿using System;
+using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("HunterCannons", new()
+		helper.Content.Artifacts.RegisterArtifact("ReaperCannons", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -46,5 +47,17 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 	{
 		base.OnTurnStart(state, combat);
 		peace = true;
+	}
+
+	public override void OnReceiveArtifact(State state)
+	{
+		base.OnReceiveArtifact(state);
+		string artifactType = "HunterCannons";
+		foreach (Artifact artifact in state.artifacts)
+		{
+			if (artifact.Key() == artifactType)
+				artifact.OnRemoveArtifact(state);
+		}
+		state.artifacts.RemoveAll((Predicate<Artifact>) (r => r.Key() == artifactType));
 	}
 }

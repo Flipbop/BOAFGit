@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<RootNamespace>Flipbop.BOAF</RootNamespace>
-		<Version>0.1.2</Version>
+		<Version>0.2.0</Version>
 
 		<TargetFramework>net8.0</TargetFramework>
 		<LangVersion>12.0</LangVersion>

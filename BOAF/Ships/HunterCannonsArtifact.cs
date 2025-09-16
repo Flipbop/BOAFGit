@@ -16,7 +16,8 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 			Meta = new()
 			{
 				owner = Deck.colorless,
-				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
+				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!),
+				unremovable = true
 			},
 			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/Artifacts/HunterCannons.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "HunterCannons", "name"]).Localize,

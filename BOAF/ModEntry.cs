@@ -446,6 +446,7 @@ public sealed class ModEntry : SimpleMod
             Description = AnyLocalizations.Bind(["ship", "Thanatos", "description"]).Localize
         });
 		#endregion
+		
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
 			new SemanticVersion(1, 3, 0),
