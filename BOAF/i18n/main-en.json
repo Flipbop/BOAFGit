@@ -1026,5 +1026,24 @@
         "card": {
                 
         }
+    },
+
+    
+    "ship": {
+        "Thanatos": {
+            "name": "Thanatos",
+            "description": "A large vessel with twin cannons. Built to hunt other ships."
+        },
+        
+        "artifact": {
+            "HunterCannons": {
+                "name": "HUNTER CANNONS",
+                "description": "If you did not attack on your turn, fire a 1 damage attack from both cannons at the end of your turn."
+            },
+            "ReaperCannons": {
+                "name": "REAPER CANNONS",
+                "description": "If you did not attack on your turn, fire TWO 1 damage attacks from both cannons at the end of your turn."
+            }
+        }
     }
 }

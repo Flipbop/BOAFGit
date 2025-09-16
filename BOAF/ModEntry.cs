@@ -22,6 +22,7 @@ public sealed class ModEntry : SimpleMod
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
 	
+	#region Cull
 	internal IDeckEntry CullDeck { get; }
 	internal IPlayableCharacterEntryV2 CullCharacter { get; }
 	internal IStatusEntry SoulEnergyStatus { get; }
@@ -37,12 +38,14 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry fearSprite { get; }
 	internal ISpriteEntry empoweredSprite { get; }
 	internal ISpriteEntry cloakedSprite { get; }
-
-
 	internal Spr UncommonCullBorder { get; }
 	internal Spr RareCullBorder { get; }
+	#endregion
 
-
+	#region Ships
+	IShipEntry ThanatosShip { get; }
+	
+	#endregion
 	public IModHelper helper { get; }
 	
 	
@@ -88,13 +91,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(ThreateningAuraArtifact),
 		typeof(OverclockedSiphonArtifact),
 		typeof(SoulReservesArtifact),
-		typeof(EnhancedFocusArtifact), 
+		typeof(EnhancedFocusArtifact),
+
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
 		typeof(AnimismArtifact),
 		typeof(CursedLanternArtifact),
 		typeof(EnchantedScytheArtifact), 
+		
+		typeof(ReaperCannonsArtifact)
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -110,6 +116,9 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> StarterArtifacts { get; } = [
 		typeof(SoulSiphonArtifact),
+		
+		typeof(HunterCannonsArtifact),
+
 	];
 
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
@@ -368,6 +377,75 @@ public sealed class ModEntry : SimpleMod
 		BGRunWin.charFullBodySprites.Add(CullDeck.Deck, CullFullBody.Sprite);
 		#endregion
 
+		
+		#region Ships
+		ThanatosShip = helper.Content.Ships.RegisterShip("Thanatos", new ShipConfiguration()
+        {
+            Ship = new StarterShip()
+            {
+                ship = new Ship()
+                {
+                    hull = 7,
+                    hullMax = 7,
+                    shieldMaxBase = 3,
+                    parts =
+                    {
+                        new Part
+                        {
+                            type = PType.cannon,
+                            skin = "cannon_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                        },
+                        new Part
+                        {
+                            type = PType.cockpit,
+                            skin = "cockpit_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.missiles,
+                            skin = "missiles_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                            flip = true
+                        },
+                        new Part
+                        {
+                            type = PType.cannon,
+                            skin = "cannon_artemis",
+                        }
+                    }
+                },
+                cards =
+                {
+                    new BasicShieldColorless(),
+                    new DodgeColorless(),
+                    new CannonColorless(),
+                    new CannonColorless()
+                },
+                artifacts =
+                {
+                    new ShieldPrep(),
+                    new HunterCannonsArtifact()
+                }
+            },
+            ExclusiveArtifactTypes = new HashSet<Type>()
+            {
+                typeof(HunterCannonsArtifact),
+                typeof(ReaperCannonsArtifact)
+            },
+            //UnderChassisSprite = "chassis_boxy",
+            Name = AnyLocalizations.Bind(["ship", "Thanatos", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["ship", "Thanatos", "description"]).Localize
+        });
+		#endregion
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
 			new SemanticVersion(1, 3, 0),
