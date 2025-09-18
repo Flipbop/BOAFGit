@@ -46,18 +46,18 @@ internal sealed class WispArrayCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = -1}
+					).SetShowOperator(false),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
 				).AsCardAction,
-				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2 + c.turn}},
+				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = 1}
+					).SetShowOperator(false),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
 				).AsCardAction,
 			],
 			Upgrade.B => [
@@ -67,18 +67,18 @@ internal sealed class WispArrayCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = -1}
+					).SetShowOperator(false),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
 				).AsCardAction,
-				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2 + c.turn}},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = 1}
+					).SetShowOperator(false),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
 				).AsCardAction,
 				],
 			_ =>
@@ -90,17 +90,17 @@ internal sealed class WispArrayCard : Card, IRegisterable
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = -1}
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
 				).AsCardAction,
-				new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, offset = 1}
+					).SetShowOperator(false),
+					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
 				).AsCardAction,
 			]
 		};

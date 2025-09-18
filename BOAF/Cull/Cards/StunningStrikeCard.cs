@@ -45,7 +45,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 2}
 				).AsCardAction,
 				new AHarvestAttack() {damage = GetDmg(s, 2)}
@@ -58,7 +58,7 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1}
 				).AsCardAction,
 				new AHarvestAttack() {damage = GetDmg(s, 2)}

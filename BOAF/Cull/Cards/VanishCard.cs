@@ -48,7 +48,7 @@ internal sealed class VanishCard : Card, IRegisterable
 							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 							Conditional.Constant(5),
 							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						),
+						).SetShowOperator(false),
 						new AStatus()
 							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
 					).AsCardAction,
@@ -61,7 +61,7 @@ internal sealed class VanishCard : Card, IRegisterable
 							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 							Conditional.Constant(6),
 							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						),
+						).SetShowOperator(false),
 						new AStatus()
 							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
 					).AsCardAction,
@@ -71,7 +71,7 @@ internal sealed class VanishCard : Card, IRegisterable
 							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 							Conditional.Constant(8),
 							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						),
+						).SetShowOperator(false),
 						new AStatus() { targetPlayer = true, statusAmount = 1, status = Status.perfectShield }
 					).AsCardAction,
 				],
@@ -83,7 +83,7 @@ internal sealed class VanishCard : Card, IRegisterable
 							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 							Conditional.Constant(6),
 							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						),
+						).SetShowOperator(false),
 						new AStatus()
 							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
 					).AsCardAction,

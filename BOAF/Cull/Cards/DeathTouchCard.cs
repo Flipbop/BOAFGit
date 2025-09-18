@@ -42,38 +42,37 @@ internal sealed class DeathTouchCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(10),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack(){damage = GetDmg(s, 20)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(10),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 20)})
+					.AsCardAction,
 				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			],
 			Upgrade.B => [
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(10),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack(){damage = GetDmg(s, 20)}
-				).AsCardAction,
-				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 3},
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(10),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 20)})
+					.AsCardAction,
 			],
 			_ => [
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(10),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack(){damage = GetDmg(s, 20)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(10),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 20)})
+					.AsCardAction,
 				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
 			]
 		};

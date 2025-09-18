@@ -45,7 +45,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 1}
 				).AsCardAction
 			],
@@ -57,7 +57,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 3}
 				).AsCardAction
 			],
@@ -69,7 +69,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 2}
 				).AsCardAction
 			]

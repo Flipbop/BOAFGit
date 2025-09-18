@@ -44,7 +44,7 @@ internal sealed class QuickCastCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
 				).AsCardAction
 			],
@@ -56,7 +56,7 @@ internal sealed class QuickCastCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
 				).AsCardAction
 			],
@@ -68,7 +68,7 @@ internal sealed class QuickCastCard : Card, IRegisterable
 					IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 					Conditional.Constant(3),
 					IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-				),
+				).SetShowOperator(false),
 				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
 				).AsCardAction
 			]

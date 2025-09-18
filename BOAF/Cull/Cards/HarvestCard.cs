@@ -33,14 +33,15 @@ internal sealed class HarvestCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A =>
+			Upgrade.B =>
 			[
 				new AHarvestAttack { damage = GetDmg(s, 2) },
 				new AHarvestAttack { damage = GetDmg(s, 2) },
 			],
-			Upgrade.B => [
-				new AAttack { damage = GetDmg(s, 1), piercing = true},
-				new AAttack { damage = GetDmg(s, 1), piercing = true},
+			Upgrade.A => [
+				new AHarvestAttack { damage = GetDmg(s, 1) },
+				new AHarvestAttack { damage = GetDmg(s, 1) },
+				new AHarvestAttack { damage = GetDmg(s, 1) },
 			],
 			_ => [
 				new AHarvestAttack { damage = GetDmg(s, 1) },

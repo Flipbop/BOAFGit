@@ -37,12 +37,12 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new ASpawn(){offset = 1, thing = new SkullBomb(){DeathTurn = 2 + c.turn}, fromPlayer = true},
-				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 2 + c.turn}, fromPlayer = true},
+				new ASpawn(){offset = 1, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
+				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
 				new AMove() {dir = -1, targetPlayer = true, }
 			],
 			_=>[
-				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 2 + c.turn}, fromPlayer = true},
+				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
 				new AMove() {dir = -2, targetPlayer = true, }
 			]
 		};

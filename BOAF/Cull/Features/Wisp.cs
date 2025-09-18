@@ -128,7 +128,20 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
 	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new DormantWisp(), worldX = x, byPlayer = wasPlayer}
+		];
+		return actions;
+	}
 }
+
+
+
+
+
 
 internal sealed class DormantWisp : AttackDrone, IRegisterable
 {
@@ -179,7 +192,31 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 		actions.Add(new AKillThisDrone { droneX = this.x });
 		return actions;
 	}
+	public override bool Invincible()
+	{
+		return true;
+	}
+
+	public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new Wisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
+		return actions;
+	}
+
+	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new Wisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
+		return actions;
+	}
 }
+
+
+
+
+
+
 internal sealed class GreaterWisp : AttackDrone, IRegisterable
 {
 	private static ISpriteEntry GreaterWispSprite = null!;
@@ -298,7 +335,20 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
 	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new DormantWisp(), worldX = x, byPlayer = wasPlayer}
+		];
+		return actions;
+	}
 }
+
+
+
+
+
 
 internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 {
@@ -347,6 +397,24 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 			}
 		];
 		actions.Add(new AKillThisDrone { droneX = this.x });
+		return actions;
+	}
+	public override bool Invincible()
+	{
+		return true;
+	}
+
+	public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
+		return actions;
+	}
+
+	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
+	{
+		List<CardAction> actions = [
+			new ASpawnFromMidrow() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
 		return actions;
 	}
 }

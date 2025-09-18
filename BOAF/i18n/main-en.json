@@ -20,19 +20,19 @@
         "midrow": {
             "Wisp" : {
                 "name" : "WISP",
-                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after it's second turn.</c>"
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Turns into a Greater Wisp after it's second turn.</c>"
             },
             "DormantWisp" : {
                 "name": "DORMANT WISP",
-                "description": "Shoots a <c=redd>1</c> damage shot once per turn, then destroys itself."
+                "description": "Shoots a <c=redd>1</c> damage shot once per turn, then destroys itself. If attacked, will turn into a <c=keyword>Wisp</c>."
             },
             "GreaterWisp" : {
                 "name": "GREATER WISP",
-                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Disappears after it's second turn.</c>"
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Turns into a Dormant Greater Wisp after it's second turn.</c>"
             },
             "DormantGreaterWisp" : {
                 "name": "DORMANT GREATER WISP",
-                "description" : "Shoots a <c=redd>2</c> damage shot once per turn, then destroys itself."
+                "description" : "Shoots a <c=redd>2</c> damage shot once per turn, then destroys itself. If attacked, will turn into a <c=keyword>Greater Wisp</c>"
             },
             "SkullBomb": {
                 "name": "SKULL BOMB",

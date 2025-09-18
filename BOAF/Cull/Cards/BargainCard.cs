@@ -48,9 +48,9 @@ internal sealed class BargainCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AHurt() {hurtAmount = 1, targetPlayer = true}
-				).AsCardAction,
+					).SetShowOperator(false),
+					new AHurt() {hurtAmount = 1, targetPlayer = true})
+					.AsCardAction,
 				new AHarvestAttack() {damage = GetDmg(s,3)},
 			],
 			_ => [

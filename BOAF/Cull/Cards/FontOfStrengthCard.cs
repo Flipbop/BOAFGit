@@ -43,7 +43,7 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
 				).AsCardAction,
 			],
@@ -54,7 +54,7 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
 				).AsCardAction,
 				new AAttack() {damage = GetDmg(s, 1)}
@@ -66,7 +66,7 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
 				).AsCardAction
 			]

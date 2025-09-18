@@ -41,14 +41,14 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 2 + c.turn}, fromPlayer = true},
+				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -57,7 +57,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -66,7 +66,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -75,19 +75,19 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(9),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 			],
 			Upgrade.B => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, fromPlayer = true},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(1),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -96,7 +96,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -105,7 +105,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -114,19 +114,19 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 			],
 			_ => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 2 + c.turn}, fromPlayer = true},
+				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -135,7 +135,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -144,7 +144,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
@@ -153,7 +153,7 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(9),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
 				).AsCardAction,
 			]

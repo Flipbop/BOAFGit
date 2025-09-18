@@ -25,7 +25,7 @@ internal sealed class EnchantedScytheArtifact : Artifact, IRegisterable
 
 	public override int ModifyBaseDamage(int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
 	{
-		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5)
+		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5 && fromPlayer)
 		{
 			return base.ModifyBaseDamage(baseDamage, card, state, combat, fromPlayer) +1;
 		}

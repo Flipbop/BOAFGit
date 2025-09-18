@@ -40,7 +40,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 2 + c.turn}},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
 			],
 			Upgrade.B => [
 				Conditional.MakeAction(
@@ -49,11 +49,11 @@ internal sealed class NecromancyCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
 				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 2 + c.turn}},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 2 + c.turn}, offset = -1},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}, offset = -1},
 			],
 			_ => [
 				Conditional.MakeAction(
@@ -62,10 +62,10 @@ internal sealed class NecromancyCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
 				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 2 + c.turn}},
+				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
 			]
 		};
 }

@@ -39,119 +39,116 @@ internal sealed class ExcessiveForceCard : Card, IRegisterable
 			Upgrade.A => [
 				new AAttack() {damage = GetDmg(s, 1)},
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 2)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(3),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 2)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 2)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(5),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 2)})
+					.AsCardAction,Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(8),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 2)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(8),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 2)}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(9),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status}
-				).AsCardAction
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(9),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status})
+					.AsCardAction,
 			],
 			Upgrade.B => [
 				new AAttack() {damage = GetDmg(s, 1)},
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(2),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(2),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(4),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(7),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(8),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AStatus() {targetPlayer = true, statusAmount = 2, status = ModEntry.Instance.SoulDrainStatus.Status}
-				).AsCardAction
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(8),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AStatus() {targetPlayer = true, statusAmount = 2, status = ModEntry.Instance.SoulDrainStatus.Status})
+					.AsCardAction,
 			],
 			_ => [
 				new AAttack() {damage = GetDmg(s, 1)},
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(3),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(5),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,Conditional.MakeAction(
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(8),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AAttack(){damage = GetDmg(s, 1)})
+					.AsCardAction,
 				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(8),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AAttack() {damage = GetDmg(s, 1)}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(9),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
-					new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status}
-				).AsCardAction
+						Conditional.Equation(
+							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+							Conditional.Constant(9),
+							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+						).SetShowOperator(false),
+						new AStatus() {targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.SoulDrainStatus.Status})
+					.AsCardAction,
 			]
 		};
 }

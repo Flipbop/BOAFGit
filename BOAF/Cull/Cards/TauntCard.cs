@@ -47,7 +47,7 @@ internal sealed class TauntCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction,
 			],
@@ -58,7 +58,7 @@ internal sealed class TauntCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction,
 				new ASpawn() {fromPlayer = true, thing = new SpaceMine() {bigMine = true}},
@@ -68,7 +68,7 @@ internal sealed class TauntCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction,
 			]

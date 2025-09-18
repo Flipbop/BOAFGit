@@ -40,6 +40,9 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry cloakedSprite { get; }
 	internal Spr UncommonCullBorder { get; }
 	internal Spr RareCullBorder { get; }
+	internal List<Spr> neutralAnim { get; }
+	internal List<Spr> glowAnim { get; }
+
 	#endregion
 
 	#region Ships
@@ -148,6 +151,18 @@ public sealed class ModEntry : SimpleMod
 		empoweredSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"));
 		cloakedSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"));
 
+		neutralAnim = Enumerable.Range(0, 4)
+			.Select(i =>
+				helper.Content.Sprites
+					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Neutral/{i}.png"))
+					.Sprite)
+			.ToList();
+		glowAnim = Enumerable.Range(0, 4)
+			.Select(i =>
+				helper.Content.Sprites
+					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
+			.ToList();
+
 		this.helper = helper;
 		
 		Instance = this;
@@ -209,9 +224,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "neutral",
-				Frames = Enumerable.Range(0, 4)
-					.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Neutral/{i}.png")).Sprite)
-					.ToList()
+				Frames = neutralAnim
 			},
 			MiniAnimation = new()
 			{
@@ -266,9 +279,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "glow",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
-				.ToList()
+			Frames = glowAnim
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
@@ -399,6 +410,7 @@ public sealed class ModEntry : SimpleMod
                         {
                             type = PType.wing,
                             skin = "wing_player",
+                            damageModifier = PDamMod.weak
                         },
                         new Part
                         {
@@ -414,7 +426,8 @@ public sealed class ModEntry : SimpleMod
                         {
                             type = PType.wing,
                             skin = "wing_player",
-                            flip = true
+                            flip = true,
+                            damageModifier = PDamMod.weak
                         },
                         new Part
                         {
@@ -475,8 +488,8 @@ public sealed class ModEntry : SimpleMod
 		_ = new EventDialogueCull();
 		_ = new MemoryDialogueCull();		
 		_ = new StoryDialogueCull();
-		
-		
+		_ = new SoulPortraitManager();
+
 	}
 
 
