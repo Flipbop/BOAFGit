@@ -89,7 +89,7 @@ internal sealed class WispArrayCard : Card, IRegisterable
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
 						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					),
+					).SetShowOperator(false),
 					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
 				).AsCardAction,
 				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}},

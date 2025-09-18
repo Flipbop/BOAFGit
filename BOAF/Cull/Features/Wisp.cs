@@ -59,7 +59,7 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 			damage = 1, 
 			targetPlayer = targetPlayer,
 		}];
-		if (c.turn >= DeathTurn)
+		if (c.turn >= DeathTurn-1)
 			actions.Add(new AKillThisDrone{droneX = this.x});
 		return actions;
 	}
@@ -69,7 +69,7 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 		return true;
 	}
 
-	public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
+	/*public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
 	{
 		int offsetVal = -1;
 		bool openSpace = false; 
@@ -127,8 +127,7 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 		List<CardAction> actions = [
 			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
-	}
-	
+	}*/
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
 	{
 		List<CardAction> actions = [
@@ -265,7 +264,7 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 			damage = 2, 
 			targetPlayer = targetPlayer,
 		}];
-		if (c.turn >= DeathTurn)
+		if (c.turn >= DeathTurn-1)
 			actions.Add(new AKillThisDrone{droneX = this.x});
 		return actions;
 	}
@@ -275,7 +274,7 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 		return true;
 	}
 
-	public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
+	/*public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
 	{
 		int offsetVal = -1;
 		bool openSpace = false; 
@@ -334,7 +333,7 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 		List<CardAction> actions = [
 			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
 		return actions;
-	}
+	}*/
 	
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
 	{

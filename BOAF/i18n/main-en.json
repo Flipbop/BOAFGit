@@ -20,7 +20,7 @@
         "midrow": {
             "Wisp" : {
                 "name" : "WISP",
-                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. When attacked, will create a <c=keyword>Dormant Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Turns into a Greater Wisp after it's second turn.</c>"
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn. <c=downside>Turns into a Dormant Wisp after it's first turn.</c>"
             },
             "DormantWisp" : {
                 "name": "DORMANT WISP",
@@ -28,7 +28,7 @@
             },
             "GreaterWisp" : {
                 "name": "GREATER WISP",
-                "description": "Shoots a <c=redd>2</c> damage shot once per turn. When moved, will create a <c=keyword>Dormant Greater Wisp</c> at the nearest open location instead of being destroyed. <c=downside>Turns into a Dormant Greater Wisp after it's second turn.</c>"
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. <c=downside>Turns into a Dormant Greater Wisp after it's first turn.</c>"
             },
             "DormantGreaterWisp" : {
                 "name": "DORMANT GREATER WISP",

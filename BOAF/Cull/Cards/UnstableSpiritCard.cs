@@ -33,129 +33,82 @@ internal sealed class UnstableSpiritCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "8A3388",
-			cost = 2,
-			artOverlay = ModEntry.Instance.RareCullBorder
+			cost = 1,
+			artOverlay = ModEntry.Instance.RareCullBorder,
+			flippable = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
+				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new ADroneMove(){dir = -1, playerDidIt = true}
+				).AsCardAction,
+				new ASpawn() {thing = new DormantGreaterWisp(), fromPlayer = true},
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new ADroneMove(){dir = -1, playerDidIt = true}
+				).AsCardAction,
 				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(9),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
 			],
 			Upgrade.B => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
+				new ASpawn() {thing = new DormantWisp(), fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(1),
+						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
+					new ADroneMove(){dir = -1, playerDidIt = true}
 				).AsCardAction,
+				new ASpawn() {thing = new Wisp() {DeathTurn = 1 + c.turn}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
+						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
+					new ADroneMove(){dir = -1, playerDidIt = true}
 				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
+				new ASpawn() {thing = new DormantGreaterWisp(), fromPlayer = true},
 			],
 			_ => [
-				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, fromPlayer = true},
+				new ASpawn() {thing = new DormantWisp(), fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
+						Conditional.Constant(6),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
+					new ADroneMove(){dir = -1, playerDidIt = true}
 				).AsCardAction,
+				new ASpawn() {thing = new Wisp() {DeathTurn = 1 + c.turn}, fromPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
+						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
+					new ADroneMove(){dir = -1, playerDidIt = true}
 				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(9),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Asteroid(), fromPlayer = true}
-				).AsCardAction,
+				new ASpawn() {thing = new DormantGreaterWisp(), fromPlayer = true},
 			]
 		};
 	
