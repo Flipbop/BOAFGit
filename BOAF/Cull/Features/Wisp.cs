@@ -338,7 +338,7 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
 	{
 		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantWisp(), worldX = x, byPlayer = wasPlayer}
+			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), worldX = x, byPlayer = wasPlayer}
 		];
 		return actions;
 	}
