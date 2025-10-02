@@ -36,7 +36,7 @@
             },
             "SkullBomb": {
                 "name": "SKULL BOMB",
-                "description": "When destroyed, each ship next to it will take <c=redd>3</c> damage. <c=downside>Destroys itself on it's second turn.</c>"
+                "description": "When shot, will deal <c=redd>3</c> damage to the other ship. <c=downside>Destroys itself on it's second turn, attacking both ships.</c>"
             }
         },
         "status": {
@@ -1034,6 +1034,23 @@
             "name": "Thanatos",
             "description": "A large vessel with twin cannons. Built to hunt other ships."
         },
+        "Vulcan": {
+            "name": "Vulcan",
+            "description": "A modified freighter with a thick hull. Built to withstand the toughest of punishments."
+        },
+        "Athena": {
+            "name": "Athena",
+            "description": "A war commander's old ship. Contains CPU data for thousands of war strategies."
+        },
+        "Hermes": {
+            "name": "Hermes",
+            "description": "A decommissioned tourist vessel. It's erratic and loose controls brought it's downfall."
+        },
+        "Neptune": {
+            "name": "Neptune",
+            "description": "A farmer's ship used for watering crops. Has 2 missile bays that were repurposed into cold storage."
+        },
+        
         
         "artifact": {
             "HunterCannons": {
@@ -1042,7 +1059,7 @@
             },
             "ReaperCannons": {
                 "name": "REAPER CANNONS",
-                "description": "Replaces <c=artifact>HUNTER CANNONS</c>. If you did not attack on your turn, fire TWO 1 damage attacks from both cannons at the end of your turn. "
+                "description": "If you did not attack on your turn, fire TWO 1 damage attacks from both cannons at the end of your turn. Replaces <c=artifact>HUNTER CANNONS</c>."
             }
         }
     }

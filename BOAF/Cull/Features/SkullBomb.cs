@@ -52,10 +52,20 @@ internal sealed class SkullBomb : SpaceMine, IRegisterable
 
 	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
 	{
-		List<CardAction> actions = [
-			new ASpaceMineAttack() {targetPlayer = false, hurtAmount = 3, worldX = worldX}, 
-			new ASpaceMineAttack() {targetPlayer = true, hurtAmount = 3, worldX = worldX}, 
-		];
+		List<CardAction> actions;
+		if (c.turn >= DeathTurn)
+		{
+			actions = [
+				new ASpaceMineAttack() {targetPlayer = false, hurtAmount = 3, worldX = worldX}, 
+				new ASpaceMineAttack() {targetPlayer = true, hurtAmount = 3, worldX = worldX}, 
+			];
+		}
+		else
+		{
+			actions = [
+				new ASpaceMineAttack() {targetPlayer = !wasPlayer, hurtAmount = 3, worldX = worldX}, 
+			];
+		}
 		return actions;
 	}
 }
