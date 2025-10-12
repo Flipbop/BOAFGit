@@ -40,11 +40,17 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry cloakedSprite { get; }
 	internal Spr UncommonCullBorder { get; }
 	internal Spr RareCullBorder { get; }
-	internal List<Spr> neutralAnim { get; }
-	internal List<Spr> glowAnim { get; }
+	internal List<Spr> cullNeutralAnim { get; }
+	internal List<Spr> cullGlowAnim { get; }
 
 	#endregion
+	#region Jay
+	internal IDeckEntry JayDeck { get; }
+	internal IPlayableCharacterEntryV2 JayCharacter { get; }
+	
 
+	#endregion
+	
 	#region Ships
 	IShipEntry ThanatosShip { get; }
 	
@@ -62,6 +68,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(ExcessiveForceCard),
 		typeof(RealignCard),
 		typeof(FlightyCard),
+		
+		typeof(ReorganizeCard),
+		typeof(SensoryShotCard),
+		typeof(AmplifierCard),
+		typeof(ReadTheContractCard),
+		typeof(CommandCenterCard),
+		typeof(CommsHubCard),
+		typeof(ControlZCard),
+		typeof(JumpTheLineCard),
+		typeof(ShiftCard),
 	];
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
@@ -72,6 +88,14 @@ public sealed class ModEntry : SimpleMod
 		typeof(TauntCard),
 		typeof(PlayingWithFireCard), 
 		typeof(NoxoiusCloudCard),
+		
+		typeof(HeavyArmoringCard),
+		typeof(OptimizeCard),
+		typeof(EscapePlanCard),
+		typeof(LaunchCodesCard),
+		typeof(SignalRelayCard),
+		typeof(MixItUpCard), 
+		typeof(ShootingGalleryCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
@@ -80,14 +104,30 @@ public sealed class ModEntry : SimpleMod
 		typeof(ReapCard),
 		typeof(UnstableSpiritCard),
 		typeof(DeathTouchCard),
+		
+		typeof(CannonConstructorCard),
+		typeof(FactoryResetCard),
+		typeof(BareMinimumCard),
+		typeof(OveruseCard),
+		typeof(SelectiveSensorsCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
 		typeof(HarmlessSiphonCard),
+		
+		typeof(InspectionCard),
+	];
+	
+	internal static IReadOnlyList<Type> EXECardTypes { get; } = [
+		typeof(CullExeCard),
+		typeof(JayExeCard),
+		/*typeof(LunaExeCard),
+		typeof(CentiExeCard)
+		typeof(EvaExeCard)*/
 	];
 
 	internal static IEnumerable<Type> AllCardTypes { get; }
-		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, typeof(CullExeCard), ..SpecialCardTypes];
+		= [..CommonCardTypes, ..UncommonCardTypes, ..RareCardTypes, ..EXECardTypes, ..SpecialCardTypes];
 
 	internal static IReadOnlyList<Type> CommonArtifacts { get; } = [
 		typeof(MercifulReaperArtifact),
@@ -95,13 +135,20 @@ public sealed class ModEntry : SimpleMod
 		typeof(OverclockedSiphonArtifact),
 		typeof(SoulReservesArtifact),
 		typeof(EnhancedFocusArtifact),
-
+		
+		typeof(CodeInspectionArtifact),
+		typeof(FinalTestArtifact),
+		typeof(CellTowerArtifact),
+		typeof(ReactiveMaterialsArtifact),
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
 		typeof(AnimismArtifact),
 		typeof(CursedLanternArtifact),
 		typeof(EnchantedScytheArtifact), 
+		
+		typeof(BlueprintsArtifact),
+		typeof(EnhancedSensorsArtifact),
 		
 		typeof(ReaperCannonsArtifact)
 	];
@@ -151,13 +198,13 @@ public sealed class ModEntry : SimpleMod
 		empoweredSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"));
 		cloakedSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"));
 
-		neutralAnim = Enumerable.Range(0, 4)
+		cullNeutralAnim = Enumerable.Range(0, 4)
 			.Select(i =>
 				helper.Content.Sprites
 					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Neutral/{i}.png"))
 					.Sprite)
 			.ToList();
-		glowAnim = Enumerable.Range(0, 4)
+		cullGlowAnim = Enumerable.Range(0, 4)
 			.Select(i =>
 				helper.Content.Sprites
 					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
@@ -198,7 +245,7 @@ public sealed class ModEntry : SimpleMod
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
-
+		
 		#region Cull Character
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
@@ -224,7 +271,7 @@ public sealed class ModEntry : SimpleMod
 			{
 				CharacterType = CullDeck.UniqueName,
 				LoopTag = "neutral",
-				Frames = neutralAnim
+				Frames = cullNeutralAnim
 			},
 			MiniAnimation = new()
 			{
@@ -279,7 +326,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = CullDeck.UniqueName,
 			LoopTag = "glow",
-			Frames = glowAnim
+			Frames = cullGlowAnim
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
@@ -387,7 +434,118 @@ public sealed class ModEntry : SimpleMod
 		CullFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CullDeck.Deck, CullFullBody.Sprite);
 		#endregion
+		# region Jay Character
+		JayDeck = helper.Content.Decks.RegisterDeck("Jay", new()
+		{
+			Definition = new() { color = new("001ab7"), titleColor = Colors.white },
+			DefaultCardArt = StableSpr.cards_colorless,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/FrameCommon.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Jay","character", "name"]).Localize,
+			ShineColorOverride = _ => new Color(0, 0, 0),
+		});
 
+		JayCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Jay", new()
+		{
+			Deck = JayDeck.Deck,
+			Description = this.AnyLocalizations.Bind(["Jay","character", "description"]).Localize,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/CharacterFrame.png")).Sprite,
+			NeutralAnimation = new()
+			{
+				CharacterType = JayDeck.UniqueName,
+				LoopTag = "neutral",
+				Frames = Enumerable.Range(0, 4)
+					.Select(i =>
+						helper.Content.Sprites
+							.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Neutral/{i}.png"))
+							.Sprite)
+					.ToList()
+			},
+			MiniAnimation = new()
+			{
+				CharacterType = JayDeck.UniqueName,
+				LoopTag = "mini",
+				Frames = [
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/mini.png")).Sprite
+				]
+			},
+			Starters = new()
+			{
+				cards = [
+					new ReorganizeCard(),
+					new SensoryShotCard()
+				]
+			},
+			SoloStarters = new StarterDeck()
+			{
+				cards = [
+					new ReorganizeCard(),
+					new SensoryShotCard(),
+					new AmplifierCard(),
+					new ControlZCard(),
+					new CannonColorless(),
+					new BasicShieldColorless()
+					],
+			},
+			ExeCardType = typeof(JayExeCard)
+		});
+		
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "gameover",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/GameOver/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "squint",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Squint/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "nervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Nervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Angry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "tear",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Cry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "sad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Sad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "sob",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Sob/{i}.png")).Sprite)
+				.ToList()
+		});
+		# endregion
 		
 		#region Ships
 		ThanatosShip = helper.Content.Ships.RegisterShip("Thanatos", new ShipConfiguration()
@@ -410,7 +568,6 @@ public sealed class ModEntry : SimpleMod
                         {
                             type = PType.wing,
                             skin = "wing_player",
-                            damageModifier = PDamMod.weak
                         },
                         new Part
                         {
