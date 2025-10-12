@@ -18,12 +18,12 @@ internal sealed class CommandCenterCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Flighty", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "CommandCenter", "name"]).Localize
 		});
 	}
 

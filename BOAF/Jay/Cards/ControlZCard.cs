@@ -14,13 +14,13 @@ internal sealed class ControlZCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true,
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "HarmlessSiphon", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "ControlZ", "name"]).Localize
 		});
 	}
 
@@ -32,6 +32,10 @@ internal sealed class ControlZCard : Card, IRegisterable
 			temporary = true,
 			retain = true,
 			recycle = upgrade == Upgrade.B,
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"Jay", "card", "ControlZ", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

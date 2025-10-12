@@ -19,7 +19,7 @@ internal sealed class JayExeCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "CullExe", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "card", "JayExe", "name"]).Localize
 		});
 	}
 

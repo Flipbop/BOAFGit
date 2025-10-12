@@ -17,12 +17,12 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/NecessarySacrifice.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "NoxiousCloud", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/HeavyArmoring.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "HeavyArmoring", "name"]).Localize
 		});
 	}
 
@@ -32,7 +32,10 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = 2,
 			exhaust = true,
-			artOverlay = ModEntry.Instance.UncommonCullBorder
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"Jay", "card", "HeavyArmoring", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

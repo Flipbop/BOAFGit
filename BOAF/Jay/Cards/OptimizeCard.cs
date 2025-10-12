@@ -14,12 +14,12 @@ internal sealed class OptimizeCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/MaximumEffort.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "PlayingWithFire", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/Optimize.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "Optimize", "name"]).Localize
 		});
 	}
 
@@ -29,7 +29,6 @@ internal sealed class OptimizeCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.B ? 2: 1,
 			flippable = upgrade == Upgrade.A,
-			artOverlay = ModEntry.Instance.UncommonCullBorder
 
 		};
 

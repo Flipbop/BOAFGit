@@ -18,12 +18,12 @@ internal sealed class SignalRelayCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/CleanSlate.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Reap", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/SignalRelay.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "SignalRelay", "name"]).Localize
 		});
 	}
 
@@ -38,7 +38,6 @@ internal sealed class SignalRelayCard : Card, IRegisterable
 				_ => 2,
 			},
 			exhaust = true,
-			artOverlay = ModEntry.Instance.RareCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

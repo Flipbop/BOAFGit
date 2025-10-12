@@ -17,12 +17,12 @@ internal sealed class FactoryResetCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ShuffleUpgrade.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Telekinesis", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/FactoryReset.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "FactoryReset", "name"]).Localize
 		});
 	}
 
@@ -31,6 +31,10 @@ internal sealed class FactoryResetCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 1,
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"Jay", "card", "FactoryReset", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

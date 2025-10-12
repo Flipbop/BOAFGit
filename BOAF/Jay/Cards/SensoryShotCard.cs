@@ -18,12 +18,12 @@ internal sealed class SensoryShotCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/PermaFix.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Cripple", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/SensoryShot.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "SensoryShot", "name"]).Localize
 		});
 	}
 
@@ -33,11 +33,7 @@ internal sealed class SensoryShotCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 2 : 3,
 			exhaust = true,
-			description =
-				ModEntry.Instance.Localizations.Localize([
-					"Cull", "card", "Cripple", "description", upgrade.ToString()
-				]),
-			artOverlay = ModEntry.Instance.RareCullBorder
+			
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

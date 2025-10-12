@@ -17,12 +17,12 @@ internal sealed class ShootingGalleryCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ImprovedCannons.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull", "card", "StunningStrike", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/ShootingGallery.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "card", "ShootingGallery", "name"]).Localize
 		});
 	}
 
@@ -31,7 +31,6 @@ internal sealed class ShootingGalleryCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = upgrade == Upgrade.A ? 0 : 1,
-			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

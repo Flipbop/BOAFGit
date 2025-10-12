@@ -20,12 +20,12 @@ internal sealed class BareMinimumCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ApologizeNextLoop.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "UnstableSpirit", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/BareMinimum.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "BareMinimum", "name"]).Localize
 		});
 	}
 
@@ -34,7 +34,6 @@ internal sealed class BareMinimumCard : Card, IRegisterable
 		{
 			artTint = "8A3388",
 			cost = 1,
-			artOverlay = ModEntry.Instance.RareCullBorder,
 			flippable = true
 		};
 

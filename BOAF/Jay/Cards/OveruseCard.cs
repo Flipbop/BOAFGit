@@ -19,12 +19,12 @@ internal sealed class OveruseCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CullDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/SeekerBarrage.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Vanish", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/Overuse.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "Overuse", "name"]).Localize
 		});
 	}
 
@@ -34,7 +34,10 @@ internal sealed class OveruseCard : Card, IRegisterable
 			artTint = "8A3388",
 			cost = 2,
 			exhaust = true,
-			artOverlay = ModEntry.Instance.RareCullBorder
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"Jay", "card", "Overuse", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
