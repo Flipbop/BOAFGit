@@ -29,7 +29,7 @@ internal sealed class MixItUpCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 1: 2,
 			description =
 				ModEntry.Instance.Localizations.Localize([

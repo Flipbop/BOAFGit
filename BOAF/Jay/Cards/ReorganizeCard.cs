@@ -8,7 +8,6 @@ namespace Flipbop.BOAF;
 
 internal sealed class ReorganizeCard : Card, IRegisterable
 {
-	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -28,33 +27,20 @@ internal sealed class ReorganizeCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
-			cost = 1,
+			artTint = "FFFFFF",
+			cost = upgrade == Upgrade.A? 0 : 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AHurt() {hurtAmount = 1, targetPlayer = true},
-				new AHarvestAttack() {damage = GetDmg(s,2)},
-				new AHarvestAttack() {damage = GetDmg(s,2)}
-			],
 			Upgrade.B => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AHurt() {hurtAmount = 1, targetPlayer = true})
-					.AsCardAction,
-				new AHarvestAttack() {damage = GetDmg(s,3)},
+				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
+				new AReconfigure(){Amount = 2}
 			],
 			_ => [
-				new AHurt() {hurtAmount = 1, targetPlayer = true},
-				new AHarvestAttack() {damage = GetDmg(s,3)},
+				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
 			]
 		};
 }

@@ -26,7 +26,7 @@ internal sealed class PlayingWithFireCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.B ? 2: 1,
 			flippable = upgrade == Upgrade.A,
 			artOverlay = ModEntry.Instance.UncommonCullBorder

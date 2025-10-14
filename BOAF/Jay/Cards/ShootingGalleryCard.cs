@@ -29,38 +29,32 @@ internal sealed class ShootingGalleryCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
-			cost = upgrade == Upgrade.A ? 0 : 1,
+			artTint = "FFFFFF",
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new AAttack(){damage = GetDmg(s, 1)},
+				new AReconfigure(){Amount = 1},
+				new AAttack(){damage = GetDmg(s, 2)}
+			],
 			Upgrade.B =>
 			[
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 2}
-				).AsCardAction,
-				new AHarvestAttack() {damage = GetDmg(s, 2)}
+				new AAttack(){damage = GetDmg(s, 1)},
+				new AReconfigure(){Amount = 1},
+				new AAttack(){damage = GetDmg(s, 1)},
+				new AReconfigure(){Amount = 1},
+				new AAttack(){damage = GetDmg(s, 1)}
 			],
 			_ =>
 			[
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1}
-				).AsCardAction,
-				new AHarvestAttack() {damage = GetDmg(s, 2)}
+				new AAttack(){damage = GetDmg(s, 1)},
+				new AReconfigure(){Amount = 1},
+				new AAttack(){damage = GetDmg(s, 1)}
+
 			]
 
 		};

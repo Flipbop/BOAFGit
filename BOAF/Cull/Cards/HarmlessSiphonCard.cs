@@ -27,7 +27,7 @@ internal sealed class HarmlessSiphonCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = 0,
 			temporary = true,
 			retain = true,

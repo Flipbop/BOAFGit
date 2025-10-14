@@ -26,7 +26,7 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = 1,
 			description =
 				ModEntry.Instance.Localizations.Localize([

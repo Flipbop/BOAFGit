@@ -32,40 +32,20 @@ internal sealed class ShiftCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 2: 1,
+			cost = 1,
+			flippable = upgrade == Upgrade.A
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
-			],
 			Upgrade.B => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
-				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}, offset = -1},
+				new AMove(){dir = 3, targetPlayer = true},
+				new AReconfigure(){Amount = 2}
 			],
 			_ => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
-				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
+				new AMove(){dir = 2, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
 			]
 		};
 }

@@ -30,7 +30,7 @@ internal sealed class CommandCenterCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = 1,
 		};
 

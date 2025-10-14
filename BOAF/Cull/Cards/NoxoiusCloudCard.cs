@@ -29,7 +29,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = 2,
 			exhaust = true,
 			artOverlay = ModEntry.Instance.UncommonCullBorder

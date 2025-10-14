@@ -235,19 +235,29 @@
         },
         "action": {
             "Reconfigure": {
+                "name": "RECONFIGURE",
                 "description": "The leftmost part of your ship moves to the rightmost position, all other parts move left one."
             },
             "Rebuild": {
+                "name": "REBUILD",
                 "description": "Change your leftmost part to match the given part for the rest of combat. Keep any modifiers already on the part."
             },
             "Detect": {
+                "name": "DETECT",
                 "description": "Look at the leftmost part of your ship and preform an action based on what part it is:",
                 "wing": "Wing: <c=status>EVADE 1</c>",
                 "cannon": "Cannon: <c=action>ATTACK 1</c>",
                 "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
                 "missileBay": "Missile Bay: <c=status>DRONESHIFT 2</c>",
                 "comms": "Comms: GAIN <c=status>1 ENERGY</c>",
-                "other": "Other: <c=action>RECONFIGURE 1</c>"
+                "other": "Other: <c=action>RECONFIGURE 1</c>",
+                
+                "wingGrey": "<c=faint>Wing: EVADE 1</c>",
+                "cannonGrey": "<c=faint>Cannon: ATTACK 1</c>",
+                "cockpitGrey": "<c=faint>Cockpit: SHIELD 1, TEMP SHIELD 1</c>",
+                "missileBayGrey": "<c=faint>Missile Bay: DRONESHIFT 2</c>",
+                "commsGrey": "<c=faint>Comms: GAIN 1 ENERGY</c>",
+                "otherGrey": "<c=faint>Other: RECONFIGURE 1</c>"
             }
         },
 

@@ -26,23 +26,22 @@ internal sealed class OptimizeCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
-			cost = upgrade == Upgrade.B ? 2: 1,
-			flippable = upgrade == Upgrade.A,
+			artTint = "FFFFFF",
+			cost = upgrade == Upgrade.B ? 0: 1,
+			infinite = upgrade != Upgrade.B,
 
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new ASpawn(){offset = 1, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
-				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
-				new AMove() {dir = -1, targetPlayer = true, }
+			Upgrade.A => [
+				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
 			],
 			_=>[
-				new ASpawn(){offset = 2, thing = new SkullBomb(){DeathTurn = 1 + c.turn}, fromPlayer = true},
-				new AMove() {dir = -2, targetPlayer = true, }
+				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
 			]
 		};
 }

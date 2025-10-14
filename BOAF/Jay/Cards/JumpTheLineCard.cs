@@ -26,26 +26,17 @@ internal sealed class JumpTheLineCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
-			cost = 1,
+			artTint = "FFFFFF",
+			cost = upgrade == Upgrade.A? 0 : 1,
+			recycle = upgrade == Upgrade.B,
+			retain = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B =>
-			[
-				new AHarvestAttack { damage = GetDmg(s, 2) },
-				new AHarvestAttack { damage = GetDmg(s, 2) },
-			],
-			Upgrade.A => [
-				new AHarvestAttack { damage = GetDmg(s, 1) },
-				new AHarvestAttack { damage = GetDmg(s, 1) },
-				new AHarvestAttack { damage = GetDmg(s, 1) },
-			],
 			_ => [
-				new AHarvestAttack { damage = GetDmg(s, 1) },
-				new AHarvestAttack { damage = GetDmg(s, 1) },
+				new AReconfigure(){Amount = 2}
 			]
 		};
 }

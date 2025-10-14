@@ -27,11 +27,9 @@ internal sealed class ControlZCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = 0,
-			temporary = true,
-			retain = true,
-			recycle = upgrade == Upgrade.B,
+			retain = upgrade == Upgrade.B,
 			description =
 				ModEntry.Instance.Localizations.Localize([
 					"Jay", "card", "ControlZ", "description", upgrade.ToString()
@@ -43,13 +41,11 @@ internal sealed class ControlZCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				new AStatus() {status = Status.tempShield, statusAmount = 2},
-				new AHarvestAttack { damage = GetDmg(s, 1) },
-				new AHarvestAttack { damage = GetDmg(s, 1) }
+				new AReconfigure(){Amount = 1, reverse = true},
+				new ADetect(){Amount = 1}
 			],
 			_ => [
-				new AStatus() {status = Status.tempShield, statusAmount = 1},
-				new AHarvestAttack { damage = GetDmg(s, 1) }
+				new AReconfigure(){Amount = 1, reverse = true}
 			]
 		};
 };

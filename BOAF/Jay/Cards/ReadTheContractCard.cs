@@ -30,7 +30,7 @@ internal sealed class ReadTheContractCard : Card, IRegisterable
 	public override CardData GetData(State state)
 		=> new()
 		{
-			artTint = "8A3388",
+			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A? 2:3,
 			exhaust = true,
 			retain = true,
