@@ -47,7 +47,9 @@ public sealed class ModEntry : SimpleMod
 	#region Jay
 	internal IDeckEntry JayDeck { get; }
 	internal IPlayableCharacterEntryV2 JayCharacter { get; }
-	
+	internal ISpriteEntry JayFullBody { get; set; }
+	internal ISpriteEntry reconfigureSprite { get; }
+	internal ISpriteEntry rebuildSprite { get; }
 
 	#endregion
 	
@@ -197,7 +199,6 @@ public sealed class ModEntry : SimpleMod
 		fearSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Fear.png"));
 		empoweredSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Empowered.png"));
 		cloakedSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/Cloaked.png"));
-
 		cullNeutralAnim = Enumerable.Range(0, 4)
 			.Select(i =>
 				helper.Content.Sprites
@@ -210,6 +211,10 @@ public sealed class ModEntry : SimpleMod
 					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
 			.ToList();
 
+		reconfigureSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Reconfigure.png"));
+		rebuildSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Rebuild.png"));
+
+		
 		this.helper = helper;
 		
 		Instance = this;
@@ -246,7 +251,7 @@ public sealed class ModEntry : SimpleMod
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
 		
-		#region Cull Character
+		
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
 			Definition = new() { color = new("272727"), titleColor = Colors.white },
@@ -255,13 +260,20 @@ public sealed class ModEntry : SimpleMod
 			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize,
 			ShineColorOverride = _ => new Color(0, 0, 0),
 		});
-		UncommonCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameUncommon.png")).Sprite;
-		RareCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameRare.png")).Sprite;
+		JayDeck = helper.Content.Decks.RegisterDeck("Jay", new()
+		{
+			Definition = new() { color = new("001ab7"), titleColor = Colors.white },
+			DefaultCardArt = StableSpr.cards_colorless,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/CardFrame.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Jay","character", "name"]).Localize,
+		});
 		
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 		
-		
+		#region Cull Character
+		UncommonCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameUncommon.png")).Sprite;
+		RareCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameRare.png")).Sprite;
 		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cull", new()
 		{
 			Deck = CullDeck.Deck,
@@ -435,14 +447,7 @@ public sealed class ModEntry : SimpleMod
 		BGRunWin.charFullBodySprites.Add(CullDeck.Deck, CullFullBody.Sprite);
 		#endregion
 		# region Jay Character
-		JayDeck = helper.Content.Decks.RegisterDeck("Jay", new()
-		{
-			Definition = new() { color = new("001ab7"), titleColor = Colors.white },
-			DefaultCardArt = StableSpr.cards_colorless,
-			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/FrameCommon.png")).Sprite,
-			Name = this.AnyLocalizations.Bind(["Jay","character", "name"]).Localize,
-			ShineColorOverride = _ => new Color(0, 0, 0),
-		});
+		
 
 		JayCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Jay", new()
 		{
@@ -545,6 +550,10 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Sob/{i}.png")).Sprite)
 				.ToList()
 		});
+		
+		//Vault.charsWithLore.Add(JayDeck.Deck);
+		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
+		BGRunWin.charFullBodySprites.Add(JayDeck.Deck, JayFullBody.Sprite);
 		# endregion
 		
 		#region Ships
@@ -620,20 +629,35 @@ public sealed class ModEntry : SimpleMod
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
 			new SemanticVersion(1, 3, 0),
-			api => api.RegisterAltStarters(
-				deck: CullDeck.Deck,
-				starterDeck: new StarterDeck
-				{
-					artifacts = [
-						new SoulSiphonArtifact()
-					],
-					cards = [
-						new RealignCard(),
-						new WillOWispCard()
-					]
-				}
-			)
-		);
+			api =>
+			{
+				api.RegisterAltStarters(
+					deck: CullDeck.Deck,
+					starterDeck: new StarterDeck
+					{
+						artifacts =
+						[
+							new SoulSiphonArtifact()
+						],
+						cards =
+						[
+							new RealignCard(),
+							new WillOWispCard()
+						]
+					}
+				);
+				api.RegisterAltStarters(
+					deck: JayDeck.Deck,
+					starterDeck: new StarterDeck
+					{
+						cards =
+						[
+							new ShiftCard(),
+							new ReadTheContractCard()
+						]
+					}
+				);
+			});
 		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();

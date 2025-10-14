@@ -9,7 +9,7 @@ internal sealed class JayExeCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Cards.RegisterCard("CullExe", new()
+		helper.Content.Cards.RegisterCard("JayExe", new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()

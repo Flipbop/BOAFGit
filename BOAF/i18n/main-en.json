@@ -42,11 +42,11 @@
         "status": {
             "SoulEnergy": {
                 "name": "Soul Energy",
-                "description": "You can have up to 10 <c=status>Soul Energy</c>. Soul Energy is necessary to use certain actions on certain cards <c=ffffff>Cull</c> has."
+                "description": "You can have up to 10 <c=status>Soul Energy</c>. Soul Energy is necessary to use certain actions on certain cards <c=272727>Cull</c> has."
             },
             "Fear": {
                 "name": "Fear",
-                "description": "Take <c=keyword>+1 damage</c> from all sources except statuses. <c=downside>Lost at the end of your turn.</c>"
+                "description": "Take <c=keyword>+1 damage</c> when hit. <c=downside>Lost at the end of your turn.</c>"
             },
             "SoulDrain" : {
                 "name": "Soul Drain",
@@ -234,110 +234,47 @@
             ]
         },
         "action": {
-            "UpgradesInHand": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+            "Reconfigure": {
+                "description": "The leftmost part of your ship moves to the rightmost position, all other parts move left one."
             },
-            "UpgradesInDiscard": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+            "Rebuild": {
+                "description": "Change your leftmost part to match the given part for the rest of combat. Keep any modifiers already on the part."
             },
-            "UpgradesInExhaust": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
-            },
-            "UpgradesInDraw": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
-            },
-            "ImproveA": {
-                "name": "   Improve A",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveB": {
-                "name": "   Improve B",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "Impair": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveAHand": {
-                "name": "      Improve Hand A",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveBHand": {
-                "name": "      Improve Hand B",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImpairHand": {
-                "name": "    Impair Hand",
-                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "DiscountHand": {
-                "name": "    Discount Hand",
-                "description": "<c=cardtrait>Discount</c> every card in your hand."
-            },
-            "SelfImproveA": {
-                "name": "Self Improve A",
-                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImproveB": {
-                "name": "Self Improve B",
-                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImpair": {
-                "name": "Self Impair",
-                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
-            },
-            "ImpairCost": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
-            }
-        },
-        "cardTrait": {
-            "ImprovedA": {
-                "name": "Improved A",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
-            },
-            "ImprovedB": {
-                "name": "Improved B",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
-            },
-            "Impaired": {
-                "name": "Impaired",
-                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            "Detect": {
+                "description": "Look at the leftmost part of your ship and preform an action based on what part it is:",
+                "wing": "Wing: <c=status>EVADE 1</c>",
+                "cannon": "Cannon: <c=action>ATTACK 1</c>",
+                "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
+                "missileBay": "Missile Bay: <c=status>DRONESHIFT 2</c>",
+                "comms": "Comms: GAIN <c=status>1 ENERGY</c>",
+                "other": "Other: <c=action>RECONFIGURE 1</c>"
             }
         },
 
         "artifact": {
-            "EnhancedTools": {
-                "name": "ENHANCED TOOLS",
-                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            "CodeInspection": {
+                "name": "CODE INSPECTION",
+                "description": "Every 3 times you <c=action>Reconfigure</c>, gain a <c=card>Inspection</c>."
             },
-            "ReusableMaterials": {
-                "name": "REUSABLE MATERIALS",
-                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            "CellTower": {
+                "name": "CELL TOWER",
+                "description": "At the start of combat, gain 1 <c=status>SIGNAL BOOSTER</c>."
             },
-            "Kickstart": {
-                "name": "KICKSTART",
-                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            "FinalTest": {
+                "name": "FINAL TEST",
+                "description": "When you <c=action>Rebuild</c> a part, immediately <c=action>Detect 1</c>."
             },
-            "MagnifiedLasers": {
-                "name": "MAGNIFIED LASERS",
-                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            "ReactiveMaterials": {
+                "name": "REACTIVE MATERIALS",
+                "description": "When you get hit, <c=action>Reconfigure 1</c>."
             },
-            "UpgradedTerminal": {
-                "name": "UPGRADED TERMINAL",
-                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            "Blueprints": {
+                "name": "BLUEPRINTS",
+                "description": "Gain 2 empty <c=>Wings</c> on both sides of your ship. When you <c=action>Detect</c> a Wing you also get <c=status>1 ENERGY</c>."
             },
-            "Retainer": {
-                "name": "RETAINER",
-                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
-            },
-            "ExpensiveEquipment": {
-                "name": "EXPENSIVE EQUIPMENT",
-                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
-            },
-            "PowerEcho": {
-                "name": "POWER ECHO",
-                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            "EnhancedSensors": {
+                "name": "ENHANCED SENSORS",
+                "description": "When you <c=action>Detect</c>, double it's effects."
             },
             "Duo": {
                 "CleoBooks": {
@@ -376,115 +313,123 @@
                 }
             }
         },
-
+        "status": {
+            "LessEnergyAllTurns": {
+                "name": "Less Energy All Turns",
+                "description": "You have <c=status>-1 ENERGY</c> each turn."
+            },
+            "SignalBooster": {
+                "name": "Signal Booster",
+                "description": "When you <c=action>Detect</c>, <c=action>Detect</c> the rightmost part as well, <c=downside>then lose 1.</c>"
+            }
+        },
 
 
         "card": {
-            "QuickBoost": {
-                "name": "Quick Boost"
+            "Reorganize": {
+                "name": "Reorganize"
             },
-            "TurtleShot": {
-                "name": "Turtle Shot"
+            "SensoryShot": {
+                "name": "Sensory Shot"
             },
-            "Choices": {
-                "name": "Choices"
+            "Amplifier": {
+                "name": "Amplifier"
             },
-            "MemoryRecovery": {
-                "name": "Memory Recovery",
+            "ReadTheContract": {
+                "name": "Read The Contract"
+            },
+            "CommandCenter": {
+                "name": "Command Center"
+            },
+            "CommsHub": {
+                "name": "Comms Hub"
+            },
+            "ControlZ": {
+                "name": "Control Z",
                 "description": {
-                    "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                    "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                    "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                    "None": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1.",
+                    "A": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1. <c=action>Detect 1.</c>",
+                    "B": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1."
                 }
             },
-            "ShuffleUpgrade": {
-                "name": "Shuffle Upgrade"
+            "JumpTheLine": {
+                "name": "Jump The Line"
             },
-            "ResourceSwap": {
-                "name": "Resource Swap"
+            "Shift": {
+                "name": "Shift"
             },
-            "ReroutePower": {
-                "name": "Reroute Power"
-            },
-            "Rewrite": {
-                "name": "Rewrite"
-            },
-            "SlipShot": {
-                "name": "Slip Shot"
-            },
-            "PowerSurge": {
-                "name": "Power Surge"
-            },
-            "ImprovedCannon": {
-                "name": "Improved Cannon"
-            },
-            "DoItYourself": {
-                "name": "Do It Yourself",
+            "HeavyArmoring": {
+                "name": "Heavy Armoring",
                 "description": {
-                    "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                    "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                    "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
+                    "None": "The leftmost part of your ship become <c=status>Armored</c> for the rest of combat.",
+                    "A": "The leftmost part of your ship become <c=status>Armored</c> for the rest of combat.",
+                    "B": "The leftmost and rightmost parts of your ship become <c=status>Armored</c> for the rest of combat."
                 }
             },
-            "RepairedGlasses": {
-                "name": "Repaired Glasses"
+            "Optimize": {
+                "name": "Optimize"
             },
-            "ScalpedParts": {
-                "name": "Scalped Parts"
+            "EscapePlan": {
+                "name": "EscapePlan"
             },
-            "MaximumEffort": {
-                "name": "Maximum Effort"
+            "LaunchCodes": {
+                "name": "Launch Codes"
             },
-            "NecessarySacrifice": {
-                "name": "Necessary Sacrifice"
+            "SignalRelay": {
+                "name": "Signal Relay"
             },
-            "SeekerBarrage": {
-                "name": "Seeker Barrage",
+            "MixItUp": {
+                "name": "Mix It Up",
                 "description": {
-                    "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
-                    "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
-                    "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                    "None": "Shuffle all of your ship's parts, then <c=action>Detect 3</c>.",
+                    "A": "Shuffle all of your ship's parts, then <c=action>Detect 3</c>.",
+                    "B": "Shuffle all of your ship's parts, then <c=action>Detect 1</c>. Repeat 2 more times."
                 }
             },
-            "PermaFix": {
-                "name": "Perma-Fix",
+            "ShootingGallery": {
+                "name": "Shooting Gallery"
+            },
+            "CannonConstructor": {
+                "name": "Cannon Constructor"
+            },
+            "FactoryReset": {
+                "name": "Factory Reset",
                 "description": {
-                    "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                    "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                    "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
+                    "None": "Reset all of your ships parts to their original locations. <c=action>Detect 2.</c>",
+                    "A": "Reset all of your ships parts to their original locations. <c=action>Detect 3.</c>",
+                    "B": "<c=action>Detect 1.</c> Reset all of your ships parts to their original locations. <c=action>Reconfigure 1. Detect 2.</c>"
                 }
             },
-            "CleanSlate": {
-                "name": "Clean Slate",
-                "description": {
-                    "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                    "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                    "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
-                }
+            "BareMinimum": {
+                "name": "Bare Minimum"
             },
-            "ApologizeNextLoop": {
-                "name": "Apologize Next Loop",
+            "SelectiveSensors": {
+                "name": "Selective Sensors",
                 "description": {
                     "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
                     "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
                     "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
                 }
             },
-
-            "FlexibleDefense": {
-                "name": "Flexible Defense"
-            },
-            "SmallRepairs": {
-                "name": "Small Repairs"
-            },
-
-
-            "CullExe": {
-                "name": "Cull.EXE",
+            "Overuse": {
+                "name": "Overuse",
                 "description": {
-                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                    "None": "<c=action>Detect 3.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
+                    "A": "<c=action>Detect 5.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
+                    "B": "<c=action>Detect 7.</c> The leftmost part of your ship becomes <c=status>Brittle</c> for the rest of combat."
+                }
+            },
+            "Inspection": {
+                "name": "Inspection"
+            },
+
+
+            "JayExe": {
+                "name": "Jay.EXE",
+                "description": {
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand."
                 }
             }
         }

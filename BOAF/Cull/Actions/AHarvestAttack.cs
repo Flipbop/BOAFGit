@@ -51,7 +51,7 @@ public sealed class AHarvestAttack : AAttack
 
 	public override List<Tooltip> GetTooltips(State s)
 		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Impair")
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::HarvestAttack")
 			{
 				Icon = ModEntry.Instance.harvestAttackSprite.Sprite,
 				TitleColor = Colors.action,

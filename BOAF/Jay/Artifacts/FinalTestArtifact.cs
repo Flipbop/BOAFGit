@@ -9,7 +9,7 @@ internal sealed class FinalTestArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("EnchantedScythe", new()
+		helper.Content.Artifacts.RegisterArtifact("FinalTest", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()

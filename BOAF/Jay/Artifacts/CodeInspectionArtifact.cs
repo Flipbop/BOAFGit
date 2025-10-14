@@ -11,7 +11,7 @@ internal sealed class CodeInspectionArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("Animism", new()
+		helper.Content.Artifacts.RegisterArtifact("CodeInspection", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()

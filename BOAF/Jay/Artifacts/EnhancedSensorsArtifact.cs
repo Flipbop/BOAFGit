@@ -9,7 +9,7 @@ internal sealed class EnhancedSensorsArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("OverclockedSiphon", new()
+		helper.Content.Artifacts.RegisterArtifact("EnhancedSensors", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()

@@ -9,7 +9,7 @@ internal sealed class CellTowerArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("CursedLantern", new()
+		helper.Content.Artifacts.RegisterArtifact("CellTower", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
