@@ -14,72 +14,72 @@ internal class CombatDialogueJay
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
             {
-                "ThatsALotOfDamageToUs_Cull_0", new()
+                "ThatsALotOfDamageToUs_Jay_0", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
                     minDamageDealtToPlayerThisTurn = 3,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Too much damage! Too much damage!")
+                        new(AmJay, "nervous", "Not the ship!")
                     ]
                 }
             },
             {
-                "ThatsALotOfDamageToUs_Cull_1", new()
+                "ThatsALotOfDamageToUs_Jay_1", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
                     minDamageDealtToPlayerThisTurn = 3,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "I needed that!")
+                        new(AmJay, "squint", "Hey! Cool it!")
                     ]
                 }
             },
             {
-                "ThatsALotOfDamageToUs_Cull_2", new()
+                "ThatsALotOfDamageToUs_Jay_2", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
                     minDamageDealtToPlayerThisTurn = 3,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Will the ship hold?")
+                        new(AmJay, "angry", "I just waxed this ship!")
                     ]
                 }
             },
             {
-                "ThatsALotOfDamageToThem_Cull_0", new()
+                "ThatsALotOfDamageToThem_Jay_0", new()
                 {
                     type = NodeType.combat,
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisTurn = 10,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "neutral", "You'll regret fighting us.")
+                        new(AmJay, "neutral", "Hooah...")
                     ]
                 }
             },
             {
-                "ThatsALotOfDamageToThem_Cull_1", new()
+                "ThatsALotOfDamageToThem_Jay_1", new()
                 {
                     type = NodeType.combat,
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisTurn = 10,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Too bad that's only a small amount of Soul Energy.")
+                        new(AmJay, "squint", "Shame to damage such a beautiful hull such as that.")
                     ]
                 }
             },
             {
-                "WeGotShotButTookNoDamage_Cull_0", new()
+                "WeGotShotButTookNoDamage_Jay_0", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
@@ -87,15 +87,15 @@ internal class CombatDialogueJay
                     lastTurnPlayerStatuses = [Status.perfectShield],
 
                     oncePerRun = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Are they even trying?")
+                        new(AmJay, "squint", "Did that scratch the paint?")
                     ]
                 }
             },
             {
-                "WeGotShotButTookNoDamage_Cull_1", new()
+                "WeGotShotButTookNoDamage_Jay_1", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
@@ -103,15 +103,15 @@ internal class CombatDialogueJay
                     lastTurnPlayerStatuses = [Status.perfectShield],
 
                     oncePerRun = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Did something happen?")
+                        new(AmJay, "squint", "Should I be worried?")
                     ]
                 }
             },
             {
-                "WeGotShotButTookNoDamage_Cull_2", new()
+                "WeGotShotButTookNoDamage_Jay_2", new()
                 {
                     type = NodeType.combat,
                     enemyShotJustHit = true,
@@ -119,23 +119,23 @@ internal class CombatDialogueJay
                     lastTurnPlayerStatuses = [Status.perfectShield],
 
                     oncePerRun = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Ok good, no Soul Energy lost.")
+                        new(AmJay, "No harm, no foul.")
                     ]
                 }
             },
             {
-                "WeAreMovingAroundALot_Cull_0", new()
+                "WeAreMovingAroundALot_Jay_0", new()
                 {
                     type = NodeType.combat,
                     minMovesThisTurn = 3,
                     oncePerRun = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "neutral", "Better to not get hit at all so I don't lose Soul Energy.")
+                        new(AmJay, "neutral", "Moving around so we don't damage the ship? I like it.")
                     ]
                 }
             },
@@ -144,101 +144,101 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new("66ea84d6", AmCull, "nervous", "Oh, that's... that's a lot of guns."),
+                        new("66ea84d6", AmJay, "nervous", "Please have mercy."),
                     ]
                 }
             },
             {
-                "HandOnlyHasTrashCards_Cull_0", new()
+                "HandOnlyHasTrashCards_Jay_0", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
                     handFullOfTrash = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Ew.")
+                        new(AmJay, "squint", "Someone clean this mess up.")
                     ]
                 }
             },
             {
-                "HandOnlyHasUnplayableCards_Cull_0", new()
+                "HandOnlyHasUnplayableCards_Jay_0", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
                     handFullOfUnplayableCards = true,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     dialogue =
                     [
-                        new(AmCull, "squint", "What do you think I am supposed to do with this?")
+                        new(AmJay, "squint", "How does this even happen?")
                     ]
                 }
             },
             {
-                "BooksWentMissing_Cull_0", new()
+                "BooksWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["booksWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingBooks],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Hey, where'd Books go?")
+                        new(AmJay, "squint", "The crystal mage is missing.")
                     ]
                 }
             },
             {
-                "CatWentMissing_Cull_0", new()
+                "CatWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["CatWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingCat],
                     dialogue =
                     [
-                        new(who: AmCull, "nervous", "CAT is missing. Don't we need her?")
+                        new(who: AmJay, "nervous", "How does CAT even go missing, isn't she a part of the ship?")
                     ]
                 }
             },
             {
-                "DizzyWentMissing_Cull_0", new()
+                "DizzyWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["dizzyWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingDizzy],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Oh no.")
+                        new(AmJay, "nervous", "Who's gonna shield the ship now?")
                     ]
                 }
             },
             {
-                "DrakeWentMissing_Cull_0", new()
+                "DrakeWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["drakeWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingDrake],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Ok this might be bad.")
+                        new(AmJay, "squint", "Honestly, I'm fine with her being gone.")
                     ]
                 }
             },
             {
-                "IsaacWentMissing_Cull_0", new()
+                "IsaacWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["issacWentMissing"],
@@ -246,60 +246,60 @@ internal class CombatDialogueJay
 
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Bring the goat back!")
+                        new(AmJay, "nervous", "Isaac? Isaac!")
                     ]
                 }
             },
             {
-                "MaxWentMissing_Cull_0", new()
+                "MaxWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["maxWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingMax],
                     dialogue =
                     [
-                        new(AmCull, "neutral", "Ah man, I liked him.")
+                        new(AmJay, "neutral", "Where did Max go?")
                     ]
                 }
             },
             {
-                "PeriWentMissing_Cull_0", new()
+                "PeriWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["periWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingPeri],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Hey, where did Peri go?")
+                        new(AmJay, "nervous", "Uhhh, don't we need her? For like, attacking?")
                     ]
                 }
             },
             {
-                "RiggsWentMissing_Cull_0", new()
+                "RiggsWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     oncePerRun = true,
                     oncePerCombatTags = ["riggsWentMissing"],
                     lastTurnPlayerStatuses = [Status.missingRiggs],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Riggs?!")
+                        new(AmJay, "nervous", "Bring back the possum girl!")
                     ]
                 }
             },
             {
-                "WeDontOverlapWithEnemyAtAll_Cull_0", new()
+                "WeDontOverlapWithEnemyAtAll_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     shipsDontOverlapAtAll = true,
                     nonePresent = ["crab", "scrap"],
@@ -307,15 +307,15 @@ internal class CombatDialogueJay
                     oncePerRunTags = ["NoOverlapBetweenShips"],
                     dialogue =
                     [
-                        new(AmCull, "neutral", "Try hitting us now!")
+                        new(AmJay, "neutral", "They can't hit us if we aren't even close to them.")
                     ]
                 }
             },
             {
-                "WeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Cull_0", new()
+                "WeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     priority = true,
                     shipsDontOverlapAtAll = true,
                     oncePerCombatTags = ["NoOverlapBetweenShipsSeeker"],
@@ -323,415 +323,415 @@ internal class CombatDialogueJay
                     nonePresent = ["crab"],
                     dialogue =
                     [
-                        new(AmCull, "squint", "I'm not a fan of seekers. This is why.")
+                        new(AmJay, "squint", "They can't hit us- oh wait, seeker.")
                     ]
                 }
             },
             {
-                "BlockedALotOfAttackWithArmor_Cull_0", new()
+                "BlockedALotOfAttackWithArmor_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyShotJustHit = true,
                     minDamageBlockedByPlayerArmorThisTurn = 3,
                     oncePerCombatTags = ["YowzaThatWasALOTofArmorBlock"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Wow, they really want to kill us don't they?")
+                        new(AmJay, "neutral", "Ah, I love armor.")
                     ]
                 }
             },
             {
-                "BlockedAnEnemyAttackWithArmor_Cull_0", new()
+                "BlockedAnEnemyAttackWithArmor_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyShotJustHit = true,
                     minDamageBlockedByPlayerArmorThisTurn = 1,
                     oncePerCombatTags = ["WowArmorISPrettyCoolHuh"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "Still could lose soul energy from that.")
+                        new(AmJay, "neutral", "My plating never fails.")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_0", new()
+                "Duo_AboutToDieAndLoop_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmDizzy],
+                    allPresent = [AmJay, AmDizzy],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "nervous", "I don't want to die!"),
-                        new(AmDizzy, "frown", "You'll get used to it.")
+                        new(AmJay, "nervous", "Can't we do something about this?"),
+                        new(AmDizzy, "frown", "My shields can only do so much.")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_1", new()
+                "Duo_AboutToDieAndLoop_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmPeri],
+                    allPresent = [AmJay, AmPeri],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmPeri, "mad", "Not dead yet!"),
-                        new(AmCull, "squint", "Too close.")
+                        new(AmPeri, "mad", "Don't give up!"),
+                        new(AmJay, "squint", "I was just about to.")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_2", new()
+                "Duo_AboutToDieAndLoop_Jay_2", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmRiggs],
+                    allPresent = [AmJay, AmRiggs],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmRiggs, "nervous", "I'm not ready to go just yet!"),
-                        new(AmCull, "squint", "They don't seem to care.")
+                        new(AmRiggs, "nervous", "Hey, can you like, not shoot us?"),
+                        new(AmJay, "squint", "They aren't listening.")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_3", new()
+                "Duo_AboutToDieAndLoop_Jay_3", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmDrake],
+                    allPresent = [AmJay, AmDrake],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "This doesn't look good."),
-                        new(AmDrake, "squint", "Could be worse.")
+                        new(AmDrake, "squint", "C'mon, not now."),
+                        new(AmJay, "squint", "Reset?")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_4", new()
+                "Duo_AboutToDieAndLoop_Jay_4", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmBooks],
+                    allPresent = [AmJay, AmBooks],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmBooks, "paws", "Cull, use your necromancy to bring us back!"),
-                        new(AmCull, "squint", "It's doesn't work like that!")
+                        new(AmBooks, "paws", "Fiddlesticks!"),
+                        new(AmJay, "nervous", "Woah! Books!")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_5", new()
+                "Duo_AboutToDieAndLoop_Jay_5", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmMax],
+                    allPresent = [AmJay, AmMax],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmMax, "squint", "Run it back?"),
-                        new(AmCull, "squint", "If we have to.")
+                        new(AmMax, "squint", "Start over?"),
+                        new(AmJay, "squint", "Almost.")
                     ]
                 }
             },
             {
-                "Duo_AboutToDieAndLoop_Cull_6", new()
+                "Duo_AboutToDieAndLoop_Jay_6", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmCat],
+                    allPresent = [AmJay, AmCat],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Is this what our enemies are supposed to feel like?"),
-                        new(AmCat, "grumpy", "I sure hope so.")
+                        new(AmJay, "nervous", "Can we just leave?"),
+                        new(AmCat, "grumpy", "I wish.")
                     ]
                 }
             },
             {
-                "EmptyHandWithEnergy_Cull_0", new()
+                "EmptyHandWithEnergy_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     handEmpty = true,
                     minEnergy = 1,
                     dialogue =
                     [
-                        new(AmCull, "neutral", "nothing left?")
+                        new(AmJay, "neutral", "Where did this extra energy come from?")
                     ]
                 }
             },
             {
-                "EmptyHandWithEnergy_Cull_1", new()
+                "EmptyHandWithEnergy_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     handEmpty = true,
                     minEnergy = 1,
                     dialogue =
                     [
-                        new(AmCull, "squint", "Having this much extra energy is wasteful."),
+                        new(AmJay, "squint", "What am I supposed to spend this on?"),
                     ]
                 }
             },
             {
-                "EnemyArmorHitLots_Cull_0", new()
+                "EnemyArmorHitLots_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageBlockedByEnemyArmorThisTurn = 3,
                     oncePerCombat = true,
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "Stop hitting the armor.")
+                        new(AmJay, "squint", "Armor is only good when we have it.")
                     ]
                 }
             },
             {
-                "EnemyArmorHit_Cull_0", new()
+                "EnemyArmorHit_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageBlockedByEnemyArmorThisTurn = 1,
                     oncePerCombat = true,
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "That's annoying.")
+                        new(AmJay, "squint", "Plating is working!")
                     ]
                 }
             },
             {
-                "EnemyHasBrittle_Cull_0", new()
+                "EnemyHasBrittle_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyHasBrittlePart = true,
                     oncePerRunTags = ["yelledAboutBrittle"],
                     dialogue =
                     [
-                        new(AmCull, "Break them apart!")
+                        new(AmJay, "That brittle part is gonna cause problems for them.")
                     ]
                 }
             },
             {
-                "EnemyHasBrittle_Cull_1", new()
+                "EnemyHasBrittle_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyHasBrittlePart = true,
                     oncePerRunTags = ["yelledAboutBrittle"],
                     dialogue =
                     [
-                        new(AmCull, "That brittle spot is begging to be blasted.")
+                        new(AmJay, "A few rounds to the brittle spot should do the trick.")
                     ]
                 }
             },
             {
-                "EnemyHasWeakness_Cull_0", new()
+                "EnemyHasWeakness_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyHasWeakPart = true,
                     oncePerRunTags = ["yelledAboutWeakness"],
                     dialogue =
                     [
-                        new(AmCull, "Ooh, ooh, hit that weak spot!")
+                        new(AmJay, "They have a weak spot, strike there!")
                     ]
                 }
             },
             {
-                "ExpensiveCardPlayed_Cull_0", new()
+                "ExpensiveCardPlayed_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     minCostOfCardJustPlayed = 4,
                     oncePerCombatTags = ["ExpensiveCardPlayed"],
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "neutral", "Hope that was worth the energy.")
+                        new(AmJay, "neutral", "Was it worth it?")
                     ]
                 }
             },
             {
-                "FreezeIsMaxSize_Cull_0", new()
+                "FreezeIsMaxSize_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, "crystal"],
+                    allPresent = [AmJay, "crystal"],
                     turnStart = true,
                     enemyIntent = "biggestCrystal",
                     oncePerCombatTags = ["biggestCrystalShout"],
                     dialogue =
                     [
-                        new(AmCull, "angry", "How have we not killed this thing yet?")
+                        new(AmJay, "angry", "An expanding ship. Interesting.")
                     ]
                 }
             },
             {
-                "JustHitGeneric_Cull_0", new()
+                "JustHitGeneric_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmCull, "Keep going!")
+                        new(AmJay, "Nice hit!")
                     ]
                 }
             },
             {
-                "JustHitGeneric_Cull_1", new()
+                "JustHitGeneric_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmCull, "Nice!")
+                        new(AmJay, "Excellent!")
                     ]
                 }
             },
             {
-                "JustHitGeneric_Cull_2", new()
+                "JustHitGeneric_Jay_2", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmCull, "Yes! More!")
+                        new(AmJay, "Keep going!")
                     ]
                 }
             },
             {
-                "JustPlayedADraculaCard_Cull_0", new()
+                "JustPlayedADraculaCard_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     whoDidThat = Deck.dracula,
                     nonePresent = ["dracula"],
                     dialogue =
                     [
-                        new(AmCull, "neutral", "A different flavor of dark magic.")
+                        new(AmJay, "neutral", "Are we sure we can trust the space vampire?")
                     ]
                 }
             },
             {
-                "JustPlayedAnEphemeralCard_Cull_0", new()
+                "JustPlayedAnEphemeralCard_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     whoDidThat = Deck.ephemeral,
                     priority = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "Was it worth it?")
+                        new(AmJay, "squint", "I hope we won't need that later.")
                     ]
                 }
             },
             {
-                "LookOutMissile_Cull_0", new()
+                "LookOutMissile_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull, AmPeri],
+                    allPresent = [AmJay, AmPeri],
                     priority = true,
                     once = true,
                     oncePerRunTags = ["goodMissileAdvice"],
                     anyDronesHostile = ["missile_corrode"],
                     dialogue =
                     [
-                        new(AmPeri, "mad", "Shoot it down!"),
-                        new(AmCull, "nervous", "Especially that corrode missile!")
+                        new(AmJay, "nervous", "That corrode missile will melt the hull!"),
+                        new(AmPeri,"Then destroy it!")
                     ]
                 }
             },
             {
-                "ManyFlips_Cull_0", new()
+                "ManyFlips_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     minTimesYouFlippedACardThisTurn = 4,
                     oncePerCombat = true,
                     dialogue =
                     [
-                        new(AmCull, "mad", "Hehe, flip flip!")
+                        new(AmJay, "squint", "Bored?")
                     ]
                 }
             },
             {
-                "ManyTurns_Cull_0", new()
+                "ManyTurns_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     minTurnsThisCombat = 9,
                     oncePerCombatTags = ["manyTurns"],
                     dialogue =
                     [
-                        new(AmCull, "squint", "Are we done yet?")
+                        new(AmJay, "squint", "Still going?")
                     ]
                 }
             },
             {
-                "ManyTurns_Cull_1", new()
+                "ManyTurns_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     minTurnsThisCombat = 9,
                     oncePerCombatTags = ["manyTurns"],
                     dialogue =
                     [
-                        new(AmCull, "squint", "This is taking too long, just blow them up.")
+                        new(AmJay, "squint", "Just destroy them already.")
                     ]
                 }
             },
             {
-                "OneHitPointThisIsFine_Cull_0", new()
+                "OneHitPointThisIsFine_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     enemyShotJustHit = true,
                     maxHull = 1,
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Come on...")
+                        new(AmJay, "nervous", "The hull can't take another hit!")
                     ]
                 }
             },
             {
-                "OneHitPointThisIsFine_Cull_1", new()
+                "OneHitPointThisIsFine_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     oncePerCombatTags = ["aboutToDie"],
                     oncePerRun = true,
                     enemyShotJustHit = true,
@@ -739,106 +739,106 @@ internal class CombatDialogueJay
                     lastTurnPlayerStatuses = [Status.corrode],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Not when we're this close...")
+                        new(AmJay, "nervous", "C'mon, hold together...")
                     ]
                 }
             },
             {
-                "OverheatGeneric_Cull_0", new()
+                "OverheatGeneric_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     goingToOverheat = true,
                     oncePerCombatTags = ["OverheatGeneric"],
                     dialogue =
                     [
-                        new(AmCull, "This heat makes my feathers sticky.")
+                        new(AmJay, "This heat damages the hull.")
                     ]
                 }
             },
             {
-                "StrafeMissedGood_Cull_0", new()
+                "StrafeMissedGood_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustMissed = true,
                     playerShotWasFromStrafe = true,
                     hasArtifacts = ["Recalibrator", "GrazerBeam"],
                     oncePerCombat = true,
                     dialogue =
                     [
-                        new(AmCull, "I suppose that works.")
+                        new(AmJay, "Better than nothing.")
                     ]
                 }
             },
             {
-                "TookZeroDamageAtLowHealth_Cull_0", new()
+                "TookZeroDamageAtLowHealth_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyShotJustHit = true,
                     maxHull = 2,
                     maxDamageDealtToPlayerThisTurn = 0,
                     dialogue =
                     [
-                        new(AmCull, "Too close for comfort!")
+                        new(AmJay, "I don't like how close that was.")
                     ]
                 }
             },
             {
-                "VeryManyTurns_Cull_0", new()
+                "VeryManyTurns_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     minTurnsThisCombat = 20,
                     oncePerCombatTags = ["veryManyTurns"],
                     oncePerRun = true,
                     turnStart = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "WOW we've been here a LONG time.")
+                        new(AmJay, "squint", "Can I take a nap?")
                     ]
                 }
             },
             {
-                "WeGotHurtButNotTooBad_Cull_0", new()
+                "WeGotHurtButNotTooBad_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     enemyShotJustHit = true,
                     minDamageDealtToPlayerThisTurn = 1,
                     maxDamageDealtToPlayerThisTurn = 1,
                     dialogue =
                     [
-                        new(AmCull, "angry", "Hey! Watch it!")
+                        new(AmJay, "angry", "Hey! Watch it!")
                     ]
                 }
             },
             {
-                "WeMissedOopsie_Cull_0", new()
+                "WeMissedOopsie_Jay_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustMissed = true,
                     oncePerCombat = true,
                     doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                     dialogue =
                     [
-                        new(AmCull, "squint", "...")
+                        new(AmJay, "squint", "Uh, was that intentional?")
                     ]
                 }
             },
             {
-                "WeMissedOopsie_Cull_1", new()
+                "WeMissedOopsie_Jay_1", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustMissed = true,
                     oncePerCombat = true,
                     doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                     dialogue =
                     [
-                        new(AmCull, "No hit, no soul.")
+                        new(AmJay, "Hit them.")
                     ]
                 }
             },
@@ -847,7 +847,7 @@ internal class CombatDialogueJay
                 {
                     dialogue =
                     [
-                        new(AmCull, "squint", "This is gonna hurt.")
+                        new(AmJay, "nervous", "Not the hull!")
                     ]
                 }
             },
@@ -856,7 +856,7 @@ internal class CombatDialogueJay
                 {
                     dialogue =
                     [
-                        new(AmCull, "angry", "OKAY WHO IS MELTING THE SHIP?")
+                        new(AmJay, "angry", "OKAY WHO IS MELTING THE SHIP?")
                     ]
                 }
             },
@@ -865,7 +865,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "squint", "Please no seekers.")
+                        new(EMod.countFromStart, 1, AmJay, "squint", "Your Engine Stall is very annoying to clean up.")
                     ]
                 }
             },
@@ -874,7 +874,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmCull, "Woah.")
+                        new(EMod.countFromStart, 2, AmJay, "squint", "What?")
                     ]
                 }
             },
@@ -883,7 +883,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmCull, "neutral", "That's so cool!")
+                        new(EMod.countFromStart, 2, AmJay, "squint", "That's preposterous.")
                     ]
                 }
             },
@@ -892,7 +892,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "sad", "Aw man.")
+                        new(EMod.countFromStart, 1, AmJay, "neutral", "Finally.")
                     ]
                 }
             },
@@ -901,7 +901,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "squint", "Do I know you?")
+                        new(EMod.countFromStart, 1, AmJay, "squint", "And you are?")
                     ]
                 }
             },
@@ -910,7 +910,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "squint", "You're lucky. Don't try that again."),
+                        new(EMod.countFromStart, 1, AmJay, "squint", "Can you stop trying to kill us?"),
                     ]
                 }
             },
@@ -919,7 +919,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "angry", "I really don't like this heat.")
+                        new(EMod.countFromStart, 1, AmJay, "angry", "The hull is at risk cause of you.")
                     ]
                 }
             },
@@ -928,7 +928,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmCull, "squint", "What does that even mean?")
+                        new(EMod.countFromStart, 2, AmJay, "squint", "Old ships have such a nice quality to them.")
                     ]
                 }
             },
@@ -937,8 +937,8 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmCull, "Why do you want these rocks?"),
-                        new(EMod.countFromStart, 2, AmDuncan, "Cause they're cool!")
+                        new(EMod.countFromStart, 2, AmJay, "These rocks could make excellent plating."),
+                        new(EMod.countFromStart, 2, AmDuncan, "No, they're mine!")
 
                     ]
                 }
@@ -948,7 +948,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "neutral", "Hold one moment, we aren't finished.")
+                        new(EMod.countFromStart, 1, AmJay, "neutral", "Please wait right there.")
                     ]
                 }
             },
@@ -957,7 +957,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "squint", "How does this even happen?")
+                        new(EMod.countFromStart, 1, AmJay, "squint", "Where did you get those missiles?")
                     ]
                 }
             },
@@ -966,80 +966,80 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmCull, "angry", "Can we please cool the ship down?"),
-                        new(EMod.countFromStart, 1, AmDrake, "sly", "Oh it will cool down, it's just gonna hurt.")
+                        new(EMod.countFromStart, 1, AmJay, "angry", "Please stop melting the hull."),
+                        new(EMod.countFromStart, 1, AmDrake, "sly", "I don't wanna.")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_0", new()
+                "JayWentMissing_Multi_0", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmPeri],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmPeri, "mad", "Hey, give us back our necromancer!")
+                        new(AmPeri, "nervous", "Where did Jay go?")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_1", new()
+                "JayWentMissing_Multi_1", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmRiggs],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmRiggs, "nervous", "Where did the crow go?")
+                        new(AmRiggs, "nervous", "Do blue jays normally do that?")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_2", new()
+                "JayWentMissing_Multi_2", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmDizzy],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmDizzy, "intense", "Cull!")
+                        new(AmDizzy, "intense", "That's not good!")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_3", new()
+                "JayWentMissing_Multi_3", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmCat],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmCat, "Wuh oh.")
+                        new(AmCat, "Oh no.")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_4", new()
+                "JayWentMissing_Multi_4", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmIsaac],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
                         new(AmIsaac, "Ummm...")
@@ -1047,76 +1047,75 @@ internal class CombatDialogueJay
                 }
             },
             {
-                "CullWentMissing_Multi_5", new()
+                "JayWentMissing_Multi_5", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmDrake],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmDrake, "Uh, Cull? Where are you?")
+                        new(AmDrake, "Finally, I can melt the hull in peace.")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_6", new()
+                "JayWentMissing_Multi_6", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmMax],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmMax, "Woah.")
+                        new(AmMax, "Oh that isn't good.")
                     ]
                 }
             },
             {
-                "CullWentMissing_Multi_7", new()
+                "JayWentMissing_Multi_7", new()
                 {
                     type = NodeType.combat,
                     allPresent = [AmBooks],
                     priority = true,
                     oncePerRun = true,
-                    oncePerCombatTags = ["CullWentMissing"],
-                    lastTurnPlayerStatuses = [MissingCull],
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
                     dialogue =
                     [
-                        new(AmBooks, "Magic crow? Where did you go?")
+                        new(AmBooks, "Jay? Where are you?")
                     ]
                 }
             },
             {
-                "CullJustHit_Multi_0", new()
+                "JayJustHit_Multi_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     playerShotJustHit = true,
                     minDamageDealtToEnemyThisAction = 1,
-                    whoDidThat = AmCullDeck,
-                    oncePerCombatTags = ["CullShotAGuy"],
+                    whoDidThat = AmJayDeck,
+                    oncePerCombatTags = ["JayShotAGuy"],
                     dialogue =
                     [
-                        new(AmCull, "angry", "Your soul is mine!")
+                        new(AmJay, "neutral", "I hit them!")
                     ]
                 }
             },
             {
-                "CullGotPerfect_Multi_0", new()
+                "JayGotPerfect_Multi_0", new()
                 {
                     type = NodeType.combat,
-                    allPresent = [AmCull],
+                    allPresent = [AmJay],
                     oncePerRun = true,
                     lastTurnPlayerStatuses = [Status.perfectShield],
                     dialogue =
                     [
-                        new(AmCull, "neutral",
-                            "This shield is a lifesaver! Too bad it doesn't protect or normal shields."),
+                        new(AmJay, "neutral", "Our hull will be fine."),
                     ]
                 }
             },

@@ -50,6 +50,8 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry JayFullBody { get; set; }
 	internal ISpriteEntry reconfigureSprite { get; }
 	internal ISpriteEntry rebuildSprite { get; }
+	internal ISpriteEntry detectSprite { get; }
+
 
 	#endregion
 	
@@ -213,6 +215,7 @@ public sealed class ModEntry : SimpleMod
 
 		reconfigureSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Reconfigure.png"));
 		rebuildSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Rebuild.png"));
+		detectSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Detect.png"));
 
 		
 		this.helper = helper;
@@ -671,6 +674,11 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoryDialogueCull();
 		_ = new SoulPortraitManager();
 
+		_ = new CardDialogueJay();
+		_ = new CombatDialogueJay();
+		_ = new EventDialogueJay();
+		_ = new MemoryDialogueJay();		
+		_ = new StoryDialogueJay();
 	}
 
 

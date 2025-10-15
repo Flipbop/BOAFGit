@@ -12,110 +12,110 @@ internal class EventDialogueJay
     public EventDialogueJay()
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>(){
-            {$"ChoiceCardRewardOfYourColorChoice_{AmCull}", new(){
+            {$"ChoiceCardRewardOfYourColorChoice_{AmJay}", new(){
                 type = NodeType.@event,
                 oncePerRun = true,
-                allPresent = [ AmCull ],
+                allPresent = [ AmJay ],
                 bg = "BGBootSequence",
                 dialogue = [
-                    new(AmCull, "squint", "That felt weird."),
+                    new(AmJay, "squint", "Nope. Don't like that."),
                     new(AmCat, "Energy readings are back to normal.")
                 ]
             }},
-            {"ShopkeeperInfinite_Cull_Multi_0", new(){
+            {"ShopkeeperInfinite_Jay_Multi_0", new(){
                 type = NodeType.@event,
                 lookup = [ "shopBefore" ],
                 bg = "BGShop",
-                allPresent = [ AmCull ],
+                allPresent = [ AmJay ],
                 dialogue = [
-                    new(AmCull, "neutral", "Hi Cleo!"),
-                    new(AmShopkeeper, "Hey bud!", true),
+                    new(AmJay, "neutral", "Cool ship!"),
+                    new(AmShopkeeper, "Thanks!", true),
                     new(new Jump{key = "NewShop"})
                 ]
             }},
-            {"ShopkeeperInfinite_Cull_Multi_1", new(){
+            {"ShopkeeperInfinite_Jay_Multi_1", new(){
                 type = NodeType.@event,
                 lookup = [ "shopBefore" ],
                 bg = "BGShop",
-                allPresent = [ AmCull ],
+                allPresent = [ AmJay ],
                 dialogue = [
-                    new(AmCull, "neutral", "Cool shop!"),
-                    new(AmShopkeeper, "Thank you!", true),
+                    new(AmJay, "neutral", "Where do you get all the parts for repairs?"),
+                    new(AmShopkeeper, "That's classified.", true),
                     new(new Jump{key = "NewShop"})
                 ]
             }},
-            {$"CrystallizedFriendEvent_{AmCull}", new(){
+            {$"CrystallizedFriendEvent_{AmJay}", new(){
                 type = NodeType.@event,
                 oncePerRun = true,
-                allPresent = [ AmCull ],
+                allPresent = [ AmJay ],
                 bg = "BGCrystalizedFriend",
                 dialogue = [
                     new(new Wait{secs = 1.5}),
-                    new(AmCull, "squint", "Huh? Wuh? What's going on?")
+                    new(AmCull, "squint", "Again? Alright...")
                 ]
             }},
-            {$"LoseCharacterCard_{AmCull}", new(){
+            {$"LoseCharacterCard_{AmJay}", new(){
                 type = NodeType.@event,
-                allPresent = [ AmCull ],
+                allPresent = [ AmJay ],
                 oncePerRun = true,
                 bg = "BGSupernova",
                 dialogue = [
-                    new(AmCull, "squint", "Not the worst outcome.")
+                    new(AmCull,  "At least the ship is ok.")
                 ]
             }},
             {"CrystallizedFriendEvent", new () {
                     edit = [    
-                        new (EMod.countFromStart, 1, AmCull, "squint", "I think I might be due for a nap.")
+                        new (EMod.countFromStart, 1, AmJay,  "If I'm going, make sure the ship stays intact.")
                     ]
             }},
             {"DraculaTime", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "An undead? In this region of space?")
+                    new(EMod.countFromStart, 1, AmJay, "squint", "I don't recall meeting any Draculas before.")
                 ]
             }},
             {"ForeignCardOffering_After", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "neutral", "Interesting. Could be useful.")
+                    new(EMod.countFromStart, 1, AmJay, "neutral", "I don't see why not.")
                 ]
             }},
             {"ForeignCardOffering_Refuse", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "Nuh uh.")
+                    new(EMod.countFromStart, 1, AmJay, "squint", "Maybe best if we don't.")
                 ]
             }},
             {"GrandmaShop", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "neutral", "Chocolate peanut butter cups!")
+                    new(EMod.countFromStart, 1, AmJay, "neutral", "Do you have any peanuts?")
                 ]
             }},
             {"Knight_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "neutral", "A knight versus a necromancer, huh?")
+                    new(EMod.countFromStart, 1, AmJay, "neutral", "What an interesting ship. Sure isn't my design.")
                 ]
             }},
             {"LoseCharacterCard", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "nervous","That's not good!")
+                    new(EMod.countFromStart, 1, AmJay,"Better than hull damage.")
                 ]
             }},
             {"LoseCharacterCard_No", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "angry", "At least it wasn't during a fight.")
+                    new(EMod.countFromStart, 1, AmJay, "angry", "Not a fan of the hull getting damaged so severely.")
                 ]
             }},
             {"Sasha_2_Multi_2", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "neutral", "We can play a little bit.")
+                    new(EMod.countFromStart, 1, AmJay, "neutral", "I'm up for a game.")
                 ]
             }},
             {"SogginsEscape_1", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "angry", "So you want to be blown up?")
+                    new(EMod.countFromStart, 1, AmJay, "angry", "Not on my watch.")
                 ]
             }},
             {"Soggins_Infinite", new(){
                 edit = [
-                    new(EMod.countFromStart, 1, AmCull, "squint", "I don't like this frog's vibes.")
+                    new(EMod.countFromStart, 1, AmJay, "squint", "This frog annoys me.")
                 ]
             }},
         });

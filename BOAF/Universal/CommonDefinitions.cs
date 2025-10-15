@@ -15,19 +15,19 @@ static class CommonDefinitions
     internal static string AmCull => Instance.CullDeck.UniqueName;
     internal static Deck AmCullDeck => Instance.CullDeck.Deck;
     internal static Status MissingCull => ModEntry.Instance.CullCharacter.MissingStatus.Status;
-    /*
-     * internal static string AmJay => Instance.JayDeck.UniqueName;
-       internal static Deck AmJayDeck => Instance.JayDeck.Deck;
-       internal static Status MissingJay => ModEntry.Instance.JayCharacter.MissingStatus.Status;
-       internal static string AmLuna => Instance.LunaDeck.UniqueName;
-       internal static Deck AmLunaDeck => Instance.LunaDeck.Deck;
-       internal static Status MissingLuna => ModEntry.Instance.LunaCharacter.MissingStatus.Status;
-       internal static string AmCenti => Instance.CentiDeck.UniqueName;
-       internal static Deck AmCentiDeck => Instance.CentiDeck.Deck;
-       internal static Status MissingCenti => ModEntry.Instance.CentiCharacter.MissingStatus.Status;
-       internal static string AmEva => Instance.EvaDeck.UniqueName;
-       internal static Deck AmEvaDeck => Instance.EvaDeck.Deck;
-       internal static Status MissingEva => ModEntry.Instance.EvaCharacter.MissingStatus.Status;
+    
+    internal static string AmJay => Instance.JayDeck.UniqueName; 
+    internal static Deck AmJayDeck => Instance.JayDeck.Deck;
+    internal static Status MissingJay => ModEntry.Instance.JayCharacter.MissingStatus.Status;
+    /*internal static string AmLuna => Instance.LunaDeck.UniqueName;
+    internal static Deck AmLunaDeck => Instance.LunaDeck.Deck;
+    internal static Status MissingLuna => ModEntry.Instance.LunaCharacter.MissingStatus.Status;
+    internal static string AmCenti => Instance.CentiDeck.UniqueName;
+    internal static Deck AmCentiDeck => Instance.CentiDeck.Deck;
+    internal static Status MissingCenti => ModEntry.Instance.CentiCharacter.MissingStatus.Status;
+    internal static string AmEva => Instance.EvaDeck.UniqueName;
+    internal static Deck AmEvaDeck => Instance.EvaDeck.Deck;
+    internal static Status MissingEva => ModEntry.Instance.EvaCharacter.MissingStatus.Status;
     */
     internal const string AmUnknown = "johndoe";
     internal const string AmCat = "comp";

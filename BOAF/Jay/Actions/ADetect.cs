@@ -24,7 +24,7 @@ public sealed class ADetect : CardAction
     Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "missileBay"])
   };
   private GlossaryTooltip cockpitDetect = new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::cockpitDetect") {
-    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "cannon"])
+    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "cockpit"])
   };
   private GlossaryTooltip otherDetect = new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::otherDetect") {
     Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "other"])
@@ -42,7 +42,7 @@ public sealed class ADetect : CardAction
     Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "missileBayGrey"])
   };
   private GlossaryTooltip cockpitGreyDetect = new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::cockpitGreyDetect") {
-    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "cannonGrey"])
+    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "cockpitGrey"])
   };
   private GlossaryTooltip otherGreyDetect = new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::otherGreyDetect") {
     Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "otherGrey"])
@@ -51,36 +51,36 @@ public sealed class ADetect : CardAction
 	{
     if (s.ship.parts[0].type == PType.cannon)
     {
-      c.Queue(new AAttack(){damage = Card.GetActualDamage(s,2)});
+      c.QueueImmediate(new AAttack(){damage = Card.GetActualDamage(s,2)});
     } else if (s.ship.parts[0].type == PType.cockpit)
     {
-      c.Queue(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
-      c.Queue(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
+      c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
+      c.QueueImmediate(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
     } else if (s.ship.parts[0].type == PType.comms)
     {
-      c.Queue(new AEnergy(){changeAmount = 1});
+      c.QueueImmediate(new AEnergy(){changeAmount = 1});
     } else if (s.ship.parts[0].type == PType.missiles)
     {
-      c.Queue(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
+      c.QueueImmediate(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
     } else if (s.ship.parts[0].type == PType.wing)
     {
-      c.Queue(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
+      c.QueueImmediate(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
     } else
     {
-      c.Queue(new AReconfigure(){Amount = 1});
+      c.QueueImmediate(new AReconfigure(){Amount = 1});
     }
 	}
   
   public override Icon? GetIcon(State s)
   {
-    return new Icon(ModEntry.Instance.reconfigureSprite.Sprite, number: Amount,color: Colors.textMain, flipY: false);
+    return new Icon(ModEntry.Instance.detectSprite.Sprite, number: Amount,color: Colors.textMain, flipY: false);
   }
   
 	public override List<Tooltip> GetTooltips(State s)
       {
         List<Tooltip> tooltips = new List<Tooltip>();
         tooltips.Add(new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Detect") {
-          Icon = ModEntry.Instance.reconfigureSprite.Sprite,
+          Icon = ModEntry.Instance.detectSprite.Sprite,
           TitleColor = Colors.action,
           Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
           Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"])
@@ -105,8 +105,10 @@ public sealed class ADetect : CardAction
           tooltips.Add(commsGreyDetect);
           tooltips.Add(otherGreyDetect);
           
-          tooltips.Add(new TTGlossary("status.shield"));
-          tooltips.Add(new TTGlossary("status.tempShield"));
+          foreach (Tooltip tooltip in new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true}.GetTooltips(s))
+            tooltips.Add(tooltip);
+          foreach (Tooltip tooltip in new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true}.GetTooltips(s))
+            tooltips.Add(tooltip);
         } else if (s.ship.parts[0].type == PType.comms)
         {
           tooltips.Add(wingGreyDetect);
@@ -116,7 +118,7 @@ public sealed class ADetect : CardAction
           tooltips.Add(commsDetect);
           tooltips.Add(otherGreyDetect);
           
-          foreach (Tooltip tooltip in new AEnergy().GetTooltips(s))
+          foreach (Tooltip tooltip in new AEnergy(){changeAmount = 1}.GetTooltips(s))
             tooltips.Add(tooltip);
         } else if (s.ship.parts[0].type == PType.missiles)
         {
@@ -126,7 +128,9 @@ public sealed class ADetect : CardAction
           tooltips.Add(bayDetect);
           tooltips.Add(commsGreyDetect);
           tooltips.Add(otherGreyDetect);
-          tooltips.Add(new TTGlossary("status.droneshift"));
+          
+          foreach (Tooltip tooltip in new AStatus(){status = Status.droneShift, statusAmount = 1, targetPlayer = true}.GetTooltips(s))
+            tooltips.Add(tooltip);
         } else if (s.ship.parts[0].type == PType.wing)
         {
           tooltips.Add(wingDetect);
@@ -135,7 +139,9 @@ public sealed class ADetect : CardAction
           tooltips.Add(bayGreyDetect);
           tooltips.Add(commsGreyDetect);
           tooltips.Add(otherGreyDetect);
-          tooltips.Add(new TTGlossary("status.evade"));
+          
+          foreach (Tooltip tooltip in new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true}.GetTooltips(s))
+            tooltips.Add(tooltip);
         } else
         {
           tooltips.Add(wingGreyDetect);

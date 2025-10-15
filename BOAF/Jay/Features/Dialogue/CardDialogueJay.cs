@@ -14,31 +14,31 @@ internal class CardDialogueJay
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
             {
-                "CATsummonedCullCard_Multi_0", new()
+                "CATsummonedJayCard_Multi_0", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
                     allPresent = [AmCat],
-                    lookup = ["summonCull"],
-                    oncePerCombatTags = ["summonCullTag"],
+                    lookup = ["summonJay"],
+                    oncePerCombatTags = ["summonJayTag"],
                     dialogue =
                     [
-                        new(AmCat, "A little bit of necromancy can't hurt.")
+                        new(AmCat, "I feel more in-tune with the ship.")
                     ]
                 }
             },
             {
-                "CATsummonedCullCard_Multi_1", new()
+                "CATsummonedJayCard_Multi_1", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
-                    allPresent = [AmCat, AmCull],
-                    lookup = ["summonCull"],
-                    oncePerCombatTags = ["summonCullTag"],
+                    allPresent = [AmCat, AmJay],
+                    lookup = ["summonJay"],
+                    oncePerCombatTags = ["summonJayTag"],
                     dialogue =
                     [
-                        new(AmCat, "Little bit of dark magic."),
-                        new(AmCull, "angry", "But that's MY shtick!")
+                        new(AmCat, "My turn to screw with the ship's layout."),
+                        new(AmJay,  "Have fun!")
                     ]
                 }
             },

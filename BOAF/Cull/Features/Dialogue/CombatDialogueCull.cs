@@ -478,7 +478,7 @@ internal class CombatDialogueCull
                     minEnergy = 1,
                     dialogue =
                     [
-                        new(AmCull, "neutral", "nothing left?")
+                        new(AmCull, "neutral", "Nothing left?")
                     ]
                 }
             },
@@ -1116,7 +1116,7 @@ internal class CombatDialogueCull
                     dialogue =
                     [
                         new(AmCull, "neutral",
-                            "This shield is a lifesaver! Too bad it doesn't protect or normal shields."),
+                            "This shield is a lifesaver! Too bad it doesn't protect our normal shields."),
                     ]
                 }
             },

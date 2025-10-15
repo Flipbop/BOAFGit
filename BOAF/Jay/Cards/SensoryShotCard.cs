@@ -11,8 +11,6 @@ internal sealed class SensoryShotCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -31,29 +29,23 @@ internal sealed class SensoryShotCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 2 : 3,
-			exhaust = true,
-			
+			cost = 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new ACripple() {bUpgrade = true}
+				new ADetect{Amount = 1},
+				new AAttack{damage = GetDmg(s, 2), piercing = true}
+			],
+			Upgrade.A => [
+				new ADetect{Amount = 1},
+				new AAttack{damage = GetDmg(s, 3)}
 			],
 			_ => [
-				new ACripple()
+				new ADetect{Amount = 1},
+				new AAttack{damage = GetDmg(s, 2)}
 			],
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not CripppleCard)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
 }

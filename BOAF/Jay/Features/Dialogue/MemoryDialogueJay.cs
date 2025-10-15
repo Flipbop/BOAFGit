@@ -14,13 +14,13 @@ internal class MemoryDialogueJay
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
             //Remove the _PREEMPTIVE from every tag when everything is finished
-            {"RunWinWho_Cull_1_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_1_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmCull],
+                allPresent = [AmJay],
                 bg = "BGRunWin",
                 lookup = [
-                    $"runWin_{AmCull}"
+                    $"runWin_{AmJay}"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
@@ -28,16 +28,16 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"RunWinWho_Cull_2_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_2_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmCull],
+                allPresent = [AmJay],
                 bg = "BGRunWin",
                 lookup = [
-                    $"runWin_{AmCull}"
+                    $"runWin_{AmJay}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Cull_1_PREEMPTIVE"
+                    "RunWinWho_Jay_1_PREEMPTIVE"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
@@ -45,16 +45,16 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"RunWinWho_Cull_3_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_3_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmCull],
+                allPresent = [AmJay],
                 bg = "BGRunWin",
                 lookup = [
-                    $"runWin_{AmCull}"
+                    $"runWin_{AmJay}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Cull_2_PREEMPTIVE"
+                    "RunWinWho_Jay_2_PREEMPTIVE"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
@@ -62,13 +62,13 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"Cull_Memory_1", new(){
+            {"Jay_Memory_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGRunWin",
                 lookup = [
                     "vault",
-                    $"vault_{AmCull}"
+                    $"vault_{AmJay}"
                 ],
                 dialogue = [
                     new("T+??? days"),
@@ -79,14 +79,14 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"Cull_Memory_2", new(){
+            {"Jay_Memory_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGRunWin",
                 lookup = [
-                    "vault", $"vault_{AmCull}"
+                    "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Cull_Memory_1_PREEMPTIVE"],
+                requiredScenes = ["Jay_Memory_1_PREEMPTIVE"],
                 dialogue = [
                     new("T+??? days"),
                     new(new Wait{secs = 2}),
@@ -96,14 +96,14 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )
                 ]
             }},
-            {"Cull_Memory_3", new(){
+            {"Jay_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGRunWin",
                 lookup = [
-                    "vault", $"vault_{AmCull}"
+                    "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Cull_Memory_2_PREEMPTIVE"],
+                requiredScenes = ["Jay_Memory_2_PREEMPTIVE"],
                 dialogue = [
                     new (AmCull, "neutral", "Sorry, I'm not gonna reveal any lore for my mod until EVERYTHING is finished!" ),
                     new (AmCull,"neutral","You are just gonna have to wait until then!" )

@@ -31,48 +31,23 @@ internal sealed class ReadTheContractCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 2:3,
-			exhaust = true,
-			retain = true,
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(10),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AAttack(){damage = GetDmg(s, 20)})
-					.AsCardAction,
-				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
+				new ADetect(){Amount = 2}
+
 			],
 			Upgrade.B => [
-				Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(10),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AAttack(){damage = GetDmg(s, 20)})
-					.AsCardAction,
+				new ADetect(){Amount = 1},
+				new AReconfigure(){Amount = 1},
+				new ADetect(){Amount = 1}
 			],
 			_ => [
-				Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(10),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AAttack(){damage = GetDmg(s, 20)})
-					.AsCardAction,
-				new AStatus {targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5},
+				new ADetect(){Amount = 1}
 			]
 		};
 }

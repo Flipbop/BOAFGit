@@ -31,7 +31,9 @@ internal sealed class InspectionCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = 0,
+			temporary = true,
+			exhaust = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -39,68 +41,11 @@ internal sealed class InspectionCard : Card, IRegisterable
 		{
 			Upgrade.A =>
 			[
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
-				).AsCardAction,
-				new ASpawn() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
-				).AsCardAction,
+				new ADetect{Amount = 2}
 			],
-			Upgrade.B => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
-				).AsCardAction,
-				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
-				).AsCardAction,
-				],
 			_ =>
 			[
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
-				).AsCardAction,
-				new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = 1}
-				).AsCardAction,
+				new ADetect{Amount = 1}
 			]
 		};
 	
