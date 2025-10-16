@@ -18,25 +18,14 @@ internal sealed class ReactiveMaterialsArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.JayDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/EnhancedFocus.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "EnhancedFocus", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "EnhancedFocus", "description"]).Localize
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/ReactiveMaterials.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "ReactiveMaterials", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "ReactiveMaterials", "description"]).Localize
 		});
 	}
-	public bool _used = false;
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		if (_used == false)
-		{
-			combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1});
-		}
-		_used = true;
-	}
-
-	public override void OnTurnEnd(State state, Combat combat)
-	{
-		base.OnTurnEnd(state, combat);
-		_used = false;
+		combat.Queue(new AReconfigure(){Amount = 1});
 	}
 }

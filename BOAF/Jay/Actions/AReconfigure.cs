@@ -38,7 +38,7 @@ public sealed class AReconfigure : CardAction
 					s.ship.parts[i + 1] = s.ship.parts[i];
 				}
 
-				s.ship.parts[0] = rightmost;
+				s.ship.parts.Insert(0, rightmost);
 			}
 		}
 }

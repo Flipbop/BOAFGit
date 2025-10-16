@@ -17,9 +17,9 @@ internal sealed class CellTowerArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.JayDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/CursedLantern.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "CursedLantern", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "CursedLantern", "description"]).Localize
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/CellTower.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "CellTower", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "CellTower", "description"]).Localize
 		});
 	}
 

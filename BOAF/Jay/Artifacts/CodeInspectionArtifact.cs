@@ -20,10 +20,10 @@ internal sealed class CodeInspectionArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites
-				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/Animism.png"))
+				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/CodeInspection.png"))
 				.Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "Animism", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "Animism", "description"])
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "CodeInspection", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "CodeInspection", "description"])
 				.Localize
 		});
 	}

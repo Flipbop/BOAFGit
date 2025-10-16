@@ -2,6 +2,7 @@
 using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using Flipbop.BOAF;
 
 
@@ -49,25 +50,37 @@ public sealed class ADetect : CardAction
   };
 	public override void Begin(G g, State s, Combat c)
 	{
-    if (s.ship.parts[0].type == PType.cannon)
+    if (s.EnumerateAllArtifacts().Any((a) => a is EnhancedSensorsArtifact))
     {
-      c.QueueImmediate(new AAttack(){damage = Card.GetActualDamage(s,2)});
-    } else if (s.ship.parts[0].type == PType.cockpit)
+      Amount *= 2;
+    }
+    for (int i = 0; i < Amount; i++)
     {
-      c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
-      c.QueueImmediate(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
-    } else if (s.ship.parts[0].type == PType.comms)
-    {
-      c.QueueImmediate(new AEnergy(){changeAmount = 1});
-    } else if (s.ship.parts[0].type == PType.missiles)
-    {
-      c.QueueImmediate(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
-    } else if (s.ship.parts[0].type == PType.wing)
-    {
-      c.QueueImmediate(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
-    } else
-    {
-      c.QueueImmediate(new AReconfigure(){Amount = 1});
+      if (s.ship.parts[0].type == PType.cannon)
+      {
+        c.QueueImmediate(new AAttack(){damage = Card.GetActualDamage(s,2)});
+      } else if (s.ship.parts[0].type == PType.cockpit)
+      {
+        c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
+        c.QueueImmediate(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
+      } else if (s.ship.parts[0].type == PType.comms)
+      {
+        c.QueueImmediate(new AEnergy(){changeAmount = 1});
+      } else if (s.ship.parts[0].type == PType.missiles)
+      {
+        c.QueueImmediate(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
+      } else if (s.ship.parts[0].type == PType.wing)
+      {
+       
+        c.QueueImmediate(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
+      } else if (s.ship.parts[0].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
+      {
+        c.QueueImmediate(new AEnergy(){changeAmount = 1});
+        c.QueueImmediate(new AReconfigure(){Amount = 1});
+      } else
+      {
+        c.QueueImmediate(new AReconfigure(){Amount = 1});
+      }
     }
 	}
   

@@ -17,9 +17,9 @@ internal sealed class FinalTestArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.JayDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/EnchantedScythe.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "EnchantedScythe", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "EnchantedScythe", "description"]).Localize
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/FinalTest.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "FinalTest", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "FinalTest", "description"]).Localize
 		});
 	}
 

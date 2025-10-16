@@ -249,7 +249,7 @@
                 "cannon": "Cannon: <c=action>ATTACK 1</c>",
                 "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
                 "missileBay": "Missile Bay: <c=status>DRONESHIFT 2</c>",
-                "comms": "Comms: GAIN <c=status>1 ENERGY</c>",
+                "comms": "Comms: GAIN <c=energy>1 ENERGY</c>",
                 "other": "Other: <c=action>RECONFIGURE 1</c>",
                 
                 "wingGrey": "<c=faint>Wing: EVADE 1</c>",
@@ -280,7 +280,7 @@
             },
             "Blueprints": {
                 "name": "BLUEPRINTS",
-                "description": "Gain 2 empty <c=>Wings</c> on both sides of your ship. When you <c=action>Detect</c> a Wing you also get <c=status>1 ENERGY</c>."
+                "description": "Gain 2 empty <c=>Wings</c> on both sides of your ship. When you <c=action>Detect</c> a Wing you also get <c=energy>1 ENERGY</c>."
             },
             "EnhancedSensors": {
                 "name": "ENHANCED SENSORS",
