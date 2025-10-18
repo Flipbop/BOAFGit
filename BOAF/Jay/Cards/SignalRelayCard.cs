@@ -31,23 +31,23 @@ internal sealed class SignalRelayCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade switch
-			{
-				Upgrade.A => 1,
-				Upgrade.B => 3,
-				_ => 2,
-			},
-			exhaust = true,
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new ADetect(){Amount = 2},
+				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
+			],
 			Upgrade.B => [
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.EmpoweredStatus.Status, statusAmount = 2}
+				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 2},
+				new ADetect(){Amount = 1},
 			],
 			_ => [
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.EmpoweredStatus.Status, statusAmount = 1}
+				new ADetect(){Amount = 1},
+				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
 			]
 		};
 }

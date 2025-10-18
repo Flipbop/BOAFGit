@@ -326,7 +326,7 @@
         "status": {
             "LessEnergyAllTurns": {
                 "name": "Less Energy All Turns",
-                "description": "You have <c=status>-1 ENERGY</c> each turn."
+                "description": "You have <c=status>-{0} ENERGY</c> each turn."
             },
             "SignalBooster": {
                 "name": "Signal Booster",

@@ -28,9 +28,8 @@ internal sealed class CodeInspectionArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnPlayerDestroyDrone(State state, Combat combat)
+	public override int? GetDisplayNumber(State s)
 	{
-		base.OnPlayerDestroyDrone(state, combat);
-		combat.Queue(new AStatus() {statusAmount = 1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+		return AReconfigure.codeInspectionAmount;
 	}
 }

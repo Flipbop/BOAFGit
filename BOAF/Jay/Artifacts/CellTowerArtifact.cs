@@ -23,9 +23,9 @@ internal sealed class CellTowerArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnReceiveArtifact(State state)
+	public override void OnCombatStart(State state, Combat combat)
 	{
-		base.OnReceiveArtifact(state);
-		state.ship.baseEnergy += 1;
+		base.OnCombatStart(state, combat);
+		combat.QueueImmediate(new AStatus(){statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status});
 	}
 }

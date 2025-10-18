@@ -40,19 +40,17 @@ internal sealed class MixItUpCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new ASoulHint() {hand = true},
-				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1},
-				new AHarvestAttack() {damage = GetDmg(s, 1)}
-			],
 			Upgrade.B => [
-				new ASoulHint() {hand = true},
-				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status))*2, xHint = 2},
-				new AStatus(){status = ModEntry.Instance.SoulDrainStatus.Status, statusAmount = 5, targetPlayer = true}
+				new AShuffleShip(),
+				new ADetect(){Amount = 1},
+				new AShuffleShip(),
+				new ADetect(){Amount = 1},
+				new AShuffleShip(),
+				new ADetect(){Amount = 1},
 			],
 			_ => [
-				new ASoulHint() {hand = true},
-				new AHarvestAttack() {damage = GetDmg(s, s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status)), xHint = 1}
+				new AShuffleShip(),
+				new ADetect(){Amount = 3}
 			]
 			
 		};

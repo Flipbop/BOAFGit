@@ -27,14 +27,18 @@ internal sealed class OptimizeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 0: 1,
-			infinite = upgrade != Upgrade.B,
+			cost = 1,
+			infinite = true
 
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
+			],
 			Upgrade.A => [
 				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
 				new AReconfigure(){Amount = 1}

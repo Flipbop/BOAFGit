@@ -1,6 +1,7 @@
 ﻿using FSPRO;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ public sealed class AReconfigure : CardAction
 	public required int Amount;
 	public bool reverse = false;
 
+	public static int codeInspectionAmount = 0;
 	public override void Begin(G g, State s, Combat c)
 	{
 		if (!reverse)
@@ -33,12 +35,22 @@ public sealed class AReconfigure : CardAction
 			for (int b = 0; b < Amount; b++)
 			{
 				Part rightmost = s.ship.parts[^1];
-				for (int i = s.ship.parts.Count; i > 0; i--)
+				for (int i = s.ship.parts.Count-1; i > 0; i--)
 				{
 					s.ship.parts[i + 1] = s.ship.parts[i];
 				}
 
 				s.ship.parts.Insert(0, rightmost);
+			}
+		}
+
+		if (s.EnumerateAllArtifacts().Any((a) => a is CodeInspectionArtifact))
+		{
+			codeInspectionAmount++;
+			if (codeInspectionAmount >= 3)
+			{
+				c.QueueImmediate(new AAddCard(){amount = 1, card = new InspectionCard(), destination = CardDestination.Hand});
+				codeInspectionAmount = 0;
 			}
 		}
 }

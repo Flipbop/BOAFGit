@@ -51,8 +51,10 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry reconfigureSprite { get; }
 	internal ISpriteEntry rebuildSprite { get; }
 	internal ISpriteEntry detectSprite { get; }
-
-
+	internal IStatusEntry SignalBoosterStatus { get; }
+	internal IStatusEntry LessEnergyAllTurnsStatus { get; }
+	internal ISpriteEntry signalBoosterSprite { get; }
+	internal ISpriteEntry lessEnergyAllTurnsSprite { get; }
 	#endregion
 	
 	#region Ships
@@ -216,7 +218,8 @@ public sealed class ModEntry : SimpleMod
 		reconfigureSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Reconfigure.png"));
 		rebuildSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Rebuild.png"));
 		detectSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Detect.png"));
-
+		signalBoosterSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/SignalBooster.png"));
+		lessEnergyAllTurnsSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/EnergyAllTurns.png"));
 		
 		this.helper = helper;
 		
@@ -552,6 +555,31 @@ public sealed class ModEntry : SimpleMod
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Sob/{i}.png")).Sprite)
 				.ToList()
+		});
+		
+		SignalBoosterStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SignalBooster", new()
+		{
+			Definition = new()
+			{
+				icon = signalBoosterSprite.Sprite,
+				color = new("312351"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Jay", "status", "SignalBooster", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Jay", "status", "SignalBooster", "description"])
+				.Localize
+		});
+		LessEnergyAllTurnsStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("LessEnergyAllTurns", new()
+		{
+			Definition = new()
+			{
+				icon = lessEnergyAllTurnsSprite.Sprite,
+				color = new("312351"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurna", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurns", "description"])
+				.Localize
 		});
 		
 		//Vault.charsWithLore.Add(JayDeck.Deck);
