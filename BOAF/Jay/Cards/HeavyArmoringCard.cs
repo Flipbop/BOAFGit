@@ -30,8 +30,8 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
-			exhaust = true,
+			cost = 1,
+			exhaust = upgrade != Upgrade.A,
 			description =
 				ModEntry.Instance.Localizations.Localize([
 					"Jay", "card", "HeavyArmoring", "description", upgrade.ToString()
@@ -41,17 +41,12 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AStatus() {targetPlayer = true, statusAmount = 2, status = Status.droneShift},
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
-			],
 			Upgrade.B => [
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}, offset = -1},
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+				new APartModManager.APartModification {part = s.ship.parts[0]},
+				new APartModManager.APartModification {part = s.ship.parts[^1]}
 			],
 			_ => [
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+				new APartModManager.APartModification {part = s.ship.parts[0]}
 			]
 		};
 }

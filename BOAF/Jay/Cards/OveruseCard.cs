@@ -32,7 +32,7 @@ internal sealed class OveruseCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = 1,
 			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
@@ -45,51 +45,18 @@ internal sealed class OveruseCard : Card, IRegisterable
 			{
 				Upgrade.A =>
 				[
-					Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(5),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AStatus()
-							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
-					).AsCardAction,
+					new ADetect(){Amount = 5},
+					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
 				],
 				Upgrade.B =>
 				[
-					Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(6),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AStatus()
-							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
-					).AsCardAction,
-					Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(8),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AStatus() { targetPlayer = true, statusAmount = 1, status = Status.perfectShield }
-					).AsCardAction,
+					new ADetect(){Amount = 8},
+					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.brittle}
 				],
 				_ =>
 				[
-					Conditional.MakeAction(
-						Conditional.Equation(
-							Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-							IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-							Conditional.Constant(6),
-							IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-						).SetShowOperator(false),
-						new AStatus()
-							{ targetPlayer = true, statusAmount = 1, status = ModEntry.Instance.CloakedStatus.Status }
-					).AsCardAction,
+					new ADetect(){Amount = 3},
+					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
 				]
 			
 		};
