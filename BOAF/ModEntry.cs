@@ -59,7 +59,8 @@ public sealed class ModEntry : SimpleMod
 	
 	#region Ships
 	IShipEntry ThanatosShip { get; }
-	
+	IShipEntry VulcanShip { get; }
+
 	#endregion
 	public IModHelper helper { get; }
 	
@@ -602,7 +603,7 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "cannon_artemis",
+                            skin = "wing_ares",
                         },
                         new Part
                         {
@@ -624,12 +625,13 @@ public sealed class ModEntry : SimpleMod
                             type = PType.wing,
                             skin = "wing_player",
                             flip = true,
-                            damageModifier = PDamMod.weak
                         },
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "cannon_artemis",
+                            skin = "wing_ares_off",
+                            active = false,
+                            flip = true,
                         }
                     }
                 },
@@ -654,6 +656,64 @@ public sealed class ModEntry : SimpleMod
             //UnderChassisSprite = "chassis_boxy",
             Name = AnyLocalizations.Bind(["ship", "Thanatos", "name"]).Localize,
             Description = AnyLocalizations.Bind(["ship", "Thanatos", "description"]).Localize
+        });
+		VulcanShip = helper.Content.Ships.RegisterShip("Vulcan", new ShipConfiguration()
+        {
+            Ship = new StarterShip()
+            {
+                ship = new Ship()
+                {
+                    hull = 8,
+                    hullMax = 8,
+                    shieldMaxBase = 8,
+                    parts =
+                    {
+                        new Part
+                        {
+                            type = PType.missiles,
+                            skin = "missiles_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                        },
+                        new Part
+                        {
+                            type = PType.cockpit,
+                            skin = "cockpit_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.cannon,
+                            skin = "cannon_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                            flip = true,
+                        }
+                    }
+                },
+                cards =
+                {
+                    new BasicShieldColorless(),
+                    new DodgeColorless(),
+                    new CannonColorless()
+                },
+                artifacts =
+                {
+                    new ShieldPrep(),
+                }
+            },
+            ExclusiveArtifactTypes = new HashSet<Type>()
+            {
+
+            },
+            //UnderChassisSprite = "chassis_boxy",
+            Name = AnyLocalizations.Bind(["ship", "Vulcan", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["ship", "Vulcan", "description"]).Localize
         });
 		#endregion
 		

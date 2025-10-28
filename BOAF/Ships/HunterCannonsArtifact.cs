@@ -26,16 +26,52 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 	}
 
 	public bool peace = true;
+	public bool war = false;
 
 	public override void OnTurnEnd(State state, Combat combat)
 	{
 		base.OnTurnEnd(state, combat);
-		if (peace) combat.Queue(new AAttack() {damage = Card.GetActualDamage(state,1)});
+		if (war && !peace)
+		{
+			war = false;
+			foreach (Part p in state.ship.parts)
+			{
+				
+				if (p.active)
+				{
+					p.active = false;
+					p.skin = "wing_ares_off";
+				}
+				if (!p.active && p.skin == "wing_ares_off" && ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+				{
+					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
+					p.active = true;
+					p.skin = "wing_ares";
+				}
+			}
+		}
+		if (peace)
+		{
+			war = true;
+			foreach (Part p in state.ship.parts)
+			{
+				if (p.active && p.skin == "wing_ares" && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+				{
+					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", true);
+				}
+				if (!p.active)
+				{
+					p.active = true;
+					p.skin = "wing_ares";
+				}
+			}
+		}
+		
 	}
 
-	public override void OnPlayerAttack(State state, Combat combat)
+	public override void OnEnemyGetHit(State state, Combat combat, Part? part)
 	{
-		base.OnPlayerAttack(state, combat);
+		base.OnEnemyGetHit(state, combat, part);
 		peace = false;
 	}
 

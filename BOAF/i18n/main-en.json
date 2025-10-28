@@ -230,7 +230,7 @@
             "description": [
                 "<c=001ab7>JAY</c>",
                 "Your shipwright.",
-                "His cards can manipulate your ship's parts individually by <c=keyword>changing them or moving them</c>. He can also preform actions based on what parts are where in your ship."
+                "Can manipulate your ship's parts individually by <c=keyword>changing them or moving them</c>. He can also preform actions based on what parts are where in your ship."
             ]
         },
         "action": {
@@ -1276,11 +1276,11 @@
         "artifact": {
             "HunterCannons": {
                 "name": "HUNTER CANNONS",
-                "description": "If you did not attack on your turn, fire a 1 damage attack from both cannons at the end of your turn."
+                "description": "If you did not hit the enemy on your turn, both of your cannons are active for the next turn. Afterwards, swap your active cannon."
             },
             "ReaperCannons": {
                 "name": "REAPER CANNONS",
-                "description": "If you did not attack on your turn, fire TWO 1 damage attacks from both cannons at the end of your turn. Replaces <c=artifact>HUNTER CANNONS</c>."
+                "description": "If you you did not hit the enemy on your turn, both of your cannons are active for the next 3 turns. Afterwards, swap your active cannon. Replaces <c=artifact>HUNTER CANNONS</c>."
             }
         }
     }
