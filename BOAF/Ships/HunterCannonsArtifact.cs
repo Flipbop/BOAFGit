@@ -37,10 +37,9 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 			foreach (Part p in state.ship.parts)
 			{
 				
-				if (p.active)
+				if (p.active && p.skin == "wing_ares")
 				{
 					p.active = false;
-					p.skin = "wing_ares_off";
 				}
 				if (!p.active && p.skin == "wing_ares_off" && ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
 				{

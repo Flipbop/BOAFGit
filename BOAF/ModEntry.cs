@@ -629,7 +629,7 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "wing_ares_off",
+                            skin = "wing_ares",
                             active = false,
                             flip = true,
                         }
@@ -768,6 +768,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new EventDialogueJay();
 		_ = new MemoryDialogueJay();		
 		_ = new StoryDialogueJay();
+		
 	}
 
 

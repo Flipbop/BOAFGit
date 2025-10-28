@@ -371,9 +371,9 @@
             "HeavyArmoring": {
                 "name": "Heavy Armoring",
                 "description": {
-                    "None": "The leftmost part of your ship become <c=status>Armored</c> for the rest of combat.",
-                    "A": "The leftmost part of your ship become <c=status>Armored</c> for the rest of combat.",
-                    "B": "The leftmost and rightmost parts of your ship become <c=status>Armored</c> for the rest of combat."
+                    "None": "The leftmost part of your ship becomes <c=status>Armored</c> for the rest of combat.",
+                    "A": "The leftmost part of your ship becomes <c=status>Armored</c> for the rest of combat.",
+                    "B": "The leftmost and rightmost parts of your ship becomes <c=status>Armored</c> for the rest of combat."
                 }
             },
             "Optimize": {
