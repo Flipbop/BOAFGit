@@ -239,8 +239,8 @@
                 "description": "The leftmost part of your ship moves to the rightmost position, all other parts move left one."
             },
             "Rebuild": {
-                "name": "REBUILD",
-                "description": "Change your leftmost part to match the given part for the rest of combat. Keep any modifiers already on the part."
+                "name": "REBUILD {partName}",
+                "description": "Change your leftmost part to a {partName} for the rest of combat. Keep any modifiers already on the part."
             },
             "Detect": {
                 "name": "DETECT",

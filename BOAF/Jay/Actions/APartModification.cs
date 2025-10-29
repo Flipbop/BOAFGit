@@ -51,6 +51,7 @@ public class APartModManager {
     {
         public required PType newPartType;
         public required Part part;
+        private string partName = "WING";
         public override void Begin(G g, State s, Combat c)
         {
             if (!ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(part, "rebuilt", false))
@@ -64,14 +65,19 @@ public class APartModManager {
                 part.skin = ModEntry.Instance.rebuiltWingSprite.LocalName;
             } else if (newPartType == PType.cannon) { 
                 part.skin = ModEntry.Instance.rebuiltCannonSprite.LocalName;
+                partName = "CANNON";
             } else if (newPartType == PType.cockpit) { 
                 part.skin = ModEntry.Instance.rebuiltCockpitSprite.LocalName;
+                partName = "COCKPIT";
             } else if (newPartType == PType.comms) {
                 part.skin = ModEntry.Instance.rebuiltCommsSprite.LocalName;
+                partName = "COMMS";
             } else if (newPartType == PType.empty) {
                 part.skin = ModEntry.Instance.rebuiltScaffoldSprite.LocalName;
+                partName = "SCAFFOLDING";
             } else if (newPartType == PType.missiles) {
                 part.skin = ModEntry.Instance.rebuiltBaySprite.LocalName;
+                partName = "MISSILE BAY";
             }
 
             if (!part.active)
@@ -89,5 +95,20 @@ public class APartModManager {
                 c.QueueImmediate(new ADetect(){Amount = 1});
             }
         }
+        public override Icon? GetIcon(State s)
+        {
+            return new Icon(ModEntry.Instance.rebuildSprite.Sprite, null, Colors.textMain, flipY: false);
+        }
+
+        public override List<Tooltip> GetTooltips(State s)
+            => [
+                new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Rebuild")
+                {
+                    Icon = ModEntry.Instance.reconfigureSprite.Sprite,
+                    TitleColor = Colors.action,
+                    Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "name"]),
+                    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "description"])
+                }
+            ];
     }
 }
