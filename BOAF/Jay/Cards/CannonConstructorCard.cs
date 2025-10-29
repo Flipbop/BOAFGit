@@ -31,45 +31,25 @@ internal sealed class CannonConstructorCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 1: 2,
+			cost = 4,
+			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
+			],
 			Upgrade.B =>[
-				new AMove() {dir = -2, targetPlayer = true},
-				new ASpawn() {fromPlayer = true, thing = new SpaceMine() {bigMine = true}},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AMove() {dir = 1, targetPlayer = true}
-				).AsCardAction,
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new AAttack(){damage = GetDmg(s,1)},
+				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
 			],
 			_ => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AMove() {dir = 1, targetPlayer = true}
-				).AsCardAction,
-				new ASpawn() {fromPlayer = true, thing = new SpaceMine() {bigMine = true}},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AMove() {dir = 1, targetPlayer = true}
-				).AsCardAction,
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
 			]
 		};
 }

@@ -29,46 +29,22 @@ internal sealed class CommsHubCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B? 0:1,
+			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AAttack() {damage = GetDmg(s, 1)},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
-				).AsCardAction,
-			],
-			Upgrade.B => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
-				).AsCardAction,
-				new AAttack() {damage = GetDmg(s, 1)}
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms},
+				new ADetect(){Amount = 2},
+				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 			],
 			_ => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
-				).AsCardAction
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms},
+				new ADetect(){Amount = 1},
+				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 			]
 		};
 }

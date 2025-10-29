@@ -38,40 +38,17 @@ internal sealed class CommandCenterCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AMove() {isRandom = true, targetPlayer = true, dir = 4},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 1}
-				).AsCardAction
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new ADetect(){Amount = 1},
+				new AReconfigure(){Amount = 1}
 			],
 			Upgrade.A => [
-				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 3}
-				).AsCardAction
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new ADetect(){Amount = 2}
 			],
 			_ => [
-				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.evade, statusAmount = 2}
-				).AsCardAction
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new ADetect(){Amount = 1}
 			]
 		};
 }

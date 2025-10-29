@@ -27,20 +27,22 @@ internal sealed class LaunchCodesCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 0 : 1,
-			flippable = true,
+			cost = upgrade == Upgrade.A ? 2 : 3,
+			exhaust	= true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new ADroneMove() {dir = 2},
-				new AMove() {dir = -2, targetPlayer = true}
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles},
+				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
+				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			],
 			_ => [
-				new ADroneMove() {dir = 1},
-				new AMove() {dir = -1, targetPlayer = true}
+				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles},
+				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			]
 		};
 }

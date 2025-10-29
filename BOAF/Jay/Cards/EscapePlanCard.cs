@@ -30,47 +30,25 @@ internal sealed class EscapePlanCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B? 3:2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus { status = Status.droneShift, statusAmount = 2, targetPlayer = true },
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
-				).AsCardAction
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
+				new ADetect(){Amount = 3}
 			],
 			Upgrade.B => [
-				new AStatus { status = Status.droneShift, statusAmount = 1, targetPlayer = true },
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(2),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
-				).AsCardAction
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
+				new AReconfigure(){Amount = 1},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
+				new ADetect(){Amount = 2}
 			],
 			_=> [
-				new AStatus { status = Status.droneShift, statusAmount = 1, targetPlayer = true },
-				Conditional.MakeAction(
-				Conditional.Equation(
-					Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-					IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-					Conditional.Constant(3),
-					IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-				).SetShowOperator(false),
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
-				).AsCardAction
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
+				new ADetect(){Amount = 2}
 			]
 		};
 }

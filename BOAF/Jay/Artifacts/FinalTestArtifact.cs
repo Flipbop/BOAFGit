@@ -22,13 +22,4 @@ internal sealed class FinalTestArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "FinalTest", "description"]).Localize
 		});
 	}
-
-	public override int ModifyBaseDamage(int baseDamage, Card? card, State state, Combat? combat, bool fromPlayer)
-	{
-		if (state.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5 && fromPlayer)
-		{
-			return base.ModifyBaseDamage(baseDamage, card, state, combat, fromPlayer) +1;
-		}
-		return base.ModifyBaseDamage(baseDamage, card, state, combat, fromPlayer);
-	}
 }
