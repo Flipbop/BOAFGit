@@ -41,12 +41,11 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 				{
 					p.active = false;
 				}
-				if (!p.active && p.skin == "wing_ares_off" && ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+				if (!p.active && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
 				{
-					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
 					p.active = true;
-					p.skin = "wing_ares";
 				}
+				ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
 			}
 		}
 		if (peace)
@@ -61,7 +60,6 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 				if (!p.active)
 				{
 					p.active = true;
-					p.skin = "wing_ares";
 				}
 			}
 		}

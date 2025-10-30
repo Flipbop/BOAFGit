@@ -239,8 +239,8 @@
                 "description": "The leftmost part of your ship moves to the rightmost position, all other parts move left one."
             },
             "Rebuild": {
-                "name": "REBUILD {partName}",
-                "description": "Change your leftmost part to a {partName} for the rest of combat. Keep any modifiers already on the part."
+                "name": "REBUILD {{partName}}",
+                "description": "Change your leftmost part to a {{partName}} for the rest of combat. Keep any modifiers already on the part."
             },
             "Detect": {
                 "name": "DETECT",
@@ -1281,6 +1281,14 @@
             "ReaperCannons": {
                 "name": "REAPER CANNONS",
                 "description": "If you you did not hit the enemy on your turn, both of your cannons are active for the next 3 turns. Afterwards, swap your active cannon. Replaces <c=artifact>HUNTER CANNONS</c>."
+            },
+            "VulcanPlating": {
+                "name": "VULCAN PLATING",
+                "description": "When a non-brittle, non-weak part of your ship is hit, it gains <c=part>ARMOR</c> for the rest of combat."
+            },
+            "KineticRebound": {
+                "name": "KINETIC REBOUND",
+                "description": "When an <c=part>armored</c> part of your ship is hit, gain 2 <c=status>SHIELD.</c>"
             }
         }
     }

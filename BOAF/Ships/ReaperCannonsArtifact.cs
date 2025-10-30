@@ -43,14 +43,12 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 					if (p.active && p.skin == "wing_ares")
 					{
 						p.active = false;
-						p.skin = "wing_ares_off";
 					}
-					if (!p.active && p.skin == "wing_ares_off" && ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+					if (!p.active && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
 					{
-						ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
 						p.active = true;
-						p.skin = "wing_ares";
 					}
+					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
 				}
 			}
 			else
@@ -70,7 +68,6 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 				if (!p.active)
 				{
 					p.active = true;
-					p.skin = "wing_ares";
 				}
 			}
 
@@ -104,7 +101,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 
 	public override int? GetDisplayNumber(State s)
 	{
-		if (peace)
+		if (!war)
 		{
 			return null;
 		}

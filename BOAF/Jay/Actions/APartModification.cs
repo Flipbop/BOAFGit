@@ -106,8 +106,8 @@ public class APartModManager {
                 {
                     Icon = ModEntry.Instance.reconfigureSprite.Sprite,
                     TitleColor = Colors.action,
-                    Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "name"]),
-                    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "description"])
+                    Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "name"], new {partName}),
+                    Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "description"], new {partName})
                 }
             ];
     }

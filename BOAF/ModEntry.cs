@@ -164,7 +164,8 @@ public sealed class ModEntry : SimpleMod
 		typeof(BlueprintsArtifact),
 		typeof(EnhancedSensorsArtifact),
 		
-		typeof(ReaperCannonsArtifact)
+		typeof(ReaperCannonsArtifact),
+		typeof(KineticReboundArtifact),
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -182,7 +183,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(SoulSiphonArtifact),
 		
 		typeof(HunterCannonsArtifact),
-
+		typeof(VulcanPlatingArtifact),
 	];
 
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
@@ -719,11 +720,13 @@ public sealed class ModEntry : SimpleMod
                 artifacts =
                 {
                     new ShieldPrep(),
+                    new VulcanPlatingArtifact()
                 }
             },
             ExclusiveArtifactTypes = new HashSet<Type>()
             {
-
+	            typeof(VulcanPlatingArtifact),
+	            typeof(KineticReboundArtifact)
             },
             //UnderChassisSprite = "chassis_boxy",
             Name = AnyLocalizations.Bind(["ship", "Vulcan", "name"]).Localize,
