@@ -35,13 +35,13 @@ internal sealed class LaunchCodesCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles, partName = "MISSILE BAY"},
 				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
 				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			],
 			_ => [
 				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles, partName = "MISSILE BAY"},
 				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			]
 		};

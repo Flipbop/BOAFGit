@@ -55,12 +55,12 @@ public sealed class ModEntry : SimpleMod
 	internal IStatusEntry LessEnergyAllTurnsStatus { get; }
 	internal ISpriteEntry signalBoosterSprite { get; }
 	internal ISpriteEntry lessEnergyAllTurnsSprite { get; }
-	internal ISpriteEntry rebuiltCannonSprite { get; }
-	internal ISpriteEntry rebuiltCockpitSprite { get; }
-	internal ISpriteEntry rebuiltBaySprite { get; }
-	internal ISpriteEntry rebuiltScaffoldSprite { get; }
-	internal ISpriteEntry rebuiltWingSprite { get; }
-	internal ISpriteEntry rebuiltCommsSprite { get; }
+	internal string rebuiltCannonSprite { get; }
+	internal string rebuiltCockpitSprite { get; }
+	internal string rebuiltBaySprite { get; }
+	internal string rebuiltScaffoldSprite { get; }
+	internal string rebuiltWingSprite { get; }
+	internal string rebuiltCommsSprite { get; }
 
 	#endregion
 	
@@ -229,12 +229,12 @@ public sealed class ModEntry : SimpleMod
 		detectSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Detect.png"));
 		signalBoosterSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/SignalBooster.png"));
 		lessEnergyAllTurnsSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/EnergyAllTurns.png"));
-		rebuiltCannonSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltCannon.png"));
-		rebuiltCockpitSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltCockpit.png"));
-		rebuiltBaySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltBay.png"));
-		rebuiltScaffoldSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltScaffold.png"));
-		rebuiltWingSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltWing.png"));
-		rebuiltCommsSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltComms.png"));
+		rebuiltWingSprite = helper.Content.Ships.RegisterPart("RebuiltWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltWing.png")).Sprite }).UniqueName;
+		rebuiltCannonSprite = helper.Content.Ships.RegisterPart("RebuiltCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltCannon.png")).Sprite }).UniqueName;
+		rebuiltCockpitSprite = helper.Content.Ships.RegisterPart("RebuiltCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltCockpit.png")).Sprite }).UniqueName;
+		rebuiltBaySprite = helper.Content.Ships.RegisterPart("RebuiltBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltBay.png")).Sprite }).UniqueName;
+		rebuiltScaffoldSprite = helper.Content.Ships.RegisterPart("RebuiltScaffold", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltScaffold.png")).Sprite }).UniqueName;
+		rebuiltCommsSprite = helper.Content.Ships.RegisterPart("RebuiltComms", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltComms.png")).Sprite }).UniqueName;
 
 		
 		this.helper = helper;

@@ -38,16 +38,16 @@ internal sealed class CommandCenterCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
 				new ADetect(){Amount = 1},
 				new AReconfigure(){Amount = 1}
 			],
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
 				new ADetect(){Amount = 2}
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit},
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
 				new ADetect(){Amount = 1}
 			]
 		};

@@ -37,12 +37,12 @@ internal sealed class CommsHubCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms},
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
 				new ADetect(){Amount = 2},
 				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms},
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
 				new ADetect(){Amount = 1},
 				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 			]

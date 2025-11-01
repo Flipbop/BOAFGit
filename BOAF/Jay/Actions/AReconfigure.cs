@@ -37,7 +37,7 @@ public sealed class AReconfigure : CardAction
 				Part rightmost = s.ship.parts[^1];
 				for (int i = s.ship.parts.Count-1; i > 0; i--)
 				{
-					s.ship.parts[i + 1] = s.ship.parts[i];
+					s.ship.parts[i] = s.ship.parts[i-1];
 				}
 
 				s.ship.parts.Insert(0, rightmost);
@@ -53,7 +53,7 @@ public sealed class AReconfigure : CardAction
 				codeInspectionAmount = 0;
 			}
 		}
-}
+	}
 	
 	
 	public override Icon? GetIcon(State s)

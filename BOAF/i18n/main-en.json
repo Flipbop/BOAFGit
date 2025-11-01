@@ -326,7 +326,7 @@
         "status": {
             "LessEnergyAllTurns": {
                 "name": "Less Energy All Turns",
-                "description": "You have <c=status>-{0} ENERGY</c> each turn."
+                "description": "You have -{0} <c=energy>ENERGY</c> each turn."
             },
             "SignalBooster": {
                 "name": "Signal Booster",
@@ -405,9 +405,9 @@
             "FactoryReset": {
                 "name": "Factory Reset",
                 "description": {
-                    "None": "Reset all of your ships parts to their original locations. <c=action>Detect 2.</c>",
-                    "A": "Reset all of your ships parts to their original locations. <c=action>Detect 3.</c>",
-                    "B": "<c=action>Detect 1.</c> Reset all of your ships parts to their original locations. <c=action>Reconfigure 1. Detect 2.</c>"
+                    "None": "Reset all of your ships parts to how they were when combat started. <c=action>Detect 2.</c>",
+                    "A": "Reset all of your ships parts to how they were when combat started. <c=action>Detect 3.</c>",
+                    "B": "<c=action>Detect 1.</c> Reset all of your ships parts to how they were when combat started. <c=action>Reconfigure 1. Detect 2.</c>"
                 }
             },
             "BareMinimum": {

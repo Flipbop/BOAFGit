@@ -27,6 +27,6 @@ internal sealed class VulcanPlatingArtifact : Artifact, IRegisterable
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		if (part != null) combat.QueueImmediate(new APartModManager.APartModification() { part = part });
+		if (part != null && part.damageModifier == PDamMod.none) combat.QueueImmediate(new APartModManager.APartModification() { part = part });
 	}
 }

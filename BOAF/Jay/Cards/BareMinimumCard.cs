@@ -41,12 +41,12 @@ internal sealed class BareMinimumCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty, partName = "SCAFFOLDING"},
 				new ADetect(){Amount = 1},
 				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			],
 			_ => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty, partName = "SCAFFOLDING"},
 				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			]
 		};

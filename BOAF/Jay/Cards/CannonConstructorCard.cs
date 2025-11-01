@@ -39,16 +39,16 @@ internal sealed class CannonConstructorCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
 				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
 			],
 			Upgrade.B =>[
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
 				new AAttack(){damage = GetDmg(s,1)},
 				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
 			],
 			_ => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon},
+				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
 				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
 			]
 		};

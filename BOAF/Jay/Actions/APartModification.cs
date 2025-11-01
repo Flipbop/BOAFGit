@@ -51,7 +51,7 @@ public class APartModManager {
     {
         public required PType newPartType;
         public required Part part;
-        private string partName = "WING";
+        public string partName = "WING";
         public override void Begin(G g, State s, Combat c)
         {
             if (!ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(part, "rebuilt", false))
@@ -62,22 +62,17 @@ public class APartModManager {
             }
             part.type = newPartType;
             if (newPartType == PType.wing) { 
-                part.skin = ModEntry.Instance.rebuiltWingSprite.LocalName;
-            } else if (newPartType == PType.cannon) { 
-                part.skin = ModEntry.Instance.rebuiltCannonSprite.LocalName;
-                partName = "CANNON";
+                part.skin = ModEntry.Instance.rebuiltWingSprite;
+            } else if (newPartType == PType.cannon) {
+                part.skin = ModEntry.Instance.rebuiltCannonSprite;
             } else if (newPartType == PType.cockpit) { 
-                part.skin = ModEntry.Instance.rebuiltCockpitSprite.LocalName;
-                partName = "COCKPIT";
+                part.skin = ModEntry.Instance.rebuiltCockpitSprite;
             } else if (newPartType == PType.comms) {
-                part.skin = ModEntry.Instance.rebuiltCommsSprite.LocalName;
-                partName = "COMMS";
+                part.skin = ModEntry.Instance.rebuiltCommsSprite;
             } else if (newPartType == PType.empty) {
-                part.skin = ModEntry.Instance.rebuiltScaffoldSprite.LocalName;
-                partName = "SCAFFOLDING";
+                part.skin = ModEntry.Instance.rebuiltScaffoldSprite;
             } else if (newPartType == PType.missiles) {
-                part.skin = ModEntry.Instance.rebuiltBaySprite.LocalName;
-                partName = "MISSILE BAY";
+                part.skin = ModEntry.Instance.rebuiltBaySprite;
             }
 
             if (!part.active)

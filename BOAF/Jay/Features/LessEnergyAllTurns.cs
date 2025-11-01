@@ -17,7 +17,7 @@ internal sealed class LessEnergyAllTurnsManager : IKokoroApi.IV2.IStatusRenderin
 					return;
 				}
 				var stacks = state.ship.Get(ModEntry.Instance.LessEnergyAllTurnsStatus.Status);
-				if (stacks <=0)
+				if (stacks <= 0)
 				{
 					return;
 				}
