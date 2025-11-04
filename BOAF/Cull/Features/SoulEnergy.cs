@@ -35,10 +35,10 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 
 		var filled = Math.Min(expected, current);
 		var empty = Math.Max(expected - current, 0);
-		return (Enumerable.Repeat(new Color("670099"), filled)
+		return (Enumerable.Repeat(new Color("8533ad"), filled)
 				.Concat(Enumerable.Repeat(new Color("7a3045"), empty))
 				.ToImmutableList(),
-			null);
+			5);
 	}
 	public static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{

@@ -59,81 +59,16 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 			damage = 1, 
 			targetPlayer = targetPlayer,
 		}];
-		if (c.turn >= DeathTurn-1)
-			actions.Add(new AKillThisDrone{droneX = this.x});
+		if (c.turn >= DeathTurn - 1)
+		{
+			actions.Add(new ASpawnFromMidrow() {thing = new DormantWisp(), worldX = x, byPlayer = false});
+		}
 		return actions;
 	}
 
 	public override bool Invincible()
 	{
 		return true;
-	}
-
-	/*public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
-	{
-		int offsetVal = -1;
-		bool openSpace = false; 
-		while(!openSpace)
-		{
-			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-			{
-				openSpace = true;
-			}else
-			{
-				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-				{
-					openSpace = true;
-				}
-				else
-				{
-					offsetVal += 1;
-					offsetVal *= -1;
-				}
-			}
-		}
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
-		return actions;
-	}
-
-	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
-	{
-		int offsetVal = -1;
-		bool openSpace = false; 
-		while(!openSpace)
-		{
-			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-			{
-				openSpace = true;
-			}else
-			{
-				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-				{
-					openSpace = true;
-				}
-				else
-				{
-					offsetVal += 1;
-					offsetVal *= -1;
-				}
-			}
-			if (offsetVal <= -20)
-			{
-				openSpace = true;
-			}
-		}
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
-		return actions;
-	}*/
-	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
-	{
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantWisp(), worldX = x, byPlayer = wasPlayer}
-		];
-		return actions;
 	}
 }
 
@@ -264,83 +199,16 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 			damage = 2, 
 			targetPlayer = targetPlayer,
 		}];
-		if (c.turn >= DeathTurn-1)
-			actions.Add(new AKillThisDrone{droneX = this.x});
+		if (c.turn >= DeathTurn - 1)
+		{
+			actions.Add(new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), worldX = x, byPlayer = false});
+		}
 		return actions;
 	}
 
 	public override bool Invincible()
 	{
 		return true;
-	}
-
-	/*public override List<CardAction>? GetActionsOnShotWhileInvincible(State s, Combat c, bool wasPlayer, int damage)
-	{
-		int offsetVal = -1;
-		bool openSpace = false; 
-		while(!openSpace)
-		{
-			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-			{
-				openSpace = true;
-			}else
-			{
-				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-				{
-					openSpace = true;
-				}
-				else
-				{
-					offsetVal += 1;
-					offsetVal *= -1;
-				}
-			}
-
-			if (offsetVal <= -20)
-			{
-				openSpace = true;
-			}
-		}
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
-		return actions;
-	}
-
-	public override List<CardAction>? GetActionsOnBonkedWhileInvincible(State s, Combat c, bool wasPlayer, StuffBase thing)
-	{
-		int offsetVal = -1;
-		bool openSpace = false; 
-		while(!openSpace)
-		{
-			if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-			{
-				openSpace = true;
-			}else
-			{
-				offsetVal *= -1;
-				if (!c.stuff.TryGetValue(x + offsetVal, out var _))
-				{
-					openSpace = true;
-				}
-				else
-				{
-					offsetVal += 1;
-					offsetVal *= -1;
-				}
-			}
-		}
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), offset = offsetVal, worldX = x, byPlayer = wasPlayer}];
-		return actions;
-	}*/
-	
-	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
-	{
-		List<CardAction> actions = [
-			new ASpawnFromMidrow() {thing = new DormantGreaterWisp(), worldX = x, byPlayer = wasPlayer}
-		];
-		return actions;
 	}
 }
 

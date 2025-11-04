@@ -20,18 +20,18 @@
         "midrow": {
             "Wisp" : {
                 "name" : "WISP",
-                "description" : "Shoots a <c=redd>1</c> damage shot once per turn, <c=downside>then turns into a Dormant Wisp.</c> Cannot be destroyed."
+                "description" : "Shoots a <c=redd>1</c> damage shot once per turn, <c=downside>then turns into a Fading Wisp.</c> Cannot be destroyed."
             },
             "DormantWisp" : {
-                "name": "DORMANT WISP",
+                "name": "FADING WISP",
                 "description": "Shoots a <c=redd>1</c> damage shot once per turn, <c=downside>then destroys itself</c>. If attacked, will turn into a <c=keyword>Wisp</c>."
             },
             "GreaterWisp" : {
                 "name": "GREATER WISP",
-                "description": "Shoots a <c=redd>2</c> damage shot once per turn. <c=downside>then turns into a Dormant Greater Wisp.</c> Cannot be destroyed."
+                "description": "Shoots a <c=redd>2</c> damage shot once per turn. <c=downside>then turns into a Fading Greater Wisp.</c> Cannot be destroyed."
             },
             "DormantGreaterWisp" : {
-                "name": "DORMANT GREATER WISP",
+                "name": "FADING GREATER WISP",
                 "description" : "Shoots a <c=redd>2</c> damage shot once per turn, <c=downside>then destroys itself</c>. If attacked, will turn into a <c=keyword>Greater Wisp</c>"
             },
             "SkullBomb": {
@@ -413,6 +413,20 @@
             "BareMinimum": {
                 "name": "Bare Minimum"
             },
+            
+            
+            //DELETE WHEN POSSIBLE
+            "InstantMiniShip": {
+                "name" : "Instant Mini-Ship"
+            },
+            
+            
+            
+            
+            
+            
+            
+            
             "SelectiveSensors": {
                 "name": "Selective Sensors",
                 "description": {

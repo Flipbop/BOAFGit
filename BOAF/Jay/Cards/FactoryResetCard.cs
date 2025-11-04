@@ -41,75 +41,17 @@ internal sealed class FactoryResetCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(2),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
-				).AsCardAction,
+				new AFactoryResetManager.AFactoryReset(),
+				new ADetect(){Amount = 3}
 			],
 			Upgrade.B => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 2}
-				).AsCardAction,
+				new ADetect(){Amount = 1},
+				new AFactoryResetManager.AFactoryReset(),
+				new ADetect(){Amount = 2}
 			],
 			_ => [
-				new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(2),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
-				).AsCardAction,
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.droneShift, statusAmount = 1}
-				).AsCardAction,
+				new AFactoryResetManager.AFactoryReset(),
+				new ADetect(){Amount = 2}
 			]
 		};
 }

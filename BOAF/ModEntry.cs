@@ -780,6 +780,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new SoulPortraitManager();
 
 		_ = new APartModManager();
+		_ = new AFactoryResetManager();
 		_ = new CardDialogueJay();
 		_ = new CombatDialogueJay();
 		_ = new EventDialogueJay();
