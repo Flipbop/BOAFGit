@@ -62,13 +62,20 @@ public sealed class AReconfigure : CardAction
 	}
 
 	public override List<Tooltip> GetTooltips(State s)
-		=> [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Reconfigure")
+	{
+		List<Tooltip> tooltips = base.GetTooltips(s);
+		if (reverse)
+			return tooltips;
+		else
+			tooltips.Add(new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Reconfigure")
 			{
 				Icon = ModEntry.Instance.reconfigureSprite.Sprite,
 				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Reconfigure", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Reconfigure", "description"])
-			}
-		];
+				Title = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "description"])
+			});
+		return tooltips;
+	}
+			
+		
 }
