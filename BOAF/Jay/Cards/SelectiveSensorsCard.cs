@@ -47,16 +47,16 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 			Upgrade.B => [
 				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
 				new AReconfigure(){Amount = 2},
-				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[0], partName = "COCKPIT"},
+				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[1], partName = "COCKPIT"},
 				new AReconfigure(){Amount = 2},
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
+				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[2], partName = "WING"},
 			],
 			_=>[
 				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
 				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[0], partName = "COCKPIT"},
+				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[1], partName = "COCKPIT"},
 				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
+				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[2], partName = "WING"},
 			]
 		};
 	

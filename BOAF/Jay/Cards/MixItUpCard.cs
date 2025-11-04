@@ -41,15 +41,15 @@ internal sealed class MixItUpCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AShuffleShip(),
+				new AShuffleShip() {targetPlayer = true},
 				new ADetect(){Amount = 1},
-				new AShuffleShip(),
+				new AShuffleShip() {targetPlayer = true},
 				new ADetect(){Amount = 1},
-				new AShuffleShip(),
+				new AShuffleShip() {targetPlayer = true},
 				new ADetect(){Amount = 1},
 			],
 			_ => [
-				new AShuffleShip(),
+				new AShuffleShip() {targetPlayer = true},
 				new ADetect(){Amount = 3}
 			]
 			

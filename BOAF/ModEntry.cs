@@ -578,7 +578,7 @@ public sealed class ModEntry : SimpleMod
 			Definition = new()
 			{
 				icon = signalBoosterSprite.Sprite,
-				color = new("312351"),
+				color = new("00eeff"),
 				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Jay", "status", "SignalBooster", "name"]).Localize,
@@ -591,9 +591,9 @@ public sealed class ModEntry : SimpleMod
 			{
 				icon = lessEnergyAllTurnsSprite.Sprite,
 				color = new("312351"),
-				isGood = true,
+				isGood = false,
 			},
-			Name = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurna", "name"]).Localize,
+			Name = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurns", "name"]).Localize,
 			Description = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurns", "description"])
 				.Localize
 		});
@@ -779,6 +779,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoryDialogueCull();
 		_ = new SoulPortraitManager();
 
+		_ = new LessEnergyAllTurnsManager();
 		_ = new APartModManager();
 		_ = new AFactoryResetManager();
 		_ = new CardDialogueJay();

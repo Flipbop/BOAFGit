@@ -42,6 +42,21 @@ public class AFactoryResetManager {
             {
                 s.ship.parts.Add(p);
             }
+            foreach (Part p in s.ship.parts)
+            {
+                if (ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "modified", false))
+                {
+                    p.damageModifier = ModEntry.Instance.helper.ModData.GetModDataOrDefault<PDamMod>(p, "previousModifier", PDamMod.none);
+                    ModEntry.Instance.helper.ModData.SetModData(p, "modified", false);
+                }
+                if (ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "rebuilt", false))
+                {
+                    p.type = ModEntry.Instance.helper.ModData.GetModDataOrDefault<PType>(p, "previousPartType", PType.wing);
+                    p.skin = ModEntry.Instance.helper.ModData.GetModDataOrDefault<string?>(p, "previousPartSkin", "wing_player");
+                    ModEntry.Instance.helper.ModData.SetModData(p, "rebuilt", false);
+                    p.active = ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "activePart", true);
+                }
+            }
         }
     }
 }
