@@ -34,13 +34,9 @@ public sealed class AReconfigure : CardAction
 		{
 			for (int b = 0; b < Amount; b++)
 			{
-				Part rightmost = s.ship.parts[^1];
-				for (int i = s.ship.parts.Count-1; i >= 0; i--)
-				{
-					s.ship.parts[i] = s.ship.parts[i-1];
-				}
-
-				s.ship.parts.Insert(0, rightmost);
+				var part = s.ship.parts[^1];
+				s.ship.parts.RemoveAt(s.ship.parts.Count - 1);
+				s.ship.parts.Insert(0, part);
 			}
 		}
 

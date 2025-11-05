@@ -4,13 +4,13 @@ namespace Flipbop.BOAF;
 
 public sealed class ApiImplementation : IBOAFApi
 {
-	public IDeckEntry CullDeck
-		=> ModEntry.Instance.CullDeck;
-
+	#region Cull
+	public IDeckEntry CullDeck => ModEntry.Instance.CullDeck;
 	public IStatusEntry SoulEnergyStatus => ModEntry.Instance.SoulEnergyStatus;
 	public IStatusEntry FearStatus => ModEntry.Instance.FearStatus;
 	public IStatusEntry SoulDrainStatus => ModEntry.Instance.SoulDrainStatus;
-
+	public IStatusEntry CloakedStatus => ModEntry.Instance.CloakedStatus;
+	public IStatusEntry EmpoweredStatus => ModEntry.Instance.EmpoweredStatus;
 	public Tooltip GetSoulEnergyTooltip(bool amount)
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
 		{
@@ -35,7 +35,6 @@ public sealed class ApiImplementation : IBOAFApi
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "description"])
 		};
-	
 	public Tooltip GetEmpoweredTooltip(bool amount)
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Empowered")
 		{
@@ -52,5 +51,29 @@ public sealed class ApiImplementation : IBOAFApi
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Cloaked", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Cloaked", "description"])
 		};
+	#endregion
+
+	#region Jay
+	public IDeckEntry JayDeck => ModEntry.Instance.JayDeck;
+	public IStatusEntry SignalBoosterStatus => ModEntry.Instance.SignalBoosterStatus;
+	public IStatusEntry LessEnergyAllTurnsStatus => ModEntry.Instance.LessEnergyAllTurnsStatus;
+	public Tooltip GetSignalBoosterTooltip(bool onOrOff)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SignalBooster")
+		{
+			Icon = ModEntry.Instance.signalBoosterSprite.Sprite,
+			TitleColor = Colors.cardtrait,
+			Title = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "description"])
+		};
+	public Tooltip GetLessEnergyAllTurnsTooltip(bool onOrOff)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::LessEnergyAllTurns")
+		{
+			Icon = ModEntry.Instance.lessEnergyAllTurnsSprite.Sprite,
+			TitleColor = Colors.cardtrait,
+			Title = ModEntry.Instance.Localizations.Localize(["Jay","status", "LessEnergyAllTurns", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "LessEnergyAllTurns", "description"])
+		};
+	#endregion
+	
 
 }

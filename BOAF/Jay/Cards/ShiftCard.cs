@@ -9,7 +9,6 @@ namespace Flipbop.BOAF;
 
 internal sealed class ShiftCard : Card, IRegisterable
 {
-	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{

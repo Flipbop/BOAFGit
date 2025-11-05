@@ -35,6 +35,7 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 				Upgrade.B => 3,
 				_ => 2,
 			},
+			exhaust = true,
 			/*description =
 				ModEntry.Instance.Localizations.Localize([
 					"Jay", "card", "SelectiveSensors", "description", upgrade.ToString()

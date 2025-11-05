@@ -10,10 +10,10 @@ namespace Flipbop.BOAF;
 
 internal sealed class OveruseCard : Card, IRegisterable
 {
-	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
-
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
+
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -60,6 +60,16 @@ internal sealed class OveruseCard : Card, IRegisterable
 				]
 			
 		};
+	
+	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
+	{
+		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
+		{
+			if (args.Card is not OveruseCard)
+				return null;
+			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
+		}
+	}
 
 }
 
