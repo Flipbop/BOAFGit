@@ -47,7 +47,7 @@ public class APartModManager {
         }
     }
 
-    public sealed class APartRebuild : CardAction
+    public sealed class APartRebuild : DynamicWidthCardAction
     {
         public required PType newPartType;
         public required Part part;
@@ -92,6 +92,25 @@ public class APartModManager {
         }
         public override Icon? GetIcon(State s)
         {
+            if (newPartType == PType.wing) { 
+                return new Icon(ModEntry.Instance.rebuildWingSprite.Sprite, null, Colors.textMain, flipY: false);
+
+            } else if (newPartType == PType.cannon) {
+                return new Icon(ModEntry.Instance.rebuildCannonSprite.Sprite, null, Colors.textMain, flipY: false);
+
+            } else if (newPartType == PType.cockpit) { 
+                return new Icon(ModEntry.Instance.rebuildCockpitSprite.Sprite, null, Colors.textMain, flipY: false);
+
+            } else if (newPartType == PType.comms) {
+                return new Icon(ModEntry.Instance.rebuildCommsSprite.Sprite, null, Colors.textMain, flipY: false);
+
+            } else if (newPartType == PType.empty) {
+                return new Icon(ModEntry.Instance.rebuildScaffoldSprite.Sprite, null, Colors.textMain, flipY: false);
+
+            } else if (newPartType == PType.missiles) {
+                return new Icon(ModEntry.Instance.rebuildBaySprite.Sprite, null, Colors.textMain, flipY: false);
+
+            }
             return new Icon(ModEntry.Instance.rebuildSprite.Sprite, null, Colors.textMain, flipY: false);
         }
 

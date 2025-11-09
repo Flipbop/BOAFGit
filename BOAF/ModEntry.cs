@@ -49,7 +49,15 @@ public sealed class ModEntry : SimpleMod
 	internal IPlayableCharacterEntryV2 JayCharacter { get; }
 	internal ISpriteEntry JayFullBody { get; set; }
 	internal ISpriteEntry reconfigureSprite { get; }
+	internal ISpriteEntry rebuildCannonSprite { get; }
+	internal ISpriteEntry rebuildCockpitSprite { get; }
+	internal ISpriteEntry rebuildWingSprite { get; }
+	internal ISpriteEntry rebuildBaySprite { get; }
+	internal ISpriteEntry rebuildScaffoldSprite { get; }
+	internal ISpriteEntry rebuildCommsSprite { get; }
 	internal ISpriteEntry rebuildSprite { get; }
+
+
 	internal ISpriteEntry detectSprite { get; }
 	internal IStatusEntry SignalBoosterStatus { get; }
 	internal IStatusEntry LessEnergyAllTurnsStatus { get; }
@@ -226,6 +234,12 @@ public sealed class ModEntry : SimpleMod
 
 		reconfigureSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Reconfigure.png"));
 		rebuildSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Rebuild.png"));
+		rebuildCannonSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildCannon.png"));
+		rebuildCockpitSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildCockpit.png"));
+		rebuildCommsSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildComms.png"));
+		rebuildBaySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildBay.png"));
+		rebuildScaffoldSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildScaffold.png"));
+		rebuildWingSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/RebuildWing.png"));
 		detectSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Detect.png"));
 		signalBoosterSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/SignalBooster.png"));
 		lessEnergyAllTurnsSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Status/EnergyAllTurns.png"));
@@ -590,7 +604,7 @@ public sealed class ModEntry : SimpleMod
 			Definition = new()
 			{
 				icon = lessEnergyAllTurnsSprite.Sprite,
-				color = new("312351"),
+				color = new("9c1824"),
 				isGood = false,
 			},
 			Name = AnyLocalizations.Bind(["Jay", "status", "LessEnergyAllTurns", "name"]).Localize,
