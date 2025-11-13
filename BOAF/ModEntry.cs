@@ -69,7 +69,8 @@ public sealed class ModEntry : SimpleMod
 	internal string rebuiltScaffoldSprite { get; }
 	internal string rebuiltWingSprite { get; }
 	internal string rebuiltCommsSprite { get; }
-
+	internal INonPlayableCharacterEntryV2 ValvCharacter { get; }
+	
 	#endregion
 	
 	#region Ships
@@ -586,6 +587,14 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Sob/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "damaged",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Damaged/{i}.png")).Sprite)
+				.ToList()
+		});
 		
 		SignalBoosterStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SignalBooster", new()
 		{
@@ -612,7 +621,84 @@ public sealed class ModEntry : SimpleMod
 				.Localize
 		});
 		
-		//Vault.charsWithLore.Add(JayDeck.Deck);
+		ValvCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Valv", new NonPlayableCharacterConfigurationV2()
+		{
+			CharacterType = "valv",
+			Name = AnyLocalizations.Bind(["Jay","character", "nameValv"]).Localize,
+			
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "neutral",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Neutral/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Mad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "nervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Nervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "dead",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Dead/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "ghost",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Ghost/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "ghostsad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/GhostSad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "ghostmad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/GhostMad/{i}.png")).Sprite)
+				.ToList()
+		});
+		
+		Vault.charsWithLore.Add(JayDeck.Deck);
 		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(JayDeck.Deck, JayFullBody.Sprite);
 		# endregion

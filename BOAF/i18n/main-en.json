@@ -231,7 +231,8 @@
                 "<c=001ab7>JAY</c>",
                 "Your shipwright.",
                 "Can manipulate your ship's parts individually by <c=keyword>changing them or moving them</c>. He can also preform actions based on what parts are where in your ship."
-            ]
+            ],
+            "nameValv": "Valv"
         },
         "action": {
             "Reconfigure": {
