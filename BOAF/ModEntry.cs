@@ -7,6 +7,7 @@ using Shockah.Kokoro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Flipbop.BOAF;
 
@@ -78,6 +79,7 @@ public sealed class ModEntry : SimpleMod
 	IShipEntry VulcanShip { get; }
 
 	#endregion
+	public ISpriteEntry BGJayWorkshopSprite { get; }
 	public IModHelper helper { get; }
 	
 	
@@ -172,6 +174,7 @@ public sealed class ModEntry : SimpleMod
 		
 		typeof(BlueprintsArtifact),
 		typeof(EnhancedSensorsArtifact),
+		typeof(BeltFeedArtifact),
 		
 		typeof(ReaperCannonsArtifact),
 		typeof(KineticReboundArtifact),
@@ -251,7 +254,7 @@ public sealed class ModEntry : SimpleMod
 		rebuiltScaffoldSprite = helper.Content.Ships.RegisterPart("RebuiltScaffold", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltScaffold.png")).Sprite }).UniqueName;
 		rebuiltCommsSprite = helper.Content.Ships.RegisterPart("RebuiltComms", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltComms.png")).Sprite }).UniqueName;
 
-		
+		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
 		
 		Instance = this;
@@ -698,7 +701,7 @@ public sealed class ModEntry : SimpleMod
 				.ToList()
 		});
 		
-		Vault.charsWithLore.Add(JayDeck.Deck);
+		//Vault.charsWithLore.Add(JayDeck.Deck);
 		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(JayDeck.Deck, JayFullBody.Sprite);
 		# endregion
@@ -834,6 +837,9 @@ public sealed class ModEntry : SimpleMod
         });
 		#endregion
 		
+		DB.backgrounds.Add("BGJayWorkshop", typeof(Backgrounds.BGJayWorkshop));
+		
+
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
 			new SemanticVersion(1, 3, 0),
@@ -887,7 +893,9 @@ public sealed class ModEntry : SimpleMod
 		_ = new EventDialogueJay();
 		_ = new MemoryDialogueJay();		
 		_ = new StoryDialogueJay();
-		
+
+
+		_ = new Backgrounds.BGJayWorkshop();
 	}
 
 

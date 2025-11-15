@@ -26,7 +26,7 @@ internal sealed class BlueprintsArtifact : Artifact, IRegisterable
 	public override void OnReceiveArtifact(State state)
 	{
 		base.OnReceiveArtifact(state);
-		state.ship.parts.Add(new Part() {type = PType.empty, skin = "wing_player_off", flip = true});
-		state.ship.parts.Insert(0, new Part() {type = PType.empty, skin = "wing_player_off"});
+		state.ship.parts.Add(new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite, flip = true});
+		state.ship.parts.Insert(0, new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite});
 	}
 }

@@ -72,7 +72,7 @@ public sealed class ADetect : CardAction
       } else if (s.ship.parts[0].type == PType.wing)
       {
        
-        c.QueueImmediate(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
+        c.QueueImmediate(new ADrawCard(){count = 1});
       } else if (s.ship.parts[0].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
       {
         c.QueueImmediate(new AEnergy(){changeAmount = 1});
@@ -100,7 +100,7 @@ public sealed class ADetect : CardAction
         } else if (s.ship.parts[^1].type == PType.wing)
         {
        
-          c.QueueImmediate(new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true});
+          c.QueueImmediate(new ADrawCard(){count = 1});
         } else if (s.ship.parts[^1].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
         {
           c.QueueImmediate(new AEnergy(){changeAmount = 1});

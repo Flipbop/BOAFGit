@@ -19,10 +19,11 @@ internal sealed class InspectionCard : Card, IRegisterable
 			{
 				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
+				dontOffer = true
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/Inspection.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "Inspection", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "Inspection", "name"]).Localize,
 		});
 	}
 

@@ -1,8 +1,4 @@
 using System.Collections.Generic;
-using Flipbop.BOAF;
-using Microsoft.Xna.Framework.Graphics;
-using Nanoray.PluginManager;
-using Nickel;
 using static Flipbop.BOAF.CommonDefinitions;
 
 namespace Flipbop.BOAF;
@@ -73,7 +69,7 @@ internal class MemoryDialogueJay
             {"Jay_Memory_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGRunWin",
+                bg = "BGJayWorkshop",
                 lookup = [
                     "vault",
                     $"vault_{AmJay}"
@@ -83,21 +79,21 @@ internal class MemoryDialogueJay
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 1 }),
-                    new (AmValv, "neutral", "What's up, bro!" ),
+                    new (AmValv, "neutral", "What's up, bro!", flipped: true ),
                     new (AmJay,"neutral","Valv! It's been some time. Did you get the part I needed?" ),
-                    new (AmValv, "neutral", "Yup! Bought it off of some bat dude. Drove a hard bargain, saying it was from some weird ship." ),
+                    new (AmValv, "neutral", "Yup! Bought it off of some bat dude. Drove a hard bargain, saying it was from some weird ship.", flipped: true  ),
                     new (AmJay,"neutral","Excellent! With this, I think I'll be able to finish my prototype engine within the next week or so." ),
-                    new (AmValv, "neutral", "We're gonna be so rich!" ),
+                    new (AmValv, "neutral", "We're gonna be so rich!", flipped: true  ),
                     new (AmJay,"squint","That's not the point." ),
-                    new (AmValv, "angry", "Yeah, I know, revolutionizing space travel yada yada yada." ),
-                    new (AmValv, "neutral", "The money is still a huge bonus." ),
+                    new (AmValv, "angry", "Yeah, I know, revolutionizing space travel yada yada yada.", flipped: true  ),
+                    new (AmValv, "neutral", "The money is still a huge bonus.", flipped: true  ),
                     new (AmJay,"neutral","Oh of course." ),
                 ]
             }},
             {"Jay_Memory_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGRunWin",
+                bg = "BGJayWorkshop",
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
@@ -108,25 +104,31 @@ internal class MemoryDialogueJay
                     new(title: null),
                     new(new Wait{secs = 2}),
                     new (AmJay, "neutral", "Screw that plate in and then we should be finished." ),
-                    new (AmValv,"neutral","Alright! I think that's done! Ready to test it?" ),
+                    new (AmValv,"neutral","Alright! I think that's done! Ready to test it?", flipped: true  ),
                     new (AmJay, "neutral", "Of course." ),
                     new(new Wait{secs = 2}),
                     new (AmJay, "neutral", "Engine is stable. Temperatures are normal." ),
-                    new (AmValv,"neutral","That's good, right? That sounds good." ),
+                    new (AmValv,"neutral","That's good, right? That sounds good.", flipped: true  ),
                     new (AmJay, "neutral", "It's very good. If this holds, then it's finally finished!" ),
+                    new (new BGAction(){action = "alarm"}),
                     new(new Wait{secs = 1}),
                     new (AmJay, "nervous", "Uh oh. The part you bought seems unable to hold!" ),
-                    new (AmValv,"angry","We were so close!" ),
+                    new (AmValv,"angry","We were so close!", flipped: true  ),
                     new (AmJay, "nervous", "Shutting down power!" ),
                     new(new Wait{secs = 1}),
-                    new (AmValv,"nervous","What's wrong? Why isn't it stopping?!" ),
+                    new (AmValv,"nervous","What's wrong? Why isn't it stopping?!", flipped: true  ),
                     new (AmJay, "nervous", "It's not letting me!" ),
                     new (AmJay, "nervous", "GET DOWN!" ),
+                    new (new BGAction(){action = "explosion"}),
+                    new (new Shake{amount = 25}),
+                    new (new SetBG{bg = "BGBlack"}),
                     new(new Wait{secs = 5}),
+                    new (new SetBG(){bg = "BGJayWorkshop"}),
+                    new (new BGAction(){action = "sadness"}),
                     new (AmJay, "damaged", "Valv! Wake up! VALV!" ),
-                    new (AmValv,"dead","..." ),
+                    new (AmValv,"dead","...", flipped: true  ),
                     new (AmJay, "damaged", "Don't do this to me! C'mon, wake up!" ),
-                    new (AmValv,"dead","..." ),
+                    new (AmValv,"dead","...", flipped: true  ),
                     new (AmJay, "damaged", "No! No..." ),
 
                 ]

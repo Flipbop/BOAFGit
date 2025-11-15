@@ -21,7 +21,6 @@ internal sealed class ControlZCard : Card, IRegisterable
 				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B],
-				dontOffer = true,
 			},
 			Art = StableSpr.cards_colorless,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "ControlZ", "name"]).Localize

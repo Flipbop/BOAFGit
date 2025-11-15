@@ -245,16 +245,16 @@
             },
             "Detect": {
                 "name": "DETECT",
-                "description": "Look at the leftmost part of your ship and preform an action based on what part it is:",
-                "wing": "Wing: <c=status>EVADE 1</c>",
-                "cannon": "Cannon: <c=action>ATTACK 1</c>",
+                "description": "Look at the leftmost part of your ship and preform an action <c=keyword>{0} time(s)</c> based on what part it is:",
+                "wing": "Wing: <c=action>DRAW 1</c>",
+                "cannon": "Cannon: <c=action>ATTACK 2</c>",
                 "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
                 "missileBay": "Missile Bay: <c=status>DRONESHIFT 2</c>",
                 "comms": "Comms: GAIN <c=energy>1 ENERGY</c>",
                 "other": "Other: <c=action>RECONFIGURE 1</c>",
                 
-                "wingGrey": "<c=faint>Wing: EVADE 1</c>",
-                "cannonGrey": "<c=faint>Cannon: ATTACK 1</c>",
+                "wingGrey": "<c=faint>Wing: DRAW 1</c>",
+                "cannonGrey": "<c=faint>Cannon: ATTACK 2</c>",
                 "cockpitGrey": "<c=faint>Cockpit: SHIELD 1, TEMP SHIELD 1</c>",
                 "missileBayGrey": "<c=faint>Missile Bay: DRONESHIFT 2</c>",
                 "commsGrey": "<c=faint>Comms: GAIN 1 ENERGY</c>",
@@ -287,6 +287,9 @@
                 "name": "ENHANCED SENSORS",
                 "description": "When you <c=action>Detect</c>, double it's effects."
             },
+            "BeltFeed": {
+                "name": "BELT FEED",
+                "description": "<c=energy>+1 ENERGY</c> every turn, <c=downside>but you</c> <c=action>Reconfigure 1</c> </c=downside>at the start of every turn.</c>",
             "Duo": {
                 "CleoBooks": {
                     "name": "SUMMONING STAFF",
