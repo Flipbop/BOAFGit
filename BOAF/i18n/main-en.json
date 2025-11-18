@@ -230,14 +230,14 @@
             "description": [
                 "<c=001ab7>JAY</c>",
                 "Your shipwright.",
-                "Can manipulate your ship's parts individually by <c=keyword>changing them or moving them</c>. He can also preform actions based on what parts are where in your ship."
+                "Can manipulate your ship's parts individually by <c=keyword>changing them or moving them</c>. Can also preform actions based on what parts are where in your ship."
             ],
             "nameValv": "Valv"
         },
         "action": {
             "Reconfigure": {
                 "name": "RECONFIGURE",
-                "description": "The leftmost part of your ship moves to the rightmost position, all other parts move left one."
+                "description": "Move all parts of your ship <c=keyword>left 1</c> (the leftmost goes to the right) <c=keyword>{0} time(s).</c>"
             },
             "Rebuild": {
                 "name": "REBUILD {{partName}}",
@@ -361,9 +361,9 @@
             "ControlZ": {
                 "name": "Control Z",
                 "description": {
-                    "None": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1.",
-                    "A": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1. <c=action>Detect 1.</c>",
-                    "B": "Move the rightmost part of your ship to the leftmost position, move all other parts right 1."
+                    "None": "Move all parts of your ship <c=keyword>right 1</c> (the rightmost goes to the left).",
+                    "A": "Move all parts of your ship <c=keyword>right 1</c> (the rightmost goes to the left). <c=action>Detect 1.</c>",
+                    "B": "Move all parts of your ship <c=keyword>right 1</c> (the rightmost goes to the left)."
                 }
             },
             "JumpTheLine": {
@@ -1307,6 +1307,19 @@
             "KineticRebound": {
                 "name": "KINETIC REBOUND",
                 "description": "When an <c=part>armored</c> part of your ship is hit, gain 2 <c=status>SHIELD.</c>"
+            }
+        }
+    }
+    },
+    "Enemies": {
+        "ship": {
+            "Anger": {
+                "name": "ANGER"
+            }
+        },
+        "card": {
+            "Anger": {
+                "name" : "ANGER"
             }
         }
     }

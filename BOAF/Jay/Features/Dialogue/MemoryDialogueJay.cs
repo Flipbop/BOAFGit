@@ -75,7 +75,7 @@ internal class MemoryDialogueJay
                     $"vault_{AmJay}"
                 ],
                 dialogue = [
-                    new("T+98 days"),
+                    new("T-98 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 1 }),
@@ -99,7 +99,7 @@ internal class MemoryDialogueJay
                 ],
                 requiredScenes = ["Jay_Memory_1_PREEMPTIVE"],
                 dialogue = [
-                    new("T+94 days"),
+                    new("T-94 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 2}),
@@ -121,29 +121,52 @@ internal class MemoryDialogueJay
                     new (AmJay, "nervous", "GET DOWN!" ),
                     new (new BGAction(){action = "explosion"}),
                     new (new Shake{amount = 25}),
-                    new (new SetBG{bg = "BGBlack"}),
+                    new (new BGAction{action = "blackout"}),
                     new(new Wait{secs = 5}),
                     new (new SetBG(){bg = "BGJayWorkshop"}),
                     new (new BGAction(){action = "sadness"}),
+                    new (AmJay, "damaged", "Valv! Where are you?!" ),
+                    new (new Wait{secs = 2}),
+                    new (AmJay, "damaged", "Oh god..." ),
+                    new (AmValv,"dead","...", flipped: true  ),
                     new (AmJay, "damaged", "Valv! Wake up! VALV!" ),
                     new (AmValv,"dead","...", flipped: true  ),
                     new (AmJay, "damaged", "Don't do this to me! C'mon, wake up!" ),
                     new (AmValv,"dead","...", flipped: true  ),
                     new (AmJay, "damaged", "No! No..." ),
+                    new (AmJay, "damagedcry", "..." ),
+                    new (AmJay, "damagedcry", "This is my fault..." ),
+                    new (AmJay, "damagedcry", "If I-I just... paid more attention..." ),
+                    new (AmJay, "damagedcry", "..." ),
+                    new (AmJay, "damagedcry", "How will I ever forgive myself..." ),
 
                 ]
             }},
             {"Jay_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGRunWin",
+                bg = "BGRunStart",
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
                 requiredScenes = ["Jay_Memory_2_PREEMPTIVE"],
                 dialogue = [
-                    new (AmCull, "neutral", "Sorry, I'm not gonna reveal any lore for my mod until EVERYTHING is finished!" ),
-                    new (AmCull,"neutral","You are just gonna have to wait until then!" )
+                    new(new Wait{secs = 2}),
+                    new (AmJay, "gameover", "..." ),
+                    new (AmCull,"neutral","Wake up. It's time." ),
+                    new (AmJay, "squint", "Huh? Time for what?" ),
+                    new (AmCull,"neutral","Time to face the source of your problem." ),
+                    new (AmJay, "squint", "How, exactly?" ),
+                    new (AmCull,"neutral","My connection with Death allows me to temporarily resurrect those that are gone." ),
+                    new (AmJay, "nervous", "Are you saying I will get to see Valv again?" ),
+                    new (AmCull,"neutral","Yes, if only for a moment. It is a difficult process though. We will have to fight the personification of your grief." ),
+                    new (AmJay, "squint", "In a metaphorical sense?" ),
+                    new (AmCull,"neutral","In a literal sense. Are you ready?" ),
+                    new (AmJay, "neutral", "I... guess." ),
+                    new (AmCull,"neutral","I am going to need a more definite answer." ),
+                    new (AmJay, "neutral", "Yes. I am ready. Do what you must." ),
+                    new (AmCull,"neutral","Then prepare yourself. This will be no easy battle." ),
+
                 ]
             }}
         });

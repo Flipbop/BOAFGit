@@ -22,6 +22,10 @@ public sealed class ModEntry : SimpleMod
 	public LocalDB localDB { get; set; } = null!;
 	internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
 	internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
+	internal List<IModSettingsApi.IModSetting> SettingsEntries = [];
+
+	internal ModSettings ModSettings = new();
+
 	
 	#region Cull
 	internal IDeckEntry CullDeck { get; }
@@ -141,6 +145,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(HarmlessSiphonCard),
 		
 		typeof(InspectionCard),
+		
+		typeof(AngerCard),
+		/*typeof(DepressionCard),
+		typeof(DenialCard),
+		typeof(BargainingCard),
+		typeof(AcceptanceCard)*/
 	];
 	
 	internal static IReadOnlyList<Type> EXECardTypes { get; } = [
@@ -206,12 +216,22 @@ public sealed class ModEntry : SimpleMod
 		typeof(DormantGreaterWisp),
 		typeof(SkullBomb)
 	];
+
+	internal static IReadOnlyList<Type> EnemyTypes { get; } =
+	[
+		typeof(AngerEnemy),
+		//typeof(DepressionEnemy),
+		//typeof(BargainingEnemy),
+		//typeof(DenialEnemy),
+		//typeof(AcceptanceEnemy),
+		//typeof(DeathEnemy),
+	];
 	
 	internal static IEnumerable<Type> AllArtifactTypes
 		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
-		= [..AllCardTypes, ..AllArtifactTypes, ..MidrowObjects, ];
+		= [..AllCardTypes, ..AllArtifactTypes, ..MidrowObjects, ..EnemyTypes];
 
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= [..DuoArtifacts];
@@ -256,6 +276,7 @@ public sealed class ModEntry : SimpleMod
 
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
+		ModSettings = helper.Storage.LoadJson<ModSettings>(helper.Storage.GetMainStorageFile("json"));
 		
 		Instance = this;
 		Harmony = helper.Utilities.Harmony;
@@ -598,6 +619,14 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/Damaged/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = JayDeck.UniqueName,
+			LoopTag = "damagedcry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Jay/Character/DamagedCry/{i}.png")).Sprite)
+				.ToList()
+		});
 		
 		SignalBoosterStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("SignalBooster", new()
 		{
@@ -701,7 +730,7 @@ public sealed class ModEntry : SimpleMod
 				.ToList()
 		});
 		
-		//Vault.charsWithLore.Add(JayDeck.Deck);
+		Vault.charsWithLore.Add(JayDeck.Deck);
 		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(JayDeck.Deck, JayFullBody.Sprite);
 		# endregion
@@ -896,6 +925,8 @@ public sealed class ModEntry : SimpleMod
 
 
 		_ = new Backgrounds.BGJayWorkshop();
+		
+		SetUpModSettings(helper);
 	}
 
 
@@ -919,4 +950,16 @@ public sealed class ModEntry : SimpleMod
 			return [ArtifactPool.Common];
 		return [];
 	}
+	
+	private void SetUpModSettings(IModHelper helper) {
+		if (helper.ModRegistry.GetApi<IModSettingsApi>("Nickel.ModSettings") is { } settingsApi) {
+			settingsApi.RegisterModSettings(settingsApi.MakeList(SettingsEntries)
+				.SubscribeToOnMenuClose(_ => {
+					helper.Storage.SaveJson(helper.Storage.GetMainStorageFile("json"), ModSettings);
+				}));
+		}
+	}
+}
+class ModSettings {
+	public readonly Dictionary<string, bool> enemiesDisabled = [];
 }
