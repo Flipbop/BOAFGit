@@ -1,6 +1,6 @@
 {
   "UniqueName": "Flipbop.BOAF",
-  "Version": "0.3.2",
+  "Version": "0.3.3",
   "RequiredApiVersion": "1.6.0",
   "EntryPointAssembly": "BOAF.dll",
   "LoadPhase": "AfterDbInit",

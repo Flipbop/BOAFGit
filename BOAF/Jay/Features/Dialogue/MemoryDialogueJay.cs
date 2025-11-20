@@ -166,7 +166,14 @@ internal class MemoryDialogueJay
                     new (AmCull,"neutral","I am going to need a more definite answer." ),
                     new (AmJay, "neutral", "Yes. I am ready. Do what you must." ),
                     new (AmCull,"neutral","Then prepare yourself. This will be no easy battle." ),
-
+                ]
+            }},
+            {"Anger_Power_Up", new(){
+                type = NodeType.@event,
+                allPresent = [AmJay, AmCull],
+                dialogue = [
+                    new (AmJay, "nervous", "Did it just power up?!" ),
+                    new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
                 ]
             }}
         });

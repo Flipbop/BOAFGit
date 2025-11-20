@@ -68,7 +68,8 @@ public sealed class AReconfigure : CardAction
 				Icon = ModEntry.Instance.reconfigureSprite.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "description"])
+				Description = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "description"]),
+				vals = [Amount]
 			});
 		return tooltips;
 	}

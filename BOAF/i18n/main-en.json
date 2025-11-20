@@ -281,7 +281,7 @@
             },
             "Blueprints": {
                 "name": "BLUEPRINTS",
-                "description": "Gain 2 empty <c=>Wings</c> on both sides of your ship. When you <c=action>Detect</c> a Wing you also get <c=energy>1 ENERGY</c>."
+                "description": "Gain 2 <c=part>Scaffolds</c> on both sides of your ship. When you <c=action>Detect</c> an empty part you also get <c=energy>1 ENERGY</c>."
             },
             "EnhancedSensors": {
                 "name": "ENHANCED SENSORS",
@@ -326,6 +326,7 @@
                     "description": "At the end of your turn, gain 1 <c=status>EVADE</c> if a card in your hand is upgraded to B."
                 }
             }
+        }
         },
         "status": {
             "LessEnergyAllTurns": {
@@ -417,20 +418,20 @@
             "BareMinimum": {
                 "name": "Bare Minimum"
             },
-            
-            
+
+
             //DELETE WHEN POSSIBLE
             "InstantMiniShip": {
                 "name" : "Instant Mini-Ship"
             },
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
             "SelectiveSensors": {
                 "name": "Selective Sensors",
                 "description": {
@@ -460,7 +461,7 @@
                     "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand."
                 }
             }
-        }
+    }
     },
     "Luna": {
         "character": {
@@ -1260,14 +1261,14 @@
 
     "Duo": {
         "artifact": {
-                
+
         },
         "card": {
-                
+
         }
     },
 
-    
+
     "ship": {
         "Thanatos": {
             "name": "Thanatos",
@@ -1289,8 +1290,8 @@
             "name": "Neptune",
             "description": "A farmer's ship used for watering crops. Has 2 missile bays that were repurposed into cold storage."
         },
-        
-        
+
+
         "artifact": {
             "HunterCannons": {
                 "name": "HUNTER CANNONS",
@@ -1309,17 +1310,44 @@
                 "description": "When an <c=part>armored</c> part of your ship is hit, gain 2 <c=status>SHIELD.</c>"
             }
         }
-    }
     },
     "Enemies": {
         "ship": {
             "Anger": {
                 "name": "ANGER"
+            },
+            "Depression": {
+                "name": "DEPRESSION"
+            },
+            "Denial": {
+                "name": "DENIAL"
+            },
+            "Bargaining": {
+                "name": "BARGAINING"
+            },
+            "Acceptance": {
+                "name": "ACCEPTANCE"
+            },
+            "Death": {
+                "name": "???"
             }
         },
         "card": {
             "Anger": {
-                "name" : "ANGER"
+                "name" : "Anger"
+            },
+            "Depression": {
+                "name": "Depression"
+            },
+            "Denial": {
+                "name": "Denial"
+            },
+            "Bargaining": {
+                "name": "Bargaining"
+            },
+            "Acceptance": {
+                "name": "Acceptance",
+                "description": "Overcome grief."
             }
         }
     }

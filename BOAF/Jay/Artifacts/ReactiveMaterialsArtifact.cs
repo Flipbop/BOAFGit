@@ -26,6 +26,6 @@ internal sealed class ReactiveMaterialsArtifact : Artifact, IRegisterable
 	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		combat.Queue(new AReconfigure(){Amount = 1});
+		combat.QueueImmediate(new AReconfigure(){Amount = 1});
 	}
 }

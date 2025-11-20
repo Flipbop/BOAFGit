@@ -231,7 +231,7 @@ public sealed class ModEntry : SimpleMod
 		=> [..CommonArtifacts, ..BossArtifacts, ..StarterArtifacts];
 
 	internal static readonly IEnumerable<Type> RegisterableTypes
-		= [..AllCardTypes, ..AllArtifactTypes, ..MidrowObjects, ..EnemyTypes];
+		= [..AllCardTypes, ..AllArtifactTypes, ..MidrowObjects,];
 
 	internal static readonly IEnumerable<Type> LateRegisterableTypes
 		= [..DuoArtifacts];
@@ -276,7 +276,6 @@ public sealed class ModEntry : SimpleMod
 
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
-		ModSettings = helper.Storage.LoadJson<ModSettings>(helper.Storage.GetMainStorageFile("json"));
 		
 		Instance = this;
 		Harmony = helper.Utilities.Harmony;
@@ -289,6 +288,9 @@ public sealed class ModEntry : SimpleMod
 				return;
 			foreach (var registerableType in LateRegisterableTypes)
 				AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
+			foreach (Type type in EnemyTypes) {
+				AccessTools.DeclaredMethod(type, nameof(IRegisterableEnemy.Register))?.Invoke(null, [helper]);
+			}
 			localDB = new(helper, package);
 		};
 		helper.Events.OnLoadStringsForLocale += (_, thing) =>
@@ -924,7 +926,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoryDialogueJay();
 
 
-		_ = new Backgrounds.BGJayWorkshop();
+		_ = new Backgrounds();
 		
 		SetUpModSettings(helper);
 	}

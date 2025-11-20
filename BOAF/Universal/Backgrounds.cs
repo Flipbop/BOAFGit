@@ -7,16 +7,36 @@ namespace Flipbop.BOAF;
 
 public class Backgrounds
 {
-    public class BGJayWorkshop : BG {
-        private bool explosion = false;
-        private bool alarm = false;
-        private bool sadness = false;
-        private bool blackout = false;
+    public Backgrounds()
+    {
+        ApplyPatches();
+    }
+    private void ApplyPatches() {
+        ModEntry.Instance.Harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Dialogue), nameof(Dialogue.GetMusic)),
+            postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Music_Override))
+        );}
 
-        public BGJayWorkshop()
+    public static void Music_Override(Dialogue __instance, ref MusicState? __result)
+    {
+        if (__instance.bg is BGJayWorkshop bg)
         {
-            ApplyPatches();
+            if (bg.sadness) __result = new MusicState { scene = Song.Riggs };
+            if (bg.explosion) __result = new MusicState { scene = Song.Silence };
+            if (bg.alarm) __result = new MusicState { scene = Song.Silence };
         }
+
+        if (__instance.bg is BGBattleMemory)
+        {
+            __result = new MusicState { scene = Song.Defiance };
+        }
+    }
+
+    public class BGJayWorkshop : BG {
+        public  bool explosion = false;
+        public bool alarm = false;
+        public bool sadness = false;
+        public bool blackout = false;
         
         public override void OnAction(State s, string action) {
             if (action == "explosion")
@@ -48,20 +68,21 @@ public class Backgrounds
 
 
         }
-        private void ApplyPatches() {
-            ModEntry.Instance.Harmony.Patch(
-                original: AccessTools.DeclaredMethod(typeof(Dialogue), nameof(Dialogue.GetMusic)),
-                postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Music_Override))
-        );}
+    }
+    
+    public class BGBattleMemory : BG
+    {
+        public bool prefight = false;
         
-        public static void Music_Override(Dialogue __instance, ref MusicState? __result)
-        {
-            if (__instance.bg is BGJayWorkshop bg)
-            {
-                if (bg.sadness) __result = new MusicState { scene = Song.Riggs };
-                if (bg.explosion) __result = new MusicState { scene = Song.Silence };
-                if (bg.alarm) __result = new MusicState { scene = Song.Silence };
-            }
+        public override void OnAction(State s, string action) {
+            
+        }
+
+        public override void Render(G g, double t, Vec offset) {
+            Color color = new Color(0.0, 0.1, 0.2).gain(0.5);
+            Draw.Fill(new Color?(color));
+            BGComponents.NormalStars(g, t, offset);
+            BGComponents.RegularNebula(g, offset, color);
         }
     }
 }

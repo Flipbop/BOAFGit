@@ -126,7 +126,8 @@ public sealed class ADetect : CardAction
           Icon = ModEntry.Instance.detectSprite.Sprite,
           TitleColor = Colors.action,
           Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
-          Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"])
+          Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"]),
+          vals = [Amount]
         });
         
         if (s.ship.parts[0].type == PType.cannon)
@@ -197,7 +198,8 @@ public sealed class ADetect : CardAction
             Icon = ModEntry.Instance.reconfigureSprite.Sprite,
             TitleColor = Colors.action,
             Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Reconfigure", "name"]),
-            Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Reconfigure", "description"])
+            Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Reconfigure", "description"]),
+            vals = [1]
           });
         }
         return tooltips;

@@ -29,12 +29,13 @@ internal sealed class AngerCard : Card, IRegisterable
 			cost = 0,
 			exhaust	= true,
 			retain = true,
+			temporary = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AStatus() { status = Status.overdrive, statusAmount = 1, targetPlayer = false },
+			new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = false },
 		];
 };
 
