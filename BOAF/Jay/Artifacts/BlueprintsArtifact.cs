@@ -29,4 +29,17 @@ internal sealed class BlueprintsArtifact : Artifact, IRegisterable
 		state.ship.parts.Add(new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite, flip = true});
 		state.ship.parts.Insert(0, new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite});
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips = [
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Detect") {
+				Icon = ModEntry.Instance.detectSprite.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"]),
+				vals = [1]
+			}];
+		return tooltips;
+	}
 }

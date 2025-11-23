@@ -36,4 +36,17 @@ internal sealed class BeltFeedArtifact : Artifact, IRegisterable
 		base.OnReceiveArtifact(state);
 		state.ship.baseEnergy += 1;
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips = [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Reconfigure")
+		{
+			Icon = ModEntry.Instance.reconfigureSprite.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "description"]),
+			vals = [1]
+		}];
+		return tooltips;
+	}
 }

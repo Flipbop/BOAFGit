@@ -72,7 +72,7 @@ public sealed class ADetect : CardAction
       } else if (s.ship.parts[0].type == PType.wing)
       {
        
-        c.QueueImmediate(new ADrawCard(){count = 1});
+        c.QueueImmediate(new ADrawCard(){count = 2});
       } else if (s.ship.parts[0].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
       {
         c.QueueImmediate(new AEnergy(){changeAmount = 1});
@@ -84,32 +84,35 @@ public sealed class ADetect : CardAction
 
       if (s.ship.statusEffects.ContainsKey(ModEntry.Instance.SignalBoosterStatus.Status))
       {
-        if (s.ship.parts[^1].type == PType.cannon)
+        if (s.ship.Get(ModEntry.Instance.SignalBoosterStatus.Status) > 0)
         {
-          c.QueueImmediate(new AAttack(){damage = Card.GetActualDamage(s,2)});
-        } else if (s.ship.parts[^1].type == PType.cockpit)
-        {
-          c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
-          c.QueueImmediate(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
-        } else if (s.ship.parts[^1].type == PType.comms)
-        {
-          c.QueueImmediate(new AEnergy(){changeAmount = 1});
-        } else if (s.ship.parts[^1].type == PType.missiles)
-        {
-          c.QueueImmediate(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
-        } else if (s.ship.parts[^1].type == PType.wing)
-        {
+          if (s.ship.parts[^1].type == PType.cannon)
+          {
+            c.QueueImmediate(new AAttack(){damage = Card.GetActualDamage(s,2)});
+          } else if (s.ship.parts[^1].type == PType.cockpit)
+          {
+            c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true});
+            c.QueueImmediate(new AStatus(){status = Status.tempShield, statusAmount = 1, targetPlayer = true});
+          } else if (s.ship.parts[^1].type == PType.comms)
+          {
+            c.QueueImmediate(new AEnergy(){changeAmount = 1});
+          } else if (s.ship.parts[^1].type == PType.missiles)
+          {
+            c.QueueImmediate(new AStatus(){status = Status.droneShift, statusAmount = 2, targetPlayer = true});
+          } else if (s.ship.parts[^1].type == PType.wing)
+          {
        
-          c.QueueImmediate(new ADrawCard(){count = 1});
-        } else if (s.ship.parts[^1].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
-        {
-          c.QueueImmediate(new AEnergy(){changeAmount = 1});
-          c.QueueImmediate(new AReconfigure(){Amount = 1});
-        } else
-        {
-          c.QueueImmediate(new AReconfigure(){Amount = 1});
+            c.QueueImmediate(new ADrawCard(){count = 2});
+          } else if (s.ship.parts[^1].type == PType.empty && s.EnumerateAllArtifacts().Any((a) => a is BlueprintsArtifact))
+          {
+            c.QueueImmediate(new AEnergy(){changeAmount = 1});
+            c.QueueImmediate(new AReconfigure(){Amount = 1});
+          } else
+          {
+            c.QueueImmediate(new AReconfigure(){Amount = 1});
+          }
+          c.QueueImmediate(new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = -1});
         }
-        c.QueueImmediate(new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = -1});
       }
     }
 	}
@@ -184,7 +187,7 @@ public sealed class ADetect : CardAction
           tooltips.Add(commsGreyDetect);
           tooltips.Add(otherGreyDetect);
           
-          foreach (Tooltip tooltip in new AStatus(){status = Status.evade, statusAmount = 1, targetPlayer = true}.GetTooltips(s))
+          foreach (Tooltip tooltip in new ADrawCard(){count = 2}.GetTooltips(s))
             tooltips.Add(tooltip);
         } else
         {

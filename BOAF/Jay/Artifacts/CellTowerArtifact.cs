@@ -28,4 +28,18 @@ internal sealed class CellTowerArtifact : Artifact, IRegisterable
 		base.OnCombatStart(state, combat);
 		combat.QueueImmediate(new AStatus(){statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status});
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips = [
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SignalBooster")
+			{
+				Icon = ModEntry.Instance.signalBoosterSprite.Sprite,
+				TitleColor = Colors.cardtrait,
+				Title = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "description"])
+			}	
+		];
+		return tooltips;
+	}
 }

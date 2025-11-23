@@ -22,4 +22,17 @@ internal sealed class EnhancedSensorsArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "EnhancedSensors", "description"]).Localize
 		});
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips = [
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Detect") {
+				Icon = ModEntry.Instance.detectSprite.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"]),
+				vals = [1]
+			}];
+		return tooltips;
+	}
 }

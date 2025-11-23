@@ -32,7 +32,7 @@ internal sealed class OveruseCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 2,
 			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
@@ -45,12 +45,12 @@ internal sealed class OveruseCard : Card, IRegisterable
 			{
 				Upgrade.A =>
 				[
-					new ADetect(){Amount = 5},
+					new ADetect(){Amount = 4},
 					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
 				],
 				Upgrade.B =>
 				[
-					new ADetect(){Amount = 8},
+					new ADetect(){Amount = 5},
 					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.brittle}
 				],
 				_ =>

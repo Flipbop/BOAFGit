@@ -246,7 +246,7 @@
             "Detect": {
                 "name": "DETECT",
                 "description": "Look at the leftmost part of your ship and preform an action <c=keyword>{0} time(s)</c> based on what part it is:",
-                "wing": "Wing: <c=action>DRAW 1</c>",
+                "wing": "Wing: <c=action>DRAW 2</c>",
                 "cannon": "Cannon: <c=action>ATTACK 2</c>",
                 "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
                 "missileBay": "Missile Bay: <c=status>DRONESHIFT 2</c>",
@@ -277,7 +277,7 @@
             },
             "ReactiveMaterials": {
                 "name": "REACTIVE MATERIALS",
-                "description": "When you get hit, <c=action>Reconfigure 1</c>."
+                "description": "When you get hit, <c=action>Reconfigure 1</c> and <c=action>Detect 1</c>."
             },
             "Blueprints": {
                 "name": "BLUEPRINTS",

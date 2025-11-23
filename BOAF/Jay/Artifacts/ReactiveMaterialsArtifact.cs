@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using Nanoray.PluginManager;
 using Nickel;
 using System.Linq;
@@ -27,5 +28,25 @@ internal sealed class ReactiveMaterialsArtifact : Artifact, IRegisterable
 	{
 		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
 		combat.QueueImmediate(new AReconfigure(){Amount = 1});
+		combat.QueueImmediate(new ADetect(){Amount = 1});
+	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips = [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Reconfigure")
+		{
+			Icon = ModEntry.Instance.reconfigureSprite.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Jay", "action", "Reconfigure", "description"]),
+			vals = [1]
+		}, new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Detect") {
+			Icon = ModEntry.Instance.detectSprite.Sprite,
+			TitleColor = Colors.action,
+			Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"]),
+			vals = [1]
+		}];
+		return tooltips;
 	}
 }
