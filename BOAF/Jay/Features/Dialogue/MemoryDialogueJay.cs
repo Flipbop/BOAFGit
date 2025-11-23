@@ -97,7 +97,7 @@ internal class MemoryDialogueJay
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Jay_Memory_1_PREEMPTIVE"],
+                requiredScenes = ["Jay_Memory_1"],
                 dialogue = [
                     new("T-94 days"),
                     new(new Wait{secs = 2}),
@@ -145,37 +145,124 @@ internal class MemoryDialogueJay
             {"Jay_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGRunStart",
+                bg = "BGBattleMemory",
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Jay_Memory_2_PREEMPTIVE"],
+                requiredScenes = ["Jay_Memory_2"],
                 dialogue = [
                     new(new Wait{secs = 2}),
                     new (AmJay, "gameover", "..." ),
-                    new (AmCull,"neutral","Wake up. It's time." ),
-                    new (AmJay, "squint", "Huh? Time for what?" ),
-                    new (AmCull,"neutral","Time to face the source of your problem." ),
+                    new (AmCull,"neutral","Wake up.", flipped: true ),
+                    new (AmJay, "squint", "Huh? Oh, another loop already?" ),
+                    new (AmCull,"neutral","Not exactly. It's time to face the source of your problem.", flipped: true ),
+                    new (AmJay, "squint", "What problem?" ),
+                    new (AmCull,"neutral","Your grief.", flipped: true ),
                     new (AmJay, "squint", "How, exactly?" ),
-                    new (AmCull,"neutral","My connection with Death allows me to temporarily resurrect those that are gone." ),
-                    new (AmJay, "nervous", "Are you saying I will get to see Valv again?" ),
-                    new (AmCull,"neutral","Yes, if only for a moment. It is a difficult process though. We will have to fight the personification of your grief." ),
+                    new (AmCull,"neutral","My connection with Death allows me to temporarily resurrect those that are gone.", flipped: true  ),
+                    new (AmCull,"neutral","You will be able to make peace with your past.", flipped: true  ),
+                    new (AmJay, "nervous","Are you saying I will get to see Valv again?" ),
+                    new (AmCull,"neutral","Yes, if only for a moment. It is a difficult process though. We will have to fight the personification of your grief.", flipped: true ),
                     new (AmJay, "squint", "In a metaphorical sense?" ),
-                    new (AmCull,"neutral","In a literal sense. Are you ready?" ),
-                    new (AmJay, "neutral", "I... guess." ),
-                    new (AmCull,"neutral","I am going to need a more definite answer." ),
+                    new (AmCull,"neutral","In a literal sense. Are you ready?", flipped: true ),
+                    new (AmJay, "squint", "I... guess." ),
+                    new (AmCull,"neutral","I am going to need a more definite answer.", flipped: true ),
                     new (AmJay, "neutral", "Yes. I am ready. Do what you must." ),
-                    new (AmCull,"neutral","Then prepare yourself. This will be no easy battle." ),
+                    new (AmCull,"neutral","Then prepare yourself. This will be no easy battle.", flipped: true ),
+                    new (new MemoryFight()
+                    {
+                        cards = new List<Card>
+                        {
+                            new CannonColorless(),
+                            new DodgeColorless(),
+                            new BasicShieldColorless(),
+                            new HarvestCard() {upgrade = Upgrade.A},
+                            new QuickCastCard(),
+                            new ReorganizeCard(){upgrade = Upgrade.A},
+                            new SensoryShotCard(){upgrade = Upgrade.A},
+                            new AmplifierCard(),
+                            new BareMinimumCard(),
+                            new ShootingGalleryCard(){upgrade = Upgrade.B}
+                        }, 
+                        artifacts = new List<Artifact>
+                        {
+                            new EnhancedFocusArtifact(),
+                            new CodeInspectionArtifact(),
+                            new EnhancedSensorsArtifact(),
+                            new WarpMastery(),
+                            new IonConverter()
+                        },
+                        decks = new List<Deck>
+                        {
+                            ModEntry.Instance.CullDeck.Deck,
+                            ModEntry.Instance.JayDeck.Deck,
+                        },
+                        enemy = new AngerEnemy(),
+                        ship = ModEntry.Instance.VulcanShip.Configuration.Ship,
+                        removeArtifacts = [new ShieldPrep()],
+                        hullIncrease = 10,
+                    }),
                 ]
             }},
             {"Anger_Power_Up", new(){
                 type = NodeType.@event,
                 allPresent = [AmJay, AmCull],
+                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
                 dialogue = [
                     new (AmJay, "nervous", "Did it just power up?!" ),
                     new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
                 ]
-            }}
+            }},
+            {"Anger_Callout", new(){
+                type = NodeType.combat,
+                allPresent = [AmJay, AmCull, AmVoid],
+                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
+                ]
+            }},
+            {"Jay_Closure", new(){
+                type = NodeType.@event,
+                introDelay = false,
+                bg = "BGBattleMemory",
+                lookup = [
+                    "after_void"
+                ],
+                allPresent = [AmJay, AmCull, AmVoid],
+                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                requiredScenes = ["Jay_Memory_3"],
+                dialogue = [
+                    new (new BGAction{action = "fight"}),  
+                    new(new Wait{secs = 1}),
+                    new (AmJay,"nervous","Did we do it? Is it over?" ),
+                    new (AmCull, "neutral", "Looks like it.", flipped: true  ),
+                    new (AmJay,"nervous","Then what now?" ),
+                    new (AmValv, "ghost", "Jay?", flipped: true  ),
+                    new (AmJay,"nervous","Valv?!" ),
+                    new (AmCull, "neutral", "I'll leave you two alone.", flipped: true  ),
+                    new (AmJay, "sad", "Valv... I am so sorry..." ),
+                    new (AmValv, "ghostmad", "Don't. Don't talk like that.", flipped: true  ),
+                    new (AmJay,"sob","If I had just paid closer attention, maybe you would still be alive." ),
+                    new (AmValv, "ghostsad", "No one could have known what would have happened.", flipped: true  ),
+                    new (AmJay,"sad","I could have! You aren't here because of me!" ),
+                    new (AmValv, "ghostmad", "Not even you could have known! This was never your fault, Jay.", flipped: true  ),
+                    new (AmJay,"sob","But you are still gone." ),
+                    new (AmValv, "ghostsad", "I've never held you at fault for that. It was an accident, nothing more.", flipped: true  ),
+                    new (AmJay,"sad","I've held myself at fault ever since." ),
+                    new (AmValv, "ghostmad", "And you have got to stop!", flipped: true  ),
+                    new (AmValv, "ghostsad", "I may no longer be with you, but you are still my brother. I still love you.", flipped: true  ),
+                    new (AmJay,"tear","You do?" ),
+                    new (AmValv, "ghostsad", "Of course.", flipped: true  ),
+                    new (AmJay,"tear","I- I am sorry. For everything." ),
+                    new (AmValv, "ghostsad", "It's okay. I forgive you.", flipped: true  ),
+                    new (AmValv, "fade", "...", flipped: true  ),
+                    new (AmValv, "fade", "Looks like my time is running out.", flipped: true  ),
+                    new (AmJay,"tear","Goodbye, Valv. I'll miss you." ),
+                    new (AmValv, "fade", "Goodbye, Jay.", flipped: true  ),
+                    new (AmValv, "purposefully_misspelled_name_to_make_her_disappear", "...", flipped: true  ),
+                    new (new EndMemoryFight())
+                ]
+            }},
         });
     }
 }

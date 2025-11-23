@@ -35,7 +35,7 @@ internal sealed class AngerCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = false },
+			new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = false, dialogueSelector = "Anger_Callout"},
 		];
 };
 

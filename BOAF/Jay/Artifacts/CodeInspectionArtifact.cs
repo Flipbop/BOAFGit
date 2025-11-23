@@ -28,6 +28,12 @@ internal sealed class CodeInspectionArtifact : Artifact, IRegisterable
 		});
 	}
 
+	public override void OnReceiveArtifact(State state)
+	{
+		base.OnReceiveArtifact(state);
+		AReconfigure.codeInspectionAmount = 0;
+	}
+
 	public override int? GetDisplayNumber(State s)
 	{
 		return AReconfigure.codeInspectionAmount;

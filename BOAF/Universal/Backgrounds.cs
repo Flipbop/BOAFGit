@@ -19,21 +19,22 @@ public class Backgrounds
 
     public static void Music_Override(Dialogue __instance, ref MusicState? __result)
     {
-        if (__instance.bg is BGJayWorkshop bg)
+        if (__instance.bg is BGJayWorkshop jay)
         {
-            if (bg.sadness) __result = new MusicState { scene = Song.Riggs };
-            if (bg.explosion) __result = new MusicState { scene = Song.Silence };
-            if (bg.alarm) __result = new MusicState { scene = Song.Silence };
+            if (jay.sadness) __result = new MusicState { scene = Song.Riggs };
+            if (jay.explosion) __result = new MusicState { scene = Song.Silence };
+            if (jay.alarm) __result = new MusicState { scene = Song.Silence };
         }
 
-        if (__instance.bg is BGBattleMemory)
+        if (__instance.bg is BGBattleMemory battle)
         {
-            __result = new MusicState { scene = Song.Defiance };
+            if (battle.prefight) __result = new MusicState { scene = Song.Polytrope, sceneLayer = SceneLayer.Intro};
+            if (!battle.prefight)__result = new MusicState { scene = Song.Riggs };
         }
     }
 
     public class BGJayWorkshop : BG {
-        public  bool explosion = false;
+        public bool explosion = false;
         public bool alarm = false;
         public bool sadness = false;
         public bool blackout = false;
@@ -72,17 +73,22 @@ public class Backgrounds
     
     public class BGBattleMemory : BG
     {
-        public bool prefight = false;
+        public bool prefight = true;
         
         public override void OnAction(State s, string action) {
-            
+            if (action == "fight")
+            {
+                prefight = false;
+                
+            }
         }
 
         public override void Render(G g, double t, Vec offset) {
-            Color color = new Color(0.0, 0.1, 0.2).gain(0.5);
-            Draw.Fill(new Color?(color));
-            BGComponents.NormalStars(g, t, offset);
-            BGComponents.RegularNebula(g, offset, color);
+            Color color1 = new Color("000000");
+            new Color("222222").gain(0.25);
+            offset.y *= 0.25;
+            Draw.Fill(color1);
+            Voronois.RenderStarsMap(g, t, 12.0, G.screenSize / 2.0, G.screenSize, new Vec?(offset * 4.0 / 8.0), doTwinkle: false);
         }
     }
 }

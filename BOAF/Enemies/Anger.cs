@@ -14,7 +14,7 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 {
 	[JsonProperty]
 	private int aiCounter;
-
+	
 	public static void Register(IModHelper helper)
 	{
 		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
@@ -23,8 +23,9 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Enemies", "ship","Anger", "name"]).Localize,
 			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapThree ? BattleType.Elite : null)
 		}));
+		
 	}
-
+	
 	public override void OnCombatStart(State s, Combat c)
 	{
 		c.bg = new BGCobaltAftermath();
@@ -33,7 +34,8 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 		a.status = Status.survive;
 		a.statusAmount = 1;
 		a.timer = 0.0;
-		c.QueueImmediate((CardAction) a);
+		c.QueueImmediate(a);
+		c.noReward = true;
 	}
 
 	public override Ship BuildShipForSelf(State s)
@@ -103,7 +105,7 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 	public override void OnSurvived(State s, Combat c)
 	{
 		base.OnSurvived(s, c);
-		c.QueueImmediate(new AHeal(){healAmount = 9, targetPlayer = false});
+		c.QueueImmediate(new AHeal(){healAmount = 14, targetPlayer = false});
 		c.QueueImmediate(new AStatus(){status = Status.powerdrive, statusAmount = 1, targetPlayer = false, dialogueSelector = "Anger_Power_Up"});
 	}
 
@@ -115,16 +117,6 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 				new IntentAttack
 				{
 					key = "power.left",
-					damage = 1,
-				},
-				new IntentAttack
-				{
-					key = "power.right",
-					damage = 1,
-				},
-				new IntentAttack
-				{
-					key = "cannon.right",
 					damage = 1,
 				},
 				new IntentAttack
@@ -141,17 +133,7 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 			intents = [
 				new IntentAttack
 				{
-					key = "cannon.left",
-					damage = 1,
-				},
-				new IntentAttack
-				{
 					key = "power.right",
-					damage = 1,
-				},
-				new IntentAttack
-				{
-					key = "cannon.right",
 					damage = 1,
 				},
 				new IntentAttack
@@ -174,16 +156,6 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 			intents = [
 				new IntentAttack
 				{
-					key = "power.left",
-					damage = 1,
-				},
-				new IntentAttack
-				{
-					key = "cannon.left",
-					damage = 1,
-				},
-				new IntentAttack
-				{
 					key = "cannon.right",
 					damage = 1,
 				},
@@ -198,16 +170,6 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 		{
 			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.right"),
 			intents = [
-				new IntentAttack
-				{
-					key = "power.left",
-					damage = 1,
-				},
-				new IntentAttack
-				{
-					key = "power.right",
-					damage = 1,
-				},
 				new IntentAttack
 				{
 					key = "cannon.left",

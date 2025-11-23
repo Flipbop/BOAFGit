@@ -79,8 +79,8 @@ public sealed class ModEntry : SimpleMod
 	#endregion
 	
 	#region Ships
-	IShipEntry ThanatosShip { get; }
-	IShipEntry VulcanShip { get; }
+	internal IShipEntry ThanatosShip { get; }
+	internal IShipEntry VulcanShip { get; }
 
 	#endregion
 	public ISpriteEntry BGJayWorkshopSprite { get; }
@@ -731,6 +731,16 @@ public sealed class ModEntry : SimpleMod
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/GhostMad/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = ValvCharacter.CharacterType,
+			LoopTag = "fade",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Valv/Fade/{i}.png")).Sprite)
+				.ToList()
+		});
 		
 		Vault.charsWithLore.Add(JayDeck.Deck);
 		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
@@ -870,6 +880,8 @@ public sealed class ModEntry : SimpleMod
 		
 		DB.backgrounds.Add("BGJayWorkshop", typeof(Backgrounds.BGJayWorkshop));
 		
+		DB.backgrounds.Add("BGBattleMemory", typeof(Backgrounds.BGBattleMemory));
+
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",
