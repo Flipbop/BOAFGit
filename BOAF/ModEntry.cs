@@ -881,7 +881,7 @@ public sealed class ModEntry : SimpleMod
 		DB.backgrounds.Add("BGJayWorkshop", typeof(Backgrounds.BGJayWorkshop));
 		
 		DB.backgrounds.Add("BGBattleMemory", typeof(Backgrounds.BGBattleMemory));
-
+		DB.backgrounds.Add("BGRunWinCustom", typeof(Backgrounds.BGRunWinCustom));
 
 		helper.ModRegistry.AwaitApi<IMoreDifficultiesApi>(
 			"TheJazMaster.MoreDifficulties",

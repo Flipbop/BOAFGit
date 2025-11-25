@@ -35,7 +35,7 @@ public class MemoryMap : MapBase {
         }
 
         public override string GetVictoryDialogue() {
-            return ".mezzTCCloser";
+            return ".Closer";
         }
 
         public override bool IsFinalZone() {

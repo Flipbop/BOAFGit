@@ -588,7 +588,7 @@ internal class CombatDialogueJay
                     oncePerCombatTags = ["biggestCrystalShout"],
                     dialogue =
                     [
-                        new(AmJay, "angry", "An expanding ship. Interesting.")
+                        new(AmJay, "squint", "An expanding ship. Interesting.")
                     ]
                 }
             },
@@ -810,7 +810,7 @@ internal class CombatDialogueJay
                     maxDamageDealtToPlayerThisTurn = 1,
                     dialogue =
                     [
-                        new(AmJay, "angry", "Hey! Watch it!")
+                        new(AmJay, "angry", "Watch it!")
                     ]
                 }
             },
@@ -856,7 +856,7 @@ internal class CombatDialogueJay
                 {
                     dialogue =
                     [
-                        new(AmJay, "angry", "OKAY WHO IS MELTING THE SHIP?")
+                        new(AmJay, "angry", "This corrosion isn't good for the ship.")
                     ]
                 }
             },
@@ -865,7 +865,7 @@ internal class CombatDialogueJay
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmJay, "squint", "Your Engine Stall is very annoying to clean up.")
+                        new(EMod.countFromStart, 1, AmJay, "angry", "Your Engine Stall is very annoying to clean up.")
                     ]
                 }
             },

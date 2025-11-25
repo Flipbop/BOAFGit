@@ -65,7 +65,7 @@
         "artifact": {
             "SoulSiphon": {
                 "name": "SOUL SIPHON", 
-                "description": "Every time you opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take ANY damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
+                "description": "Every time your opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take ANY damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
             },
             "MercifulReaper": {
                 "name": "MERCIFUL REAPER",
@@ -410,9 +410,9 @@
             "FactoryReset": {
                 "name": "Factory Reset",
                 "description": {
-                    "None": "Reset all of your ships parts to how they were when combat started. <c=action>Detect 2.</c>",
-                    "A": "Reset all of your ships parts to how they were when combat started. <c=action>Detect 3.</c>",
-                    "B": "<c=action>Detect 1.</c> Reset all of your ships parts to how they were when combat started. <c=action>Reconfigure 1. Detect 2.</c>"
+                    "None": "Reset your ships parts to how they were when combat started. <c=action>Detect 2.</c>",
+                    "A": "Reset your ships parts to how they were when combat started. <c=action>Detect 3.</c>",
+                    "B": "Reset your ships parts to how they were when combat started. <c=action>Detect 2.</c>"
                 }
             },
             "BareMinimum": {
@@ -1288,7 +1288,7 @@
         },
         "Neptune": {
             "name": "Neptune",
-            "description": "A farmer's ship used for watering crops. Has 2 missile bays that were repurposed into cold storage."
+            "description": "A farmer's ship used for watering crops. Has 2 cold storage units that were repurposed into missile bays."
         },
 
 

@@ -106,11 +106,11 @@ namespace Flipbop.BOAF;
     
     public class MemoryFight : Instruction
     {
-        public required List<Card> cards = null!;
+        public required List<Card> cards;
         public List<Artifact> artifacts = null!;
-        public required List<Deck> decks = null!;
-        public required AI enemy =  null!;
-        public required StarterShip ship = null!;
+        public required List<Deck> decks;
+        public required AI enemy;
+        public required StarterShip ship;
         public List<Artifact> removeArtifacts = null!;
         public int hullIncrease = 0;
 
@@ -123,16 +123,12 @@ namespace Flipbop.BOAF;
                 currentLocation = new Vec(0, 0),}, decks, difficulty: 1);
             g.state.deck.Clear();
             foreach (Card card in cards) g.state.deck.Add(card);
-            if (removeArtifacts != null)
+            foreach (Artifact artifact in ship.artifacts.ToList())
             {
-                foreach (Artifact artifact in ship.artifacts)
+                foreach (Artifact artifactRemove in removeArtifacts)
                 {
-                    foreach (Artifact artifactRemove in removeArtifacts)
-                    {
-                        if  (artifact.Equals(artifactRemove)) ship.artifacts.Remove(artifactRemove);
-                    }
+                    if  (artifact.Equals(artifactRemove)) ship.artifacts.Remove(artifactRemove);
                 }
-
             }
             if (artifacts != null) {
                 foreach (Artifact addArtif in artifacts)
@@ -164,6 +160,34 @@ namespace Flipbop.BOAF;
             g.state.TryCloseRoute(g, g.state.route, null);
             g.state.RemoveAllTempCards();
             g.state.ChangeRoute(() => g.state.MakeRunWinRoute());
+            return true;
+        }
+    }
+
+    public class SetMemoryLevel : Instruction
+    {
+        public required Deck chararcter;
+        public required int level;
+
+        public override bool Execute(G g, IScriptTarget target, ScriptCtx ctx)
+        {
+            g.state.storyVars.memoryUnlockLevel[chararcter] = level;
+            return true;
+        }
+    }
+
+    public class CheckMemoryLevel : Instruction
+    {
+        public required Deck chararcter;
+        public required int level;
+
+        public override bool Execute(G g, IScriptTarget target, ScriptCtx ctx)
+        {
+            if (g.state.storyVars.memoryUnlockLevel[chararcter] != level)
+            {
+                g.state.storyVars.memoryUnlockLevel[chararcter] = level;
+                g.state.ChangeRoute(g.state.MakeRunWinRoute);
+            }
             return true;
         }
     }

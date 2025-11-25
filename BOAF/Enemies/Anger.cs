@@ -18,14 +18,19 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 	public static void Register(IModHelper helper)
 	{
 		Type thisType = MethodBase.GetCurrentMethod()!.DeclaringType!;
-		IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
+		/*IRegisterableEnemy.MakeSetting(helper, helper.Content.Enemies.RegisterEnemy(new() {
 			EnemyType = thisType,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Enemies", "ship","Anger", "name"]).Localize,
-			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MapThree ? BattleType.Elite : null)
-		}));
+			ShouldAppearOnMap = (_, map) => IRegisterableEnemy.IfEnabled(thisType, map is MemoryMap ? BattleType.Elite : null)
+		}));*/
 		
 	}
-	
+
+	public override bool HasCoolerExplosion()
+	{
+		return true;
+	}
+
 	public override void OnCombatStart(State s, Combat c)
 	{
 		c.bg = new BGCobaltAftermath();

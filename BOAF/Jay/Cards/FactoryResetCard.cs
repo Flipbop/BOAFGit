@@ -36,6 +36,8 @@ internal sealed class FactoryResetCard : Card, IRegisterable
 				ModEntry.Instance.Localizations.Localize([
 					"Jay", "card", "FactoryReset", "description", upgrade.ToString()
 				]),
+			retain = true,
+			recycle = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -44,11 +46,6 @@ internal sealed class FactoryResetCard : Card, IRegisterable
 			Upgrade.A => [
 				new AFactoryResetManager.AFactoryReset(),
 				new ADetect(){Amount = 3}
-			],
-			Upgrade.B => [
-				new ADetect(){Amount = 1},
-				new AFactoryResetManager.AFactoryReset(),
-				new ADetect(){Amount = 2}
 			],
 			_ => [
 				new AFactoryResetManager.AFactoryReset(),

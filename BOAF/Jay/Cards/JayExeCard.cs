@@ -15,7 +15,7 @@ internal sealed class JayExeCard : Card, IRegisterable
 			Meta = new()
 			{
 				deck = Deck.colorless,
-				rarity = Rarity.uncommon,
+				rarity = Rarity.common,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
@@ -32,22 +32,21 @@ internal sealed class JayExeCard : Card, IRegisterable
 			artTint = "ffffff",
 			cost = upgrade == Upgrade.A ? 0 : 1,
 			exhaust = true,
-			description = ModEntry.Instance.Localizations.Localize(["Cull","card", "CullExe", "description", upgrade.ToString()], new { Count = GetChoiceCount() })
+			description = ModEntry.Instance.Localizations.Localize(["Jay","card", "JayExe", "description", upgrade.ToString()], new { Count = GetChoiceCount() })
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> [
-			new AStatus() {status = ModEntry.Instance.EmpoweredStatus.Status, targetPlayer = true, statusAmount = 1},
 			new ACardOffering
 			{
 				amount = GetChoiceCount(),
-				limitDeck = ModEntry.Instance.CullDeck.Deck,
+				limitDeck = ModEntry.Instance.JayDeck.Deck,
 				makeAllCardsTemporary = true,
 				overrideUpgradeChances = false,
 				canSkip = false,
 				inCombat = true,
 				discount = -1,
-				dialogueSelector = $".summon{ModEntry.Instance.CullDeck.UniqueName}"
+				dialogueSelector = $".summon{ModEntry.Instance.JayDeck.UniqueName}"
 			}
 		];
 }

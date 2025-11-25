@@ -9,8 +9,7 @@ internal class MemoryDialogueJay
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
-            //Remove the _PREEMPTIVE from every tag when everything is finished
-            {"RunWinWho_Jay_1_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmJay],
@@ -19,51 +18,57 @@ internal class MemoryDialogueJay
                     $"runWin_{AmJay}"
                 ],
                 dialogue = [
+                    new (new CheckMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 1}),
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Are you the reason I'm here?" ),
-                    new (AmVoid,"neutral","In a way."),
+                    new (AmVoid,"neutral","In a way.", flipped: true),
                     new (AmJay, "neutral", "But why? According to Cat, almost everyone else is missing their memories." ),
-                    new (AmVoid,"neutral","I need you to be whole again."),
-                    new (AmVoid,"neutral","You may remember your past, but that does not mean you have not pushed it deep down."),
-                    new (AmVoid,"neutral","I need you to remember her."),
+                    new (AmVoid,"neutral","I need you to be whole again.", flipped: true),
+                    new (AmVoid,"neutral","You may remember your past, but that does not mean you have not pushed it deep down.", flipped: true),
+                    new (AmVoid,"neutral","I need you to remember her.", flipped: true),
                 ]
             }},
-            {"RunWinWho_Jay_2_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmJay],
-                bg = "BGRunWin",
+                bg = "BGRunWinCustom",
                 lookup = [
                     $"runWin_{AmJay}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Jay_1_PREEMPTIVE"
+                    "RunWinWho_Jay_1"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Back here again. What for?" ),
-                    new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?" ),
+                    new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?", flipped: true ),
                     new (AmJay, "neutral", "The person Valv bought the part from, some \"bat dude\" as she put it." ),
-                    new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here." )
+                    new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here.", flipped: true ),
+                    new (new BGAction{action = "glitch_cue"}),
+                    new (new Wait{secs = 2}),
+                    new (new BGAction(){action = "runwinwho_reset_Jay"}),
                 ]
             }},
-            {"RunWinWho_Jay_3_PREEMPTIVE", new(){
+            {"RunWinWho_Jay_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmJay],
                 bg = "BGRunWin",
+                priority = true,
                 lookup = [
                     $"runWin_{AmJay}"
                 ],
                 requiredScenes = [
-                    "Jay_Post_Smiff_PREEMPTIVE"
+                    "Jay_Post_Smiff", "Jay_Memory_2"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Is that it? Am I \"whole\" now?" ),
-                    new (AmVoid,"neutral","Almost. You are still grieving. I may not be able to help with that, but I know someone that can." ),
+                    new (AmVoid,"neutral","Almost. You are still grieving. I may not be able to help with that, but I know someone that can.", flipped: true ),
                     new (AmJay, "neutral", "Then what?" ),
-                    new (AmVoid,"neutral","We will see." )
+                    new (AmVoid,"neutral","We will see.", flipped: true ),
+                    new (new SetMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 3})
                 ]
             }},
             {"Jay_Memory_1", new(){
@@ -213,12 +218,28 @@ internal class MemoryDialogueJay
                     new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
                 ]
             }},
-            {"Anger_Callout", new(){
+            {"Anger_Callout_Multi_0", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
                 nonePresent = [/*AmLuna, AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
+                ]
+            }},
+            {"Anger_Callout_Multi_1", new(){
+                type = NodeType.combat,
+                allPresent = [AmJay, AmCull, AmVoid],
+                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "THAT'S N??0T <c=part>THE POINT.</c>" ),
+                ]
+            }},
+            {"Anger_Callout_Multi_2", new(){
+                type = NodeType.combat,
+                allPresent = [AmJay, AmCull, AmVoid],
+                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
                 ]
             }},
             {"Jay_Closure", new(){
