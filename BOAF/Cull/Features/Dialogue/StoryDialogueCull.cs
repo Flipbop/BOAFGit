@@ -128,6 +128,7 @@ internal class StoryDialogueCull
                 type = NodeType.@event,
                 once = true,
                 allPresent = [ AmCull, AmIsaac ],
+                lookup = ["before_any"],
                 requiredScenes = [ "Cull_Intro_0_PREEMPTIVE", "Cull_Isaac_0_PREEMPTIVE"],
                 hasArtifactTypes = [typeof(AnimismArtifact)],
                 dialogue = [

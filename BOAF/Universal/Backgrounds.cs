@@ -19,7 +19,13 @@ public class Backgrounds
         ModEntry.Instance.Harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(Dialogue), nameof(Dialogue.GetMusic)),
             postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Music_Override))
-        );}
+        );
+        ModEntry.Instance.Harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(RunWinHelpers), nameof(RunWinHelpers.GetChoices)),
+            postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(GetChoicesPostfix))
+        );
+
+    }
 
     public static void Music_Override(Dialogue __instance, ref MusicState? __result)
     {
@@ -34,6 +40,23 @@ public class Backgrounds
         {
             if (battle.prefight) __result = new MusicState { scene = Song.Polytrope, sceneLayer = SceneLayer.Intro};
             if (!battle.prefight)__result = new MusicState { scene = Song.Riggs };
+        }
+    }
+    
+    public static void GetChoicesPostfix(ref List<Choice> __result, State s) {
+        State s2 = s;
+        for (int i = 0; i < __result.Count; i++) {
+            if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.JayDeck.Deck)) {
+                if (s2.storyVars.HasEverSeen("RunWinWho_Jay_2") && !s2.storyVars.HasEverSeen("Jay_Intro_2")) {
+                    __result.RemoveAt(i);
+                    i--;
+                }
+            }
+            /*else if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.LunaDeck.Deck) &&
+                     s2.storyVars.memoryUnlockLevel.GetValueOrDefault(ModEntry.Instance.LunaDeck.Deck) > 0) {
+                __result.RemoveAt(i);
+                i--;
+            }*/
         }
     }
 
@@ -67,7 +90,7 @@ public class Backgrounds
             if (alarm)
             {
                 Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);
-                Glow.Draw(Vec.FromAngle(250), 1000, Colors.redd);
+                Glow.Draw(Vec.FromAngle(250), 250, Colors.redd);
             }
             if (blackout) Draw.Fill(Colors.black);
 
@@ -126,7 +149,7 @@ public class Backgrounds
                 s.storyVars.runWinChar = null;
                 charPickTimer = null;
                 s.storyVars.memoryUnlockLevel[ModEntry.Instance.JayDeck.Deck] = 1;
-                //s.ChangeRoute(s.MakeRunWinRoute);
+                s.ChangeRoute(s.MakeRunWinRoute);
             }
             /*else if (action == "runwinwho_reset_Luna") {
                 charPickDeck = null;

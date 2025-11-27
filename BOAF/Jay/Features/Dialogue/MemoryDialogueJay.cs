@@ -18,7 +18,6 @@ internal class MemoryDialogueJay
                     $"runWin_{AmJay}"
                 ],
                 dialogue = [
-                    new (new CheckMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 1}),
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Are you the reason I'm here?" ),
                     new (AmVoid,"neutral","In a way.", flipped: true),
@@ -45,8 +44,6 @@ internal class MemoryDialogueJay
                     new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?", flipped: true ),
                     new (AmJay, "neutral", "The person Valv bought the part from, some \"bat dude\" as she put it." ),
                     new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here.", flipped: true ),
-                    new (new BGAction{action = "glitch_cue"}),
-                    new (new Wait{secs = 2}),
                     new (new BGAction(){action = "runwinwho_reset_Jay"}),
                 ]
             }},

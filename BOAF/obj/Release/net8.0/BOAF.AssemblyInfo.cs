@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BOAF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.3.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.3.4+ed694356afbd1726ad1fdc658f200a2c1d8601f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.3.4+845496db7004373c53a4e3a73c16d0c2c40260c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("BOAF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BOAF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.3.4.0")]

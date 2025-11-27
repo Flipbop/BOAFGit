@@ -175,19 +175,3 @@ namespace Flipbop.BOAF;
             return true;
         }
     }
-
-    public class CheckMemoryLevel : Instruction
-    {
-        public required Deck chararcter;
-        public required int level;
-
-        public override bool Execute(G g, IScriptTarget target, ScriptCtx ctx)
-        {
-            if (g.state.storyVars.memoryUnlockLevel[chararcter] != level)
-            {
-                g.state.storyVars.memoryUnlockLevel[chararcter] = level;
-                g.state.ChangeRoute(g.state.MakeRunWinRoute);
-            }
-            return true;
-        }
-    }

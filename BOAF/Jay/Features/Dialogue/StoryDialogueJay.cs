@@ -92,6 +92,7 @@ internal class StoryDialogueJay
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
+                priority = true,
                 allPresent = [ AmJay ],
                 requiredScenes = ["Jay_Intro_1", "Jay_Memory_2"],
                 bg = "BGRunStart",
@@ -99,53 +100,71 @@ internal class StoryDialogueJay
                     new (AmCat, "worried", "Oh, I'm so sorry. That can't have been easy to go through.", flipped: true ),
                     new (AmJay,"sad","It's... alright." ),
                     new (AmJay,"sob","There is nothing you could say that I haven't already told myself." ),
-                    new (AmCat, "worried", "Don't talk like that! We're all here for you, you are our friends.", flipped: true ),
-                    new (AmJay,"cry","Thanks. It means a lot." ),
+                    new (AmCat, "worried", "Don't talk like that! We're all here for you, you are our friend.", flipped: true ),
+                    new (AmJay,"tear","Thanks. It means a lot." ),
                 ]
             }},
-            {"Jay_Peri_0_PREEMPTIVE", new(){
+            {"Jay_Dizzy_0", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
-                allPresent = [ AmJay, AmPeri ],
+                allPresent = [ AmJay, AmDizzy ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Jay_Intro_0", "Peri_1", "Jay_Memory_2" ],
+                requiredScenes = [ "Jay_Intro_0", "Jay_Memory_3" ],
                 dialogue = [
-                    
+                    new (AmDizzy, "Do you remember what kind of part your sister bought off Smiff?", true),
+                    new (AmJay, "squint", "Yeah, it was some sort of crystal like thing. I don't remember exactly. It was destroyed in the blast."),
+                    new (AmDizzy, "crystal", "Like this?", true), 
+                    new (AmJay, "nervous", "Where did you get that?!"),
+                    new (AmDizzy, "crystal", "These things are everywhere. They last between each loop, so everytime we turn the big crystal to dust some more get scattered about.", true),
+                    new (AmDizzy, "crystal", "They have some weird time-warping properties, if my tests are to be believed.", true), 
+                    new (AmJay, "squint", "I guess that would make for some fast engines..."),
                 ]
             }},
-            {"Jay_Isaac_0_PREEMPTIVE", new(){
+            {"Jay_Isaac_0", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 bg = "BGRunStart",
                 allPresent = [AmJay, AmIsaac],
                 once = true,
-                priority = true,
                 requiredScenes = ["Jay_Intro_0", "Goat_1"],
                 dialogue = [
-                    
+                    new (AmIsaac, "Hey Jay, I was wondering what you are doing to manipulate the ships we pilot.", true),
+                    new (AmJay, "It's quite simple really! I use microscopic nanomachines to deconstruct and reconstruct the ship in a few seconds."),
+                    new (AmIsaac, "Nanomachines? I thought those didn't exist yet.", true),
+                    new (AmJay, "I just recently developed them myself. They are still in the prototype phase, not to be released to the public."),
+                    new (AmJay, "They can be quite dangerous in the wrong hands!"),
+                    new (AmIsaac, "panic","They can?!", true)
                 ]
             }},
-            {"Jay_Riggs_0_PREEMPTIVE", new(){
+            {"Jay_Riggs_0", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
                 allPresent = [ AmJay, AmRiggs ],
                 bg = "BGRunStart",
-                requiredScenes = [ "Jay_Intro_0", "Jay_Memory_2"],
+                requiredScenes = [ "Jay_Intro_0", "Jay_Memory_1"],
                 dialogue = [
-                    
+                    new (AmRiggs, "What were you working on with your sister?", true),
+                    new (AmJay, "It was a prototype lightspeed engine. Small enough to fit on a single-person craft."),
+                    new (AmRiggs, "Whoa! That's so cool! Why did you stop?", true),
+                    new (AmJay, "nervous", "It... uh... didn't work."),
+                    new (AmRiggs, "Awww, that sucks. I would have loved to pilot a ship with it.", true)
                 ]
             }},
-            {"Jay_Drake_0_PREEMPTIVE", new(){
+            {"Jay_Drake_0", new(){
                 type = NodeType.@event,
                 lookup = ["after_crystal"],
                 bg = "BGCrystalNebula",
                 once = true,
                 allPresent = [ AmJay, AmDrake ],
-                requiredScenes = [ "Jay_Intro_0"],
+                requiredScenes = [ "Jay_Post_Smiff", "Jay_Memory_2"],
                 dialogue = [
-                    
+                    new (AmDrake, "squint","What kinda beef you got with Smiff?", true),
+                    new (AmJay, "angry", "He is the reason my sister is dead."),
+                    new (AmDrake, "squint","Really? THAT guy? He's harmless. How would he even do that?", true),
+                    new (AmJay, "angry", "He sold her a faulty part that ended up causing a critical failure in an engine, causing an explosion that killed her."),
+                    new (AmDrake, "nervous", "Oh.", true)
                 ]
             }}
         });
