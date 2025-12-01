@@ -77,6 +77,11 @@ public sealed class ModEntry : SimpleMod
 	internal INonPlayableCharacterEntryV2 ValvCharacter { get; }
 	
 	#endregion
+	#region Luna
+	internal IDeckEntry LunaDeck { get; }
+	internal IPlayableCharacterEntryV2 LunaCharacter { get; }
+	internal ISpriteEntry LunaFullBody { get; set; }
+	#endregion
 	
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
@@ -107,6 +112,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(ControlZCard),
 		typeof(JumpTheLineCard),
 		typeof(ShiftCard),
+		
+		typeof(ShinyShotCard),
+		typeof(StarryShieldCard),
+		typeof(SolarPowerCard),
+		typeof(PiercingLightCard),
+		typeof(SurgeCard),
+		typeof(EnergySapCard),
+		typeof(PremeditationCard),
+		typeof(PrestidigitationCard),
+		typeof(BulletWardCard),
 	];
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
@@ -125,6 +140,14 @@ public sealed class ModEntry : SimpleMod
 		typeof(SignalRelayCard),
 		typeof(MixItUpCard), 
 		typeof(ShootingGalleryCard),
+		
+		typeof(MoteCard),
+		typeof(MoonbeamCard),
+		typeof(InstantFreezeCard),
+		typeof(HarmingSpellCard),
+		typeof(CradlesCometCard),
+		typeof(GatherCard), 
+		typeof(NorthStarCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
@@ -139,6 +162,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(BareMinimumCard),
 		typeof(OveruseCard),
 		typeof(SelectiveSensorsCard),
+		
+		typeof(CometShowCard),
+		typeof(InfiniteShineCard),
+		typeof(CosmicCollectionCard),
+		typeof(NebulaCard),
+		typeof(SpaceTimeCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
@@ -156,8 +185,8 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> EXECardTypes { get; } = [
 		typeof(CullExeCard),
 		typeof(JayExeCard),
-		/*typeof(LunaExeCard),
-		typeof(CentiExeCard)
+		typeof(LunaExeCard),
+		/*typeof(CentiExeCard)
 		typeof(EvaExeCard)*/
 	];
 
@@ -330,11 +359,20 @@ public sealed class ModEntry : SimpleMod
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Jay","character", "name"]).Localize,
 		});
+		LunaDeck = helper.Content.Decks.RegisterDeck("Luna", new()
+		{
+			Definition = new() { color = new("a661cb"), titleColor = Colors.white },
+			DefaultCardArt = StableSpr.cards_colorless,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/CardFrame.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Luna","character", "name"]).Localize,
+		});
 		
 		foreach (var registerableType in RegisterableTypes)
 			AccessTools.DeclaredMethod(registerableType, nameof(IRegisterable.Register))?.Invoke(null, [package, helper]);
 		
 		#region Cull Character
+		
+		
 		UncommonCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameUncommon.png")).Sprite;
 		RareCullBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameRare.png")).Sprite;
 		CullCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Cull", new()
@@ -746,6 +784,133 @@ public sealed class ModEntry : SimpleMod
 		JayFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(JayDeck.Deck, JayFullBody.Sprite);
 		# endregion
+		#region Luna Character 
+		
+		
+		LunaCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Luna", new()
+		{
+			Deck = LunaDeck.Deck,
+			Description = this.AnyLocalizations.Bind(["Luna","character", "description"]).Localize,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/CharacterFrame.png")).Sprite,
+			NeutralAnimation = new()
+			{
+				CharacterType = LunaDeck.UniqueName,
+				LoopTag = "neutral",
+				Frames = Enumerable.Range(0, 4)
+					.Select(i =>
+						helper.Content.Sprites
+							.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Neutral/{i}.png"))
+							.Sprite)
+					.ToList()
+			},
+			MiniAnimation = new()
+			{
+				CharacterType = LunaDeck.UniqueName,
+				LoopTag = "mini",
+				Frames = [
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/mini.png")).Sprite
+				]
+			},
+			Starters = new()
+			{
+				cards = [
+					new StarryShieldCard(),
+					new ShinyShotCard()
+				]
+			},
+			SoloStarters = new StarterDeck()
+			{
+				cards = [
+					new StarryShieldCard(),
+					new ShinyShotCard(),
+					new SurgeCard(),
+					new PiercingLightCard(),
+					new CannonColorless(),
+					new BasicShieldColorless()
+					],
+			},
+			ExeCardType = typeof(LunaExeCard)
+		});
+		
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "gameover",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/GameOver/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "squint",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Squint/{i}.png")).Sprite)
+				.ToList()
+		});
+		/*helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "nervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Nervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Angry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "tear",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Cry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "sad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Sad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "sob",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Sob/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "damaged",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Damaged/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LunaDeck.UniqueName,
+			LoopTag = "damagedcry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/DamagedCry/{i}.png")).Sprite)
+				.ToList()
+		});
+		*/
+		
+		
+		//Vault.charsWithLore.Add(LunaDeck.Deck);
+		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
+		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
+		# endregion
 		
 		#region Ships
 		ThanatosShip = helper.Content.Ships.RegisterShip("Thanatos", new ShipConfiguration()
@@ -914,6 +1079,17 @@ public sealed class ModEntry : SimpleMod
 						]
 					}
 				);
+				api.RegisterAltStarters(
+					deck: LunaDeck.Deck,
+					starterDeck: new StarterDeck
+					{
+						cards =
+							[
+								new BulletWardCard(),
+								new PrestidigitationCard()
+							]
+					} 
+					);
 			});
 		
 		_ = new SoulEnergyManager();

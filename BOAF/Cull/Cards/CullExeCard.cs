@@ -59,7 +59,7 @@ internal sealed class CullExeCard : Card, IRegisterable
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not FactoryResetCard)
+			if (args.Card is not CullExeCard)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}
