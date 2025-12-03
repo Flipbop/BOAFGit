@@ -42,7 +42,7 @@
         "status": {
             "SoulEnergy": {
                 "name": "Soul Energy",
-                "description": "You can have up to 10 <c=status>Soul Energy</c>. Soul Energy is necessary to use certain actions on certain cards <c=272727>Cull</c> has."
+                "description": "<c=status>Soul Energy</c> is necessary to use certain actions on certain cards <c=272727>Cull</c> has. <c=keyword>Limited to 10.</c>"
             },
             "Fear": {
                 "name": "Fear",
@@ -475,6 +475,10 @@
         "action": {
             "MissingDust": {
                 "description": "<c=action>X</c> = The amount of <c=status>STARDUST</c> you are currently <c=keyword>missing</c>."
+            },
+            "StardustCost": {
+                "name": "STARDUST COST",
+                "description": "This action must spend <c=status>{0} STARDUST</c> to happen."
             }
         },
         "status": {
@@ -491,7 +495,7 @@
         "artifact": {
             "LunarPendant": {
                 "name": "LUNAR PENDANT",
-                "description": "Start the run with <c=status>15 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you<c=status>15 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
+                "description": "Start the run with <c=status>15 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>15 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
             },
             "Duo": {
             }

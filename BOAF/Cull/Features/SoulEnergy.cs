@@ -22,7 +22,7 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 	{
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
-			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatus_Begin_Postfix))
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusSoul_Begin_Postfix))
 		);
 	}
 	public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusRenderingAsBarsArgs args)
@@ -40,7 +40,7 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 				.ToImmutableList(),
 			5);
 	}
-	public static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c)
+	public static void AStatusSoul_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{
 		if (__instance.status != ModEntry.Instance.SoulEnergyStatus.Status) return;
         

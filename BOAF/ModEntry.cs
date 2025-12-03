@@ -81,6 +81,12 @@ public sealed class ModEntry : SimpleMod
 	internal IDeckEntry LunaDeck { get; }
 	internal IPlayableCharacterEntryV2 LunaCharacter { get; }
 	internal ISpriteEntry LunaFullBody { get; set; }
+	internal IStatusEntry StardustStatus { get; }
+	internal IStatusEntry ResidualDustStatus { get; }
+	internal ISpriteEntry stardustSprite { get; }
+	internal ISpriteEntry residualDustSprite { get; }
+	internal ISpriteEntry stardustCostSprite { get; }
+
 	#endregion
 	
 	#region Ships
@@ -232,6 +238,7 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> StarterArtifacts { get; } = [
 		typeof(SoulSiphonArtifact),
+		typeof(LunarPendantArtifact),
 		
 		typeof(HunterCannonsArtifact),
 		typeof(VulcanPlatingArtifact),
@@ -303,6 +310,10 @@ public sealed class ModEntry : SimpleMod
 		rebuiltScaffoldSprite = helper.Content.Ships.RegisterPart("RebuiltScaffold", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltScaffold.png")).Sprite }).UniqueName;
 		rebuiltCommsSprite = helper.Content.Ships.RegisterPart("RebuiltComms", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Rebuild/RebuiltComms.png")).Sprite }).UniqueName;
 
+		stardustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/Stardust.png"));
+		residualDustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/ResidualDust.png"));
+		stardustCostSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Icons/StardustCost.png"));
+		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
 		
@@ -342,7 +353,8 @@ public sealed class ModEntry : SimpleMod
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
-		
+		//StardustManager.ApplyPatches(Harmony, logger);
+
 		
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
@@ -361,7 +373,7 @@ public sealed class ModEntry : SimpleMod
 		});
 		LunaDeck = helper.Content.Decks.RegisterDeck("Luna", new()
 		{
-			Definition = new() { color = new("a661cb"), titleColor = Colors.white },
+			Definition = new() { color = new("a661cb"), titleColor = Colors.black },
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Luna","character", "name"]).Localize,
@@ -816,7 +828,8 @@ public sealed class ModEntry : SimpleMod
 				cards = [
 					new StarryShieldCard(),
 					new ShinyShotCard()
-				]
+				],
+				artifacts = [new LunarPendantArtifact()]
 			},
 			SoloStarters = new StarterDeck()
 			{
@@ -825,10 +838,11 @@ public sealed class ModEntry : SimpleMod
 					new ShinyShotCard(),
 					new SurgeCard(),
 					new PiercingLightCard(),
-					new CannonColorless(),
+					new DodgeColorless(),
 					new BasicShieldColorless()
 					],
 			},
+			
 			ExeCardType = typeof(LunaExeCard)
 		});
 		
@@ -906,6 +920,30 @@ public sealed class ModEntry : SimpleMod
 		});
 		*/
 		
+		StardustStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Stardust", new()
+		{
+			Definition = new()
+			{
+				icon = stardustSprite.Sprite,
+				color = new("a661cb"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Luna", "status", "Stardust", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Luna", "status", "Stardust", "description"])
+				.Localize
+		});
+		ResidualDustStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("ResidualDust", new()
+		{
+			Definition = new()
+			{
+				icon = residualDustSprite.Sprite,
+				color = new("2134a8"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Luna", "status", "ResidualDust", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Luna", "status", "ResidualDust", "description"])
+				.Localize
+		});
 		
 		//Vault.charsWithLore.Add(LunaDeck.Deck);
 		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
@@ -1083,6 +1121,10 @@ public sealed class ModEntry : SimpleMod
 					deck: LunaDeck.Deck,
 					starterDeck: new StarterDeck
 					{
+						artifacts =
+						[
+							new LunarPendantArtifact()
+						],
 						cards =
 							[
 								new BulletWardCard(),
@@ -1113,7 +1155,9 @@ public sealed class ModEntry : SimpleMod
 		_ = new MemoryDialogueJay();		
 		_ = new StoryDialogueJay();
 
-
+		_ = new StardustManager();
+		_ = new StardustCostManager();
+		
 		_ = new Backgrounds();
 		
 		SetUpModSettings(helper);

@@ -29,23 +29,22 @@ internal sealed class ShinyShotCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = upgrade == Upgrade.B ? 3 :2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new ADetect{Amount = 1},
-				new AAttack{damage = GetDmg(s, 2), piercing = true}
+				new AAttack(){damage = GetDmg(s, 1), stunEnemy = true},
+				new AMove(){dir = 1, targetPlayer = true},
+				new AAttack(){damage = GetDmg(s, 1), stunEnemy = true},
 			],
 			Upgrade.A => [
-				new ADetect{Amount = 1},
-				new AAttack{damage = GetDmg(s, 3)}
+				new AAttack(){damage = GetDmg(s, 3), stunEnemy = true}
 			],
 			_ => [
-				new ADetect{Amount = 1},
-				new AAttack{damage = GetDmg(s, 2)}
+				new AAttack(){damage = GetDmg(s, 2), stunEnemy = true}
 			],
 		};
 }

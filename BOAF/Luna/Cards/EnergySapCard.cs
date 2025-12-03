@@ -30,24 +30,22 @@ internal sealed class EnergySapCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 0,
+			exhaust = true,
+			retain = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 1},
-				new AReconfigure(){Amount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 3}).AsCardAction,
 			],
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 4}).AsCardAction,
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 3}).AsCardAction,
 			]
 		};
 }

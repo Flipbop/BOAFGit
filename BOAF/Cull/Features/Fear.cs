@@ -17,16 +17,19 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnTurnEnd),
 			(State state, Combat combat) =>
 			{
-				
-				var stacks = state.ship.Get(ModEntry.Instance.FearStatus.Status);
-				if (stacks <= 0)
-					return;
-				
-				if (!combat.isPlayerTurn)
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = false, mode = AStatusMode.Set});
+				if (combat.isPlayerTurn)
+				{
+					var stacks = state.ship.Get(ModEntry.Instance.FearStatus.Status);
+					if (stacks <= 0)
+						return;
+					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
+				}
 				else
 				{
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
+					var stacks = combat.otherShip.Get(ModEntry.Instance.FearStatus.Status);
+					if (stacks <= 0)
+						return;
+					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = false, mode = AStatusMode.Set});
 				}
 			});
 		ModEntry.Instance.Harmony.Patch(

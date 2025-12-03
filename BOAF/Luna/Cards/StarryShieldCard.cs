@@ -2,7 +2,6 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
-using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
@@ -28,19 +27,41 @@ internal sealed class StarryShieldCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 0 : 1,
+			cost = upgrade == Upgrade.B? 0 : 1,
+			floppable = true,
 		};
 
+	private CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+			new AStatus() { status = Status.shield, statusAmount = 4, targetPlayer = true }).AsCardAction;
+
+	private CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+			new AStatus() { status = Status.shield, statusAmount = 3, targetPlayer = true }).AsCardAction;
+
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		actionA.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			Upgrade.B => [
-				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 2}
-			],
-			_ => [
-				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			]
-		};
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 2, targetPlayer = true, disabled = flipped });
+			actions.Add(actionA);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+		} else 
+		{
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 1, targetPlayer = true, disabled = flipped });
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 1, targetPlayer = true, disabled = !flipped });
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true, disabled = !flipped });
+			
+		}
+		return actions;
+	}
 }
