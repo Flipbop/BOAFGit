@@ -11,8 +11,6 @@ internal sealed class PremeditationCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -31,30 +29,43 @@ internal sealed class PremeditationCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			retain = upgrade == Upgrade.B,
+			cost = 1,
+			floppable = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=>upgrade switch
-		{
-			Upgrade.A =>
-			[
-				new AReconfigure(){Amount = 1, reverse = true},
-				new ADetect(){Amount = 1}
-			],
-			_ => [
-				new AReconfigure(){Amount = 1, reverse = true}
-			]
-		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.energyNextTurn, statusAmount = 3, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.energyNextTurn, statusAmount = 2, targetPlayer = true }).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			if (args.Card is not ControlZCard c)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 3, targetPlayer = true, disabled = flipped });
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 3, targetPlayer = true, disabled = !flipped });
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = flipped });
+			actions.Add(actionB);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+		} else 
+		{
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = flipped });
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = !flipped });
 		}
+		return actions;
 	}
 };

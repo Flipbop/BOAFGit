@@ -31,20 +31,47 @@ internal sealed class BulletWardCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			flippable = upgrade == Upgrade.A
+			cost = 0,
+			floppable = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+				new AStatus() { status = Status.shield, statusAmount = 5, targetPlayer = true }).AsCardAction;
+		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.shield, statusAmount = 3, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true }).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionA.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			Upgrade.B => [
-				new AMove(){dir = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 2}
-			],
-			_ => [
-				new AMove(){dir = 2, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			]
-		};
+			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(actionA);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true });
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(actionB);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 3, targetPlayer = true });
+		} else 
+		{
+			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true });
+		}
+		return actions;
+	}
 }

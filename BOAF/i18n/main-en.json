@@ -474,7 +474,7 @@
         },
         "action": {
             "MissingDust": {
-                "description": "<c=action>X</c> = The amount of <c=status>STARDUST</c> you are currently <c=keyword>missing</c>."
+                "description": "<c=action>X</c> = The amount of <c=status>STARDUST</c> you are <c=keyword>currently missing.</c>"
             },
             "StardustCost": {
                 "name": "STARDUST COST",

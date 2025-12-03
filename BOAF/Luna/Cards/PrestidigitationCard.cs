@@ -27,16 +27,48 @@ internal sealed class PrestidigitationCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 0 : 1,
-			recycle = upgrade == Upgrade.B,
-			retain = true
+			cost = upgrade == Upgrade.B? 1 : 0,
+			floppable = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.stunCharge, statusAmount = 4, targetPlayer = true }).AsCardAction;
+		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.stunCharge, statusAmount = 3, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.stunCharge, statusAmount = 2, targetPlayer = true }).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionA.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			_ => [
-				new AReconfigure(){Amount = 2}
-			]
-		};
+			actions.Add(actionA);
+			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.stunCharge, statusAmount = 1, targetPlayer = true });
+			actions.Add(new ADrawCard(){count = 1});
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(actionB);
+			actions.Add(new ADrawCard(){count = 2});
+			actions.Add(new ADummyAction());
+			actions.Add(new ADrawCard(){count = 2});
+		} else 
+		{
+			actions.Add(actionNone);
+			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(new ADummyAction());
+			actions.Add(new ADrawCard(){count = 1});
+		}
+		return actions;
+	}
 }

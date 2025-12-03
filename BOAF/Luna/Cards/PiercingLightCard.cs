@@ -30,23 +30,38 @@ internal sealed class PiercingLightCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.A ? 0 : 1,
+			floppable = true
 		};
+
+	
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+			new AAttack(){damage = GetActualDamage(s, 5), piercing = true}).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+			new AAttack(){damage = GetActualDamage(s, 3), piercing = true}).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.B)
 		{
-			Upgrade.A => [
-				new ADetect(){Amount = 2}
-
-			],
-			Upgrade.B => [
-				new ADetect(){Amount = 1},
-				new AReconfigure(){Amount = 1},
-				new ADetect(){Amount = 1}
-			],
-			_ => [
-				new ADetect(){Amount = 1}
-			]
-		};
+			actions.Add(actionB);
+			actions.Add(new ADummyAction());
+			actions.Add(new AAttack(){damage = GetActualDamage(s, 2), piercing = true, disabled = !flipped});
+		} else 
+		{
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AAttack(){damage = GetActualDamage(s, 1), piercing = true, disabled = !flipped});
+			
+		}
+		return actions;
+	}
 }

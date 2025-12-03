@@ -31,17 +31,16 @@ internal sealed class StarryShieldCard : Card, IRegisterable
 			floppable = true,
 		};
 
-	private CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
-		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
-			new AStatus() { status = Status.shield, statusAmount = 4, targetPlayer = true }).AsCardAction;
-
-	private CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
-		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
-			new AStatus() { status = Status.shield, statusAmount = 3, targetPlayer = true }).AsCardAction;
-
 	public override List<CardAction> GetActions(State s, Combat c)
 	{
 		List<CardAction> actions = new();
+		
+		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+			new AStatus() { status = Status.shield, statusAmount = 4, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+		.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+			new AStatus() { status = Status.shield, statusAmount = 3, targetPlayer = true }).AsCardAction;
 		
 		actionA.disabled = flipped;
 		actionNone.disabled = flipped;

@@ -30,38 +30,22 @@ internal sealed class MoteCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 1: 2,
-			
+			cost = 0,
+			exhaust = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AShuffleShip() {targetPlayer = true},
-				new ADetect(){Amount = 1},
-				new AShuffleShip() {targetPlayer = true},
-				new ADetect(){Amount = 1},
-				new AShuffleShip() {targetPlayer = true},
-				new ADetect(){Amount = 1},
+			Upgrade.A =>
+			[
+				new ADrawCard() { count = 2 },
+				new AStatus { statusAmount = 1, targetPlayer = true, status = Status.shield }
 			],
-			_ => [
-				new AShuffleShip() {targetPlayer = true},
-				new ADetect(){Amount = 3}
+			_ =>
+			[
+				new ADrawCard() { count = 2 }
 			]
-			
+
 		};
-	public sealed class ASoulHint : AVariableHint
-	{
-		public override Icon? GetIcon(State s)
-			=> new(ModEntry.Instance.soulEnergySprite.Sprite, null, Colors.textMain);
-
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergyX")
-			{
-				Description = ModEntry.Instance.Localizations.Localize(["Cull","action", "CurrentSoul", "description"])
-			}];
-	}
-	
 }

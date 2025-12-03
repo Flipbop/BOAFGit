@@ -71,7 +71,7 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 	
 	public override int? GetDisplayNumber(State s)
 	{
-		if (s.map.markers.TryGetValue(s.map.currentLocation, out var marker) && marker.contents is MapBattle) 
+		if (s.route is Combat) 
 		{
 			return null;
 		}

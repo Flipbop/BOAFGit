@@ -29,33 +29,41 @@ internal sealed class MoonbeamCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 2,
+			exhaust = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 2)}
+				new AStardustHint(),
+				new AAttack(){xHint = 1, damage = GetDmg(s, 15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status))},
+				new AStatus(){status = ModEntry.Instance.ResidualDustStatus.Status, statusAmount = 1, targetPlayer = true},
 			],
 			Upgrade.B =>
 			[
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)}
+				new AStardustHint(),
+				new AAttack(){xHint = 2, damage = GetDmg(s, 2*(15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status)))}
 			],
 			_ =>
 			[
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)}
-
+				new AStardustHint(),
+				new AAttack(){xHint = 1, damage = GetDmg(s, 15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status))}
 			]
 
 		};
 
+	public sealed class AStardustHint : AVariableHint
+	{
+		public override Icon? GetIcon(State s)
+			=> new(ModEntry.Instance.stardustCostSprite.Sprite, null, Colors.textMain);
+
+
+		public override List<Tooltip> GetTooltips(State s)
+			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::StardustX")
+			{
+				Description = ModEntry.Instance.Localizations.Localize(["Luna","action", "MissingDust", "description"])
+			}];
+	}
 }
