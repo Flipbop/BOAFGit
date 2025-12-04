@@ -12,7 +12,6 @@ internal sealed class CosmicCollectionCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
 
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
@@ -32,40 +31,36 @@ internal sealed class CosmicCollectionCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
-			exhaust = true,
+			cost = upgrade switch
+			{
+				Upgrade.B => 3,
+				Upgrade.A => 1,
+				_ => 2,
+			},
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 			{
-				Upgrade.A =>
-				[
-					new ADetect(){Amount = 4},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
-				],
+				
 				Upgrade.B =>
 				[
-					new ADetect(){Amount = 5},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.brittle}
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive},
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge},
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.shield},
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.drawNextTurn},
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.evade},
 				],
 				_ =>
 				[
-					new ADetect(){Amount = 3},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive},
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge},
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.shield},
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.drawNextTurn},
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.evade},
 				]
 			
 		};
 	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not OveruseCard)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
-
 }
 

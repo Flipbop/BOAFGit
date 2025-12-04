@@ -11,8 +11,6 @@ internal sealed class InfiniteShineCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-		
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -31,31 +29,27 @@ internal sealed class InfiniteShineCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			retain = true,
-			recycle = upgrade == Upgrade.B
+			cost = 3,
+			exhaust = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				ModEntry.Instance.KokoroApi.ActionCosts
+					.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 3),
+						new AStatus() { status = Status.stunSource, statusAmount = 2, targetPlayer = true }).AsCardAction,
+			],
 			Upgrade.A => [
-				new AFactoryResetManager.AFactoryReset(),
-				new ADetect(){Amount = 3}
+				ModEntry.Instance.KokoroApi.ActionCosts
+					.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+						new AStatus() { status = Status.stunSource, statusAmount = 1, targetPlayer = true }).AsCardAction,
 			],
 			_ => [
-				new AFactoryResetManager.AFactoryReset(),
-				new ADetect(){Amount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts
+					.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+						new AStatus() { status = Status.stunSource, statusAmount = 1, targetPlayer = true }).AsCardAction,
 			]
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not FactoryResetCard)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
 }

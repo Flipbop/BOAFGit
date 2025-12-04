@@ -8,8 +8,10 @@ namespace Flipbop.BOAF;
 
 internal sealed class SolarPowerCard : Card, IRegisterable
 {
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -19,7 +21,7 @@ internal sealed class SolarPowerCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Cards/SolarPower.png")).Sprite,
+			Art = StableSpr.cards_colorless,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "SolarPower", "name"]).Localize
 		});
 	}
@@ -28,20 +30,22 @@ internal sealed class SolarPowerCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
-			buoyant = upgrade == Upgrade.B
+			cost = 0,
+			exhaust = true,
+			retain = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 3}).AsCardAction,
+			],
 			Upgrade.A => [
-				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
-				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 4}).AsCardAction,
 			],
 			_ => [
-				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
-				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1), new AEnergy(){changeAmount = 3}).AsCardAction,
 			]
 		};
 }

@@ -30,18 +30,18 @@ internal sealed class GatherCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			exhaust = upgrade != Upgrade.A,
+			exhaust = upgrade != Upgrade.B,
+			buoyant = upgrade == Upgrade.A,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartModification {part = s.ship.parts[0]},
-				new APartModManager.APartModification {part = s.ship.parts[^1]}
+				new AStatus(){statusAmount = 1, status = ModEntry.Instance.ResidualDustStatus.Status, targetPlayer = true},
 			],
 			_ => [
-				new APartModManager.APartModification {part = s.ship.parts[0]}
+				new AStatus(){statusAmount = 2, status = ModEntry.Instance.ResidualDustStatus.Status, targetPlayer = true},
 			]
 		};
 }

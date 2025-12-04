@@ -25,6 +25,13 @@ internal sealed class StardustCost : IKokoroApi.IV2.IActionCostsApi.IResource
     public void Pay(State s, Combat c, int amount)
     {
         c.QueueImmediate(new AStatus(){status = ModEntry.Instance.StardustStatus.Status, statusAmount = -amount, targetPlayer = true});
+        if (s.EnumerateAllArtifacts().Any((a) => a is BackupCrystalArtifact) && s.ship.Get(ModEntry.Instance.StardustStatus.Status) <= 0)
+        {
+	        if (BackupCrystalArtifact.checkUsed())
+	        {
+		        c.QueueImmediate(new AStatus(){statusAmount = 10, status = ModEntry.Instance.StardustStatus.Status, targetPlayer = true});
+	        }
+        }
     }
 
     public IReadOnlyList<Tooltip> GetTooltips(State state, Combat combat, int amount)

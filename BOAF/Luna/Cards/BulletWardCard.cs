@@ -55,22 +55,22 @@ internal sealed class BulletWardCard : Card, IRegisterable
 		
 		if (upgrade == Upgrade.A)
 		{
-			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(new ADrawCard(){count = 1, disabled = flipped});
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true });
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true, disabled = !flipped });
 		} else if (upgrade == Upgrade.B)
 		{
-			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(new ADrawCard(){count = 1, disabled = flipped});
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 3, targetPlayer = true });
+			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 3, targetPlayer = true, disabled = !flipped });
 		} else 
 		{
-			actions.Add(new ADrawCard(){count = 1});
+			actions.Add(new ADrawCard(){count = 1, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true });
+			actions.Add(new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true, disabled = !flipped });
 		}
 		return actions;
 	}

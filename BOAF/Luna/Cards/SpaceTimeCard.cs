@@ -30,25 +30,42 @@ internal sealed class SpaceTimeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 4,
-			exhaust = true
+			cost = 2,
+			floppable = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.timeStop, statusAmount = 3, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.timeStop, statusAmount = 2, targetPlayer = true }).AsCardAction;
+		
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			Upgrade.A => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
-				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
-			],
-			Upgrade.B =>[
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
-				new AAttack(){damage = GetDmg(s,1)},
-				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
-			],
-			_ => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.cannon, partName = "CANNON"},
-				new AStatus(){status = ModEntry.Instance.LessEnergyAllTurnsStatus.Status, statusAmount = 1, targetPlayer = true}
-			]
-		};
+			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge, disabled = flipped});
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.timeStop, disabled = !flipped});
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge});
+			actions.Add(actionB);
+		} else 
+		{
+			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge, disabled = flipped});
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.timeStop, disabled = !flipped});
+		}
+		return actions;
+	}
 }

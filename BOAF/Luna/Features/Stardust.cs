@@ -18,6 +18,8 @@ internal sealed class StardustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this);
 	}
 
+	public static int StardustMax = 15;
+
 	public static void ApplyPatches(IHarmony harmony, ILogger logger)
 	{
 		ModEntry.Instance.Harmony.Patch(
@@ -25,12 +27,13 @@ internal sealed class StardustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusStardust_Begin_Postfix))
 		);
 	}
+	
 	public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusRenderingAsBarsArgs args)
 	{
 		if (args.Status != ModEntry.Instance.StardustStatus.Status) return null;
 
 		var ship = args.Ship;
-		var expected = 15;
+		var expected = StardustMax;
 		var current = ship.Get(ModEntry.Instance.StardustStatus.Status);
 
 		var filled = Math.Min(expected, current);
@@ -45,8 +48,8 @@ internal sealed class StardustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		if (__instance.status != ModEntry.Instance.StardustStatus.Status) return;
         
 		var ship = __instance.targetPlayer ? s.ship : c.otherShip;
-		if (ship.Get(ModEntry.Instance.StardustStatus.Status) <= 15) return;
-		ship.Set(ModEntry.Instance.StardustStatus.Status, 15);
+		if (ship.Get(ModEntry.Instance.StardustStatus.Status) <= StardustMax) return;
+		ship.Set(ModEntry.Instance.StardustStatus.Status, StardustMax);
 		if (ship.Get(ModEntry.Instance.StardustStatus.Status) >= 0) return;
 		ship.Set(ModEntry.Instance.StardustStatus.Status, 0);
 	}

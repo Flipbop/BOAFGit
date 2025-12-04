@@ -31,24 +31,36 @@ internal sealed class HarmingSpellCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.A ? 1 : 2,
+			floppable = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 3),
+				new AAttack(){damage = GetDmg(s, 7)}).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+				new AAttack(){damage = GetDmg(s, 5)}).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.B)
 		{
-			Upgrade.A => [
-				new ADetect(){Amount = 2},
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
-			],
-			Upgrade.B => [
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 2},
-				new ADetect(){Amount = 1},
-			],
-			_ => [
-				new ADetect(){Amount = 1},
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
-			]
-		};
+			actions.Add(actionB);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.overdrive, statusAmount = 3, targetPlayer = true, disabled = !flipped});
+		} else 
+		{
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+		}
+		return actions;
+	}
 }
 

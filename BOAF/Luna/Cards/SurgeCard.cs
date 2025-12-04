@@ -28,22 +28,21 @@ internal sealed class SurgeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 0:1,
-			exhaust = true
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				new AStatus(){status = Status.overdrive, statusAmount = 2, targetPlayer = true},
+			],
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 2},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive, statusAmount = 3, targetPlayer = true},
+
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 1},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive, statusAmount = 2, targetPlayer = true},
 			]
 		};
 }

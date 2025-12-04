@@ -29,31 +29,30 @@ internal sealed class CometShowCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade switch
-			{
-				Upgrade.A => 1,
-				Upgrade.B => 3,
-				_ => 2,
-			},
-			exhaust = true,
+			cost = upgrade == Upgrade.B ? 3 : 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new ASpawn(){thing = new Asteroid(), offset = -2},
+				new ASpawn(){thing = new Comet(), offset = -1},
+				new ASpawn(){thing = new Comet()},
+				new ASpawn(){thing = new Comet(), offset = 1},
+				new ASpawn(){thing = new Asteroid(), offset = -2},
+			],
 			Upgrade.B => [
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
-				new AReconfigure(){Amount = 2},
-				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[1], partName = "COCKPIT"},
-				new AReconfigure(){Amount = 2},
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[2], partName = "WING"},
+				new ASpawn(){thing = new Comet(), offset = -2},
+				new ASpawn(){thing = new Comet(), offset = -1},
+				new ASpawn(){thing = new Comet()},
+				new ASpawn(){thing = new Comet(), offset = 1},
+				new ASpawn(){thing = new Comet(), offset = -2},
 			],
 			_=>[
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[0], partName = "WING"},
-				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){newPartType = PType.cockpit, part = s.ship.parts[1], partName = "COCKPIT"},
-				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){newPartType = PType.wing, part = s.ship.parts[2], partName = "WING"},
+				new ASpawn(){thing = new Comet(), offset = -1},
+				new ASpawn(){thing = new Comet()},
+				new ASpawn(){thing = new Comet(), offset = 1},
 			]
 		};
 	

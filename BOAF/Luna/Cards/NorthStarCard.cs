@@ -28,24 +28,49 @@ internal sealed class NorthStarCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			infinite = true
+			floppable = true
 
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+				new AStatus() { status = Status.evade, statusAmount = 4, targetPlayer = true }).AsCardAction;
+		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.evade, statusAmount = 3, targetPlayer = true }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.evade, statusAmount = 2, targetPlayer = true }).AsCardAction;
+		
+		actionB.disabled = flipped;
+		actionA.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			Upgrade.B => [
-				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			],
-			Upgrade.A => [
-				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			],
-			_=>[
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			]
-		};
+			actions.Add(new AMove(){dir = 2, disabled = flipped});
+			actions.Add(actionA);
+			actions.Add(new ADummyAction());
+			actions.Add(new AMove(){dir = -1, disabled = !flipped});
+			actions.Add(new AStatus() { status = Status.evade, statusAmount = 2, targetPlayer = true });
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(new AMove(){dir = 2, disabled = flipped});
+			actions.Add(actionB);
+			actions.Add(new ADummyAction());
+			actions.Add(new AMove(){dir = -3, disabled = !flipped});
+		} else 
+		{
+			actions.Add(new AMove(){dir = 2, disabled = flipped});
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AMove(){dir = -1, disabled = !flipped});
+			actions.Add(new AStatus() { status = Status.evade, statusAmount = 1, targetPlayer = true });
+		}
+		return actions;
+	}
 }

@@ -37,19 +37,19 @@ internal sealed class MoonbeamCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStardustHint(),
-				new AAttack(){xHint = 1, damage = GetDmg(s, 15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status))},
+				new AStardustHint() {hand = true},
+				new AAttack(){xHint = 1, damage = GetDmg(s, StardustManager.StardustMax - s.ship.Get(ModEntry.Instance.StardustStatus.Status))},
 				new AStatus(){status = ModEntry.Instance.ResidualDustStatus.Status, statusAmount = 1, targetPlayer = true},
 			],
 			Upgrade.B =>
 			[
-				new AStardustHint(),
-				new AAttack(){xHint = 2, damage = GetDmg(s, 2*(15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status)))}
+				new AStardustHint() {hand = true},
+				new AAttack(){xHint = 2, damage = GetDmg(s, 2*(StardustManager.StardustMax - s.ship.Get(ModEntry.Instance.StardustStatus.Status)))}
 			],
 			_ =>
 			[
-				new AStardustHint(),
-				new AAttack(){xHint = 1, damage = GetDmg(s, 15 - s.ship.Get(ModEntry.Instance.StardustStatus.Status))}
+				new AStardustHint() {hand = true},
+				new AAttack(){xHint = 1, damage = GetDmg(s, StardustManager.StardustMax - s.ship.Get(ModEntry.Instance.StardustStatus.Status))}
 			]
 
 		};

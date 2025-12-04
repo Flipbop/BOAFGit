@@ -15,7 +15,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
 		{
 			Icon = ModEntry.Instance.soulEnergySprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "description"])
 		};
@@ -23,7 +23,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Fear")
 		{
 			Icon = ModEntry.Instance.fearSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "description"])
 		};
@@ -31,7 +31,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulDrain")
 		{
 			Icon = ModEntry.Instance.soulDrainSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulDrain", "description"])
 		};
@@ -39,7 +39,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Empowered")
 		{
 			Icon = ModEntry.Instance.empoweredSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Empowered", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Empowered", "description"])
 		};
@@ -47,7 +47,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Cloaked")
 		{
 			Icon = ModEntry.Instance.cloakedSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Cloaked", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Cloaked", "description"])
 		};
@@ -61,7 +61,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SignalBooster")
 		{
 			Icon = ModEntry.Instance.signalBoosterSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "SignalBooster", "description"])
 		};
@@ -69,7 +69,7 @@ public sealed class ApiImplementation : IBOAFApi
 		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::LessEnergyAllTurns")
 		{
 			Icon = ModEntry.Instance.lessEnergyAllTurnsSprite.Sprite,
-			TitleColor = Colors.cardtrait,
+			TitleColor = Colors.status,
 			Title = ModEntry.Instance.Localizations.Localize(["Jay","status", "LessEnergyAllTurns", "name"]),
 			Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "LessEnergyAllTurns", "description"])
 		};

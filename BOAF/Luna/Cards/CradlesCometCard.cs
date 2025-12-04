@@ -29,25 +29,20 @@ internal sealed class CradlesCometCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 3:2,
+			cost = upgrade == Upgrade.A? 0 : 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 3}
-			],
 			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 2}
+				new ASpawn(){thing = new Comet()},
+				new AMove{dir = -1, targetPlayer = true},
+				new ASpawn(){thing = new Comet()},
 			],
 			_=> [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 2}
+				new ASpawn(){thing = new Comet()},
+				new AMove{dir = -1, targetPlayer = true}
 			]
 		};
 }

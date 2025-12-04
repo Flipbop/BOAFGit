@@ -491,11 +491,45 @@
                 "description": "Gain <c=keyword>{0} extra Stardust</c> at the end of combat."
             }
         },    
+        "midrow": {
+            "Comet": {
+                "name": "COMET",
+                "description": "When destroyed, gives you 1 <c=status>RESIDUAL DUST</c>."
+            }
+        },
 
         "artifact": {
             "LunarPendant": {
                 "name": "LUNAR PENDANT",
                 "description": "Start the run with <c=status>15 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>15 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
+            },
+            "StellarCharm": {
+                "name": "STELLAR CHARM",
+                "description": "Gain 1 extra <c=status>STARDUST</c> when defeating a <c=keyword>normal enemy</c>, and 2 extra when defeating an <c=keyword>Elite</c>."
+            },
+            "LetterOfAcceptance": {
+                "name": "LETTER OF ACCEPTANCE",
+                "description": "The first time you play a <c=keyword>1 or 0 cost card</c> each turn, return it to the <c=keyword>bottom of the draw pile.</c>"
+            },
+            "ComponentPouch": {
+                "name": "COMPONENT POUCH",
+                "description": "Your max <c=status>STARDUST</c> is increased to <c=keyword>20</c>. Gain <c=status>5 STARDUST</c> at the start of the next fight."
+            },
+            "BackupCrystal": {
+                "name": "BACKUP CRYSTAL",
+                "description": "The first time you run out of <c=status>STARDUST</c> this run, immediately gain <c=status>10 STARDUST</c>."
+            },
+            "SolarPendant": {
+                "name": "SOLAR PENDANT",
+                "description": "If you spend a <c=status>STUN CHARGE</c> and there was nothing for it to stun, gain another <c=status>STUN CHARGE</c>."
+            },
+            "Chronomancy": {
+                "name": "CHRONOMANCY",
+                "description": "When you spend <c=status>STARDUST</c, gain <c=status>1 TIMESTOP</c>."
+            },
+            "SpellShaper": {
+                "name": "SPELL SHAPER",
+                "description": "The first time you play a <c=keyword>Dual</c> card each turn, gain <c=energy>1 ENERGY</c>."
             },
             "Duo": {
             }
@@ -522,11 +556,11 @@
             "Surge": {
                 "name": "Surge"
             },
-            "Premeditation": {
-                "name": "Premeditation"
+            "Premeditate": {
+                "name": "Premeditate"
             },
-            "Prestidigitation": {
-                "name": "Prestidigitation"
+            "Shillelagh": {
+                "name": "Shillelagh"
             },
             "BulletWard": {
                 "name": "Bullet Ward"

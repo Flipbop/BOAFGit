@@ -27,22 +27,43 @@ internal sealed class InstantFreezeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 2 : 3,
-			exhaust	= true
+			cost = 1,
+			floppable = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
+	{
+		List<CardAction> actions = new();
+		
+		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
+				new AStatus() { status = Status.lockdown, statusAmount = 3, targetPlayer = false }).AsCardAction;
+		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.lockdown, statusAmount = 2, targetPlayer = false  }).AsCardAction;
+		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = false  }).AsCardAction;
+		
+		actionA.disabled = flipped;
+		actionNone.disabled = flipped;
+		
+		if (upgrade == Upgrade.A)
 		{
-			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles, partName = "MISSILE BAY"},
-				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
-				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
-			],
-			_ => [
-				new ASpawn(){fromPlayer = true, thing = new Missile{missileType = MissileType.normal}},
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.missiles, partName = "MISSILE BAY"},
-				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
-			]
-		};
+			actions.Add(actionA);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.lockdown, statusAmount = 2, targetPlayer = false, disabled  = !flipped});
+			actions.Add(new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = true, disabled  = !flipped});
+		} else if (upgrade == Upgrade.B)
+		{
+			actions.Add(actionB);
+		} else 
+		{
+			actions.Add(actionNone);
+			actions.Add(new ADummyAction());
+			actions.Add(new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = false, disabled  = !flipped});
+			actions.Add(new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = true, disabled  = !flipped});
+		}
+		return actions;
+	}
 }

@@ -121,12 +121,12 @@ public sealed class ModEntry : SimpleMod
 		
 		typeof(ShinyShotCard),
 		typeof(StarryShieldCard),
-		typeof(SolarPowerCard),
+		typeof(EnergySapCard),
 		typeof(PiercingLightCard),
 		typeof(SurgeCard),
-		typeof(EnergySapCard),
-		typeof(PremeditationCard),
-		typeof(PrestidigitationCard),
+		typeof(SolarPowerCard),
+		typeof(PremeditateCard),
+		typeof(ShillelaghCard),
 		typeof(BulletWardCard),
 	];
 
@@ -210,6 +210,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(FinalTestArtifact),
 		typeof(CellTowerArtifact),
 		typeof(ReactiveMaterialsArtifact),
+		
+		typeof(ComponentPouchArtifact),
+		typeof(StellarCharmArtifact),
+		typeof(LetterOfAcceptanceArtifact),
+		typeof(BackupCrystalArtifact),
+		typeof(SolarPendantArtifact),
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
@@ -220,6 +226,9 @@ public sealed class ModEntry : SimpleMod
 		typeof(BlueprintsArtifact),
 		typeof(EnhancedSensorsArtifact),
 		typeof(BeltFeedArtifact),
+		
+		typeof(ChronomancyArtifact),
+		typeof(SpellShaperArtifact),
 		
 		typeof(ReaperCannonsArtifact),
 		typeof(KineticReboundArtifact),
@@ -250,7 +259,9 @@ public sealed class ModEntry : SimpleMod
 		typeof(GreaterWisp),
 		typeof(DormantWisp),
 		typeof(DormantGreaterWisp),
-		typeof(SkullBomb)
+		typeof(SkullBomb),
+		
+		typeof(Comet),
 	];
 
 	internal static IReadOnlyList<Type> EnemyTypes { get; } =
@@ -353,8 +364,7 @@ public sealed class ModEntry : SimpleMod
 		DynamicWidthCardAction.ApplyPatches(Harmony, logger);
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
-		//StardustManager.ApplyPatches(Harmony, logger);
-
+		StardustManager.ApplyPatches(Harmony, logger);
 		
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
@@ -1128,7 +1138,7 @@ public sealed class ModEntry : SimpleMod
 						cards =
 							[
 								new BulletWardCard(),
-								new PrestidigitationCard()
+								new ShillelaghCard()
 							]
 					} 
 					);

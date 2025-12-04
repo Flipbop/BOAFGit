@@ -7,7 +7,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class PremeditationCard : Card, IRegisterable
+internal sealed class PremeditateCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -21,7 +21,7 @@ internal sealed class PremeditationCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B],
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "Premeditation", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "Premeditate", "name"]).Localize
 		});
 	}
 
