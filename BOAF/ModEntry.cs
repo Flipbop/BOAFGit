@@ -1167,6 +1167,11 @@ public sealed class ModEntry : SimpleMod
 
 		_ = new StardustManager();
 		_ = new StardustCostManager();
+		_ = new CardDialogueLuna();
+		_ = new CombatDialogueLuna();
+		_ = new EventDialogueLuna();
+		_ = new MemoryDialogueLuna();		
+		_ = new StoryDialogueLuna();
 		
 		_ = new Backgrounds();
 		

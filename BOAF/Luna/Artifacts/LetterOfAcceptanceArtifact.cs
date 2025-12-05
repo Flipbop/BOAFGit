@@ -25,13 +25,21 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 		});
 	}
 
+	public bool used = false;
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
 		int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.GetCurrentCost(state) <= 1)
+		if (card.GetCurrentCost(state) <= 1 && !used)
 		{
 			state.deck.Insert(0, card);
+			used = true;
 		}
+	}
+
+	public override void OnTurnStart(State state, Combat combat)
+	{
+		base.OnTurnStart(state, combat);
+		used = false;
 	}
 }

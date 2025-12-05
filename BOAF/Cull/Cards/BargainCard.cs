@@ -37,7 +37,7 @@ internal sealed class BargainCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AHurt() {hurtAmount = 1, targetPlayer = true},
+				new AStatus() { statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status },
 				new AHarvestAttack() {damage = GetDmg(s,2)},
 				new AHarvestAttack() {damage = GetDmg(s,2)}
 			],
@@ -49,12 +49,12 @@ internal sealed class BargainCard : Card, IRegisterable
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AHurt() {hurtAmount = 1, targetPlayer = true})
+					new AStatus() { statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status })
 					.AsCardAction,
 				new AHarvestAttack() {damage = GetDmg(s,3)},
 			],
 			_ => [
-				new AHurt() {hurtAmount = 1, targetPlayer = true},
+				new AStatus() { statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SoulDrainStatus.Status },
 				new AHarvestAttack() {damage = GetDmg(s,3)},
 			]
 		};

@@ -32,6 +32,10 @@ internal sealed class StardustCost : IKokoroApi.IV2.IActionCostsApi.IResource
 		        c.QueueImmediate(new AStatus(){statusAmount = 10, status = ModEntry.Instance.StardustStatus.Status, targetPlayer = true});
 	        }
         }
+        if (s.EnumerateAllArtifacts().Any((a) => a is ChronomancyArtifact))
+        {
+	        c.QueueImmediate(new AStatus(){statusAmount = 1, status = Status.timeStop, targetPlayer = true});
+        }
     }
 
     public IReadOnlyList<Tooltip> GetTooltips(State state, Combat combat, int amount)

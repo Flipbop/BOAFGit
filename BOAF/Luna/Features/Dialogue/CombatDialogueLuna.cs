@@ -22,7 +22,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Not the ship!")
+                        new(AmLuna, "nervous", "Not good! Not good!")
                     ]
                 }
             },
@@ -35,7 +35,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Hey! Cool it!")
+                        new(AmLuna, "nervous", "Uh oh..")
                     ]
                 }
             },
@@ -48,7 +48,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "angry", "I just waxed this ship!")
+                        new(AmLuna, "angry", "Hey, back off!")
                     ]
                 }
             },
@@ -61,7 +61,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Hooah...")
+                        new(AmLuna, "neutral", "That's the stuff.")
                     ]
                 }
             },
@@ -74,7 +74,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Shame to damage such a beautiful hull such as that.")
+                        new(AmLuna,  "Aww, look at them squirm!")
                     ]
                 }
             },
@@ -90,7 +90,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Did that scratch the paint?")
+                        new(AmLuna, "squint", "Huh? Oh, we're fine.")
                     ]
                 }
             },
@@ -106,7 +106,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Should I be worried?")
+                        new(AmLuna, "squint", "Is that going to leave a mark?")
                     ]
                 }
             },
@@ -122,7 +122,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "No harm, no foul.")
+                        new(AmLuna, "All good here.")
                     ]
                 }
             },
@@ -135,7 +135,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Moving around so we don't damage the ship? I like it.")
+                        new(AmLuna, "neutral", "Weeeeee!")
                     ]
                 }
             },
@@ -144,7 +144,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new("66ea84d6", AmLuna, "nervous", "Please have mercy."),
+                        new("66ea84d6", AmLuna, "nervous", "I'm sorry."),
                     ]
                 }
             },
@@ -157,7 +157,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Someone clean this mess up.")
+                        new(AmLuna, "squint", "I'm not touching that...")
                     ]
                 }
             },
@@ -170,7 +170,7 @@ internal class CombatDialogueLuna
                     allPresent = [AmLuna],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "How does this even happen?")
+                        new(AmLuna, "squint", "What do we do now?")
                     ]
                 }
             },
@@ -185,7 +185,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingBooks],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "The crystal mage is missing.")
+                        new(AmLuna, "nervous", "Books! No!!!")
                     ]
                 }
             },
@@ -200,7 +200,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingCat],
                     dialogue =
                     [
-                        new(who: AmLuna, "nervous", "How does CAT even go missing, isn't she a part of the ship?")
+                        new(who: AmLuna, "nervous", "What kind of magic do you need to make a ship's CPU disappear?")
                     ]
                 }
             },
@@ -215,7 +215,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingDizzy],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Who's gonna shield the ship now?")
+                        new(AmLuna, "nervous", "Hey, uh, Dizzy is gone...")
                     ]
                 }
             },
@@ -230,7 +230,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingDrake],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Honestly, I'm fine with her being gone.")
+                        new(AmLuna, "squint", "She may have been a jerk, but at least she was hot.")
                     ]
                 }
             },
@@ -246,7 +246,7 @@ internal class CombatDialogueLuna
 
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Isaac? Isaac!")
+                        new(AmLuna, "nervous", "Where did he go?!")
                     ]
                 }
             },
@@ -261,7 +261,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingMax],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Where did Max go?")
+                        new(AmLuna, "neutral", "Uh, Max?")
                     ]
                 }
             },
@@ -276,7 +276,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingPeri],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Uhhh, don't we need her? For like, attacking?")
+                        new(AmLuna, "nervous", "Bring Peri back!")
                     ]
                 }
             },
@@ -291,7 +291,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.missingRiggs],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Bring back the possum girl!")
+                        new(AmLuna, "nervous", "Did she wander off again?")
                     ]
                 }
             },
@@ -307,7 +307,7 @@ internal class CombatDialogueLuna
                     oncePerRunTags = ["NoOverlapBetweenShips"],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "They can't hit us if we aren't even close to them.")
+                        new(AmLuna, "neutral", "They can't hit us now!")
                     ]
                 }
             },
@@ -323,7 +323,7 @@ internal class CombatDialogueLuna
                     nonePresent = ["crab"],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "They can't hit us- oh wait, seeker.")
+                        new(AmLuna, "squint", "That seeker is still tagging us.")
                     ]
                 }
             },
@@ -338,7 +338,7 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Ah, I love armor.")
+                        new(AmLuna, "neutral", "Armor is the best.")
                     ]
                 }
             },
@@ -353,7 +353,7 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "My plating never fails.")
+                        new(AmLuna, "neutral", "Good old fashioned armor.")
                     ]
                 }
             },
@@ -368,8 +368,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Can't we do something about this?"),
-                        new(AmDizzy, "frown", "My shields can only do so much.")
+                        new(AmLuna, "nervous", "Uh, this can't be good."),
+                        new(AmDizzy, "nervous", "Shields up!")
                     ]
                 }
             },
@@ -384,8 +384,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmPeri, "mad", "Don't give up!"),
-                        new(AmLuna, "squint", "I was just about to.")
+                        new(AmPeri, "mad", "C'mon, don't back down!"),
+                        new(AmLuna, "squint", "I'm trying! I'm trying!")
                     ]
                 }
             },
@@ -400,8 +400,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmRiggs, "nervous", "Hey, can you like, not shoot us?"),
-                        new(AmLuna, "squint", "They aren't listening.")
+                        new(AmRiggs, "nervous", "Please stop!"),
+                        new(AmLuna, "nervous", "What she said!")
                     ]
                 }
             },
@@ -416,8 +416,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmDrake, "squint", "C'mon, not now."),
-                        new(AmLuna, "squint", "Reset?")
+                        new(AmDrake, "squint", "This loop was bad anyways."),
+                        new(AmLuna, "squint", "You're just saying that.")
                     ]
                 }
             },
@@ -432,8 +432,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmBooks, "paws", "Fiddlesticks!"),
-                        new(AmLuna, "nervous", "Woah! Books!")
+                        new(AmBooks, "paws", "Crap! The ship is badly hurt!"),
+                        new(AmLuna, "nervous", "It can't be that bad, right?")
                     ]
                 }
             },
@@ -448,8 +448,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmMax, "squint", "Start over?"),
-                        new(AmLuna, "squint", "Almost.")
+                        new(AmMax, "squint", "Again with this?"),
+                        new(AmLuna, "nervous", "Never gets any easier...")
                     ]
                 }
             },
@@ -464,8 +464,8 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Can we just leave?"),
-                        new(AmCat, "grumpy", "I wish.")
+                        new(AmLuna, "nervous", "I don't wanna fight anymore."),
+                        new(AmCat, "grumpy", "If only that were an option.")
                     ]
                 }
             },
@@ -478,7 +478,7 @@ internal class CombatDialogueLuna
                     minEnergy = 1,
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Where did this extra energy come from?")
+                        new(AmLuna, "neutral", "How are we gonna spend that energy?")
                     ]
                 }
             },
@@ -491,7 +491,7 @@ internal class CombatDialogueLuna
                     minEnergy = 1,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "What am I supposed to spend this on?"),
+                        new(AmLuna, "squint", "This is a waste of perfectly good energy."),
                     ]
                 }
             },
@@ -506,7 +506,7 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Armor is only good when we have it.")
+                        new(AmLuna, "squint", "Stop shooting the armor.")
                     ]
                 }
             },
@@ -521,7 +521,7 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Plating is working!")
+                        new(AmLuna, "squint", "Target something else.")
                     ]
                 }
             },
@@ -534,7 +534,7 @@ internal class CombatDialogueLuna
                     oncePerRunTags = ["yelledAboutBrittle"],
                     dialogue =
                     [
-                        new(AmLuna, "That brittle part is gonna cause problems for them.")
+                        new(AmLuna, "A few rounds to the brittle part should do us some good.")
                     ]
                 }
             },
@@ -547,7 +547,7 @@ internal class CombatDialogueLuna
                     oncePerRunTags = ["yelledAboutBrittle"],
                     dialogue =
                     [
-                        new(AmLuna, "A few rounds to the brittle spot should do the trick.")
+                        new(AmLuna, "Hit that brittle spot!")
                     ]
                 }
             },
@@ -560,7 +560,7 @@ internal class CombatDialogueLuna
                     oncePerRunTags = ["yelledAboutWeakness"],
                     dialogue =
                     [
-                        new(AmLuna, "They have a weak spot, strike there!")
+                        new(AmLuna, "Their ship is weak. How sloppy!")
                     ]
                 }
             },
@@ -574,7 +574,7 @@ internal class CombatDialogueLuna
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Was it worth it?")
+                        new(AmLuna, "neutral", "I feel like we just got ripped off.")
                     ]
                 }
             },
@@ -588,7 +588,7 @@ internal class CombatDialogueLuna
                     oncePerCombatTags = ["biggestCrystalShout"],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "An expanding ship. Interesting.")
+                        new(AmLuna, "squint", "Ooh, pretty!")
                     ]
                 }
             },
@@ -601,7 +601,7 @@ internal class CombatDialogueLuna
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmLuna, "Nice hit!")
+                        new(AmLuna, "Solid hit!")
                     ]
                 }
             },
@@ -614,7 +614,7 @@ internal class CombatDialogueLuna
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmLuna, "Excellent!")
+                        new(AmLuna, "Nice!")
                     ]
                 }
             },
@@ -627,7 +627,7 @@ internal class CombatDialogueLuna
                     minDamageDealtToEnemyThisAction = 1,
                     dialogue =
                     [
-                        new(AmLuna, "Keep going!")
+                        new(AmLuna, "Great shot!")
                     ]
                 }
             },
@@ -640,7 +640,7 @@ internal class CombatDialogueLuna
                     nonePresent = ["dracula"],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Are we sure we can trust the space vampire?")
+                        new(AmLuna, "squint", "I don't like this dark magic.")
                     ]
                 }
             },
@@ -653,7 +653,7 @@ internal class CombatDialogueLuna
                     priority = true,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "I hope we won't need that later.")
+                        new(AmLuna, "squint", "And there it goes.")
                     ]
                 }
             },
@@ -668,8 +668,8 @@ internal class CombatDialogueLuna
                     anyDronesHostile = ["missile_corrode"],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "That corrode missile will melt the hull!"),
-                        new(AmPeri,"Then destroy it!")
+                        new(AmLuna, "nervous", "Not a fan of the melty missile"),
+                        new(AmPeri,"We can always shoot it.")
                     ]
                 }
             },
@@ -682,7 +682,7 @@ internal class CombatDialogueLuna
                     oncePerCombat = true,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Bored?")
+                        new(AmLuna, "squint", "Flip flip!")
                     ]
                 }
             },
@@ -695,7 +695,7 @@ internal class CombatDialogueLuna
                     oncePerCombatTags = ["manyTurns"],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Still going?")
+                        new(AmLuna, "squint", "I'm getting bored.")
                     ]
                 }
             },
@@ -708,7 +708,7 @@ internal class CombatDialogueLuna
                     oncePerCombatTags = ["manyTurns"],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Just destroy them already.")
+                        new(AmLuna, "squint", "Can we just go?")
                     ]
                 }
             },
@@ -723,7 +723,7 @@ internal class CombatDialogueLuna
                     maxHull = 1,
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "The hull can't take another hit!")
+                        new(AmLuna, "nervous", "Someone needs to repair this hull, stat!")
                     ]
                 }
             },
@@ -739,7 +739,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.corrode],
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "C'mon, hold together...")
+                        new(AmLuna, "nervous", "Just a little bit further...")
                     ]
                 }
             },
@@ -752,7 +752,7 @@ internal class CombatDialogueLuna
                     oncePerCombatTags = ["OverheatGeneric"],
                     dialogue =
                     [
-                        new(AmLuna, "This heat damages the hull.")
+                        new(AmLuna, "I don't like the heat.")
                     ]
                 }
             },
@@ -767,7 +767,7 @@ internal class CombatDialogueLuna
                     oncePerCombat = true,
                     dialogue =
                     [
-                        new(AmLuna, "Better than nothing.")
+                        new(AmLuna, "I guess that works. Would have rather hit them.")
                     ]
                 }
             },
@@ -781,7 +781,7 @@ internal class CombatDialogueLuna
                     maxDamageDealtToPlayerThisTurn = 0,
                     dialogue =
                     [
-                        new(AmLuna, "I don't like how close that was.")
+                        new(AmLuna, "Let's not do that again.")
                     ]
                 }
             },
@@ -796,7 +796,7 @@ internal class CombatDialogueLuna
                     turnStart = true,
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Can I take a nap?")
+                        new(AmLuna, "squint", "Okay this is a little bit insane.")
                     ]
                 }
             },
@@ -810,7 +810,7 @@ internal class CombatDialogueLuna
                     maxDamageDealtToPlayerThisTurn = 1,
                     dialogue =
                     [
-                        new(AmLuna, "angry", "Watch it!")
+                        new(AmLuna, "angry", "Ow!")
                     ]
                 }
             },
@@ -824,7 +824,7 @@ internal class CombatDialogueLuna
                     doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                     dialogue =
                     [
-                        new(AmLuna, "squint", "Uh, was that intentional?")
+                        new(AmLuna, "squint", "Are we supposed to do that?")
                     ]
                 }
             },
@@ -838,7 +838,7 @@ internal class CombatDialogueLuna
                     doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
                     dialogue =
                     [
-                        new(AmLuna, "Hit them.")
+                        new(AmLuna, "Can we not miss them next time?")
                     ]
                 }
             },
@@ -847,7 +847,7 @@ internal class CombatDialogueLuna
                 {
                     dialogue =
                     [
-                        new(AmLuna, "nervous", "Not the hull!")
+                        new(AmLuna, "nervous", "Oh it smells bad too!")
                     ]
                 }
             },
@@ -856,7 +856,7 @@ internal class CombatDialogueLuna
                 {
                     dialogue =
                     [
-                        new(AmLuna, "angry", "This corrosion isn't good for the ship.")
+                        new(AmLuna,  "Someone gonna wipe that off?")
                     ]
                 }
             },
@@ -865,7 +865,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "angry", "Your Engine Stall is very annoying to clean up.")
+                        new(EMod.countFromStart, 1, AmLuna, "angry", "Can you, like, let us move, please?")
                     ]
                 }
             },
@@ -874,7 +874,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmLuna, "squint", "What?")
+                        new(EMod.countFromStart, 2, AmLuna, "Really?")
                     ]
                 }
             },
@@ -883,7 +883,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmLuna, "squint", "That's preposterous.")
+                        new(EMod.countFromStart, 2, AmLuna, "Wow!")
                     ]
                 }
             },
@@ -892,7 +892,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "neutral", "Finally.")
+                        new(EMod.countFromStart, 1, AmLuna, "neutral", "Aw man.")
                     ]
                 }
             },
@@ -901,7 +901,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "squint", "And you are?")
+                        new(EMod.countFromStart, 1, AmLuna, "squint", "Do I know you?")
                     ]
                 }
             },
@@ -910,7 +910,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "squint", "Can you stop trying to kill us?"),
+                        new(EMod.countFromStart, 1, AmLuna, "squint", "Drake, just stop."),
                     ]
                 }
             },
@@ -919,7 +919,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "angry", "The hull is at risk cause of you.")
+                        new(EMod.countFromStart, 1, AmLuna, "angry", "Really? C'mon.")
                     ]
                 }
             },
@@ -928,7 +928,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmLuna, "squint", "Old ships have such a nice quality to them.")
+                        new(EMod.countFromStart, 2, AmLuna, "squint", "Yar-har!")
                     ]
                 }
             },
@@ -937,8 +937,8 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 2, AmLuna, "These rocks could make excellent plating."),
-                        new(EMod.countFromStart, 2, AmDuncan, "No, they're mine!")
+                        new(EMod.countFromStart, 2, AmLuna, "Anything shiny in these rocks?"),
+                        new(EMod.countFromStart, 2, AmDuncan, "Yes, but you can't have it!")
 
                     ]
                 }
@@ -948,7 +948,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "neutral", "Please wait right there.")
+                        new(EMod.countFromStart, 1, AmLuna, "neutral", "Slow your roll.")
                     ]
                 }
             },
@@ -957,7 +957,7 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "squint", "Where did you get those missiles?")
+                        new(EMod.countFromStart, 1, AmLuna, "squint", "How does this keep happening?")
                     ]
                 }
             },
@@ -966,8 +966,8 @@ internal class CombatDialogueLuna
                 {
                     edit =
                     [
-                        new(EMod.countFromStart, 1, AmLuna, "angry", "Please stop melting the hull."),
-                        new(EMod.countFromStart, 1, AmDrake, "sly", "I don't wanna.")
+                        new(EMod.countFromStart, 1, AmLuna, "angry", "This is your fault, you know?"),
+                        new(EMod.countFromStart, 1, AmDrake, "sly", "Oh I know.")
                     ]
                 }
             },
@@ -982,7 +982,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmPeri, "nervous", "Where did Luna go?")
+                        new(AmPeri, "angry", "Hey! She was valuable!")
                     ]
                 }
             },
@@ -997,7 +997,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmRiggs, "nervous", "Do blue Lunas normally do that?")
+                        new(AmRiggs, "nervous", "Where did the owl go?")
                     ]
                 }
             },
@@ -1012,7 +1012,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmDizzy, "intense", "That's not good!")
+                        new(AmDizzy, "intense", "Uh oh.")
                     ]
                 }
             },
@@ -1027,7 +1027,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmCat, "Oh no.")
+                        new(AmCat, "I don't know how to do magic without her!")
                     ]
                 }
             },
@@ -1042,7 +1042,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmIsaac, "Ummm...")
+                        new(AmIsaac, "Is that permanent?")
                     ]
                 }
             },
@@ -1057,7 +1057,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmDrake, "Finally, I can melt the hull in peace.")
+                        new(AmDrake, "Oh, well that sucks.")
                     ]
                 }
             },
@@ -1072,7 +1072,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmMax, "Oh that isn't good.")
+                        new(AmMax, "That can't be good.")
                     ]
                 }
             },
@@ -1087,7 +1087,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [MissingLuna],
                     dialogue =
                     [
-                        new(AmBooks, "Luna? Where are you?")
+                        new(AmBooks, "Pretty owl lady? Where did you go?")
                     ]
                 }
             },
@@ -1102,7 +1102,7 @@ internal class CombatDialogueLuna
                     oncePerCombatTags = ["LunaShotAGuy"],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "I hit them!")
+                        new(AmLuna, "neutral", "OMG, I hit them!")
                     ]
                 }
             },
@@ -1115,7 +1115,7 @@ internal class CombatDialogueLuna
                     lastTurnPlayerStatuses = [Status.perfectShield],
                     dialogue =
                     [
-                        new(AmLuna, "neutral", "Our hull will be fine."),
+                        new(AmLuna, "neutral", "Nice. Now I can be reckless."),
                     ]
                 }
             },

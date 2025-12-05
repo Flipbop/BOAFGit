@@ -24,4 +24,13 @@ internal sealed class SolarPendantArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Luna","artifact", "SolarPendant", "description"]).Localize
 		});
 	}
+
+	public override void OnPlayerAttack(State state, Combat combat)
+	{
+		base.OnPlayerAttack(state, combat);
+		if (state.ship.Get(Status.stunCharge) >= 1)
+		{
+			
+		}
+	}
 }

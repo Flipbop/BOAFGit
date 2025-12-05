@@ -51,7 +51,7 @@ internal class EventDialogueJay
                 bg = "BGCrystalizedFriend",
                 dialogue = [
                     new(new Wait{secs = 1.5}),
-                    new(AmCull, "squint", "Again? Alright...")
+                    new(AmJay, "squint", "Again? Alright...")
                 ]
             }},
             {$"LoseCharacterCard_{AmJay}", new(){
@@ -60,7 +60,7 @@ internal class EventDialogueJay
                 oncePerRun = true,
                 bg = "BGSupernova",
                 dialogue = [
-                    new(AmCull,  "At least the ship is ok.")
+                    new(AmJay,  "At least the ship is ok.")
                 ]
             }},
             {"CrystallizedFriendEvent", new () {

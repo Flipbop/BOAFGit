@@ -23,7 +23,7 @@ internal class CardDialogueLuna
                     oncePerCombatTags = ["summonLunaTag"],
                     dialogue =
                     [
-                        new(AmCat, "I feel more in-tune with the ship.")
+                        new(AmCat, "A little bit of magic couldn't hurt.")
                     ]
                 }
             },
@@ -37,8 +37,8 @@ internal class CardDialogueLuna
                     oncePerCombatTags = ["summonLunaTag"],
                     dialogue =
                     [
-                        new(AmCat, "My turn to screw with the ship's layout."),
-                        new(AmLuna,  "Have fun!")
+                        new(AmCat,"squint", "Where do you even get this stuff?"),
+                        new(AmLuna, "nervous", "I- I don't know...")
                     ]
                 }
             },
