@@ -296,6 +296,66 @@ internal class CombatDialogueJay
                 }
             },
             {
+                "CullWentMissing_Jay_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CullWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCull],
+                    dialogue =
+                    [
+                        new(AmJay, "nervous", "Doesn't he come back?")
+                    ]
+                }
+            },
+            {
+                "LunaWentMissing_Jay_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["LunaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingLuna],
+                    dialogue =
+                    [
+                        new(AmJay, "nervous", "Did one of her spells backfire?")
+                    ]
+                }
+            },
+            /*{
+                "CentiWentMissing_Jay_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmJay, "angry", "Who unplugged the cyborg?")
+                    ]
+                }
+            },
+            {
+                "EvaWentMissing_Jay_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["EvaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingEva],
+                    dialogue =
+                    [
+                        new(AmJay, "nervous", "Of all people, why her?!")
+                    ]
+                }
+            },*/
+            {
                 "WeDontOverlapWithEnemyAtAll_Jay_0", new()
                 {
                     type = NodeType.combat,
@@ -469,6 +529,54 @@ internal class CombatDialogueJay
                     ]
                 }
             },
+            {
+                "Duo_AboutToDieAndLoop_Jay_7", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay, AmLuna],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmJay, "angry", "Again with this?"),
+                        new(AmLuna, "squint", "I am getting sick of dying.")
+                    ]
+                }
+            },
+            /*{
+                "Duo_AboutToDieAndLoop_Jay_8", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay, AmCenti],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "My circuits are beginning to fail."),
+                        new(AmJay, "nervous", "Oh no!")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Jay_9", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmJay, AmEva],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmEva, "cry", "I don't like it here..."),
+                        new(AmJay, "nervous", "It's ok! We'll be ok!")
+                    ]
+                }
+            },*/
             {
                 "EmptyHandWithEnergy_Jay_0", new()
                 {

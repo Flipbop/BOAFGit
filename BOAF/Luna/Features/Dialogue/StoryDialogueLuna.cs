@@ -12,7 +12,7 @@ internal class StoryDialogueLuna
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>(){
             
-            {"Luna_Intro_0", new(){
+            {"Luna_Intro_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
@@ -22,7 +22,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Post_Cicada", new(){
+            {"Luna_Post_Cicada_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "after_any" ],
                 once = true,
@@ -33,7 +33,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Intro_1", new(){
+            {"Luna_Intro_1_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
@@ -44,7 +44,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Intro_2", new(){
+            {"Luna_Intro_2_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
@@ -56,7 +56,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Dizzy_0", new(){
+            {"Luna_Dizzy_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
@@ -67,7 +67,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Isaac_0", new(){
+            {"Luna_Isaac_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 bg = "BGRunStart",
@@ -78,7 +78,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Riggs_0", new(){
+            {"Luna_Riggs_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first"],
                 once = true,
@@ -89,7 +89,7 @@ internal class StoryDialogueLuna
                     
                 ]
             }},
-            {"Luna_Drake_0", new(){
+            {"Luna_Drake_0_PREEMPTIVE", new(){
                 type = NodeType.@event,
                 lookup = ["after_crystal"],
                 bg = "BGCrystalNebula",

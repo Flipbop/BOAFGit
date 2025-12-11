@@ -296,6 +296,66 @@ internal class CombatDialogueLuna
                 }
             },
             {
+                "CullWentMissing_Luna_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CullWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCull],
+                    dialogue =
+                    [
+                        new(AmLuna, "nervous", "Is that a side-effect of necromancy?")
+                    ]
+                }
+            },
+            {
+                "JayWentMissing_Luna_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
+                    dialogue =
+                    [
+                        new(AmLuna, "nervous", "Well now who is gonna fix the ship?!")
+                    ]
+                }
+            },
+            /*{
+                "CentiWentMissing_Luna_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmLuna, "nervous", "How did we lose an 8ft tall cyborg?")
+                    ]
+                }
+            },
+            {
+                "EvaWentMissing_Luna_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["EvaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingEva],
+                    dialogue =
+                    [
+                        new(AmLuna, "She's probably confused and lost right now...")
+                    ]
+                }
+            },*/
+            {
                 "WeDontOverlapWithEnemyAtAll_Luna_0", new()
                 {
                     type = NodeType.combat,
@@ -469,6 +529,38 @@ internal class CombatDialogueLuna
                     ]
                 }
             },
+            /*{
+                "Duo_AboutToDieAndLoop_Luna_7", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna, AmCenti],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "Batteries beginning to fail."),
+                        new(AmLuna, "nervous", "That's not good! You need to keep them charged!")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Luna_8", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmLuna, AmEva],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmEva, "sad", "I wanna go home."),
+                        new(AmLuna, "sad", "I do too, but we have to finish this first.")
+                    ]
+                }
+            },*/
             {
                 "EmptyHandWithEnergy_Luna_0", new()
                 {

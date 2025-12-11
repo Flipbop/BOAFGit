@@ -122,7 +122,7 @@ internal class CombatDialogueCull
                     allPresent = [AmCull],
                     dialogue =
                     [
-                        new(AmCull, "nervous", "Ok good, no Soul Energy lost.")
+                        new(AmCull, "nervous", "Ok good, not that bad.")
                     ]
                 }
             },
@@ -295,6 +295,68 @@ internal class CombatDialogueCull
                     ]
                 }
             },
+            {
+                "JayWentMissing_Cull_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
+                    dialogue =
+                    [
+                        new(AmCull, "nervous", "Who is in charge of the ship now?!?")
+                    ]
+                }
+            },
+            {
+                "LunaWentMissing_Cull_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["LunaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingLuna],
+                    dialogue =
+                    [
+                        new(AmCull, "squint", "Down one mage. Guess I'll have to pick up her slack.")
+                    ]
+                }
+                
+            },
+            /*{
+                "CentiWentMissing_Cull_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmCull, "Somebody turn them back on!")
+                    ]
+                }
+                
+            },{
+                "EvaWentMissing_Cull_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["EvaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingEva],
+                    dialogue =
+                    [
+                        new(AmCull, "angry", "Where did she go?!")
+                    ]
+                }
+                
+            },*/
             {
                 "WeDontOverlapWithEnemyAtAll_Cull_0", new()
                 {
@@ -469,6 +531,70 @@ internal class CombatDialogueCull
                     ]
                 }
             },
+            {
+                "Duo_AboutToDieAndLoop_Cull_7", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull, AmJay],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCull, "nervous", "This really doesn't look good."),
+                        new(AmJay, "nervous", "You said it.")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Cull_8", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull, AmLuna],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmLuna, "nervous", "Any magic you know to get us out of this, Cull?"),
+                        new(AmJay, "nervous", "Unfortunately not!")
+                    ]
+                }
+            },
+            /*{
+                "Duo_AboutToDieAndLoop_Cull_9", new()
+                { 
+                    type = NodeType.combat, 
+                    allPresent = [AmCull, AmCenti], 
+                    enemyShotJustHit = true, 
+                    maxHull = 2, 
+                    oncePerCombatTags = ["aboutToDie"], 
+                    oncePerRun = true, 
+                    dialogue = 
+                    [
+                        new(AmCenti, "squint", "Shutting down auxiliary power."), 
+                        new(AmCull, "angry", "Don't quit on us just yet!")
+                    ]
+                }
+            },
+               {
+                   "Duo_AboutToDieAndLoop_Cull_10", new()
+                   {
+                       type = NodeType.combat,
+                       allPresent = [AmCull, AmEva],
+                       enemyShotJustHit = true,
+                       maxHull = 2,
+                       oncePerCombatTags = ["aboutToDie"],
+                       oncePerRun = true,
+                       dialogue =
+                       [
+                           new(AmEva, "sad", "Not again..."),
+                           new(AmCull, "We'll be back, don't worry.")
+                       ]
+                   }
+            },*/
             {
                 "EmptyHandWithEnergy_Cull_0", new()
                 {

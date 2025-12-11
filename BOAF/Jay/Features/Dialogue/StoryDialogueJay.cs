@@ -154,9 +154,9 @@ internal class StoryDialogueJay
             }},
             {"Jay_Drake_0", new(){
                 type = NodeType.@event,
-                lookup = ["after_crystal"],
-                bg = "BGCrystalNebula",
+                lookup = [ "zone_first"],
                 once = true,
+                bg = "BGRunStart",
                 allPresent = [ AmJay, AmDrake ],
                 requiredScenes = [ "Jay_Post_Smiff", "Jay_Memory_2"],
                 dialogue = [
@@ -166,7 +166,24 @@ internal class StoryDialogueJay
                     new (AmJay, "angry", "He sold her a faulty part that ended up causing a critical failure in an engine, causing an explosion that killed her."),
                     new (AmDrake, "nervous", "Oh.", true)
                 ]
-            }}
+            }},
+            {"Jay_Luna_0", new(){
+                type = NodeType.@event,
+                lookup = [ "zone_first"],
+                once = true,
+                allPresent = [ AmJay, AmLuna ],
+                bg = "BGRunStart",
+                requiredScenes = [ "Jay_Intro_0", "Luna_Intro_0_PREEMPTIVE"],
+                dialogue = [
+                    new (AmJay, "Luna! I've been meaning to ask where you get your supply of Stardust. It's quite a useful material to have."),
+                    new (AmLuna, "Stardust is everywhere! You just gotta know how to tap into it!", true),
+                    new (AmJay, "squint", "What, like, it binds all living beings together?"),
+                    new (AmLuna, "squint","What? No, that's silly.", true),
+                    new (AmLuna, "It really is just everywhere, it's just often too small to see or use. You just need to have the right magic to get it in large enough clumps.", true),
+                    new (AmJay,  "You don't suppose I could get in on that? I would love to have a material like that."),
+                    new (AmLuna, "Sorry! It takes years of practice to get it right. I'm barely proficient enough with it as is.", true)
+                ]
+            }},
         });
     }
 }
