@@ -32,10 +32,4 @@ internal sealed class BackupCrystalArtifact : Artifact, IRegisterable
 		base.OnReceiveArtifact(state);
 		used = false;
 	}
-
-	public static bool checkUsed()
-	{
-		used = true;
-		return !used;
-	}
 }

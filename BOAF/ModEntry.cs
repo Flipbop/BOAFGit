@@ -92,6 +92,7 @@ public sealed class ModEntry : SimpleMod
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
 	internal IShipEntry VulcanShip { get; }
+	internal IShipEntry AthenaShip { get; }
 
 	#endregion
 	public ISpriteEntry BGJayWorkshopSprite { get; }
@@ -181,6 +182,13 @@ public sealed class ModEntry : SimpleMod
 		
 		typeof(InspectionCard),
 		
+		
+		
+		typeof(BasicShotDualCard),
+		typeof(BasicShieldDualCard),
+		typeof(BasicDodgeDualCard),
+		typeof(AthenaTacticsCard),
+		
 		typeof(AngerCard),
 		/*typeof(DepressionCard),
 		typeof(DenialCard),
@@ -251,6 +259,10 @@ public sealed class ModEntry : SimpleMod
 		
 		typeof(HunterCannonsArtifact),
 		typeof(VulcanPlatingArtifact),
+		
+		typeof(BattleTacticsArtifact),
+		typeof(EndlessPreparationsArtifact),
+		
 	];
 
 	internal static IReadOnlyList<Type> MidrowObjects { get; } =
@@ -1088,6 +1100,67 @@ public sealed class ModEntry : SimpleMod
             //UnderChassisSprite = "chassis_boxy",
             Name = AnyLocalizations.Bind(["ship", "Vulcan", "name"]).Localize,
             Description = AnyLocalizations.Bind(["ship", "Vulcan", "description"]).Localize
+        });
+		AthenaShip = helper.Content.Ships.RegisterShip("Athena", new ShipConfiguration()
+        {
+            Ship = new StarterShip()
+            {
+                ship = new Ship()
+                {
+                    hull = 6,
+                    hullMax = 6,
+                    shieldMaxBase = 6,
+                    parts =
+                    {
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                        },
+                        new Part
+                        {
+                            type = PType.cockpit,
+                            skin = "cockpit_artemis",
+                        },
+                        new Part
+                        {
+                            type = PType.missiles,
+                            skin = "missiles_artemis",
+                        },
+                        new Part
+                        {
+	                        type = PType.cannon,
+	                        skin = "wing_ares",
+                        },
+                        new Part
+                        {
+                            type = PType.wing,
+                            skin = "wing_player",
+                            flip = true,
+                        },
+                    }
+                },
+                cards =
+                {
+	                new BasicShotDualCard(),
+	                new BasicShotDualCard(),
+	                new BasicDodgeDualCard(),
+	                new BasicShieldDualCard(),
+                },
+                artifacts =
+                {
+                    new ShieldPrep(),
+                    new BattleTacticsArtifact(),
+                }
+            },
+            ExclusiveArtifactTypes = new HashSet<Type>()
+            {
+                typeof(BattleTacticsArtifact),
+                typeof(EndlessPreparationsArtifact)
+            },
+            //UnderChassisSprite = "chassis_boxy",
+            Name = AnyLocalizations.Bind(["ship", "Athena", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["ship", "Athena", "description"]).Localize
         });
 		#endregion
 		

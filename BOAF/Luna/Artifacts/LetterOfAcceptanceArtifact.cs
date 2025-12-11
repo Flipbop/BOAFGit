@@ -32,6 +32,7 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
 		if (card.GetCurrentCost(state) <= 1 && !used)
 		{
+
 			state.deck.Insert(0, card);
 			used = true;
 		}
