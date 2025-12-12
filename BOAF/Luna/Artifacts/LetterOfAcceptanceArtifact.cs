@@ -23,19 +23,31 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","artifact", "LetterOfAcceptance", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Luna","artifact", "LetterOfAcceptance", "description"]).Localize
 		});
+		ModEntry.Instance.Harmony.Patch(
+			original: AccessTools.DeclaredMethod(typeof(Combat), nameof(Combat.TryPlayCard)),
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(TryLetterOfAcceptance))
+		);
 	}
-
+	
 	public bool used = false;
+
+	public static void TryLetterOfAcceptance(Combat __instance, State s, Card card, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
+	{
+		//var artifact = s.EnumerateAllArtifacts().FirstOrDefault((a) => a is LetterOfAcceptanceArtifact), null);
+		/*if (card.GetCurrentCost(s) <= 1 && s.EnumerateAllArtifacts().Any())
+		{
+
+			s.deck.Insert(0, card);
+		}*/
+	}
+	
+	
+	
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
 		int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		if (card.GetCurrentCost(state) <= 1 && !used)
-		{
-
-			state.deck.Insert(0, card);
-			used = true;
-		}
+		
 	}
 
 	public override void OnTurnStart(State state, Combat combat)

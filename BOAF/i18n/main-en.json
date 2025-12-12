@@ -521,7 +521,7 @@
             },
             "SolarPendant": {
                 "name": "SOLAR PENDANT",
-                "description": "If you spend a <c=status>STUN CHARGE</c> and there was nothing for it to stun, gain another <c=status>STUN CHARGE</c>."
+                "description": "If you spend a <c=status>STUN CHARGE</c> and there was nothing for it to stun, you don't lose <c=status>STUN CHARGE</c>."
             },
             "Chronomancy": {
                 "name": "CHRONOMANCY",
