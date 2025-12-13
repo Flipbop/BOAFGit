@@ -28,4 +28,8 @@ internal sealed class MercifulReaperArtifact : Artifact, IRegisterable
 		base.OnCombatStart(state, combat);
 		combat.Queue(new AAddCard { amount = 1, card = new HarmlessSiphonCard(), destination = CardDestination.Hand });
 	}
+
+	public override List<Tooltip>? GetExtraTooltips()
+		=> [new TTCard() {card = new HarmlessSiphonCard()},
+		];
 }

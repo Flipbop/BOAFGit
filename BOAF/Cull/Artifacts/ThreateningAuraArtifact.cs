@@ -1,4 +1,5 @@
-﻿using Nanoray.PluginManager;
+﻿using System.Collections.Generic;
+using Nanoray.PluginManager;
 using Nickel;
 using System.Reflection;
 
@@ -26,5 +27,19 @@ internal sealed class ThreateningAuraArtifact : Artifact, IRegisterable
 	{
 		base.OnCombatStart(state, combat);
 		combat.Queue(new AStatus(){targetPlayer = false, status = ModEntry.Instance.FearStatus.Status, statusAmount = 1, mode = AStatusMode.Set});
+	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Fear")
+			{
+				Icon = ModEntry.Instance.fearSprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "Fear", "description"])
+			}];
+		return tooltips;
 	}
 }

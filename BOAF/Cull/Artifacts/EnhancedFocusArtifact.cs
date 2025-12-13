@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using Nanoray.PluginManager;
 using Nickel;
 using System.Linq;
@@ -38,5 +39,19 @@ internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 	{
 		base.OnTurnEnd(state, combat);
 		_used = false;
+	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
+			{
+				Icon = ModEntry.Instance.soulEnergySprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "description"])
+			}];
+		return tooltips;
 	}
 }

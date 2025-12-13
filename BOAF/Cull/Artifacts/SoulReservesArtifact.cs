@@ -28,4 +28,18 @@ internal sealed class SoulReservesArtifact : Artifact, IRegisterable
 		base.OnCombatStart(state, combat);
 		combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 2, mode = AStatusMode.Set});
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
+			{
+				Icon = ModEntry.Instance.soulEnergySprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "description"])
+			}];
+		return tooltips;
+	}
 }

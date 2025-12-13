@@ -72,4 +72,18 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 		}
 	}
 	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
+			{
+				Icon = ModEntry.Instance.soulEnergySprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "description"])
+			}];
+		return tooltips;
+	}
+	
 }
