@@ -23,7 +23,7 @@ public class AthenaTacticsCard : Card, IRegisterable
 		});
 	}
 
-	public List<CardAction> actions = null!;
+	public List<CardAction>? actions;
 	public CardData data;
 	
 	public AthenaTacticsCard(List<CardAction> actions, CardData data)
@@ -36,7 +36,7 @@ public class AthenaTacticsCard : Card, IRegisterable
 
 	public override CardData GetData(State state)
 	{
-		if (state.route is NewRunOptions or CardBrowse { browseSource: CardBrowse.Source.Codex })
+		if (state.route is NewRunOptions or CardBrowse { browseSource: CardBrowse.Source.Codex } || actions == null)
 			return new CardData
 			{
 				cost = 0,
@@ -49,7 +49,7 @@ public class AthenaTacticsCard : Card, IRegisterable
 
 	public override List<CardAction> GetActions(State s, Combat c)
 	{
-		if (s.route is NewRunOptions or CardBrowse { browseSource: CardBrowse.Source.Codex })
+		if (s.route is NewRunOptions or CardBrowse { browseSource: CardBrowse.Source.Codex } || actions == null)
 			return new List<CardAction>();
 
 		return actions;

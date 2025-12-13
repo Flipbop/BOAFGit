@@ -25,7 +25,7 @@ internal sealed class BackupCrystalArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public static bool used = false;
+	public bool used = false;
 
 	public override void OnReceiveArtifact(State state)
 	{

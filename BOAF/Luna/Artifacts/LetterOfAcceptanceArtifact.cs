@@ -33,12 +33,21 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 
 	public static void TryLetterOfAcceptance(Combat __instance, State s, Card card, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
 	{
-		//var artifact = s.EnumerateAllArtifacts().FirstOrDefault((a) => a is LetterOfAcceptanceArtifact), null);
-		/*if (card.GetCurrentCost(s) <= 1 && s.EnumerateAllArtifacts().Any())
-		{
 
+		if (s.EnumerateAllArtifacts().Find(a => a is LetterOfAcceptanceArtifact) is not LetterOfAcceptanceArtifact
+		    letterOfAcceptance)
+		{
+			return;
+		}
+
+		if (card.GetCurrentCost(s) <= 1 && !letterOfAcceptance.used && !card.GetDataWithOverrides(s).exhaust)
+		{
+			letterOfAcceptance.used = true;
+			
+			s.RemoveCardFromWhereverItIs(card.uuid);
+			
 			s.deck.Insert(0, card);
-		}*/
+		}
 	}
 	
 	

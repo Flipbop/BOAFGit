@@ -509,7 +509,7 @@
             },
             "LetterOfAcceptance": {
                 "name": "LETTER OF ACCEPTANCE",
-                "description": "The first time you play a <c=keyword>1 or 0 cost card</c> each turn, return it to the <c=keyword>bottom of the draw pile.</c>"
+                "description": "The first time you play a <c=keyword>1 or 0 cost card</c> each turn (unless it exhausts), return it to the <c=keyword>bottom of the draw pile.</c>"
             },
             "ComponentPouch": {
                 "name": "COMPONENT POUCH",
@@ -521,7 +521,7 @@
             },
             "SolarPendant": {
                 "name": "SOLAR PENDANT",
-                "description": "If you spend a <c=status>STUN CHARGE</c> and there was nothing for it to stun, you don't lose <c=status>STUN CHARGE</c>."
+                "description": "<c=status>STUN CHARGE</c> is not spent if doesn't stun anything."
             },
             "Chronomancy": {
                 "name": "CHRONOMANCY",
