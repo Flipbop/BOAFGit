@@ -26,7 +26,7 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public int StardustCount = 15;
+	public int StardustCount = 10;
 	private BattleType type = BattleType.Normal;
 	
 	public override void OnCombatStart(State state, Combat combat)
@@ -70,7 +70,7 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 			}
 		} else if (type == BattleType.Boss)
 		{
-			StardustCount += 15;
+			StardustCount += 10 + bonusDust;
 		}
 		if (StardustCount > StardustManager.StardustMax || state.ship.hull <= 0)
 		{

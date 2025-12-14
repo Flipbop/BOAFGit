@@ -1239,6 +1239,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoryDialogueJay();
 
 		_ = new StardustManager();
+		_ = new ResidualDustManager();
 		_ = new StardustCostManager();
 		_ = new CardDialogueLuna();
 		_ = new CombatDialogueLuna();

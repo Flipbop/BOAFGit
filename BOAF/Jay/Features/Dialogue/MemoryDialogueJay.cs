@@ -21,7 +21,7 @@ internal class MemoryDialogueJay
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Are you the reason I'm here?" ),
                     new (AmVoid,"neutral","In a way.", flipped: true),
-                    new (AmJay, "neutral", "But why? According to Cat, almost everyone else is missing their memories." ),
+                    new (AmJay, "neutral", "But why? According to CAT, almost everyone else is missing their memories." ),
                     new (AmVoid,"neutral","I need you to be whole again.", flipped: true),
                     new (AmVoid,"neutral","You may remember your past, but that does not mean you have not pushed it deep down.", flipped: true),
                     new (AmVoid,"neutral","I need you to remember her.", flipped: true),

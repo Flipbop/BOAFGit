@@ -10,38 +10,33 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class StardustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
+internal sealed class ResidualDustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 {
 
-	public StardustManager()
+	public ResidualDustManager()
 	{
 		ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this);
 	}
-
-	public static int StardustMax = 10;
-
+	
 	public static void ApplyPatches(IHarmony harmony, ILogger logger)
 	{
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(AStatus), nameof(AStatus.Begin)),
-			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusStardust_Begin_Postfix))
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusResidualDust_Begin_Postfix))
 		);
 	}
 
 	public IKokoroApi.IV2.IStatusRenderingApi.IStatusInfoRenderer? OverrideStatusInfoRenderer(
 		IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusInfoRendererArgs args)
 	{
-		if (args.Status != ModEntry.Instance.StardustStatus.Status)
+		if (args.Status != ModEntry.Instance.ResidualDustStatus.Status)
 			return null;
 
-		var colors = new Color[StardustMax];
+		var colors = new Color[3];
 		for (var i = 0; i < colors.Length; i++)
 			colors[i] = GetColor(i);
 
-		int rowCount;
-		rowCount = StardustMax > 10 ? 3 : 2;
-
-		return ModEntry.Instance.KokoroApi.StatusRendering.MakeBarStatusInfoRenderer().SetSegments(colors).SetRows(rowCount);
+		return ModEntry.Instance.KokoroApi.StatusRendering.MakeBarStatusInfoRenderer().SetSegments(colors).SetRows(1);
 
 		Color GetColor(int i)
 		{
@@ -52,14 +47,14 @@ internal sealed class StardustManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		}
 	}
 
-	public static void AStatusStardust_Begin_Postfix(AStatus __instance, State s, Combat c)
+	public static void AStatusResidualDust_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{
-		if (__instance.status != ModEntry.Instance.StardustStatus.Status) return;
+		if (__instance.status != ModEntry.Instance.ResidualDustStatus.Status) return;
         
 		var ship = __instance.targetPlayer ? s.ship : c.otherShip;
-		if (ship.Get(ModEntry.Instance.StardustStatus.Status) <= StardustMax) return;
-		ship.Set(ModEntry.Instance.StardustStatus.Status, StardustMax);
-		if (ship.Get(ModEntry.Instance.StardustStatus.Status) >= 0) return;
-		ship.Set(ModEntry.Instance.StardustStatus.Status, 0);
+		if (ship.Get(ModEntry.Instance.ResidualDustStatus.Status) <= 3) return;
+		ship.Set(ModEntry.Instance.ResidualDustStatus.Status, 3);
+		if (ship.Get(ModEntry.Instance.ResidualDustStatus.Status) >= 0) return;
+		ship.Set(ModEntry.Instance.ResidualDustStatus.Status, 0);
 	}
 }

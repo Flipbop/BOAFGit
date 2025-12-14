@@ -25,21 +25,26 @@ internal sealed class SoulEnergyManager : IKokoroApi.IV2.IStatusRenderingApi.IHo
 			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatusSoul_Begin_Postfix))
 		);
 	}
-	public (IReadOnlyList<Color> Colors, int? BarSegmentWidth)? OverrideStatusRenderingAsBars(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusRenderingAsBarsArgs args)
+	public IKokoroApi.IV2.IStatusRenderingApi.IStatusInfoRenderer? OverrideStatusInfoRenderer(IKokoroApi.IV2.IStatusRenderingApi.IHook.IOverrideStatusInfoRendererArgs args)
 	{
-		if (args.Status != ModEntry.Instance.SoulEnergyStatus.Status) return null;
+		if (args.Status != ModEntry.Instance.SoulEnergyStatus.Status)
+			return null;
+		
+		var colors = new Color[10];
+		for (var i = 0; i < colors.Length; i++)
+			colors[i] = GetColor(i);
 
-		var ship = args.Ship;
-		var expected = 10;
-		var current = ship.Get(ModEntry.Instance.SoulEnergyStatus.Status);
+		return ModEntry.Instance.KokoroApi.StatusRendering.MakeBarStatusInfoRenderer().SetSegments(colors).SetRows(2);
 
-		var filled = Math.Min(expected, current);
-		var empty = Math.Max(expected - current, 0);
-		return (Enumerable.Repeat(new Color("8533ad"), filled)
-				.Concat(Enumerable.Repeat(new Color("7a3045"), empty))
-				.ToImmutableList(),
-			5);
+		Color GetColor(int i)
+		{
+			if (i >= args.Amount)
+				return ModEntry.Instance.KokoroApi.StatusRendering.DefaultInactiveStatusBarColor;
+			return ModEntry.Instance.KokoroApi.StatusRendering.DefaultActiveStatusBarColor;
+
+		}
 	}
+	
 	public static void AStatusSoul_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{
 		if (__instance.status != ModEntry.Instance.SoulEnergyStatus.Status) return;

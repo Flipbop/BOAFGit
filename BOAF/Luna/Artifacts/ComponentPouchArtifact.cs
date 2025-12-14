@@ -30,7 +30,7 @@ internal sealed class ComponentPouchArtifact : Artifact, IRegisterable
 	public override void OnReceiveArtifact(State state)
 	{
 		base.OnReceiveArtifact(state);
-		StardustManager.StardustMax = 20;
+		StardustManager.StardustMax += 5;
 		initialBoostReady = true;
 	}
 
@@ -49,7 +49,7 @@ internal sealed class ComponentPouchArtifact : Artifact, IRegisterable
 		base.OnCombatEnd(state);
 		if (state.ship.hull <= 0)
 		{
-			StardustManager.StardustMax = 15;
+			StardustManager.StardustMax -= 5;
 		}
 	}
 }

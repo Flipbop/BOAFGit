@@ -29,7 +29,7 @@ internal sealed class MoonbeamCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = 3,
 			exhaust = upgrade == Upgrade.B,
 		};
 

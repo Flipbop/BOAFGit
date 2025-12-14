@@ -42,7 +42,7 @@
         "status": {
             "SoulEnergy": {
                 "name": "Soul Energy",
-                "description": "<c=status>Soul Energy</c> is necessary to use certain actions on certain cards <c=272727>Cull</c> has. <c=keyword>Limited to 10.</c>"
+                "description": "<c=status>SOUL ENERGY</c> is necessary to use certain actions on certain cards <c=272727>Cull</c> has. <c=keyword>Limited to 10.</c>"
             },
             "Fear": {
                 "name": "Fear",
@@ -50,11 +50,11 @@
             },
             "SoulDrain" : {
                 "name": "Soul Drain",
-                "description": "At the end of your turn lose <c=keyword>{0}</c> <c=status>Soul Energy</c>, then reduce this by 1."
+                "description": "At the end of your turn lose <c=keyword>{0}</c> <c=status>SOUL ENERGY</c>, then reduce this by 1."
             },
             "Empowered": {
                 "name": "Empowered",
-                "description": "Gain <c=keyword>{0}</c> <c=status>Soul Energy</c> when you hit the enemy, even if they have shields."
+                "description": "Gain <c=keyword>{0}</c> <c=status>SOUL ENERGY</c> when you hit the enemy, even if they have shields."
             },
             "Cloaked": {
                 "name": "Cloaked",
@@ -484,11 +484,11 @@
         "status": {
             "Stardust": {
                 "name": "Stardust",
-                "description": "A unique resource for <c=a661cb>Luna</c>, which is spent to play certain actions on her cards. <c=keyword>Limited to 15 by default.</c>"
+                "description": "A unique resource for <c=a661cb>Luna</c>, which is spent to play certain actions on her cards. <c=keyword>Limited to 10 by default.</c>"
             },
             "ResidualDust": {
                 "name": "Residual Dust",
-                "description": "Gain <c=keyword>{0} extra Stardust</c> at the end of combat."
+                "description": "Gain <c=keyword>{0} extra</c> <c=status>STARDUST</c> at the end of combat."
             }
         },    
         "midrow": {
@@ -501,7 +501,7 @@
         "artifact": {
             "LunarPendant": {
                 "name": "LUNAR PENDANT",
-                "description": "Start the run with <c=status>15 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>15 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
+                "description": "Start the run with <c=status>10 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>10 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
             },
             "StellarCharm": {
                 "name": "STELLAR CHARM",
@@ -513,11 +513,11 @@
             },
             "ComponentPouch": {
                 "name": "COMPONENT POUCH",
-                "description": "Your max <c=status>STARDUST</c> is increased to <c=keyword>20</c>. Gain <c=status>5 STARDUST</c> at the start of the next fight."
+                "description": "Your max <c=status>STARDUST</c> is increased to by <c=keyword>5</c>. Gain <c=status>5 STARDUST</c> at the start of the next fight."
             },
             "BackupCrystal": {
                 "name": "BACKUP CRYSTAL",
-                "description": "The first time you run out of <c=status>STARDUST</c> this run, immediately gain <c=status>10 STARDUST</c>."
+                "description": "The first time you run out of <c=status>STARDUST</c> this run, immediately gain <c=status>5 STARDUST</c>."
             },
             "SolarPendant": {
                 "name": "SOLAR PENDANT",

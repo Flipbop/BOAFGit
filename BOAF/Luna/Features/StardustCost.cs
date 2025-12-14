@@ -39,7 +39,7 @@ internal sealed class StardustCost : IKokoroApi.IV2.IActionCostsApi.IResource
         if (s.ship.Get(ModEntry.Instance.StardustStatus.Status) <= amount && !backupCrystal.used)
         {
 	        backupCrystal.used = true;
-	        c.Queue(new AStatus(){statusAmount = 10, status = ModEntry.Instance.StardustStatus.Status, targetPlayer = true});
+	        c.Queue(new AStatus(){statusAmount = 5, status = ModEntry.Instance.StardustStatus.Status, targetPlayer = true});
         }
     }
 
