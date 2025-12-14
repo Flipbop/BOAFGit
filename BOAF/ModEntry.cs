@@ -377,6 +377,7 @@ public sealed class ModEntry : SimpleMod
 		SoulEnergyManager.ApplyPatches(Harmony, logger);
 		AHarvestAttack.ApplyPatches(Harmony, logger);
 		StardustManager.ApplyPatches(Harmony, logger);
+		ResidualDustManager.ApplyPatches(Harmony, logger);
 		
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
