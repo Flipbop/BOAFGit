@@ -52,8 +52,7 @@ internal sealed class SpaceTimeCard : Card, IRegisterable
 			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
-			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.timeStop, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 3, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
 		} else if (upgrade == Upgrade.B)
 		{
 			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge});
@@ -63,8 +62,7 @@ internal sealed class SpaceTimeCard : Card, IRegisterable
 			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
-			actions.Add(new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.timeStop, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge, disabled = !flipped});
 		}
 		return actions;
 	}

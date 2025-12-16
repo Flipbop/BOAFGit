@@ -885,7 +885,7 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Squint/{i}.png")).Sprite)
 				.ToList()
 		});
-		/*helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = LunaDeck.UniqueName,
 			LoopTag = "nervous",
@@ -925,23 +925,8 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Sob/{i}.png")).Sprite)
 				.ToList()
 		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = LunaDeck.UniqueName,
-			LoopTag = "damaged",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/Damaged/{i}.png")).Sprite)
-				.ToList()
-		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = LunaDeck.UniqueName,
-			LoopTag = "damagedcry",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Luna/Character/DamagedCry/{i}.png")).Sprite)
-				.ToList()
-		});
-		*/
+		
+		
 		
 		StardustStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Stardust", new()
 		{

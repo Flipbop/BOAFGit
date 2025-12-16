@@ -59,19 +59,19 @@ internal sealed class NebulaCard : Card, IRegisterable
 			actions.Add(new AStatus(){statusAmount = 3, targetPlayer = true, status = Status.shield, disabled = flipped});
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){statusAmount = 4, targetPlayer = true, status = Status.shield, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 3, targetPlayer = true, status = Status.shield, disabled = !flipped});
 		} else if (upgrade == Upgrade.B)
 		{
 			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.shield, disabled = flipped});
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){statusAmount = 5, targetPlayer = true, status = Status.tempShield, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 4, targetPlayer = true, status = Status.tempShield, disabled = !flipped});
 		} else 
 		{
 			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.shield, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){statusAmount = 3, targetPlayer = true, status = Status.shield, disabled = !flipped});
+			actions.Add(new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.shield, disabled = !flipped});
 		}
 		return actions;
 	}

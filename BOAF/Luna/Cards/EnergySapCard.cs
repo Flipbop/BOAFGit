@@ -54,17 +54,17 @@ internal sealed class EnergySapCard : Card, IRegisterable
 		{
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 4), disabled = !flipped});
+			actions.Add(new AAttack(){damage = GetDmg(s, 3), disabled = !flipped});
 		} else if (upgrade == Upgrade.B)
 		{
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 3), disabled = !flipped, piercing = true});
+			actions.Add(new AAttack(){damage = GetDmg(s, 2), disabled = !flipped, piercing = true});
 		} else 
 		{
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 3), disabled = !flipped});
+			actions.Add(new AAttack(){damage = GetDmg(s, 2), disabled = !flipped});
 		}
 		return actions;
 	}

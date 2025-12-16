@@ -43,11 +43,9 @@ internal sealed class CometShowCard : Card, IRegisterable
 				new ASpawn(){thing = new Asteroid(), offset = -2},
 			],
 			Upgrade.B => [
-				new ASpawn(){thing = new Comet(), offset = -2},
-				new ASpawn(){thing = new Comet(), offset = -1},
-				new ASpawn(){thing = new Comet()},
-				new ASpawn(){thing = new Comet(), offset = 1},
-				new ASpawn(){thing = new Comet(), offset = -2},
+				new ASpawn(){thing = new Comet() {bubbleShield = true}, offset = -1},
+				new ASpawn(){thing = new Comet() {bubbleShield = true}},
+				new ASpawn(){thing = new Comet() {bubbleShield = true}, offset = 1},
 			],
 			_=>[
 				new ASpawn(){thing = new Comet(), offset = -1},

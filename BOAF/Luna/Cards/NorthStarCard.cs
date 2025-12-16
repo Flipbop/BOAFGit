@@ -55,21 +55,19 @@ internal sealed class NorthStarCard : Card, IRegisterable
 			actions.Add(new AMove(){dir = 2, disabled = flipped});
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AMove(){dir = -1, disabled = !flipped});
-			actions.Add(new AStatus() { status = Status.evade, statusAmount = 2, targetPlayer = true });
+			actions.Add(new AMove(){dir = -3, disabled = !flipped});
 		} else if (upgrade == Upgrade.B)
 		{
 			actions.Add(new AMove(){dir = 2, disabled = flipped});
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AMove(){dir = -3, disabled = !flipped});
+			actions.Add(new AStatus() { status = Status.evade, statusAmount = 1, targetPlayer = true });
 		} else 
 		{
 			actions.Add(new AMove(){dir = 2, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AMove(){dir = -1, disabled = !flipped});
-			actions.Add(new AStatus() { status = Status.evade, statusAmount = 1, targetPlayer = true });
+			actions.Add(new AMove(){dir = -2, disabled = !flipped});
 		}
 		return actions;
 	}

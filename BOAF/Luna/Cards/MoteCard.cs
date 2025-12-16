@@ -30,7 +30,7 @@ internal sealed class MoteCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
+			cost = upgrade == Upgrade.B ? 1 : 0,
 			exhaust = upgrade != Upgrade.B
 		};
 

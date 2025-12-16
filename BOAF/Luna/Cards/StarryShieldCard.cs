@@ -50,14 +50,12 @@ internal sealed class StarryShieldCard : Card, IRegisterable
 			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 2, targetPlayer = true, disabled = flipped });
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 2, targetPlayer = true, disabled = !flipped });
 			actions.Add(new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true, disabled = !flipped });
 		} else 
 		{
 			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 1, targetPlayer = true, disabled = flipped });
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.tempShield, statusAmount = 1, targetPlayer = true, disabled = !flipped });
 			actions.Add(new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true, disabled = !flipped });
 			
 		}

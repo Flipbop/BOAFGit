@@ -52,19 +52,19 @@ internal sealed class PremeditateCard : Card, IRegisterable
 			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 3, targetPlayer = true, disabled = flipped });
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 3, targetPlayer = true, disabled = !flipped });
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = !flipped });
 		} else if (upgrade == Upgrade.B)
 		{
 			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = flipped });
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 1, targetPlayer = true, disabled = !flipped });
 		} else 
 		{
 			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = flipped });
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+			actions.Add(new AStatus() { status = Status.drawNextTurn, statusAmount = 1, targetPlayer = true, disabled = !flipped });
 		}
 		return actions;
 	}
