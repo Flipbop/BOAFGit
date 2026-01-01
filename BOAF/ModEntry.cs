@@ -344,6 +344,7 @@ public sealed class ModEntry : SimpleMod
 		Harmony = helper.Utilities.Harmony;
 		KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!.V2;
 		DuoArtifactsApi = helper.ModRegistry.GetApi<IDuoArtifactsApi>("Shockah.DuoArtifacts");
+		ModSettings = helper.Storage.LoadJson<ModSettings>(helper.Storage.GetMainStorageFile("json"));
 
 		helper.Events.OnModLoadPhaseFinished += (_, phase) =>
 		{
@@ -1063,7 +1064,13 @@ public sealed class ModEntry : SimpleMod
                             type = PType.wing,
                             skin = "wing_player",
                             flip = true,
-                        }
+                        },
+                        new Part
+                        {
+	                        type = PType.wing,
+	                        skin = "wing_player",
+	                        flip = true
+                        },
                     }
                 },
                 cards =
@@ -1235,7 +1242,7 @@ public sealed class ModEntry : SimpleMod
 		
 		_ = new Backgrounds();
 		
-		SetUpModSettings(helper);
+		//SetUpModSettings(helper);
 	}
 
 

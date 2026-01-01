@@ -501,11 +501,11 @@
         "artifact": {
             "LunarPendant": {
                 "name": "LUNAR PENDANT",
-                "description": "Start the run with <c=status>10 STARDUST</c>. Defeating a <c=keyword>normal enemy</c> gives you <c=status>2 STARDUST</c>, defeating an <c=keyword>Elite</c> gives you <c=status>5 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>10 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
+                "description": "Start the run with <c=status>10 STARDUST</c>. Defeating an <c=keyword>Elite</c> gives you <c=status>3 STARDUST</c>, defeating a <c=keyword>Boss</c> gives you <c=status>10 STARDUST</c>. <c=status>STARDUST</c> carries over between combat."
             },
             "StellarCharm": {
                 "name": "STELLAR CHARM",
-                "description": "Gain 1 extra <c=status>STARDUST</c> when defeating a <c=keyword>normal enemy</c>, and 2 extra when defeating an <c=keyword>Elite</c>."
+                "description": "Gain 1 extra <c=status>STARDUST</c> from every battle you win, including normal fights."
             },
             "LetterOfAcceptance": {
                 "name": "LETTER OF ACCEPTANCE",

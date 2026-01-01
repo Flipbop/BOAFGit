@@ -56,21 +56,25 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 		int bonusDust = state.ship.Get(ModEntry.Instance.ResidualDustStatus.Status);
 		if (type == BattleType.Normal)
 		{
-			StardustCount += 2 + bonusDust;
+			StardustCount += bonusDust;
 			if (state.EnumerateAllArtifacts().Any((a) => a is StellarCharmArtifact))
 			{
 				StardustCount += 1;
 			}
 		} else if (type == BattleType.Elite)
 		{
-			StardustCount += 5 + bonusDust;
+			StardustCount += 3 + bonusDust;
 			if (state.EnumerateAllArtifacts().Any((a) => a is StellarCharmArtifact))
 			{
-				StardustCount += 2;
+				StardustCount += 1;
 			}
 		} else if (type == BattleType.Boss)
 		{
 			StardustCount += 10 + bonusDust;
+			if (state.EnumerateAllArtifacts().Any((a) => a is StellarCharmArtifact))
+			{
+				StardustCount += 1;
+			}
 		}
 		if (StardustCount > StardustManager.StardustMax || state.ship.hull <= 0)
 		{
