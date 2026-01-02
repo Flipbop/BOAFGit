@@ -2,7 +2,7 @@
   "UniqueName": "Flipbop.BOAF",
   "DisplayName": "Birds of a Feather",
   "Description": "Adds 5 new playable bird characters, each with memories and a new ship.",
-  "Version": "0.4.3",
+  "Version": "0.4.4",
   "RequiredApiVersion": "1.6.0",
   "EntryPointAssembly": "BOAF.dll",
   "LoadPhase": "AfterDbInit",

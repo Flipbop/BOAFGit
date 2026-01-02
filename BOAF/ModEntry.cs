@@ -1210,13 +1210,14 @@ public sealed class ModEntry : SimpleMod
 					);
 			});
 		
+		_ = new CombatDialogueAll();
+		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
 		_ = new SoulDrainManager();
 		_ = new EmpoweredManager();
 		_ = new CloakedManager();
 		_ = new CardDialogueCull();
-		_ = new CombatDialogueCull();
 		_ = new EventDialogueCull();
 		_ = new MemoryDialogueCull();		
 		_ = new StoryDialogueCull();
@@ -1226,7 +1227,6 @@ public sealed class ModEntry : SimpleMod
 		_ = new APartModManager();
 		_ = new AFactoryResetManager();
 		_ = new CardDialogueJay();
-		_ = new CombatDialogueJay();
 		_ = new EventDialogueJay();
 		_ = new MemoryDialogueJay();		
 		_ = new StoryDialogueJay();
@@ -1235,7 +1235,6 @@ public sealed class ModEntry : SimpleMod
 		_ = new ResidualDustManager();
 		_ = new StardustCostManager();
 		_ = new CardDialogueLuna();
-		_ = new CombatDialogueLuna();
 		_ = new EventDialogueLuna();
 		_ = new MemoryDialogueLuna();		
 		_ = new StoryDialogueLuna();
