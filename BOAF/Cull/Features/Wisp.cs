@@ -19,9 +19,9 @@ internal sealed class Wisp : AttackDrone, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		WispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/Wisp.png"));
-		WispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/WispIcon.png"));
-		DormantWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantWispIcon.png"));
+		WispSprite = ModEntry.Instance.WispSprite;
+		WispIcon = ModEntry.Instance.WispIcon;
+		DormantWispIcon = ModEntry.Instance.DormantWispIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -84,12 +84,8 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		DormantWispSprite =
-			helper.Content.Sprites.RegisterSprite(
-				package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/DormantWisp.png"));
-		DormantWispIcon =
-			helper.Content.Sprites.RegisterSprite(
-				package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantWispIcon.png"));
+		DormantWispSprite = ModEntry.Instance.DormantWispSprite;
+		DormantWispIcon = ModEntry.Instance.DormantWispIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -159,9 +155,9 @@ internal sealed class GreaterWisp : AttackDrone, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		GreaterWispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/GreaterWisp.png"));
-		GreaterWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/GreaterWispIcon.png"));
-		DormantGreaterWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantGreaterWispIcon.png"));
+		GreaterWispSprite = ModEntry.Instance.GreaterWispSprite;
+		GreaterWispIcon = ModEntry.Instance.GreaterWispIcon;
+		DormantGreaterWispIcon = ModEntry.Instance.DormantGreaterWispIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -224,12 +220,8 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		DormantGreaterWispSprite =
-			helper.Content.Sprites.RegisterSprite(
-				package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/DormantGreaterWisp.png"));
-		DormantGreaterWispIcon =
-			helper.Content.Sprites.RegisterSprite(
-				package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantGreaterWispIcon.png"));
+		DormantGreaterWispSprite = ModEntry.Instance.DormantGreaterWispSprite;
+		DormantGreaterWispIcon = ModEntry.Instance.DormantGreaterWispIcon;
 	}
 
 	public override void Render(G g, Vec v)

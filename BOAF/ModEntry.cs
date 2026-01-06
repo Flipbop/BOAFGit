@@ -47,6 +47,14 @@ public sealed class ModEntry : SimpleMod
 	internal Spr RareCullBorder { get; }
 	internal List<Spr> cullNeutralAnim { get; }
 	internal List<Spr> cullGlowAnim { get; }
+	internal ISpriteEntry WispSprite { get; }
+	internal ISpriteEntry WispIcon { get; }
+	internal ISpriteEntry DormantWispIcon { get; }
+	internal ISpriteEntry DormantWispSprite { get; }
+	internal ISpriteEntry GreaterWispSprite { get; }
+	internal ISpriteEntry GreaterWispIcon { get; }
+	internal ISpriteEntry DormantGreaterWispIcon { get; }
+	internal ISpriteEntry DormantGreaterWispSprite { get; }
 
 	#endregion
 	#region Jay
@@ -314,6 +322,14 @@ public sealed class ModEntry : SimpleMod
 				helper.Content.Sprites
 					.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Cull/Character/Glow/{i}.png")).Sprite)
 			.ToList();
+		WispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/Wisp.png"));
+		WispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/WispIcon.png"));
+		DormantWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantWispIcon.png"));
+		DormantWispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/DormantWisp.png"));
+		GreaterWispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/GreaterWisp.png"));
+		GreaterWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/GreaterWispIcon.png"));
+		DormantGreaterWispIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/DormantGreaterWispIcon.png"));
+		DormantGreaterWispSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Midrow/DormantGreaterWisp.png"));
 
 		reconfigureSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Reconfigure.png"));
 		rebuildSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Icons/Rebuild.png"));
@@ -1211,6 +1227,7 @@ public sealed class ModEntry : SimpleMod
 			});
 		
 		_ = new CombatDialogueAll();
+		_ = new EventDialogueAll();
 		
 		_ = new SoulEnergyManager();
 		_ = new FearManager();
@@ -1218,7 +1235,6 @@ public sealed class ModEntry : SimpleMod
 		_ = new EmpoweredManager();
 		_ = new CloakedManager();
 		_ = new CardDialogueCull();
-		_ = new EventDialogueCull();
 		_ = new MemoryDialogueCull();		
 		_ = new StoryDialogueCull();
 		_ = new SoulPortraitManager();
@@ -1227,7 +1243,6 @@ public sealed class ModEntry : SimpleMod
 		_ = new APartModManager();
 		_ = new AFactoryResetManager();
 		_ = new CardDialogueJay();
-		_ = new EventDialogueJay();
 		_ = new MemoryDialogueJay();		
 		_ = new StoryDialogueJay();
 
@@ -1235,7 +1250,6 @@ public sealed class ModEntry : SimpleMod
 		_ = new ResidualDustManager();
 		_ = new StardustCostManager();
 		_ = new CardDialogueLuna();
-		_ = new EventDialogueLuna();
 		_ = new MemoryDialogueLuna();		
 		_ = new StoryDialogueLuna();
 		

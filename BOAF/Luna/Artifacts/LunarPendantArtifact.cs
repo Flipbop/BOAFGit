@@ -63,7 +63,7 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 			}
 		} else if (type == BattleType.Elite)
 		{
-			StardustCount += 3 + bonusDust;
+			StardustCount += bonusDust;
 			if (state.EnumerateAllArtifacts().Any((a) => a is StellarCharmArtifact))
 			{
 				StardustCount += 1;
