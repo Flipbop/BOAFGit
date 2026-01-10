@@ -111,8 +111,8 @@ public sealed class ModEntry : SimpleMod
 		typeof(QuickCastCard),
 		typeof(HarvestCard),
 		typeof(WillOWispCard),
-		typeof(FontOfStrengthCard),
-		typeof(TelekinesisCard),
+		typeof(DashAttackCard),
+		typeof(StunningStrikeCard),
 		typeof(NecromancyCard),
 		typeof(ExcessiveForceCard),
 		typeof(RealignCard),
@@ -141,11 +141,11 @@ public sealed class ModEntry : SimpleMod
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
 		typeof(BargainCard),
-		typeof(StunningStrikeCard),
+		typeof(SummonCard),
 		typeof(WispArrayCard),
 		typeof(SoulBlastCard),
-		typeof(TauntCard),
-		typeof(PlayingWithFireCard), 
+		typeof(AbsorbCard),
+		typeof(RageCard), 
 		typeof(NoxoiusCloudCard),
 		
 		typeof(HeavyArmoringCard),
@@ -279,7 +279,6 @@ public sealed class ModEntry : SimpleMod
 		typeof(GreaterWisp),
 		typeof(DormantWisp),
 		typeof(DormantGreaterWisp),
-		typeof(SkullBomb),
 		
 		typeof(Comet),
 	];

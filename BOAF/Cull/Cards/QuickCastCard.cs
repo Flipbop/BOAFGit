@@ -30,26 +30,25 @@ internal sealed class QuickCastCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B ? 1 : 0,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AStatus { status = Status.droneShift, statusAmount = 2, targetPlayer = true },
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
+						Conditional.Constant(1),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
+					new AStatus { status = Status.evade, statusAmount = 1, targetPlayer = true }
 				).AsCardAction
 			],
 			Upgrade.B => [
-				new AStatus { status = Status.droneShift, statusAmount = 1, targetPlayer = true },
+				new AStatus { status = Status.evade, statusAmount = 1, targetPlayer = true },
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -57,19 +56,18 @@ internal sealed class QuickCastCard : Card, IRegisterable
 						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
+					new AStatus { status = Status.evade, statusAmount = 1, targetPlayer = true }
 				).AsCardAction
 			],
 			_=> [
-				new AStatus { status = Status.droneShift, statusAmount = 1, targetPlayer = true },
 				Conditional.MakeAction(
-				Conditional.Equation(
-					Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-					IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-					Conditional.Constant(3),
-					IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-				).SetShowOperator(false),
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}}
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(2),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new AStatus { status = Status.evade, statusAmount = 1, targetPlayer = true }
 				).AsCardAction
 			]
 		};

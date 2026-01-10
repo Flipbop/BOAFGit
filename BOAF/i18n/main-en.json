@@ -33,20 +33,16 @@
             "DormantGreaterWisp" : {
                 "name": "FADING GREATER WISP",
                 "description" : "Shoots a <c=redd>2</c> damage shot once per turn, <c=downside>then destroys itself</c>. If attacked, will turn into a <c=keyword>Greater Wisp</c>"
-            },
-            "SkullBomb": {
-                "name": "SKULL BOMB",
-                "description": "When shot, will deal <c=redd>3</c> damage to the other ship. <c=downside>Destroys itself on it's second turn, attacking both ships.</c>"
             }
         },
         "status": {
             "SoulEnergy": {
                 "name": "Soul Energy",
-                "description": "<c=status>SOUL ENERGY</c> is necessary to use certain actions on certain cards <c=272727>Cull</c> has. <c=keyword>Limited to 10.</c>"
+                "description": "Necessary to use certain actions on certain cards <c=272727>Cull</c> has. <c=keyword>Limited to 10.</c>"
             },
             "Fear": {
                 "name": "Fear",
-                "description": "Take <c=keyword>+1 damage</c> when hit. <c=downside>Lost at the end of your turn.</c>"
+                "description": "Take <c=keyword>+1 damage</c> when hit. <c=downside>Lost after taking a turn.</c>"
             },
             "SoulDrain" : {
                 "name": "Soul Drain",
@@ -65,7 +61,7 @@
         "artifact": {
             "SoulSiphon": {
                 "name": "SOUL SIPHON", 
-                "description": "Every time your opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take ANY damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
+                "description": "Every time your opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take hull damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
             },
             "MercifulReaper": {
                 "name": "MERCIFUL REAPER",
@@ -89,7 +85,7 @@
             },
             "CursedLantern": {
                 "name": "CURSED LANTERN",
-                "description": "You gain <c=keyword>+1 Energy every turn</c>, <c=downside>BUT you lose 2</c> <c=status>SOUL ENERGY</c> <c=downside>when taking damage instead of 1.</c>"
+                "description": "You gain 1 <c=status>SOUL ENERGY</c> every turn, <c=downside>BUT you lose 2</c> <c=status>SOUL ENERGY</c> <c=downside>when taking damage instead of 1.</c>"
             },
             "EnchantedScythe": {
                 "name": "ENCHANTED SCYTHE",
@@ -149,11 +145,11 @@
             "WillOWisp": {
                 "name": "Will O' Wisp"
             },
-            "FontOfStrength": {
-                "name": "Font Of Strength"
+            "DashAttack": {
+                "name": "Dash Attack"
             },
-            "Telekinesis": {
-                "name": "Telekinesis"
+            "Summon": {
+                "name": "Summon"
             },
             "Necromancy": {
                 "name": "Necromancy"
@@ -182,11 +178,11 @@
             "SoulBlast": {
                 "name": "Soul Blast"
             },
-            "Taunt": {
-                "name": "Taunt"
+            "Absorb": {
+                "name": "Absorb"
             },
-            "PlayingWithFire": {
-                "name": "Playing With Fire"
+            "Rage": {
+                "name": "Rage"
             },
             "Vanish": {
                 "name": "Vanish"
@@ -237,7 +233,7 @@
         "action": {
             "Reconfigure": {
                 "name": "RECONFIGURE",
-                "description": "Move all parts of your ship <c=keyword>left 1</c> (the leftmost goes to the right) <c=keyword>{0} time(s).</c>"
+                "description": "Move all parts of your ship <c=keyword>left 1</c> (the leftmost goes to the right) <c=keyword>{0} time(s)</c>. Lasts until combat ends."
             },
             "Rebuild": {
                 "name": "REBUILD {{partName}}",
@@ -378,7 +374,7 @@
                 "description": {
                     "None": "The leftmost part of your ship becomes <c=status>Armored</c> for the rest of combat.",
                     "A": "The leftmost part of your ship becomes <c=status>Armored</c> for the rest of combat.",
-                    "B": "The leftmost and rightmost parts of your ship becomes <c=status>Armored</c> for the rest of combat."
+                    "B": "The outermost parts of your ship become <c=status>Armored</c> for the rest of combat."
                 }
             },
             "Optimize": {
@@ -405,7 +401,7 @@
                 "name": "Shooting Gallery"
             },
             "CannonConstructor": {
-                "name": "Cannon Constructor"
+                "name": "Cannon Creator"
             },
             "FactoryReset": {
                 "name": "Factory Reset",
@@ -513,7 +509,7 @@
             },
             "ComponentPouch": {
                 "name": "COMPONENT POUCH",
-                "description": "Your max <c=status>STARDUST</c> is increased to by <c=keyword>5</c>. Gain <c=status>5 STARDUST</c> at the start of the next fight."
+                "description": "Your max <c=status>STARDUST</c> is increased by <c=keyword>5</c>. Gain <c=status>5 STARDUST</c> at the start of the next fight."
             },
             "BackupCrystal": {
                 "name": "BACKUP CRYSTAL",

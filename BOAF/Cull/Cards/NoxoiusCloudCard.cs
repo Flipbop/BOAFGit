@@ -30,7 +30,7 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = upgrade == Upgrade.A ? 1 : 2,
 			exhaust = true,
 			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
@@ -38,17 +38,36 @@ internal sealed class NoxoiusCloudCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AStatus() {targetPlayer = true, statusAmount = 2, status = Status.droneShift},
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
-			],
 			Upgrade.B => [
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.normal}, offset = -1},
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new AStatus(){status = Status.corrode, statusAmount = 1, targetPlayer = false}
+				).AsCardAction,		
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(6),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new AStatus(){status = Status.corrode, statusAmount = 1, targetPlayer = false}
+				).AsCardAction,		
 			],
 			_ => [
-				new ASpawn() {fromPlayer = true, thing = new Missile{missileType = MissileType.corrode}}
+				Conditional.MakeAction(
+					Conditional.Equation(
+						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
+						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
+						Conditional.Constant(4),
+						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
+					).SetShowOperator(false),
+					new AStatus(){status = Status.corrode, statusAmount = 1, targetPlayer = false}
+				).AsCardAction,			
 			]
 		};
 }

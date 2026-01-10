@@ -6,9 +6,10 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class FontOfStrengthCard : Card, IRegisterable
+internal sealed class SummonCard : Card, IRegisterable
 {
 	private static IKokoroApi.IV2.IConditionalApi Conditional => ModEntry.Instance.KokoroApi.Conditional;
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -20,8 +21,8 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/MemoryRecovery.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "FontOfStrength", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Cards/ShuffleUpgrade.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","card", "Summon", "name"]).Localize
 		});
 	}
 
@@ -30,36 +31,29 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
+			flippable = upgrade == Upgrade.A,
+			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AAttack() {damage = GetDmg(s, 1)},
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(5),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
-				).AsCardAction,
-			],
 			Upgrade.B => [
+				new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}},
+				new AMove(){dir = 2},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(7),
+						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
+					new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}}
 				).AsCardAction,
-				new AAttack() {damage = GetDmg(s, 1)}
 			],
 			_ => [
+				new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}},
+				new AMove(){dir = 2},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -67,8 +61,8 @@ internal sealed class FontOfStrengthCard : Card, IRegisterable
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.overdrive, statusAmount = 2}
-				).AsCardAction
+					new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}}
+				).AsCardAction,
 			]
 		};
 }

@@ -31,7 +31,6 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 0 : 1,
-			artOverlay = ModEntry.Instance.UncommonCullBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -39,19 +38,20 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 		{
 			Upgrade.B =>
 			[
+				new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
+						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 2}
+					new AHarvestAttack() {damage = GetDmg(s, 2)}
 				).AsCardAction,
-				new AHarvestAttack() {damage = GetDmg(s, 2)}
 			],
 			_ =>
 			[
+				new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -59,9 +59,8 @@ internal sealed class StunningStrikeCard : Card, IRegisterable
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AStatus() {targetPlayer = true, status = Status.stunCharge, statusAmount = 1}
+					new AHarvestAttack() {damage = GetDmg(s, 2)}
 				).AsCardAction,
-				new AHarvestAttack() {damage = GetDmg(s, 2)}
 			]
 
 		};

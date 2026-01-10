@@ -32,6 +32,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
+			flippable = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -50,7 +51,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 				).AsCardAction
 			],
 			Upgrade.A => [
-				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
+				new AMove() {targetPlayer = true, dir = 2},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -62,7 +63,7 @@ internal sealed class FlightyCard : Card, IRegisterable
 				).AsCardAction
 			],
 			_ => [
-				new AMove() {isRandom = true, targetPlayer = true, dir = 2},
+				new AMove() {targetPlayer = true, dir = 2},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),

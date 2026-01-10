@@ -23,12 +23,12 @@ internal sealed class CursedLanternArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnReceiveArtifact(State state)
+	public override void OnTurnStart(State state, Combat combat)
 	{
-		base.OnReceiveArtifact(state);
-		state.ship.baseEnergy += 1;
+		base.OnTurnStart(state, combat);
+		combat.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true, artifactPulse = this.Key()});
 	}
-	
+
 	public override List<Tooltip>? GetExtraTooltips()
 	{
 		List<Tooltip> tooltips =

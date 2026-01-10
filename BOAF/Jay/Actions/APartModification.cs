@@ -14,6 +14,22 @@ public class APartModManager {
     {
         ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnCombatEnd), (State state) =>
         {
+            List<Part> orignalOrder = [];
+            for (int i = 0; i < state.ship.parts.Count; i++)          
+            {
+                foreach (Part p in state.ship.parts)
+                {
+                    if (ModEntry.Instance.helper.ModData.GetModDataOrDefault<int>(p, "originalPosition", 0) == i)
+                    {
+                        orignalOrder.Add(p);
+                    }
+                }
+            }
+            state.ship.parts.Clear();
+            foreach (Part p in orignalOrder)
+            {
+                state.ship.parts.Add(p);
+            }
             foreach (Part p in state.ship.parts)
             {
                 if (ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "modified", false))
@@ -118,7 +134,7 @@ public class APartModManager {
             => [
                 new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Rebuild")
                 {
-                    Icon = ModEntry.Instance.reconfigureSprite.Sprite,
+                    Icon = ModEntry.Instance.rebuildSprite.Sprite,
                     TitleColor = Colors.action,
                     Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "name"], new {partName}),
                     Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Rebuild", "description"], new {partName})

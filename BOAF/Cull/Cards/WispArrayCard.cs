@@ -44,7 +44,7 @@ internal sealed class WispArrayCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
+						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
 					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
@@ -65,7 +65,7 @@ internal sealed class WispArrayCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(4),
+						Conditional.Constant(2),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
 					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}
@@ -87,7 +87,7 @@ internal sealed class WispArrayCard : Card, IRegisterable
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
 						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(6),
+						Conditional.Constant(4),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
 					new ASpawn() {thing = new Wisp(){DeathTurn = 1 + c.turn}, offset = -1}

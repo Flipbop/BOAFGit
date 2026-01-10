@@ -39,29 +39,30 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 		var damageTaken = __state - __instance.hull;
 		if (damageTaken <= 0)
 			return;
-		if (__instance.isPlayerShip)
-			return;
-
 		var artifact = s.EnumerateAllArtifacts().OfType<SoulSiphonArtifact>().FirstOrDefault();
 		if (artifact is null)
 			return;
-		
-		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true, artifactPulse = artifact.Key()});
-		
-	}
+		if (__instance.isPlayerShip)
+		{
+			if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) <= 0) return;
+			if (s.EnumerateAllArtifacts().OfType<CursedLanternArtifact>().FirstOrDefault() != null)
+			{
+				c.Queue(new AStatus() {statusAmount = -2, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+			}
+			else
+			{
+				c.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+			}
+		}
+		if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 10) return;
 
-	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
-	{
-		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		if (state.EnumerateAllArtifacts().OfType<CursedLanternArtifact>().FirstOrDefault() != null)
+		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true});
+		if (c.otherShip.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 9)
 		{
-			combat.Queue(new AStatus() {statusAmount = -2, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
-		}
-		else
-		{
-			combat.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+			c.Queue(new AStatus() {status = ModEntry.Instance.FearStatus.Status, statusAmount = 1, targetPlayer = false});
 		}
 	}
+	
 
 	public override void OnTurnStart(State state, Combat combat)
 	{
@@ -82,6 +83,12 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 				TitleColor = Colors.status,
 				Title = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Cull", "status", "SoulEnergy", "description"])
+			}, new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Fear")
+			{
+				Icon = ModEntry.Instance.fearSprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull", "status", "Fear", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull", "status", "Fear", "description"])
 			}];
 		return tooltips;
 	}

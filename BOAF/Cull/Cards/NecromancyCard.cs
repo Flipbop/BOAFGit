@@ -32,7 +32,7 @@ internal sealed class NecromancyCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B ? 2: 1,
+			cost = 0,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -40,9 +40,11 @@ internal sealed class NecromancyCard : Card, IRegisterable
 		{
 			Upgrade.A => [
 				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
+				new ASpawn() {thing = new DormantGreaterWisp()},
 			],
 			Upgrade.B => [
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
+				new ASpawn() {thing = new DormantWisp()},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -50,22 +52,12 @@ internal sealed class NecromancyCard : Card, IRegisterable
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
+					new ASpawn() {thing = new Asteroid()}
 				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}, offset = -1},
 			],
 			_ => [
-				Conditional.MakeAction(
-					Conditional.Equation(
-						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
-						IKokoroApi.IV2.IConditionalApi.EquationOperator.GreaterThanOrEqual,
-						Conditional.Constant(3),
-						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
-					).SetShowOperator(false),
-					new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true}
-				).AsCardAction,
-				new ASpawn() {thing = new SkullBomb(){DeathTurn = 1 + c.turn}},
+				new AStatus() {status = Status.droneShift, statusAmount = 1, targetPlayer = true},
+				new ASpawn() {thing = new DormantWisp()},
 			]
 		};
 }

@@ -24,7 +24,7 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 						return;
 					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
 				}
-				else
+				if (!combat.isPlayerTurn)
 				{
 					var stacks = combat.otherShip.Get(ModEntry.Instance.FearStatus.Status);
 					if (stacks <= 0)
