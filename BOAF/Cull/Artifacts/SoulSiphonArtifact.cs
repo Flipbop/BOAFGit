@@ -53,6 +53,7 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 			{
 				c.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
 			}
+			return;
 		}
 		if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 10) return;
 

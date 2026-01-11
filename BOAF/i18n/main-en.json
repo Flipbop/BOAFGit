@@ -1192,7 +1192,7 @@
             },
             "BattleTactics": {
                 "name": "BATTLE TACTICS",
-                "description": "When you play a <c=keyword>dual</c> card, add a <c=card>PLAN B</c> to your hand with the cost, traits, and actions of the side you didn't use. It is also <c=cardtrait>temporary</c> and <c=cardtrait>exhaustable</c>. Your starter cards are dual cards (cards added by difficulty selection are unaffected)."
+                "description": "When you play a <c=keyword>dual</c> card, add a <c=card>PLAN B</c> to your hand with the cost, traits, and actions of the side you didn't use. It is also <c=cardtrait>temporary</c> and <c=cardtrait>exhaustable</c>. Your starter cards are dual cards (cards added by difficulty selection are unaffected).",
             },
             "EndlessPreparations": {
                 "name": "ENDLESS PREPARATIONS",
