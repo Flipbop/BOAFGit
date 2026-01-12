@@ -42,4 +42,14 @@ internal sealed class SpellShaperArtifact : Artifact, IRegisterable
 		base.OnTurnStart(state, combat);
 		used = false;
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new TTGlossary("cardtrait.floppable"),
+			new TTGlossary("action.energy"),
+		];
+		return tooltips;
+	}
 }

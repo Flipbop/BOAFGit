@@ -9,8 +9,13 @@ namespace Flipbop.BOAF;
 
 internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 {
+	private static ISpriteEntry ActiveSprite = null!;
+	private static ISpriteEntry InactiveSprite = null!;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		ActiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Luna/Artifacts/LetterOfAcceptance.png"));
+		InactiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Luna/Artifacts/LetterOfAcceptanceUsed.png"));
+		
 		helper.Content.Artifacts.RegisterArtifact("LetterOfAcceptance", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -19,7 +24,7 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.LunaDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!),
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Luna/Artifacts/LetterOfAcceptance.png")).Sprite,
+			Sprite = ActiveSprite.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","artifact", "LetterOfAcceptance", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Luna","artifact", "LetterOfAcceptance", "description"]).Localize
 		});
@@ -50,18 +55,26 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 		}
 	}
 	
-	
-	
-	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
-		int handCount)
-	{
-		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
-		
-	}
-
 	public override void OnTurnStart(State state, Combat combat)
 	{
 		base.OnTurnStart(state, combat);
 		used = false;
+	}
+	
+	public override Spr GetSprite()
+	{
+		if (!used)
+		{
+			return ActiveSprite.Sprite;
+		}
+		return InactiveSprite.Sprite;
+	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new TTGlossary("cardtrait.floppable")];
+		return tooltips;
 	}
 }

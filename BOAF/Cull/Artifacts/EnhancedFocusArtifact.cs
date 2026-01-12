@@ -9,8 +9,13 @@ namespace Flipbop.BOAF;
 
 internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 {
+	private static ISpriteEntry ActiveSprite = null!;
+	private static ISpriteEntry InactiveSprite = null!;
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		ActiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/EnhancedFocus.png"));
+		InactiveSprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/EnhancedFocusUsed.png"));
+		
 		helper.Content.Artifacts.RegisterArtifact("EnhancedFocus", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -19,7 +24,7 @@ internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 				owner = ModEntry.Instance.CullDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Cull/Artifacts/EnhancedFocus.png")).Sprite,
+			Sprite = ActiveSprite.Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnhancedFocus", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnhancedFocus", "description"]).Localize
 		});
@@ -39,6 +44,15 @@ internal sealed class EnhancedFocusArtifact : Artifact, IRegisterable
 	{
 		base.OnTurnEnd(state, combat);
 		_used = false;
+	}
+	
+	public override Spr GetSprite()
+	{
+		if (!_used)
+		{
+			return ActiveSprite.Sprite;
+		}
+		return InactiveSprite.Sprite;
 	}
 	
 	public override List<Tooltip>? GetExtraTooltips()

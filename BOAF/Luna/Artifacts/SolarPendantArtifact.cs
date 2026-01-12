@@ -98,4 +98,12 @@ internal sealed class SolarPendantArtifact : Artifact, IRegisterable
 
 		return true;
 	}
+	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new TTGlossary("status.stuncharge")];
+		return tooltips;
+	}
 }

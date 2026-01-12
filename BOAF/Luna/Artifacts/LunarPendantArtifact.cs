@@ -91,4 +91,17 @@ internal sealed class LunarPendantArtifact : Artifact, IRegisterable
 		return StardustCount;
 	}
 	
+	public override List<Tooltip>? GetExtraTooltips()
+	{
+		List<Tooltip> tooltips =
+		[
+			new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Stardust")
+			{
+				Icon = ModEntry.Instance.stardustSprite.Sprite,
+				TitleColor = Colors.status,
+				Title = ModEntry.Instance.Localizations.Localize(["Luna", "status", "Stardust", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Luna", "status", "Stardust", "description"])
+			}];
+		return tooltips;
+	}
 }
