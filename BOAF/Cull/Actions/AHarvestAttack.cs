@@ -57,6 +57,13 @@ public sealed class AHarvestAttack : AAttack
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["Cull","action", "HarvestAttack", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Cull","action", "HarvestAttack", "description"])
+			},
+			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergy")
+			{
+				Icon = ModEntry.Instance.soulEnergySprite.Sprite,
+				TitleColor = Colors.action,
+				Title = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "name"]),
+				Description = ModEntry.Instance.Localizations.Localize(["Cull","status", "SoulEnergy", "description"])
 			}
 		];
 }

@@ -403,7 +403,7 @@ internal class CombatDialogueAll
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmCull, "squint", "Still could lose soul energy from that.")
+                        new(AmCull, "nervous", "Glad we have that armor.")
                     ]
                 }
             },

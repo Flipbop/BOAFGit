@@ -9,7 +9,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class HarmingSpellCard : Card, IRegisterable
+internal sealed class BoonCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -23,7 +23,7 @@ internal sealed class HarmingSpellCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Cards/HarmingSpell.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "HarmingSpell", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "Boon", "name"]).Localize
 		});
 	}
 
@@ -31,8 +31,11 @@ internal sealed class HarmingSpellCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 1 : 2,
+			cost = upgrade == Upgrade.B ? 2 : 1,
 			floppable = true,
+			exhaust = true,
+			retain = upgrade == Upgrade.A,
+			buoyant = true,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
@@ -41,10 +44,10 @@ internal sealed class HarmingSpellCard : Card, IRegisterable
 		
 		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
 			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 3),
-				new AAttack(){damage = GetDmg(s, 7)}).AsCardAction;
+				new AStatus(){status = Status.boost, statusAmount = 4, targetPlayer = true}).AsCardAction;
 		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
 			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
-				new AAttack(){damage = GetDmg(s, 5)}).AsCardAction;
+				new AStatus(){status = Status.boost, statusAmount = 2, targetPlayer = true}).AsCardAction;
 		
 		actionB.disabled = flipped;
 		actionNone.disabled = flipped;
@@ -53,12 +56,12 @@ internal sealed class HarmingSpellCard : Card, IRegisterable
 		{
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.overdrive, statusAmount = 3, targetPlayer = true, disabled = !flipped});
+			actions.Add(new ADrawCard(){count = 2, disabled = !flipped});
 		} else 
 		{
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = true, disabled = !flipped });
+			actions.Add(new ADrawCard(){count = 1, disabled = !flipped});
 		}
 		return actions;
 	}

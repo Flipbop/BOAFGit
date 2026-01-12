@@ -47,7 +47,7 @@ public class Backgrounds
         State s2 = s;
         for (int i = 0; i < __result.Count; i++) {
             if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.JayDeck.Deck)) {
-                if (s2.storyVars.HasEverSeen("RunWinWho_Jay_2") && !s2.storyVars.HasEverSeen("Jay_Intro_2")) {
+                if ((s2.storyVars.HasEverSeen("RunWinWho_Jay_2") || s2.storyVars.HasEverSeen("Jay_Post_Smiff")) && !s2.storyVars.HasEverSeen("Jay_Intro_2")) {
                     __result.RemoveAt(i);
                     i--;
                 }

@@ -132,7 +132,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(StarryShieldCard),
 		typeof(EnergySapCard),
 		typeof(PiercingLightCard),
-		typeof(SurgeCard),
+		typeof(OrionsBeltCard),
 		typeof(SolarPowerCard),
 		typeof(PremeditateCard),
 		typeof(ShillelaghCard),
@@ -159,7 +159,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(MoteCard),
 		typeof(MoonbeamCard),
 		typeof(InstantFreezeCard),
-		typeof(HarmingSpellCard),
+		typeof(BoonCard),
 		typeof(CradlesCometCard),
 		typeof(GatherCard), 
 		typeof(NorthStarCard),
@@ -873,7 +873,7 @@ public sealed class ModEntry : SimpleMod
 				cards = [
 					new StarryShieldCard(),
 					new ShinyShotCard(),
-					new SurgeCard(),
+					new OrionsBeltCard(),
 					new PiercingLightCard(),
 					new DodgeColorless(),
 					new BasicShieldColorless()

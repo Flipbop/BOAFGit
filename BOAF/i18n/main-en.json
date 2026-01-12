@@ -81,7 +81,7 @@
             },
             "OverclockedSiphon": {
                 "name": "OVERCLOCKED SIPHON",
-                "description": "Every third turn, gain 1 <c=status>SOUL ENERGY</c>."
+                "description": "Every 3 times you hit the enemy, gain 1 <c=status>SOUL ENERGY</c>."
             },
             "CursedLantern": {
                 "name": "CURSED LANTERN",
@@ -440,8 +440,8 @@
                 "name": "Overuse",
                 "description": {
                     "None": "<c=action>Detect 3.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
-                    "A": "<c=action>Detect 5.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
-                    "B": "<c=action>Detect 7.</c> The leftmost part of your ship becomes <c=status>Brittle</c> for the rest of combat."
+                    "A": "<c=action>Detect 4.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
+                    "B": "<c=action>Detect 5.</c> The leftmost part of your ship becomes <c=status>Brittle</c> for the rest of combat."
                 }
             },
             "Inspection": {
@@ -549,8 +549,8 @@
             "EnergySap": {
                 "name": "Energy Sap"
             },
-            "Surge": {
-                "name": "Surge"
+            "OrionsBelt": {
+                "name": "Orion's Belt"
             },
             "Premeditate": {
                 "name": "Premeditate"
@@ -573,8 +573,8 @@
             "InstantFreeze": {
                 "name": "Instant Freeze"
             },
-            "HarmingSpell": {
-                "name": "Harming Spell"
+            "Boon": {
+                "name": "Boon"
             },
             "Mote": {
                 "name": "Mote"

@@ -32,7 +32,7 @@ internal sealed class OveruseCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = upgrade == Upgrade.A ?  2 : 3,
 			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
@@ -43,11 +43,7 @@ internal sealed class OveruseCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 			{
-				Upgrade.A =>
-				[
-					new ADetect(){Amount = 4},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
-				],
+			
 				Upgrade.B =>
 				[
 					new ADetect(){Amount = 5},
@@ -55,7 +51,7 @@ internal sealed class OveruseCard : Card, IRegisterable
 				],
 				_ =>
 				[
-					new ADetect(){Amount = 3},
+					new ADetect(){Amount = 4},
 					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
 				]
 			

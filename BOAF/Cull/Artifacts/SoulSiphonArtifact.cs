@@ -42,22 +42,28 @@ internal sealed class SoulSiphonArtifact : Artifact, IRegisterable
 		var artifact = s.EnumerateAllArtifacts().OfType<SoulSiphonArtifact>().FirstOrDefault();
 		if (artifact is null)
 			return;
-		if (__instance.isPlayerShip)
+
+		if (!__instance.isPlayerShip)
 		{
 			if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) <= 0) return;
 			if (s.EnumerateAllArtifacts().OfType<CursedLanternArtifact>().FirstOrDefault() != null)
 			{
-				c.Queue(new AStatus() {statusAmount = -2, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+				c.Queue(new AStatus()
+					{ statusAmount = -2, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true });
 			}
 			else
 			{
-				c.Queue(new AStatus() {statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true});
+				c.Queue(new AStatus()
+					{ statusAmount = -1, status = ModEntry.Instance.SoulEnergyStatus.Status, targetPlayer = true });
 			}
+
 			return;
 		}
 		if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 10) return;
 
+		
 		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true});
+		
 		if (c.otherShip.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 9)
 		{
 			c.Queue(new AStatus() {status = ModEntry.Instance.FearStatus.Status, statusAmount = 1, targetPlayer = false});

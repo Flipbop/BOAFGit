@@ -45,7 +45,7 @@ internal sealed class CosmicCollectionCard : Card, IRegisterable
 				
 				Upgrade.B =>
 				[
-					new AStatus(){statusAmount = 2, targetPlayer = true, status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive},
+					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.energyNextTurn},
 					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.stunCharge},
 					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.shield},
 					new AStatus(){statusAmount = 2, targetPlayer = true, status = Status.drawNextTurn},
@@ -53,7 +53,7 @@ internal sealed class CosmicCollectionCard : Card, IRegisterable
 				],
 				_ =>
 				[
-					new AStatus(){statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive},
+					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.energyNextTurn},
 					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.stunCharge},
 					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.shield},
 					new AStatus(){statusAmount = 1, targetPlayer = true, status = Status.drawNextTurn},

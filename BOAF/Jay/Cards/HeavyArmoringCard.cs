@@ -2,6 +2,7 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using daisyowl.text;
 using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
@@ -11,6 +12,8 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+		//ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
+
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -48,4 +51,19 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 				new APartModManager.APartModification {part = s.ship.parts[0]}
 			]
 		};
+	
+	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
+	{
+		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
+		{
+			if (args.Card is HeavyArmoringCard card)
+			{
+				if (card.upgrade == Upgrade.B)
+				{
+					return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
+				}
+			}
+			return null;
+		}
+	}
 }

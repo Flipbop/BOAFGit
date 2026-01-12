@@ -6,7 +6,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class SurgeCard : Card, IRegisterable
+internal sealed class OrionsBeltCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,7 +20,7 @@ internal sealed class SurgeCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Cards/Surge.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "Surge", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Luna","card", "OrionsBelt", "name"]).Localize
 		});
 	}
 
@@ -28,21 +28,25 @@ internal sealed class SurgeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.A ? 1 : 2,
+			floppable = upgrade != Upgrade.B,
+			flippable = upgrade == Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AStatus(){status = Status.overdrive, statusAmount = 2, targetPlayer = true},
-			],
-			Upgrade.A => [
-				new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive, statusAmount = 3, targetPlayer = true},
-
+				new AMove(){dir = 2, targetPlayer = true},
+				new AAttack() {damage = GetDmg(s, 1), piercing = true},
+				new AAttack() {damage = GetDmg(s, 1), stunEnemy = true},
 			],
 			_ => [
-				new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Pulsedrive, statusAmount = 2, targetPlayer = true},
+				new AMove(){dir = -2, targetPlayer = true, disabled = flipped},
+				new AAttack() {damage = GetDmg(s, 1), piercing = true, disabled = flipped},
+				new ADummyAction(),
+				new AMove(){dir = 2, targetPlayer = true, disabled = !flipped},
+				new AAttack() {damage = GetDmg(s, 1), stunEnemy = true, disabled = !flipped},
 			]
 		};
 }

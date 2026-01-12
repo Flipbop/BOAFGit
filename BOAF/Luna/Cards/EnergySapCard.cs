@@ -28,7 +28,7 @@ internal sealed class EnergySapCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
+			cost = 1,
 			floppable = true,
 		};
 
@@ -36,17 +36,13 @@ internal sealed class EnergySapCard : Card, IRegisterable
 	{
 		List<CardAction> actions = new();
 		
-		CardAction actionB = ModEntry.Instance.KokoroApi.ActionCosts
-			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
-				new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 3, targetPlayer = false }).AsCardAction;
 		CardAction actionA = ModEntry.Instance.KokoroApi.ActionCosts
-			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
-				new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 4, targetPlayer = false }).AsCardAction;
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 2, targetPlayer = false }).AsCardAction;
 		CardAction actionNone = ModEntry.Instance.KokoroApi.ActionCosts
-			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 2),
-				new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 3, targetPlayer = false }).AsCardAction;
+			.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StardustCost(), 1),
+				new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 1, targetPlayer = false }).AsCardAction;
 		
-		actionB.disabled = flipped;
 		actionA.disabled = flipped;
 		actionNone.disabled = flipped;
 		
@@ -54,17 +50,17 @@ internal sealed class EnergySapCard : Card, IRegisterable
 		{
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 3), disabled = !flipped});
+			actions.Add(new AAttack(){damage = GetDmg(s, 2), disabled = !flipped});
 		} else if (upgrade == Upgrade.B)
 		{
-			actions.Add(actionB);
+			actions.Add(new AStatus() { status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 1, targetPlayer = false, disabled = flipped});
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 2), disabled = !flipped, piercing = true});
+			actions.Add(new AAttack(){damage = GetDmg(s, 1), disabled = !flipped, piercing = true});
 		} else 
 		{
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AAttack(){damage = GetDmg(s, 2), disabled = !flipped});
+			actions.Add(new AAttack(){damage = GetDmg(s, 1), disabled = !flipped});
 		}
 		return actions;
 	}

@@ -23,24 +23,22 @@ internal sealed class OverclockedSiphonArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public int turnCounter = 0;
-
-	public override void OnTurnStart(State state, Combat combat)
+	public int SoulGainCounter = 0;
+	
+	public override void OnEnemyGetHit(State state, Combat combat, Part? part)
 	{
-		base.OnTurnStart(state, combat);
-		if (turnCounter >= 2)
+		base.OnEnemyGetHit(state, combat, part);
+		SoulGainCounter++;
+		if (SoulGainCounter >= 3)
 		{
-			combat.Queue(new AStatus(){targetPlayer = true, status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1});
-			turnCounter = 0;
-		}
-		else
-		{
-			turnCounter++;
+			combat.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true});
+			SoulGainCounter = 0;
 		}
 	}
+
 	public override int? GetDisplayNumber(State s)
 	{
-		return turnCounter;
+		return SoulGainCounter;
 	}
 	
 	public override List<Tooltip>? GetExtraTooltips()
