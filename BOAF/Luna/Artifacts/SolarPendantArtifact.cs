@@ -103,7 +103,7 @@ internal sealed class SolarPendantArtifact : Artifact, IRegisterable
 	{
 		List<Tooltip> tooltips =
 		[
-			new TTGlossary("status.stuncharge")];
+			new TTGlossary("status.stunCharge")];
 		return tooltips;
 	}
 }

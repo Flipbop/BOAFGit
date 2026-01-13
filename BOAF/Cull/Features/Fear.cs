@@ -16,23 +16,6 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		ModEntry.Instance.KokoroApi.StatusLogic.RegisterHook(new Hook());
 
 		ModEntry.Instance.KokoroApi.StatusRendering.RegisterHook(this);
-		ModEntry.Instance.Helper.Events.RegisterBeforeArtifactsHook(nameof(Artifact.OnTurnStart),
-			(State state, Combat combat) =>
-			{
-				if (combat.isPlayerTurn)
-				{
-					var stacks = state.ship.Get(ModEntry.Instance.FearStatus.Status);
-					if (stacks <= 0)
-						return;
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = true, mode = AStatusMode.Set});
-				} else if (!combat.isPlayerTurn)
-				{
-					var stacks = combat.otherShip.Get(ModEntry.Instance.FearStatus.Status);
-					if (stacks <= 0)
-						return;
-					combat.Queue(new AStatus() { status = ModEntry.Instance.FearStatus.Status, statusAmount = 0, targetPlayer = false, mode = AStatusMode.Set});
-				}
-			});
 		
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.ModifyDamageDueToParts)),
@@ -58,20 +41,26 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
         
 		var ship = __instance.targetPlayer ? s.ship : c.otherShip;
 		
-		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) <= 1) return;
-		ship.Set(ModEntry.Instance.SoulEnergyStatus.Status, 1);
-		if (ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 0) return;
-		ship.Set(ModEntry.Instance.SoulEnergyStatus.Status, 0);
+		if (ship.Get(ModEntry.Instance.FearStatus.Status) <= 1) return;
+		ship.Set(ModEntry.Instance.FearStatus.Status, 1);
+		if (ship.Get(ModEntry.Instance.FearStatus.Status) >= 0) return;
+		ship.Set(ModEntry.Instance.FearStatus.Status, 0);
 	}
 	private sealed class Hook : IKokoroApi.IV2.IStatusLogicApi.IHook
 	{
+		public IReadOnlySet<Status> GetStatusesToCallTurnTriggerHooksFor(
+			IKokoroApi.IV2.IStatusLogicApi.IHook.IGetStatusesToCallTurnTriggerHooksForArgs args)
+		{
+			IReadOnlySet<Status> statuses = new HashSet<Status>();
+			statuses.AddItem(ModEntry.Instance.FearStatus.Status);
+			return statuses;
+		}
 		public bool HandleStatusTurnAutoStep(IKokoroApi.IV2.IStatusLogicApi.IHook.IHandleStatusTurnAutoStepArgs args)
 		{
-			if (args.Status == ModEntry.Instance.FearStatus.Status)
-			{
-				return true;
-			}
+			if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
+				return false;
 
+			args.Amount = 0;
 			return false;
 		}
 	}

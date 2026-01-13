@@ -61,7 +61,7 @@
         "artifact": {
             "SoulSiphon": {
                 "name": "SOUL SIPHON", 
-                "description": "Every time your opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take hull damage you lose 1</c> <c=status>SOUL ENERGY</c>. While you have maximum <c=status>SOUL ENERGY</c>, the enemy gains <c=status>FEAR</c> every turn."
+                "description": "Every time your opponent's hull takes damage you gain 1 <c=status>SOUL ENERGY</c>. <c=downside>Every time you take hull damage you lose 1</c> <c=status>SOUL ENERGY</c>. Upon reaching 10 <c=status>SOUL ENERGY</c, instantly give the enemy <c=status>FEAR</c>, and give it to them again every turn as long as you still have 10."
             },
             "MercifulReaper": {
                 "name": "MERCIFUL REAPER",

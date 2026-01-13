@@ -36,7 +36,7 @@ internal sealed class ChronomancyArtifact : Artifact, IRegisterable
 				Title = ModEntry.Instance.Localizations.Localize(["Luna", "status", "Stardust", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Luna", "status", "Stardust", "description"])
 			}];
-		tooltips.Add(new TTGlossary("status.timestop", 1));
+		tooltips.Add(new TTGlossary("status.timeStop", 1));
 		return tooltips;
 	}
 }

@@ -149,7 +149,7 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 		{
 			if (args.Object is DormantWisp)
 			{
-				return true;
+				return false;
 			}
 			return null;
 		}
@@ -299,7 +299,7 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 		{
 			if (args.Object is DormantGreaterWisp)
 			{
-				return true;
+				return false;
 			}
 			return null;
 		}

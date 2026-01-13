@@ -69,12 +69,4 @@ internal sealed class LetterOfAcceptanceArtifact : Artifact, IRegisterable
 		}
 		return InactiveSprite.Sprite;
 	}
-	
-	public override List<Tooltip>? GetExtraTooltips()
-	{
-		List<Tooltip> tooltips =
-		[
-			new TTGlossary("cardtrait.floppable")];
-		return tooltips;
-	}
 }

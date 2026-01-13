@@ -48,7 +48,6 @@ internal sealed class SpellShaperArtifact : Artifact, IRegisterable
 		List<Tooltip> tooltips =
 		[
 			new TTGlossary("cardtrait.floppable"),
-			new TTGlossary("action.energy"),
 		];
 		return tooltips;
 	}
