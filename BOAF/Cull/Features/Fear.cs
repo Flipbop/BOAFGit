@@ -51,9 +51,7 @@ internal sealed class FearManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
 		public IReadOnlySet<Status> GetStatusesToCallTurnTriggerHooksFor(
 			IKokoroApi.IV2.IStatusLogicApi.IHook.IGetStatusesToCallTurnTriggerHooksForArgs args)
 		{
-			IReadOnlySet<Status> statuses = new HashSet<Status>();
-			statuses.AddItem(ModEntry.Instance.FearStatus.Status);
-			return statuses;
+			return new HashSet<Status>() {ModEntry.Instance.FearStatus.Status};;
 		}
 		public bool HandleStatusTurnAutoStep(IKokoroApi.IV2.IStatusLogicApi.IHook.IHandleStatusTurnAutoStepArgs args)
 		{
