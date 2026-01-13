@@ -1,6 +1,7 @@
 ﻿using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 
@@ -28,10 +29,10 @@ internal sealed class EnchantedScytheArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnchantedScythe", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Cull","artifact", "EnchantedScythe", "description"]).Localize
 		});
+		
 		ModEntry.Instance.Harmony.Patch(
 			original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.DirectHullDamage)),
-			prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Ship_DirectHullDamage_Prefix)),
-			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Ship_DirectHullDamage_Postfix))
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AStatus_Begin_Postfix))
 		);
 	}
 
@@ -52,23 +53,24 @@ internal sealed class EnchantedScytheArtifact : Artifact, IRegisterable
 		currentlyActive = false;
 	}
 	
-	private void Ship_DirectHullDamage_Prefix(Ship __instance, out int __state)
-		=> __state = __instance.hull;
-
-	private void Ship_DirectHullDamage_Postfix(Ship __instance, State s, Combat c, in int __state)
+	private static void AStatus_Begin_Postfix(AStatus __instance, State s, Combat c)
 	{
-		var damageTaken = __state - __instance.hull;
-		if (damageTaken <= 0)
-			return;
+		// Only do this postfix if we have the artifact
+		var artifact = s.EnumerateAllArtifacts().OfType<EnchantedScytheArtifact>().FirstOrDefault();
 
-		if (!__instance.isPlayerShip)
+		if (artifact != null)
 		{
-			if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) == 5) currentlyActive = false;
-			
-			return;
+			if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5)
+			{
+				artifact.currentlyActive = true;
+			}
+			else
+			{
+				artifact.currentlyActive = false;
+			}
 		}
-		if (s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) == 4) currentlyActive = true;
 	}
+	
 
 	public override Spr GetSprite()
 	{
