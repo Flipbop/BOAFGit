@@ -42,7 +42,7 @@
             },
             "Fear": {
                 "name": "Fear",
-                "description": "Take <c=keyword>+1 damage</c> when hit. <c=downside>Lost after taking a turn.</c>"
+                "description": "Take <c=keyword>+1 damage</c> when hit. <c=downside>Lost at the start of a turn.</c>"
             },
             "SoulDrain" : {
                 "name": "Soul Drain",

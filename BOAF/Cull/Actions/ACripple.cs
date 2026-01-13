@@ -14,6 +14,7 @@ public sealed class ACripple : DynamicWidthCardAction
 	public override void Begin(G g, State s, Combat c)
 	{
 		base.Begin(g, s, c);
+    timer = 0.0;
     if (!bUpgrade)
     {
       c.Queue(s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 7
@@ -23,7 +24,7 @@ public sealed class ACripple : DynamicWidthCardAction
     else
     {
       c.Queue(s.ship.Get(ModEntry.Instance.SoulEnergyStatus.Status) >= 5
-        ? new AAttack() { damage = Card.GetActualDamage(s, 1), brittle = true }
+        ? new AAttack() { damage = Card.GetActualDamage(s, 1), brittle = true}
         : new AAttack() { damage = Card.GetActualDamage(s, 1), weaken = true });
     }
 	}

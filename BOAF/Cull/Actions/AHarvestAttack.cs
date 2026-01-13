@@ -41,7 +41,7 @@ public sealed class AHarvestAttack : AAttack
 			return;
 		if (!ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(c, "isHarvest", false))
 			return;
-		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true});
+		c.QueueImmediate(new AStatus() {status = ModEntry.Instance.SoulEnergyStatus.Status, statusAmount = 1, targetPlayer = true, timer = 0.0});
 	}
 	
 	public override Icon? GetIcon(State s)

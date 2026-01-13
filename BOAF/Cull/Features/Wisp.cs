@@ -8,6 +8,7 @@ using Nanoray.PluginManager;
 using Nanoray.Shrike;
 using Nanoray.Shrike.Harmony;
 using Nickel;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
@@ -86,6 +87,7 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 	{
 		DormantWispSprite = ModEntry.Instance.DormantWispSprite;
 		DormantWispIcon = ModEntry.Instance.DormantWispIcon;
+		ModEntry.Instance.KokoroApi.AttackLogic.RegisterHook(new Hook());
 	}
 
 	public override void Render(G g, Vec v)
@@ -139,6 +141,18 @@ internal sealed class DormantWisp : AttackDrone, IRegisterable
 		List<CardAction> actions = [
 			new ASpawnFromMidrow() {thing = new Wisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
 		return actions;
+	}
+	
+	private sealed class Hook : IKokoroApi.IV2.IAttackLogicApi.IHook
+	{
+		public bool? ModifyMidrowObjectVisuallyStoppingAttacks(IKokoroApi.IV2.IAttackLogicApi.IHook.IModifyMidrowObjectVisuallyStoppingAttacksArgs args)
+		{
+			if (args.Object is DormantWisp)
+			{
+				return true;
+			}
+			return null;
+		}
 	}
 }
 
@@ -222,6 +236,8 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 	{
 		DormantGreaterWispSprite = ModEntry.Instance.DormantGreaterWispSprite;
 		DormantGreaterWispIcon = ModEntry.Instance.DormantGreaterWispIcon;
+		ModEntry.Instance.KokoroApi.AttackLogic.RegisterHook(new Hook());
+
 	}
 
 	public override void Render(G g, Vec v)
@@ -275,6 +291,18 @@ internal sealed class DormantGreaterWisp : AttackDrone, IRegisterable
 		List<CardAction> actions = [
 			new ASpawnFromMidrow() {thing = new GreaterWisp(){DeathTurn = 1 + c.turn}, worldX = x, byPlayer = wasPlayer}];
 		return actions;
+	}
+	
+	private sealed class Hook : IKokoroApi.IV2.IAttackLogicApi.IHook
+	{
+		public bool? ModifyMidrowObjectVisuallyStoppingAttacks(IKokoroApi.IV2.IAttackLogicApi.IHook.IModifyMidrowObjectVisuallyStoppingAttacksArgs args)
+		{
+			if (args.Object is DormantGreaterWisp)
+			{
+				return true;
+			}
+			return null;
+		}
 	}
 }
 
