@@ -1176,11 +1176,11 @@
         "artifact": {
             "HunterCannons": {
                 "name": "HUNTER CANNONS",
-                "description": "If you did not hit the enemy on your turn, both of your cannons are active for the next turn. Afterwards, swap your active cannon."
+                "description": "If you did not hit the enemy on your turn and only 1 cannon is active, both of your cannons are active for the next turn. Afterwards, swap your active cannon."
             },
             "ReaperCannons": {
                 "name": "REAPER CANNONS",
-                "description": "If you you did not hit the enemy on your turn, both of your cannons are active for the next 3 turns. Afterwards, swap your active cannon. Replaces <c=artifact>HUNTER CANNONS</c>."
+                "description": "If you you did not hit the enemy on your turn and only 1 cannon is active, both of your cannons are active for the next 3 turns. Afterwards, swap your active cannon. Replaces <c=artifact>HUNTER CANNONS</c>."
             },
             "VulcanPlating": {
                 "name": "VULCAN PLATING",

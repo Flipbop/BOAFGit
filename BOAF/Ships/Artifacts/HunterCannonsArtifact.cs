@@ -48,7 +48,7 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 				ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", false);
 			}
 		}
-		if (peace)
+		if (peace && !war)
 		{
 			war = true;
 			foreach (Part p in state.ship.parts)

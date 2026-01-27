@@ -56,7 +56,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 				turnCounter--;
 			}
 		}
-		if (peace)
+		if (peace && !war)
 		{
 			war = true;
 			foreach (Part p in state.ship.parts)
