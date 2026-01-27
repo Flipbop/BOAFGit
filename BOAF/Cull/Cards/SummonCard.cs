@@ -40,7 +40,7 @@ internal sealed class SummonCard : Card, IRegisterable
 		{
 			Upgrade.B => [
 				new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}},
-				new AMove(){dir = 2},
+				new AMove(){dir = 2, targetPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -53,7 +53,7 @@ internal sealed class SummonCard : Card, IRegisterable
 			],
 			_ => [
 				new ASpawn(){fromPlayer = true, thing = new Wisp(){ DeathTurn = 1 + c.turn}},
-				new AMove(){dir = 2},
+				new AMove(){dir = 2, targetPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),

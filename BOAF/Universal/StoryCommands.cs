@@ -116,11 +116,6 @@ namespace Flipbop.BOAF;
 
         public override bool Execute(G g, IScriptTarget target, ScriptCtx ctx)
         {
-            g.state.PopulateRun(ship, new MemoryMap(true) {nodes = new []
-                {
-                    mapTuple(0, 0, null, new MapBattle() { battleType = BattleType.Boss, ai = enemy }),
-                },   
-                currentLocation = new Vec(0, 0),}, decks, difficulty: 1);
             g.state.deck.Clear();
             foreach (Card card in cards) g.state.deck.Add(card);
             foreach (Artifact artifact in ship.artifacts.ToList())
@@ -136,6 +131,11 @@ namespace Flipbop.BOAF;
             }
             g.state.ship.hullMax += hullIncrease;
             g.state.ship.hull += hullIncrease;
+            g.state.PopulateRun(ship, new MemoryMap(true) {nodes = new []
+                {
+                    mapTuple(0, 0, null, new MapBattle() { battleType = BattleType.Boss, ai = enemy }),
+                },   
+                currentLocation = new Vec(0, 0),}, decks, difficulty: 1);
             return true;
         }
         

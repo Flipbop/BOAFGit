@@ -37,7 +37,7 @@ internal sealed class DashAttackCard : Card, IRegisterable
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AMove() {dir = 1},
+				new AMove() {dir = 1, targetPlayer = true},
 				new AHarvestAttack(){damage = GetDmg(s, 2)},
 				Conditional.MakeAction(
 					Conditional.Equation(
@@ -46,7 +46,7 @@ internal sealed class DashAttackCard : Card, IRegisterable
 						Conditional.Constant(3),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AMove() {dir = 1}
+					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction,
 				Conditional.MakeAction(
 					Conditional.Equation(
@@ -64,13 +64,13 @@ internal sealed class DashAttackCard : Card, IRegisterable
 						Conditional.Constant(7),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AMove() {dir = 1}
+					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction
 			],
 			_ => [
-				new AMove() {dir = 1},
+				new AMove() {dir = 1, targetPlayer = true},
 				new AHarvestAttack(){damage = GetDmg(s, 1)},
-				new AMove() {dir = 1},
+				new AMove() {dir = 1, targetPlayer = true},
 				Conditional.MakeAction(
 					Conditional.Equation(
 						Conditional.Status(ModEntry.Instance.SoulEnergyStatus.Status),
@@ -87,7 +87,7 @@ internal sealed class DashAttackCard : Card, IRegisterable
 						Conditional.Constant(5),
 						IKokoroApi.IV2.IConditionalApi.EquationStyle.Possession
 					).SetShowOperator(false),
-					new AMove() {dir = 1}
+					new AMove() {dir = 1, targetPlayer = true}
 				).AsCardAction
 			]
 		};
