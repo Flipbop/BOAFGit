@@ -466,7 +466,8 @@
                 "<c=8A3388>LUNA</c>",
                 "Your amateur Star wizard.",
                 "Uses a unique resource called <c=status>Stardust</c> to preform actions, but has to manage this resource across multiple battles. A lot of her cards are <c=keyword>dual-sided</c> so you can decide whether or not you want to spend <c=status>Stardust</c> for a more powerful effect."
-            ]
+            ],
+            "nameKass": "Kass"
         },
         "action": {
             "MissingDust": {

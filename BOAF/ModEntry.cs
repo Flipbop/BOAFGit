@@ -94,6 +94,7 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry stardustSprite { get; }
 	internal ISpriteEntry residualDustSprite { get; }
 	internal ISpriteEntry stardustCostSprite { get; }
+	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
 
 	#endregion
 	
@@ -967,7 +968,104 @@ public sealed class ModEntry : SimpleMod
 				.Localize
 		});
 		
-		//Vault.charsWithLore.Add(LunaDeck.Deck);
+		KassCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kass", new NonPlayableCharacterConfigurationV2()
+		{
+			CharacterType = "kass",
+			Name = AnyLocalizations.Bind(["Luna","character", "nameKass"]).Localize,
+			
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "neutral",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Neutral/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "smile",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Smile/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "squint",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Squint/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "closed",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Closed/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "dead",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Dead/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "ghost",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Ghost/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "ghostsad",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/GhostSad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "ghostmad",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/GhostMad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "fade",
+			Frames = Enumerable.Range(0, 2)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Fade/{i}.png")).Sprite)
+				.ToList()
+		});
+		
+		Vault.charsWithLore.Add(LunaDeck.Deck);
 		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
 		# endregion
