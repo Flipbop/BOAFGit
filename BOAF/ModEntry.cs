@@ -978,7 +978,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "neutral",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Neutral/{i}.png")).Sprite)
@@ -988,7 +988,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "smile",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Smile/{i}.png")).Sprite)
@@ -998,7 +998,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "squint",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Squint/{i}.png")).Sprite)
@@ -1008,7 +1008,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "closed",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Closed/{i}.png")).Sprite)
@@ -1028,7 +1028,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "ghost",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Ghost/{i}.png")).Sprite)
@@ -1038,7 +1038,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "ghostsad",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/GhostSad/{i}.png")).Sprite)
@@ -1048,7 +1048,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "ghostmad",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/GhostMad/{i}.png")).Sprite)
@@ -1058,7 +1058,7 @@ public sealed class ModEntry : SimpleMod
 		{
 			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "fade",
-			Frames = Enumerable.Range(0, 2)
+			Frames = Enumerable.Range(0, 4)
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Fade/{i}.png")).Sprite)
@@ -1269,7 +1269,8 @@ public sealed class ModEntry : SimpleMod
 		#endregion
 		
 		DB.backgrounds.Add("BGJayWorkshop", typeof(Backgrounds.BGJayWorkshop));
-		
+		DB.backgrounds.Add("BGLunaAcademy", typeof(Backgrounds.BGLunaAcademy));
+
 		DB.backgrounds.Add("BGBattleMemory", typeof(Backgrounds.BGBattleMemory));
 		DB.backgrounds.Add("BGRunWinCustom", typeof(Backgrounds.BGRunWinCustom));
 

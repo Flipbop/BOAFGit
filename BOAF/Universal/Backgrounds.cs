@@ -36,6 +36,11 @@ public class Backgrounds
             if (jay.alarm) __result = new MusicState { scene = Song.Silence };
         }
 
+        if (__instance.bg is BGLunaAcademy luna)
+        {
+            if (luna.fire) __result = new MusicState { scene = Song.Riggs };
+        }
+        
         if (__instance.bg is BGBattleMemory battle)
         {
             if (battle.prefight) __result = new MusicState { scene = Song.Polytrope, sceneLayer = SceneLayer.Intro};
@@ -95,6 +100,39 @@ public class Backgrounds
             if (blackout) Draw.Fill(Colors.black);
 
 
+        }
+    }
+    
+    public class BGLunaAcademy : BG {
+        public bool village = false;
+        public bool academy = false;
+        public bool fire = false;
+        
+        public override void OnAction(State s, string action) {
+            if (action == "village")
+            {
+                village = true;
+                academy = false;
+                fire = false;
+            }
+            if (action == "fire")
+            {
+                village = true;
+                academy = false;
+                fire = true;
+            }
+
+            if (action == "academy")
+            {
+                academy = true;
+                village = false;
+                fire = false;
+            }
+        }
+
+        public override void Render(G g, double t, Vec offset) {
+            Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
+            BGComponents.Letterbox();
         }
     }
     

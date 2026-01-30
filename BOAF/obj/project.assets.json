@@ -106,7 +106,7 @@
     "/Users/christopherfranson/.nuget/packages/": {}
   },
   "project": {
-    "version": "0.4.4",
+    "version": "0.5.0",
     "restore": {
       "projectUniqueName": "/Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/BOAF.csproj",
       "projectName": "BOAF",

@@ -44,6 +44,7 @@ static class CommonDefinitions
     internal const string AmDuncan = "skunk";
     internal const string AmJumbo = "miner";
     internal const string AmSmiff = "batboy";
+    internal const string AmDillian = "dillian";
 
 
     internal static string AmValv = Instance.ValvCharacter.CharacterType;
