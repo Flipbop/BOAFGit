@@ -116,6 +116,14 @@ internal class MemoryDialogueLuna
                     new (AmLuna, "nervous", "Oh no..."),
                     new(new Wait{secs = 2}),
                     new (AmLuna, "tear", "Please please please please please"),
+                    new (AmKass, "dying", "*cough cough* i-is that you, Luna?", true),
+                    new (AmLuna, "tear", "Yes, it's alright, I'm here! I'm here."),
+                    new (AmKass, "dying", "I-I don't think I'm gonna make it.", true),
+                    new (AmLuna, "tear", "Don't talk like that! You'll be fine!"),
+                    new (AmKass, "dying", "It's ok, Luna. You'll be ok.", true),
+                    new (AmLuna, "tear", "Please don't..."),
+                    new (AmKass, "dying", "Luna, I love you.", true),
+                    new (AmLuna, "tear", "I love you too..."),
                     new (AmKass, "dead", "...", true),
                     new (AmLuna, "tear", "Nononononono..."),
                     new (AmLuna, "tear", "Wake up... please..."),
@@ -136,10 +144,92 @@ internal class MemoryDialogueLuna
                 ],
                 requiredScenes = ["Luna_Memory_2"],
                 dialogue = [
-                    
+                    new(new Wait{secs = 2}),
+                    new (AmLuna, "gameover", "..."),
+                    new (AmCull, "Wake up.", true),
+                    new (AmLuna, "squint", "Five more minutes..."),
+                    new (AmCull, "It's just you and me right now. We have a goal to complete.", true),
+                    new (AmLuna, "squint", "Different from the usual one?"),
+                    new (AmCull, "Quite. We are gonna deal with your grief today.", true),
+                    new (AmLuna, "squint", "Huh? How so?"),
+                    new (AmCull, "I can resurrect those that have passed, even if only temporarily.", true),
+                    new (AmCull, "This can help you make peace.", true),
+                    new (AmLuna, "I get to see Kass again?! What do I have to do?!"),
+                    new (AmCull, "nervous","You might not like it...", true),
+                    new (AmLuna, "angry","Tell me."),
+                    new (AmCull, "We have to fight the literal personification of your grief.", true),
+                    new (AmLuna, "squint", "That sounds hard."),
+                    new (AmCull, "It very well could be. I need you to be absolutely ready.", true),
+                    new (AmLuna, "gameover","..."),
+                    new (AmLuna, "angry","Bring it on."),
+                    new (new MemoryFight()
+                    {
+                        cards = new List<Card>
+                        {
+                            new BasicShotDualCard(),
+                            new BasicDodgeDualCard(),
+                            new BasicShieldDualCard(),
+                            new HarvestCard() {upgrade = Upgrade.A},
+                            new QuickCastCard(),
+                            new InfiniteShineCard() {upgrade = Upgrade.B},
+                            new ShinyShotCard(),
+                            new BulletWardCard() {upgrade = Upgrade.A},
+                            new PiercingLightCard(),
+                            new BoonCard() {upgrade = Upgrade.A}
+                        }, 
+                        artifacts = new List<Artifact>
+                        {
+                            new SolarPendantArtifact(),
+                            new BackupCrystalArtifact(),
+                            new SpellShaperArtifact(),
+                            new WarpMastery(),
+                            new Crosslink()
+                        },
+                        decks = new List<Deck>
+                        {
+                            ModEntry.Instance.CullDeck.Deck,
+                            ModEntry.Instance.LunaDeck.Deck,
+                        },
+                        enemy = new DepressionEnemy(),
+                        ship = ModEntry.Instance.AthenaShip.Configuration.Ship,
+                        removeArtifacts = [new ShieldPrep()],
+                        hullIncrease = 10,
+                    }),
                 ]
             }},
-            
+            {"Depression_Power_Up", new(){
+                type = NodeType.@event,
+                allPresent = [AmLuna, AmCull],
+                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmLuna, "nervous", "How are we supposed to kill it now?!" ),
+                    new (AmCull,"angry","Just survive! Those perfect shields can't last forever!" ),
+                ]
+            }},
+            {"Depression_Callout_Multi_0", new(){
+                type = NodeType.combat,
+                allPresent = [AmLuna, AmCull, AmVoid],
+                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "1 C0UL??D H4\\/E <c=part>SAVED HER</c>." ),
+                ]
+            }},
+            {"Depression_Callout_Multi_1", new(){
+                type = NodeType.combat,
+                allPresent = [AmLuna, AmCull, AmVoid],
+                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "1'??L VI5IT 4S <c=part>OFTEN AS I CAN.</c>" ),
+                ]
+            }},
+            {"Depression_Callout_Multi_2", new(){
+                type = NodeType.combat,
+                allPresent = [AmLuna, AmCull, AmVoid],
+                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                dialogue = [
+                    new (AmVoid, "<c=part>  </c>" ),
+                ]
+            }},
             {"Luna_Closure", new(){
                 type = NodeType.@event,
                 introDelay = false,
@@ -148,7 +238,7 @@ internal class MemoryDialogueLuna
                     "after_void"
                 ],
                 allPresent = [AmLuna, AmCull, AmVoid],
-                nonePresent = [/*AmJay, AmCenti, AmEva*/],
+                nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 requiredScenes = ["Luna_Memory_3"],
                 dialogue = [
                     

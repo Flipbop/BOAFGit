@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class AngerCard : Card, IRegisterable
+internal sealed class DenialCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,7 +18,7 @@ internal sealed class AngerCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/Amplifier.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Enemies","card", "Anger", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Enemies","card", "Denial", "name"]).Localize
 		});
 	}
 
@@ -28,16 +28,14 @@ internal sealed class AngerCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = 1,
 			exhaust	= true,
-			retain = true,
 			temporary = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AStatus() { status = Status.overdrive, statusAmount = 2, targetPlayer = false, dialogueSelector = "Anger_Callout"},
-			new AStatus() { status = Status.overdrive, statusAmount = 1, targetPlayer = true},
-
+			new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = true, dialogueSelector = "Denial_Callout"},
+			new AStatus() { status = Status.evade, statusAmount = 2, targetPlayer = true},
 		];
 };
 

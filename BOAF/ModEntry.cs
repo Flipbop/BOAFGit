@@ -199,9 +199,9 @@ public sealed class ModEntry : SimpleMod
 		typeof(AthenaTacticsCard),
 		
 		typeof(AngerCard),
-		/*typeof(DepressionCard),
+		typeof(DepressionCard),
 		typeof(DenialCard),
-		typeof(BargainingCard),
+		/*typeof(BargainingCard),
 		typeof(AcceptanceCard)*/
 	];
 	
@@ -285,9 +285,9 @@ public sealed class ModEntry : SimpleMod
 	internal static IReadOnlyList<Type> EnemyTypes { get; } =
 	[
 		typeof(AngerEnemy),
-		//typeof(DepressionEnemy),
+		typeof(DepressionEnemy),
 		//typeof(BargainingEnemy),
-		//typeof(DenialEnemy),
+		typeof(DenialEnemy),
 		//typeof(AcceptanceEnemy),
 		//typeof(DeathEnemy),
 	];
@@ -1012,6 +1012,16 @@ public sealed class ModEntry : SimpleMod
 				.Select(i =>
 					helper.Content.Sprites
 						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Closed/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "dying",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Dying/{i}.png")).Sprite)
 				.ToList()
 		});
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()

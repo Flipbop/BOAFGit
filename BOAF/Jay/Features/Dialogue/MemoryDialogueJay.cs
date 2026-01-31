@@ -209,7 +209,7 @@ internal class MemoryDialogueJay
             {"Anger_Power_Up", new(){
                 type = NodeType.@event,
                 allPresent = [AmJay, AmCull],
-                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmJay, "nervous", "Did it just power up?!" ),
                     new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
@@ -218,7 +218,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_0", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
                 ]
@@ -226,7 +226,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_1", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "THAT'S N??0T <c=part>THE POINT.</c>" ),
                 ]
@@ -234,7 +234,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_2", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
                 ]
@@ -247,7 +247,7 @@ internal class MemoryDialogueJay
                     "after_void"
                 ],
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [/*AmLuna, AmCenti, AmEva*/],
+                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 requiredScenes = ["Jay_Memory_3"],
                 dialogue = [
                     new (new BGAction{action = "fight"}),  
