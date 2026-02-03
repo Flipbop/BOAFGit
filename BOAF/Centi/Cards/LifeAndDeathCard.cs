@@ -6,12 +6,10 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ReadTheContractCard : Card, IRegisterable
+internal sealed class LifeAndDeathCard : Card, IRegisterable
 {
-
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -21,8 +19,8 @@ internal sealed class ReadTheContractCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/ReadTheContract.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "ReadTheContract", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/LifeAndDeath.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "LifeAndDeath", "name"]).Localize
 		});
 	}
 
@@ -30,23 +28,20 @@ internal sealed class ReadTheContractCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = 2,
+			buoyant = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ADetect(){Amount = 2}
-
-			],
-			Upgrade.B => [
-				new ADetect(){Amount = 1},
-				new AReconfigure(){Amount = 1},
-				new ADetect(){Amount = 1}
+				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
+				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 2}
 			],
 			_ => [
-				new ADetect(){Amount = 1}
+				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
+				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 1}
 			]
 		};
 }

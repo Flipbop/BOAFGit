@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class JumpTheLineCard : Card, IRegisterable
+internal sealed class PunishmentCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +18,8 @@ internal sealed class JumpTheLineCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/JumpTheLine.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "JumpTheLine", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Punishment.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "Punishment", "name"]).Localize
 		});
 	}
 

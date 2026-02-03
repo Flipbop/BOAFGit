@@ -7,7 +7,7 @@ using System;
 
 namespace Flipbop.BOAF;
 
-internal sealed class SelectiveSensorsCard : Card, IRegisterable
+internal sealed class StoneWallCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -21,7 +21,7 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", /*"SelectiveSensors"*/"InstantMiniShip", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "StoneWall", "name"]).Localize
 		});
 	}
 
@@ -36,10 +36,6 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 				_ => 2,
 			},
 			exhaust = true,
-			/*description =
-				ModEntry.Instance.Localizations.Localize([
-					"Centi", "card", "SelectiveSensors", "description", upgrade.ToString()
-				]),*/
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

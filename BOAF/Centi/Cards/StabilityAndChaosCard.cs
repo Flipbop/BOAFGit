@@ -6,10 +6,12 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class CommsHubCard : Card, IRegisterable
+internal sealed class StabilityAndChaosCard : Card, IRegisterable
 {
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
+
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -19,8 +21,8 @@ internal sealed class CommsHubCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CommsHub.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CommsHub", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/StabilityAndChaos.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "StabilityAndChaos", "name"]).Localize
 		});
 	}
 
@@ -28,22 +30,23 @@ internal sealed class CommsHubCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 0:1,
-			exhaust = true
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 2},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new ADetect(){Amount = 2}
+
+			],
+			Upgrade.B => [
+				new ADetect(){Amount = 1},
+				new AReconfigure(){Amount = 1},
+				new ADetect(){Amount = 1}
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 1},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new ADetect(){Amount = 1}
 			]
 		};
 }

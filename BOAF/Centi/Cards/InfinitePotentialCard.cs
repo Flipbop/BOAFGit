@@ -7,7 +7,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class CannonConstructorCard : Card, IRegisterable
+internal sealed class InfinitePotentialCard : Card, IRegisterable
 {
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
@@ -21,8 +21,8 @@ internal sealed class CannonConstructorCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CannonConstructor.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "CannonConstructor", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/InfinitePotential.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "InfinitePotential", "name"]).Localize
 		});
 	}
 

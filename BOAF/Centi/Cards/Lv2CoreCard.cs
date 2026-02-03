@@ -6,7 +6,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class EscapePlanCard : Card, IRegisterable
+internal sealed class Lv2CoreCard : Card, IRegisterable
 {
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
@@ -20,8 +20,8 @@ internal sealed class EscapePlanCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/EscapePlan.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "EscapePlan", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Lv2Core.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Lv2Core", "name"]).Localize
 		});
 	}
 
@@ -30,6 +30,10 @@ internal sealed class EscapePlanCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.B? 3:2,
+			description =
+				ModEntry.Instance.Localizations.Localize([
+					"Centi", "card", "Lv2Core", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

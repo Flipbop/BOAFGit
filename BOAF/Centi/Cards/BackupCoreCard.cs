@@ -1,15 +1,12 @@
-using FSPRO;
 using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
-using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ShiftCard : Card, IRegisterable
+internal sealed class BackupCoreCard : Card, IRegisterable
 {
-
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
@@ -21,10 +18,9 @@ internal sealed class ShiftCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Shift", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/BackupCore.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "BackupCore", "name"]).Localize
 		});
-		
 	}
 
 	public override CardData GetData(State state)
@@ -32,18 +28,26 @@ internal sealed class ShiftCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			flippable = upgrade == Upgrade.A
+			infinite = true,
+			description =
+			ModEntry.Instance.Localizations.Localize([
+			"Centi", "card", "BackupCore", "description", upgrade.ToString()
+				]),
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AMove(){dir = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 2}
+				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
 			],
-			_ => [
-				new AMove(){dir = 2, targetPlayer = true},
+			Upgrade.A => [
+				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
+				new AReconfigure(){Amount = 1}
+			],
+			_=>[
+				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 				new AReconfigure(){Amount = 1}
 			]
 		};

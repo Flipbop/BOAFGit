@@ -2,10 +2,11 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class OptimizeCard : Card, IRegisterable
+internal sealed class CorePoweredShieldsCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -18,8 +19,8 @@ internal sealed class OptimizeCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Optimize.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Optimize", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CorePoweredShields.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CorePoweredShield", "name"]).Localize
 		});
 	}
 
@@ -27,25 +28,22 @@ internal sealed class OptimizeCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			infinite = true
-
+			cost = upgrade == Upgrade.B? 0:1,
+			exhaust = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.B => [
-				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			],
 			Upgrade.A => [
-				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
-			],
-			_=>[
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
+				new ADetect(){Amount = 2},
 				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+			],
+			_ => [
+				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
+				new ADetect(){Amount = 1},
+				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
 			]
 		};
 }

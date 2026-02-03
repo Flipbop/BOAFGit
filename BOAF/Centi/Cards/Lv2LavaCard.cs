@@ -7,11 +7,12 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ControlZCard : Card, IRegisterable
+internal sealed class Lv2LavaCard : Card, IRegisterable
 {
+
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
+		//ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
 
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
@@ -20,10 +21,10 @@ internal sealed class ControlZCard : Card, IRegisterable
 			{
 				deck = ModEntry.Instance.CentiDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				upgradesTo = [Upgrade.A, Upgrade.B],
+				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "ControlZ", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Lv2Lava.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Lv2Lava", "name"]).Localize
 		});
 	}
 
@@ -31,24 +32,19 @@ internal sealed class ControlZCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			retain = upgrade == Upgrade.B,
-			description =
-				ModEntry.Instance.Localizations.Localize([
-					"Centi", "card", "ControlZ", "description", upgrade.ToString()
-				]),
+			cost = 1,
+			exhaust = upgrade != Upgrade.A,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
-			Upgrade.A =>
-			[
-				new AReconfigure(){Amount = 1, reverse = true},
-				new ADetect(){Amount = 1}
+			Upgrade.B => [
+				new APartModManager.APartModification {part = s.ship.parts[0]},
+				new APartModManager.APartModification {part = s.ship.parts[^1]}
 			],
 			_ => [
-				new AReconfigure(){Amount = 1, reverse = true}
+				new APartModManager.APartModification {part = s.ship.parts[0]}
 			]
 		};
 	
@@ -56,9 +52,14 @@ internal sealed class ControlZCard : Card, IRegisterable
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not ControlZCard c)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
+			if (args.Card is HeavyArmoringCard card)
+			{
+				if (card.upgrade == Upgrade.B)
+				{
+					return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
+				}
+			}
+			return null;
 		}
 	}
-};
+}

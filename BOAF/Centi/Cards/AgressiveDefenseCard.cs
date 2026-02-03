@@ -7,7 +7,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class SensoryShotCard : Card, IRegisterable
+internal sealed class AgressiveDefenseCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -20,8 +20,8 @@ internal sealed class SensoryShotCard : Card, IRegisterable
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/SensoryShot.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "SensoryShot", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/AgressiveDefense.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "AgressiveDefense", "name"]).Localize
 		});
 	}
 

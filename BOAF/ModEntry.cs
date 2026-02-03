@@ -143,6 +143,16 @@ public sealed class ModEntry : SimpleMod
 		typeof(PremeditateCard),
 		typeof(ShillelaghCard),
 		typeof(BulletWardCard),
+		
+		typeof(FireAndIceCard),
+		typeof(AgressiveDefenseCard),
+		typeof(LifeAndDeathCard),
+		typeof(StabilityAndChaosCard),
+		typeof(CapacitorSlugCard),
+		typeof(CorePoweredShieldsCard),
+		typeof(DoubleShieldCard),
+		typeof(PunishmentCard),
+		typeof(GeneratorCard),
 	];
 
 	internal static IReadOnlyList<Type> UncommonCardTypes { get; } = [
@@ -169,6 +179,14 @@ public sealed class ModEntry : SimpleMod
 		typeof(CradlesCometCard),
 		typeof(GatherCard), 
 		typeof(NorthStarCard),
+		
+		typeof(TidalWaveCard),
+		typeof(BackupCoreCard),
+		typeof(Lv2CoreCard),
+		typeof(HardenCard),
+		typeof(BubbleSiphonCard),
+		typeof(ShieldConverterCard), 
+		typeof(IncreasedPowerCard),
 	];
 
 	internal static IReadOnlyList<Type> RareCardTypes { get; } = [
@@ -189,6 +207,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(CosmicCollectionCard),
 		typeof(NebulaCard),
 		typeof(SpaceTimeCard),
+		
+		typeof(InfinitePotentialCard),
+		typeof(AllTogetherCard),
+		typeof(LastStandCard),
+		typeof(PhysicalTraumaCard),
+		typeof(StoneWallCard),
 	];
 
 	internal static IReadOnlyList<Type> SpecialCardTypes { get; } = [
@@ -196,7 +220,10 @@ public sealed class ModEntry : SimpleMod
 		
 		typeof(InspectionCard),
 		
-		
+		typeof(Lv2MossCard),
+		typeof(Lv2BrimstoneCard),
+		typeof(Lv2LavaCard),
+
 		
 		typeof(BasicShotDualCard),
 		typeof(BasicShieldDualCard),
