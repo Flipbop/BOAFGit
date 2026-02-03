@@ -221,6 +221,8 @@ internal class MemoryDialogueJay
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
+                    new (AmJay, "sob", "...")
+
                 ]
             }},
             {"Anger_Callout_Multi_1", new(){
@@ -229,6 +231,7 @@ internal class MemoryDialogueJay
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "THAT'S N??0T <c=part>THE POINT.</c>" ),
+                    new (AmJay, "sad", "...")
                 ]
             }},
             {"Anger_Callout_Multi_2", new(){
@@ -237,6 +240,8 @@ internal class MemoryDialogueJay
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
+                    new (AmJay, "tear", "...")
+
                 ]
             }},
             {"Jay_Closure", new(){
@@ -278,6 +283,8 @@ internal class MemoryDialogueJay
                     new (AmJay,"tear","Goodbye, Valv. I'll miss you." ),
                     new (AmValv, "fade", "Goodbye, Jay.", flipped: true  ),
                     new (AmValv, "purposefully_misspelled_name_to_make_her_disappear", "...", flipped: true  ),
+                    new (AmJay,"sob","...I'll miss you." ),
+
                     new (new EndMemoryFight())
                 ]
             }},

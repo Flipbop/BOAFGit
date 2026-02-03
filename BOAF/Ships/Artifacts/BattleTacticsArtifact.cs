@@ -24,14 +24,18 @@ internal sealed class BattleTacticsArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "BattleTactics", "description"]).Localize
 		});
 	}
+
+	public bool used = false;
 	
 	public override void OnPlayerPlayCard(int energyCost, Deck deck, Card card, State state, Combat combat, int handPosition,
 		int handCount)
 	{
 		base.OnPlayerPlayCard(energyCost, deck, card, state, combat, handPosition, handCount);
 
-		if (card.GetData(state).floppable)
+		
+		if (card.GetData(state).floppable && !used)
 		{
+			used = true;
 			Card cardCopy = card.CopyWithNewId();
 			List<CardAction> actions = new List<CardAction>();
 			foreach (CardAction action in cardCopy.GetActions(state, combat))
@@ -54,6 +58,12 @@ internal sealed class BattleTacticsArtifact : Artifact, IRegisterable
 			if (state.EnumerateAllArtifacts().Any((a) => a is EndlessPreparationsArtifact)) newCard.discount -= 1;
 			combat.QueueImmediate(new AAddCard(){card = newCard, destination = CardDestination.Hand});
 		}
+	}
+
+	public override void OnTurnStart(State state, Combat combat)
+	{
+		base.OnTurnStart(state, combat);
+		used = false;
 	}
 
 	public override List<Tooltip>? GetExtraTooltips()

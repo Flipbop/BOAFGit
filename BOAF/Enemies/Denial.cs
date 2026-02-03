@@ -104,9 +104,9 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 		];
 		return new Ship {
 			x = 6,
-			hull = 12,
-			hullMax = 12,
-			shieldMaxBase = 3,
+			hull = 15,
+			hullMax = 15,
+			shieldMaxBase = 5,
 			ai = this,
 			chassisUnder = "chassis_lawless",
 			parts = parts
@@ -121,7 +121,7 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 	public override void OnSurvived(State s, Combat c)
 	{
 		base.OnSurvived(s, c);
-		c.QueueImmediate(new AStatus(){status = Status.perfectShield, statusAmount = 3, targetPlayer = false, dialogueSelector = "Denial_Power_Up"});
+		c.QueueImmediate(new AStatus(){status = Status.perfectShield, statusAmount = 4, targetPlayer = false, dialogueSelector = "Denial_Power_Up"});
 	}
 
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)
@@ -209,7 +209,7 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 				new IntentGiveCard
 				{
 					key = "cockpit",
-					card = new DepressionCard(),
+					card = new DenialCard(),
 					amount = 1,
 					destination = CardDestination.Hand
 				},

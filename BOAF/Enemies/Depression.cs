@@ -51,18 +51,7 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 		};
 		List<Part> parts = [
 			new Part {
-				key = "outerwing.left",
-				type = PType.wing,
-				skin = "missiles_gemini_off"
-			},
-			new Part()
-			{
-				key = "scaffold.left"	,
-				type = PType.empty,
-				skin = "scaffolding_asym",
-			},
-			new Part {
-				key = "innerwing.left",
+				key = "wing.left",
 				type = PType.wing,
 				skin = "missiles_gemini_off"
 			},
@@ -72,31 +61,25 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 				skin = "wing_knight"
 			},
 			new Part {
-				key = "cockpit",
-				type = PType.cockpit,
-				skin = "cockpit_wizard"
-			},
-			new Part {
 				key = "cannon.right",
 				type = PType.cannon,
-				skin = "wing_knight",
-				flip = true
-			},
-			new Part {
-				key = "innerwing.right",
-				type = PType.wing,
-				skin = "missiles_gemini_off",
-				flip = true
+				skin = "wing_knight"
 			},
 			new Part()
 			{
-				key = "scaffold.right"	,
+				key = "scaffold"	,
 				type = PType.empty,
 				skin = "scaffolding_asym",
 				flip = true
 			},
 			new Part {
-				key = "outerwing.right",
+				key = "cockpit",
+				type = PType.cockpit,
+				skin = "cockpit_wizard",
+				stunModifier = PStunMod.stunnable
+			},
+			new Part {
+				key = "wing.right",
 				type = PType.wing,
 				skin = "missiles_gemini_off",
 				flip = true
@@ -104,8 +87,8 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 		];
 		return new Ship {
 			x = 6,
-			hull = 7,
-			hullMax = 7,
+			hull = 12,
+			hullMax = 12,
 			shieldMaxBase = 8,
 			ai = this,
 			chassisUnder = "chassis_lawless",
@@ -121,97 +104,81 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 	public override void OnSurvived(State s, Combat c)
 	{
 		base.OnSurvived(s, c);
-		c.QueueImmediate(new AHeal() {targetPlayer = false, healAmount = 6});
-		c.QueueImmediate(new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 2, targetPlayer = true, dialogueSelector = "Depression_Power_Up"});
+		c.QueueImmediate(new AHeal() {targetPlayer = false, healAmount = 11});
+		c.QueueImmediate(new AStatus(){status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive, statusAmount = 4, targetPlayer = true, dialogueSelector = "Depression_Power_Up"});
 	}
 
 	public override EnemyDecision PickNextIntent(State s, Combat c, Ship ownShip)
 	{
 		return MoveSet(aiCounter++, () => new EnemyDecision {
-			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cockpit"),
+			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.left"),
 			intents = [
 				new IntentAttack()
 				{
-					damage = 3,
+					damage = 2,
 					key = "cannon.left"
 				},
 				new IntentAttack()
 				{
-					damage = 3,
-					key = "cannon.right"
+					damage = 2,
+					key = "cannon.right",
+					status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive,
+					statusAmount = 1
 				}
 			]
 			
 		}, () => new EnemyDecision
 		{
-			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cockpit"),
+			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.right"),
 			intents = [
 				new IntentAttack()
 				{
 					damage = 2,
-					key = "cannon.left"
+					key = "cannon.right"
 				},
+				new IntentStatus()
+				{
+					status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive,
+					amount = 2,
+					key = "cockpit",
+					targetSelf = false
+				}
+			]
+		}, () => new EnemyDecision
+		{
+			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.left"),
+			intents = [
 				new IntentAttack()
 				{
-					damage = 2,
-					key = "cannon.right"
+					damage = 3,
+					key = "cannon.left",
+					status = ModEntry.Instance.KokoroApi.DriveStatus.Underdrive,
+					statusAmount = 1
 				},
 				new IntentStatus()
 				{
 					status = Status.shield,
-					amount = 2,
+					amount = 5,
 					key = "cockpit",
 					targetSelf = true
-				}
+				},
 			]
 		}, () => new EnemyDecision
 		{
-			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cockpit"),
+			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cannon.right"),
 			intents = [
 				new IntentAttack()
 				{
 					damage = 2,
-					key = "cannon.left"
+					key = "cannon.right",
+					cardOnHit = new DepressionCard(),
+					destination = CardDestination.Hand
 				},
 				new IntentAttack()
 				{
 					damage = 2,
-					key = "cannon.right"
-				},
-				new IntentStatus()
-				{
-					status = Status.tempShield,
-					amount = 1,
-					key = "outerwing.left",
-					targetSelf = true
-				},
-				new IntentStatus()
-				{
-					status = Status.tempShield,
-					amount = 1,
-					key = "outerwing.right",
-					targetSelf = true
-				}
-			]
-		}, () => new EnemyDecision
-		{
-			actions = AIHelpers.MoveToAimAt(s, ownShip, s.ship, "cockpit"),
-			intents = [
-				new IntentAttack()
-				{
-					damage = 1,
-					key = "cannon.left"
-				},
-				new IntentAttack()
-				{
-					damage = 1,
-					key = "cannon.right"
-				},
-				new IntentGiveCard
-				{
-					key = "cockpit",
-					card = new DepressionCard(),
-					amount = 1,
+					key = "cannon.left",
+					cardOnHit = new DepressionCard(),
 					destination = CardDestination.Hand
 				},
 			]

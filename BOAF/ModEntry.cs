@@ -97,6 +97,11 @@ public sealed class ModEntry : SimpleMod
 	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
 
 	#endregion
+	#region Centi
+	internal IDeckEntry CentiDeck { get; }
+	internal IPlayableCharacterEntryV2 CentiCharacter { get; }
+	internal ISpriteEntry CentiFullBody { get; set; }
+	#endregion
 	
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
@@ -209,8 +214,8 @@ public sealed class ModEntry : SimpleMod
 		typeof(CullExeCard),
 		typeof(JayExeCard),
 		typeof(LunaExeCard),
-		/*typeof(CentiExeCard)
-		typeof(EvaExeCard)*/
+		typeof(CentiExeCard)
+		//typeof(EvaExeCard)
 	];
 
 	internal static IEnumerable<Type> AllCardTypes { get; }
@@ -233,6 +238,12 @@ public sealed class ModEntry : SimpleMod
 		typeof(LetterOfAcceptanceArtifact),
 		typeof(BackupCrystalArtifact),
 		typeof(SolarPendantArtifact),
+		
+		typeof(DemonHeartArtifact),
+		typeof(StoneHeartArtifact),
+		typeof(AquaHeartArtifact),
+		typeof(DebrisNetArtifact),
+		typeof(ShieldStorageArtifact),
 	];
 
 	internal static IReadOnlyList<Type> BossArtifacts { get; } = [
@@ -250,6 +261,10 @@ public sealed class ModEntry : SimpleMod
 		typeof(ReaperCannonsArtifact),
 		typeof(KineticReboundArtifact),
 		typeof(EndlessPreparationsArtifact),
+		
+		typeof(CoreCycleArtifact),
+		typeof(ShieldSapperArtifact),
+		typeof(SystemRelianceArtifact),
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -415,6 +430,13 @@ public sealed class ModEntry : SimpleMod
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Luna","character", "name"]).Localize,
+		});
+		CentiDeck = helper.Content.Decks.RegisterDeck("Centi", new()
+		{
+			Definition = new() { color = new("a661cb"), titleColor = Colors.black },
+			DefaultCardArt = StableSpr.cards_colorless,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/CardFrame.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Centi","character", "name"]).Localize,
 		});
 		
 		foreach (var registerableType in RegisterableTypes)
@@ -1078,6 +1100,115 @@ public sealed class ModEntry : SimpleMod
 		Vault.charsWithLore.Add(LunaDeck.Deck);
 		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
+		# endregion
+		#region CentiCharacter
+		CentiCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Centi", new()
+		{
+			Deck = LunaDeck.Deck,
+			Description = this.AnyLocalizations.Bind(["Centi","character", "description"]).Localize,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/CharacterFrame.png")).Sprite,
+			NeutralAnimation = new()
+			{
+				CharacterType = CentiDeck.UniqueName,
+				LoopTag = "neutral",
+				Frames = Enumerable.Range(0, 4)
+					.Select(i =>
+						helper.Content.Sprites
+							.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Neutral/{i}.png"))
+							.Sprite)
+					.ToList()
+			},
+			MiniAnimation = new()
+			{
+				CharacterType = CentiDeck.UniqueName,
+				LoopTag = "mini",
+				Frames = [
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/mini.png")).Sprite
+				]
+			},
+			Starters = new()
+			{
+				cards = [
+					new StarryShieldCard(),
+					new ShinyShotCard()
+				],
+				artifacts = [new LunarPendantArtifact()]
+			},
+			SoloStarters = new StarterDeck()
+			{
+				cards = [
+					new StarryShieldCard(),
+					new ShinyShotCard(),
+					new OrionsBeltCard(),
+					new PiercingLightCard(),
+					new DodgeColorless(),
+					new BasicShieldColorless()
+					],
+			},
+			
+			ExeCardType = typeof(LunaExeCard)
+		});
+		
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "gameover",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/GameOver/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "squint",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Squint/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "nervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Nervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Angry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "tear",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Cry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "sad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Sad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "sob",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Sob/{i}.png")).Sprite)
+				.ToList()
+		});
+		
+		//Vault.charsWithLore.Add(CentiDeck.Deck);
+		CentiFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/FullBody.png"));
+		BGRunWin.charFullBodySprites.Add(CentiDeck.Deck, CentiFullBody.Sprite);
 		# endregion
 		
 		#region Ships

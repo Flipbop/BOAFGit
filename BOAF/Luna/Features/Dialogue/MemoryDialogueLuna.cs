@@ -173,13 +173,13 @@ internal class MemoryDialogueLuna
                             new QuickCastCard(),
                             new InfiniteShineCard() {upgrade = Upgrade.B},
                             new ShinyShotCard(),
-                            new BulletWardCard() {upgrade = Upgrade.A},
+                            new NorthStarCard() {upgrade = Upgrade.A},
                             new PiercingLightCard(),
                             new BoonCard() {upgrade = Upgrade.A}
                         }, 
                         artifacts = new List<Artifact>
                         {
-                            new SolarPendantArtifact(),
+                            new EnchantedScytheArtifact(),
                             new BackupCrystalArtifact(),
                             new SpellShaperArtifact(),
                             new WarpMastery(),
@@ -203,7 +203,7 @@ internal class MemoryDialogueLuna
                 nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmLuna, "nervous", "How are we supposed to kill it now?!" ),
-                    new (AmCull,"angry","Just survive! Those perfect shields can't last forever!" ),
+                    new (AmCull,"angry","Outlast the underdrive! Go on the defensive!" ),
                 ]
             }},
             {"Depression_Callout_Multi_0", new(){
@@ -212,6 +212,8 @@ internal class MemoryDialogueLuna
                 nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1 C0UL??D H4\\/E <c=part>SAVED HER</c>." ),
+                    new (AmLuna, "sob", "...")
+
                 ]
             }},
             {"Depression_Callout_Multi_1", new(){
@@ -219,7 +221,9 @@ internal class MemoryDialogueLuna
                 allPresent = [AmLuna, AmCull, AmVoid],
                 nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 dialogue = [
-                    new (AmVoid, "1'??L VI5IT 4S <c=part>OFTEN AS I CAN.</c>" ),
+                    new (AmVoid, "1'??L VI5IT 4S <c=part>OFTEN AS I CAN</c>." ),
+                    new (AmLuna, "tear", "...")
+
                 ]
             }},
             {"Depression_Callout_Multi_2", new(){
@@ -227,7 +231,8 @@ internal class MemoryDialogueLuna
                 allPresent = [AmLuna, AmCull, AmVoid],
                 nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 dialogue = [
-                    new (AmVoid, "<c=part>  </c>" ),
+                    new (AmVoid, "1 W4SN,T <c=part>FAST ENOUGH</c>." ),
+                    new (AmLuna, "sad", "...")
                 ]
             }},
             {"Luna_Closure", new(){
@@ -241,7 +246,40 @@ internal class MemoryDialogueLuna
                 nonePresent = [AmJay, /*AmCenti, AmEva*/],
                 requiredScenes = ["Luna_Memory_3"],
                 dialogue = [
-                    
+                    new (new BGAction{action = "fight"}),  
+                    new(new Wait{secs = 1}),
+                    new (AmLuna, "nervous", "Is that it? Did we win?"),
+                    new (AmCull, "That should be it.", flipped: true  ),
+                    new (AmLuna, "nervous", "So do we just wait now?"),
+                    new (AmKass, "ghost", "Hello Luna.", flipped: true  ),
+                    new (AmLuna, "tear", "Kass..."),
+                    new (AmCull, "That's my cue to leave.", flipped: true  ),
+                    new (AmLuna, "tear", "Kass... I am so sorry..."),
+                    new (AmLuna, "sob", "I shouldn't have left, you would still be alive if I never went."),
+                    new (AmKass, "ghostmad", "Stop. Just stop.", flipped: true  ),
+                    new (AmKass, "ghostsad", "It's not your fault, it never was.", flipped: true  ),
+                    new (AmLuna, "sad", "I can only blame myself. I could have saved you."),
+                    new (AmKass, "ghostmad", "If you were there you would have joined me.", flipped: true  ),
+                    new (AmKass, "ghostsad", "Is that really what you want? To leave this world?", flipped: true  ),
+                    new (AmLuna, "sob", "At least then I would be with you..."),
+                    new (AmKass, "ghostsad", "Don't talk like that.", flipped: true  ),
+                    new (AmKass, "ghostsad", "You've been holding onto this pain for so long. It's time to let go.", flipped: true  ),
+                    new (AmLuna, "sad", "I-I can't let you go. I would be like forgetting you."),
+                    new (AmKass, "ghostsad", "It's not like that. I am no longer with you, but I still love you. You still love me.", flipped: true  ),
+                    new (AmLuna, "tear", "I do..."),
+                    new (AmKass, "ghostsad", "You can't hold onto this pain anymore. It's not healthy.", flipped: true  ),
+                    new (AmKass, "fade", "...", flipped: true  ),
+                    new (AmKass, "fade", "I think that means my time is up.", flipped: true  ),
+                    new (AmLuna, "sad", "I'm not ready for you to go."),
+                    new (AmKass, "fade", "Promise me something, Luna.", flipped: true  ),
+                    new (AmLuna, "tear", "What?"),
+                    new (AmKass, "fade", "Don't give up. You are strong, you will get through this.", flipped: true  ),
+                    new (AmLuna, "tear", "I-I-..."),
+                    new (AmKass, "purposefully_misspelled_name_to_make_her_disappear", "...", flipped: true  ),
+                    new (AmLuna, "sob", "..."),
+                    new (AmLuna, "tear", "I promise. I love you."),
+
+                    new (new EndMemoryFight())
                 ]
             }},
         });

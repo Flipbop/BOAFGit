@@ -34,8 +34,8 @@ internal sealed class DenialCard : Card, IRegisterable
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>
 		[
-			new AStatus() { status = Status.lockdown, statusAmount = 1, targetPlayer = true, dialogueSelector = "Denial_Callout"},
-			new AStatus() { status = Status.evade, statusAmount = 2, targetPlayer = true},
+			new AStatus() { status = Status.perfectShield, statusAmount = 2, targetPlayer = false, dialogueSelector = "Denial_Callout"},
+			new AStatus() { status = Status.evade, statusAmount = 4, targetPlayer = true},
 		];
 };
 
