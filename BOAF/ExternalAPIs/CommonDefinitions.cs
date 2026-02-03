@@ -22,10 +22,10 @@ static class CommonDefinitions
     internal static string AmLuna => Instance.LunaDeck.UniqueName;
     internal static Deck AmLunaDeck => Instance.LunaDeck.Deck;
     internal static Status MissingLuna => ModEntry.Instance.LunaCharacter.MissingStatus.Status;
-    /*internal static string AmCenti => Instance.CentiDeck.UniqueName;
+    internal static string AmCenti => Instance.CentiDeck.UniqueName;
     internal static Deck AmCentiDeck => Instance.CentiDeck.Deck;
     internal static Status MissingCenti => ModEntry.Instance.CentiCharacter.MissingStatus.Status;
-    internal static string AmEva => Instance.EvaDeck.UniqueName;
+    /*internal static string AmEva => Instance.EvaDeck.UniqueName;
     internal static Deck AmEvaDeck => Instance.EvaDeck.Deck;
     internal static Status MissingEva => ModEntry.Instance.EvaCharacter.MissingStatus.Status;
     */

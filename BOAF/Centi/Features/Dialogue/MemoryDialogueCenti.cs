@@ -9,134 +9,134 @@ internal class MemoryDialogueCenti
     {
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
-            {"RunWinWho_Jay_1", new(){
+            {"RunWinWho_Centi_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmJay],
+                allPresent = [AmCenti],
                 bg = "BGRunWin",
                 lookup = [
-                    $"runWin_{AmJay}"
+                    $"runWin_{AmCenti}"
                 ],
                 dialogue = [
                     
                 ]
             }},
-            {"RunWinWho_Jay_2", new(){
+            {"RunWinWho_Centi_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmJay],
+                allPresent = [AmCenti],
                 bg = "BGRunWinCustom",
                 lookup = [
-                    $"runWin_{AmJay}"
+                    $"runWin_{AmCenti}"
                 ],
                 requiredScenes = [
-                    "RunWinWho_Jay_1"
+                    "RunWinWho_Centi_1"
                 ],
                 dialogue = [
                     
                 ]
             }},
-            {"RunWinWho_Jay_3", new(){
+            {"RunWinWho_Centi_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                allPresent = [AmJay],
+                allPresent = [AmCenti],
                 bg = "BGRunWin",
                 priority = true,
                 lookup = [
-                    $"runWin_{AmJay}"
+                    $"runWin_{AmCenti}"
                 ],
                 requiredScenes = [
-                    "Jay_Post_Smiff", "Jay_Memory_2"
+                    "Centi_Post_Smiff", "Centi_Memory_2"
                 ],
                 dialogue = [
                     
                 ]
             }},
-            {"Jay_Memory_1", new(){
+            {"Centi_Memory_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGJayWorkshop",
+                bg = "BGCentiWorkshop",
                 lookup = [
                     "vault",
-                    $"vault_{AmJay}"
+                    $"vault_{AmCenti}"
                 ],
                 dialogue = [
                     
                 ]
             }},
-            {"Jay_Memory_2", new(){
+            {"Centi_Memory_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGJayWorkshop",
+                bg = "BGCentiWorkshop",
                 lookup = [
-                    "vault", $"vault_{AmJay}"
+                    "vault", $"vault_{AmCenti}"
                 ],
-                requiredScenes = ["Jay_Memory_1"],
+                requiredScenes = ["Centi_Memory_1"],
                 dialogue = [
                    
 
                 ]
             }},
-            {"Jay_Memory_3", new(){
+            {"Centi_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
                 lookup = [
-                    "vault", $"vault_{AmJay}"
+                    "vault", $"vault_{AmCenti}"
                 ],
-                requiredScenes = ["Jay_Memory_2"],
+                requiredScenes = ["Centi_Memory_2"],
                 dialogue = [
                     
                 ]
             }},
             {"Anger_Power_Up", new(){
                 type = NodeType.@event,
-                allPresent = [AmJay, AmCull],
+                allPresent = [AmCenti, AmCull],
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
-                    new (AmJay, "nervous", "Did it just power up?!" ),
+                    new (AmCenti, "nervous", "Did it just power up?!" ),
                     new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
                 ]
             }},
             {"Anger_Callout_Multi_0", new(){
                 type = NodeType.combat,
-                allPresent = [AmJay, AmCull, AmVoid],
+                allPresent = [AmCenti, AmCull, AmVoid],
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
-                    new (AmJay, "sob", "...")
+                    new (AmCenti, "sob", "...")
 
                 ]
             }},
             {"Anger_Callout_Multi_1", new(){
                 type = NodeType.combat,
-                allPresent = [AmJay, AmCull, AmVoid],
+                allPresent = [AmCenti, AmCull, AmVoid],
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "THAT'S N??0T <c=part>THE POINT.</c>" ),
-                    new (AmJay, "sad", "...")
+                    new (AmCenti, "sad", "...")
                 ]
             }},
             {"Anger_Callout_Multi_2", new(){
                 type = NodeType.combat,
-                allPresent = [AmJay, AmCull, AmVoid],
+                allPresent = [AmCenti, AmCull, AmVoid],
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
                 dialogue = [
                     new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
-                    new (AmJay, "tear", "...")
+                    new (AmCenti, "tear", "...")
 
                 ]
             }},
-            {"Jay_Closure", new(){
+            {"Centi_Closure", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
                 lookup = [
                     "after_void"
                 ],
-                allPresent = [AmJay, AmCull, AmVoid],
+                allPresent = [AmCenti, AmCull, AmVoid],
                 nonePresent = [AmLuna, /*AmCenti, AmEva*/],
-                requiredScenes = ["Jay_Memory_3"],
+                requiredScenes = ["Centi_Memory_3"],
                 dialogue = [
                     
                 ]

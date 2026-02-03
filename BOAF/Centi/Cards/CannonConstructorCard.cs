@@ -17,12 +17,12 @@ internal sealed class CannonConstructorCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.JayDeck.Deck,
+				deck = ModEntry.Instance.CentiDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/CannonConstructor.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "card", "CannonConstructor", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CannonConstructor.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "CannonConstructor", "name"]).Localize
 		});
 	}
 

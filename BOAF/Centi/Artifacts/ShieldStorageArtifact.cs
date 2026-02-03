@@ -11,19 +11,19 @@ internal sealed class ShieldStorageArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("CodeInspection", new()
+		helper.Content.Artifacts.RegisterArtifact("ShieldStorage", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				owner = ModEntry.Instance.JayDeck.Deck,
+				owner = ModEntry.Instance.CentiDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
 			Sprite = helper.Content.Sprites
-				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/CodeInspection.png"))
+				.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Centi/Artifacts/ShieldStorage.png"))
 				.Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "CodeInspection", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay", "artifact", "CodeInspection", "description"])
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "artifact", "ShieldStorage", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "artifact", "ShieldStorage", "description"])
 				.Localize
 		});
 	}

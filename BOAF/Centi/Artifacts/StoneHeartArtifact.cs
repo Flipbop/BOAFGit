@@ -9,32 +9,18 @@ internal sealed class StoneHeartArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("FinalTest", new()
+		helper.Content.Artifacts.RegisterArtifact("StoneHeart", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				owner = ModEntry.Instance.JayDeck.Deck,
+				owner = ModEntry.Instance.CentiDeck.Deck,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Jay/Artifacts/FinalTest.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "FinalTest", "name"]).Localize,
-			Description = ModEntry.Instance.AnyLocalizations.Bind(["Jay","artifact", "FinalTest", "description"]).Localize
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Centi/Artifacts/StoneHeart.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","artifact", "StoneHeart", "name"]).Localize,
+			Description = ModEntry.Instance.AnyLocalizations.Bind(["Centi","artifact", "StoneHeart", "description"]).Localize
 		});
 	}
-
-	public override List<Tooltip>? GetExtraTooltips()
-	{
-		List<Tooltip> tooltips = [
-			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::Detect") {
-				Icon = ModEntry.Instance.detectSprite.Sprite,
-				TitleColor = Colors.action,
-				Title = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "name"]),
-				Description = ModEntry.Instance.Localizations.Localize(["Jay","action", "Detect", "description"]),
-				vals = [1]
-			}];
-		return tooltips;
-	}
-
 	
 }

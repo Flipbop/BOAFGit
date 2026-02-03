@@ -16,12 +16,12 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.JayDeck.Deck,
+				deck = ModEntry.Instance.CentiDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", /*"SelectiveSensors"*/"InstantMiniShip", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", /*"SelectiveSensors"*/"InstantMiniShip", "name"]).Localize
 		});
 	}
 
@@ -38,7 +38,7 @@ internal sealed class SelectiveSensorsCard : Card, IRegisterable
 			exhaust = true,
 			/*description =
 				ModEntry.Instance.Localizations.Localize([
-					"Jay", "card", "SelectiveSensors", "description", upgrade.ToString()
+					"Centi", "card", "SelectiveSensors", "description", upgrade.ToString()
 				]),*/
 		};
 

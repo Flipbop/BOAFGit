@@ -40,7 +40,7 @@ internal sealed class CentiExeCard : Card, IRegisterable
 			new ACardOffering
 			{
 				amount = GetChoiceCount(),
-				limitDeck = ModEntry.Instance.JayDeck.Deck,
+				limitDeck = ModEntry.Instance.CentiDeck.Deck,
 				makeAllCardsTemporary = true,
 				overrideUpgradeChances = false,
 				canSkip = false,

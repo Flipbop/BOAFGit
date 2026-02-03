@@ -19,12 +19,12 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.JayDeck.Deck,
+				deck = ModEntry.Instance.CentiDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/HeavyArmoring.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "HeavyArmoring", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/HeavyArmoring.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "HeavyArmoring", "name"]).Localize
 		});
 	}
 
@@ -36,7 +36,7 @@ internal sealed class HeavyArmoringCard : Card, IRegisterable
 			exhaust = upgrade != Upgrade.A,
 			description =
 				ModEntry.Instance.Localizations.Localize([
-					"Jay", "card", "HeavyArmoring", "description", upgrade.ToString()
+					"Centi", "card", "HeavyArmoring", "description", upgrade.ToString()
 				]),
 		};
 

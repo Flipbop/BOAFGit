@@ -14,13 +14,13 @@ internal class CardDialogueCenti
         LocalDB.DumpStoryToLocalLocale("en", new Dictionary<string, DialogueMachine>()
         {
             {
-                "CATsummonedJayCard_Multi_0", new()
+                "CATsummonedCentiCard_Multi_0", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
                     allPresent = [AmCat],
-                    lookup = ["summonJay"],
-                    oncePerCombatTags = ["summonJayTag"],
+                    lookup = ["summonCenti"],
+                    oncePerCombatTags = ["summonCentiTag"],
                     dialogue =
                     [
                         new(AmCat, "I feel more in-tune with the ship.")
@@ -28,17 +28,17 @@ internal class CardDialogueCenti
                 }
             },
             {
-                "CATsummonedJayCard_Multi_1", new()
+                "CATsummonedCentiCard_Multi_1", new()
                 {
                     type = NodeType.combat,
                     oncePerRun = true,
-                    allPresent = [AmCat, AmJay],
-                    lookup = ["summonJay"],
-                    oncePerCombatTags = ["summonJayTag"],
+                    allPresent = [AmCat, AmCenti],
+                    lookup = ["summonCenti"],
+                    oncePerCombatTags = ["summonCentiTag"],
                     dialogue =
                     [
                         new(AmCat, "My turn to screw with the ship's layout."),
-                        new(AmJay,  "Have fun!")
+                        new(AmCenti,  "Have fun!")
                     ]
                 }
             },
