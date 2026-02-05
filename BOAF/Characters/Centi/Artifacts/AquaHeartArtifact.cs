@@ -27,16 +27,4 @@ internal sealed class AquaHeartArtifact : Artifact, IRegisterable
 				.Localize
 		});
 	}
-
-	public override void OnReceiveArtifact(State state)
-	{
-		base.OnReceiveArtifact(state);
-		AReconfigure.codeInspectionAmount = 0;
-	}
-
-	public override int? GetDisplayNumber(State s)
-	{
-		return AReconfigure.codeInspectionAmount;
-	}
-	
 }

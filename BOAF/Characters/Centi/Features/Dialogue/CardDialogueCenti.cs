@@ -23,7 +23,7 @@ internal class CardDialogueCenti
                     oncePerCombatTags = ["summonCentiTag"],
                     dialogue =
                     [
-                        new(AmCat, "I feel more in-tune with the ship.")
+                        new(AmCat, "Could use some cybernetic defense.")
                     ]
                 }
             },
@@ -37,8 +37,8 @@ internal class CardDialogueCenti
                     oncePerCombatTags = ["summonCentiTag"],
                     dialogue =
                     [
-                        new(AmCat, "My turn to screw with the ship's layout."),
-                        new(AmCenti,  "Have fun!")
+                        new(AmCat, "How exactly do these cores work?"),
+                        new(AmCenti,  "A bunch of technology I don't understand.")
                     ]
                 }
             },

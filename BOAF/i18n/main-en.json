@@ -615,115 +615,107 @@
             "name": "Centi",
             "description": [
                 "<c=8A3388>CENTI</c>",
-                "Your necromancer.",
-                "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
+                "Your cybernetic sentinel.",
+                "Their cards require certain <c=keyword>cores</c> to be in the midrow to function, and provide large defense in a variety of forms."
             ]
         },
         "action": {
-            "UpgradesInHand": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your hand."
+            "DemonAction": {
+                "name": "DEMON ACTION",
+                "description": "You must have a <c=keyword>DEMON CORE</c> in the midrow for this action to happen."
             },
-            "UpgradesInDiscard": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Discard pile."
+            "AquaAction": {
+                "name": "AQUA ACTION",
+                "description": "You must have a <c=keyword>AQUA CORE</c> in the midrow for this action to happen."
             },
-            "UpgradesInExhaust": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Exhaust pile."
-            },
-            "UpgradesInDraw": {
-                "description": "<c=action>X</c> = The number of upgraded cards in your Draw pile."
-            },
-            "ImproveA": {
-                "name": "   Improve A",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveB": {
-                "name": "   Improve B",
-                "description": "<c=action>Upgrade</c> the rightmost eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "Impair": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveAHand": {
-                "name": "      Improve Hand A",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its A upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImproveBHand": {
-                "name": "      Improve Hand B",
-                "description": "<c=action>Upgrade</c> every eligible card in hand to its B upgrade. The upgrade lasts until the card is played, or until combat ends."
-            },
-            "ImpairHand": {
-                "name": "    Impair Hand",
-                "description": "<c=action>Downgrade</c> every eligible card in hand to its non-upgraded version. The downgrade lasts until the card is played, or until combat ends."
-            },
-            "DiscountHand": {
-                "name": "    Discount Hand",
-                "description": "<c=cardtrait>Discount</c> every card in your hand."
-            },
-            "SelfImproveA": {
-                "name": "Self Improve A",
-                "description": "<c=action>Upgrade</c> this card to its A upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImproveB": {
-                "name": "Self Improve B",
-                "description": "<c=action>Upgrade</c> this card to its B upgrade. The upgrade lasts until this card is played, or until combat ends."
-            },
-            "SelfImpair": {
-                "name": "Self Impair",
-                "description": "<c=action>Downgrade</c> this card to its non-upgraded version. The downgrade lasts until this card is played, or until combat ends."
-            },
-            "ImpairCost": {
-                "name": "Impair",
-                "description": "<c=action>Downgrade</c> the rightmost eligible card in hand to its non-upgraded version to pay for the corresponding action. The downgrade lasts until the card is played, or until combat ends."
+            "StoneAction": {
+                "name": "STONE ACTION",
+                "description": "You must have a <c=keyword>STONE CORE</c> in the midrow for this action to happen."
             }
         },
         "cardTrait": {
-            "ImprovedA": {
-                "name": "Improved A",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "CoreDependent": {
+                "name": "Core Dependent",
+                "description": "This card cannot be played unless there is at least 1 <c=keyword>CORE</c> of any variety in the midrow."
+            }
+        },
+        "midrow": {
+            "DemonCore" : {
+                "name" : "DEMON CORE",
+                "description" : "Necessary to use <c=keyword>DEMON ACTIONS</c> on Centi's cards."
             },
-            "ImprovedB": {
-                "name": "Improved B",
-                "description": "The next time this card is played it acts as an <c=boldPink>upgraded</c> version of itself. Lost on play (if it does not <c=boldPurple>Exhaust</c>) and the end of the fight."
+            "AquaCore" : {
+                "name": "AQUA CORE",
+                "description": "Necessary to use <c=keyword>AQUA ACTIONS</c> on Centi's cards."
             },
-            "Impaired": {
-                "name": "Impaired",
-                "description": "The next time this card is played it acts as a <c=boldPink>non-upgraded</c> version of itself. Lost on play and the end of the fight."
+            "StoneCore" : {
+                "name": "STONE CORE",
+                "description": "Necessary to use <c=keyword>STONE ACTIONS</c> on Centi's cards."
+            },
+            "LavaCore" : {
+                "name": "LAVA CORE",
+                "description" : "Can be used in place of a <c=keyword>DEMON CORE</c> or <c=keyword>AQUA CORE</c>."
+            },
+            "MossCore" : {
+                "name": "MOSS CORE",
+                "description" : "Can be used in place of a <c=keyword>STONE CORE</c> or <c=keyword>AQUA CORE</c>."
+            },
+            "BrimstoneCore" : {
+                "name": "BRIMSTONE CORE",
+                "description" : "Can be used in place of a <c=keyword>DEMON CORE</c> or <c=keyword>STONE CORE</c>."
+            },
+            "InfinityCore" : {
+                "name": "INFINITY CORE",
+                "description" : "Can be used in place of any <c=keyword>CORE</c>."
+            },
+            "TempShieldDrone": {
+                "name": "TEMP SHIELD DRONE",
+                "description": "Shoots 2 <c=status>TEMP SHIELD</c> at the ship it's aiming at."
+            }
+        },
+        "status": {
+            "Nanomachines": {
+                "name": "Nanomachines",
+                "description": "When this ship is hit by an attack it gains <c=status>TEMP SHIELD</c> equal to the attack's damage. <c=downside>Lose 1 at the start of turn.</c>"
+            },
+            "BubbleSiphon": {
+                "name": "Bubble Siphon",
+                "description": "When a bubble on a midrow object is popped, this ship gains {0} <c=status>SHIELD</c>, then loses 1 <c=status>BUBBLE SIPHON</c>."
             }
         },
 
         "artifact": {
-            "EnhancedTools": {
-                "name": "ENHANCED TOOLS",
-                "description": "The first time you play an <c=cardtrait>improved</c> card each fight, <c=action>improve</c> another card with the same upgrade."
+            "DemonHeart": {
+                "name": "DEMON HEART",
+                "description": "All <c=keyword>DEMON CORES</c> will fire a <c=redd>1</c> damage attack after your turn."
             },
-            "ReusableMaterials": {
-                "name": "REUSABLE MATERIALS",
-                "description": "After playing a card with <c=cardtrait>improved</c>, gain 1 <c=status>SHIELD</c>."
+            "StoneHeart": {
+                "name": "STONE HEART",
+                "description": "All <c=keyword>STONE CORES</c> will fire <c=keyword>1</c> <c=status>SHIELD</c> back to you after your turn."
             },
-            "Kickstart": {
-                "name": "KICKSTART",
-                "description": "At the start of each fight <c=action>Improve A</c> the first 2 eligible cards you draw."
+            "AquaHeart": {
+                "name": "AQUA HEART",
+                "description": "All <c=keyword>AQUA CORES</c> will fire <c=keyword>2</c> <c=status>TEMP SHIELD</c> back to you after your turn."
             },
-            "MagnifiedLasers": {
-                "name": "MAGNIFIED LASERS",
-                "description": "If your rightmost card is an <c=keyword>upgraded</c> card it has +1 to all <c=keyword>attacks</c> on it."
+            "DebrisNet": {
+                "name": "DEBRIS NET",
+                "description": "When a <c=keyword>CORE</c> is destroyed, launch an <c=keyword>asteroid</c>."
             },
-            "UpgradedTerminal": {
-                "name": "UPGRADED TERMINAL",
-                "description": "If you have 3 <c=keyword>upgraded</c> cards in hand when you draw a card, <c=keyword>draw</c> an extra card, once per turn."
+            "ShieldStorage": {
+                "name": "SHIELD STORAGE",
+                "description": "Anytime you gain shield past your maximum, gain 1 <c=status>BUBBLE JUICE</c>."
             },
-            "Retainer": {
-                "name": "RETAINER",
-                "description": "Cards no longer lose <c=cardtrait>Improved</c> when played."
+            "CoreCycle": {
+                "name": "CORE CYCLE",
+                "description": "Start each combat with 2 random <c=keyword>CORES</c> in the midrow nearby."
             },
-            "ExpensiveEquipment": {
-                "name": "EXPENSIVE EQUIPMENT",
-                "description": "Non-upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>Improved A</c>. Upgraded cards that cost 3 or more energy start each fight with <c=cardtrait>discount</c>."
+            "ShieldSapper": {
+                "name": "SHIELD SAPPER",
+                "description": "Lose 1 <c=status>SHIELD</c> at the start of your turn and gain 1 Energy. If you have no <c=status>SHIELD</c> you do not gain the energy."
             },
-            "PowerEcho": {
-                "name": "POWER ECHO",
-                "description": "The first time you play an upgraded card each turn, create an <c=cardtrait>Impaired</c>, <c=cardtrait>single use</c>, <c=cardtrait>temporary</c> <c=keyword>copy</c> of it in your hand."
+            "SystemReliance": {
+                "name": "SYSTEM RELIANCE",
+                "description": "Choose a card in your deck. Make it <c=keyword>buoyant</c>, <c=keyword>exhaust</c>, <c=keyword>retain</c>, and <c=keyword>reduce it's cost by 1</c>."
             },
             "Duo": {
                 "CleoBooks": {
@@ -766,120 +758,110 @@
 
 
         "card": {
-            "QuickBoost": {
-                "name": "Quick Boost"
+            "FireAndIce": {
+                "name": "Fire And Ice"
             },
-            "TurtleShot": {
-                "name": "Turtle Shot"
+            "AggressiveDefense": {
+                "name": "Aggressive Defense"
             },
-            "Choices": {
-                "name": "Choices"
+            "LifeAndDeath": {
+                "name": "Life And Death"
             },
-            "MemoryRecovery": {
-                "name": "Memory Recovery",
+            "StabilityAndChaos": {
+                "name": "Stability And Chaos"
+            },
+            "CapacitorSlug": {
+                "name": "Capacitor Slug"
+            },
+            "CorePoweredShields": {
+                "name": "Core-Powered Shields"
+            },
+            "DoubleShield": {
+                "name": "Double Shield"
+            },
+            "Punishment": {
+                "name": "Punishment"
+            },
+            "Generator": {
+                "name": "Generator"
+            },
+            "TidalWave": {
+                "name": "Tidal Wave"
+            },
+            "BackupCore": {
+                "name": "Backup Core",
                 "description": {
-                    "None": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                    "A": "Draw an <c=keyword>Upgraded</c> card from your Draw pile.",
-                    "B": "Draw three <c=keyword>Upgraded</c> cards from your Draw pile."
+                    "None": "Launch a copy of the last <c=keyword>CORE</c> you launched.",
+                    "A": "Launch a <c=keyword>bubbled</c> copy of the last <c=keyword>CORE</c> you launched.",
+                    "B": "Launch a copy of the last <c=keyword>CORE</c> you launched."
                 }
             },
-            "ShuffleUpgrade": {
-                "name": "Shuffle Upgrade"
-            },
-            "ResourceSwap": {
-                "name": "Resource Swap"
-            },
-            "ReroutePower": {
-                "name": "Reroute Power"
-            },
-            "Rewrite": {
-                "name": "Rewrite"
-            },
-            "SlipShot": {
-                "name": "Slip Shot"
-            },
-            "PowerSurge": {
-                "name": "Power Surge"
-            },
-            "ImprovedCannon": {
-                "name": "Improved Cannon"
-            },
-            "DoItYourself": {
-                "name": "Do It Yourself",
+            "Lv2Core": {
+                "name": "LV 2 CORE",
                 "description": {
-                    "None": "Add a <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                    "A": "Add a <c=card>Small Repairs A</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>.",
-                    "B": "Add 2 <c=card>Small Repairs</c> to your <c=keyword>draw pile</c>. Gain 2 <c=status>shield</c>."
+                    "None": "Add a <c=card>LV 2 Core</c> card to your <c=keyword>hand</c>.",
+                    "A": "Add a <c=card>LV 2 Core</c> card to your <c=keyword>hand</c>.",
+                    "B": "Add a <c=card>LV 2 Core</c> card to your <c=keyword>hand</c>."
                 }
             },
-            "RepairedGlasses": {
-                "name": "Repaired Glasses"
+            "Harden": {
+                "name": "Harden"
             },
-            "ScalpedParts": {
-                "name": "Scalped Parts"
+            "BubbleSiphon": {
+                "name": "Bubble Siphon"
             },
-            "MaximumEffort": {
-                "name": "Maximum Effort"
+            "ShieldConverter": {
+                "name": "Shield Converter"
             },
-            "NecessarySacrifice": {
-                "name": "Necessary Sacrifice"
+            "IncreasedPower": {
+                "name": "Increased Power"
             },
-            "SeekerBarrage": {
-                "name": "Seeker Barrage",
+            "InfinitePotential": {
+                "name": "Infinite Potential"
+            },
+            "AllTogether": {
+                "name": "All Together"
+            },
+            "LastStand": {
+                "name": "Last Stand",
                 "description": {
-                    "None": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in <c=keyword>hand</c>.",
-                    "A": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Discard pile</c>.",
-                    "B": "Move right 1 and fire a Seeker for each <c=cardtrait>Upgraded</c> card in your <c=keyword>Exhaust pile</c>."
+                    "None": "Destroy all <c=keyword>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
+                    "A": "Destroy all <c=keyword>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
+                    "B": "Destroy all <c=keyword>CORES</c> in the midrow. Replace them with asteroids and attack for <c=redd>1</c> for each core destroyed."
                 }
             },
-            "PermaFix": {
-                "name": "Perma-Fix",
-                "description": {
-                    "None": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                    "A": "<c=keyword>Upgrade</c> the rightmost eligible card in your hand to its <c=keyword>A upgrade</c>.",
-                    "B": "<c=keyword>Upgrade</c> the 2 rightmost eligible cards in your hand to their <c=keyword>B upgrades</c>."
-                }
+            "PhysicalTrauma": {
+                "name": "Physical Trauma"
             },
-            "CleanSlate": {
-                "name": "Clean Slate",
-                "description": {
-                    "None": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                    "A": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand.",
-                    "B": "<c=keyword>Exhaust</c> all non-upgraded cards in hand, then <c=cardtrait>Discount</c> your hand."
-                }
+            "StoneWall": {
+                "name": "Stone Wall"
             },
-            "ApologizeNextLoop": {
-                "name": "Apologize Next Loop",
-                "description": {
-                    "None": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack.",
-                    "A": "Attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +2 dmg after each attack",
-                    "B": "Pierce attack for 1 dmg for each <c=cardtrait>Upgraded</c> card in hand. +1 dmg after each attack"
-                }
+            "Lv2Lava": {
+                "name": "LV 2 Lava"
             },
-
-            "FlexibleDefense": {
-                "name": "Flexible Defense"
+            "Lv2Brimstone": {
+                "name": "LV 2 Brimstone"
             },
-            "SmallRepairs": {
-                "name": "Small Repairs"
+            "Lv2Moss": {
+                "name": "LV 2 Moss"
             },
 
 
-            "CullExe": {
-                "name": "Cull.EXE",
+            "CentiExe": {
+                "name": "Centi.EXE",
                 "description": {
-                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand.",
-                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Cull</c> cards to your hand."
+                    "None": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
+                    "A": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
+                    "B": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand."
                 }
             }
         }
     },
     "Eva":{
         "character": {
-            "name": "Centi",
+            "name": "Eva",
             "description": [
-                "<c=8A3388>CENTI</c>",
+                "<c=8A3388>Eva</c>",
                 "Your necromancer.",
                 "Capable of <c=keyword>temporarily upgrading and downgrading</c> cards in your hand and benefiting from them."
             ]

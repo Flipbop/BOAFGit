@@ -22,11 +22,4 @@ internal sealed class DemonHeartArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Centi","artifact", "DemonHeart", "description"]).Localize
 		});
 	}
-
-	public override void OnCombatStart(State state, Combat combat)
-	{
-		base.OnCombatStart(state, combat);
-		combat.QueueImmediate(new AStatus(){statusAmount = 1, targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status});
-	}
-	
 }

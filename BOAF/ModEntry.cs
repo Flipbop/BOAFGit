@@ -285,13 +285,13 @@ public sealed class ModEntry : SimpleMod
 		typeof(ChronomancyArtifact),
 		typeof(SpellShaperArtifact),
 		
-		typeof(ReaperCannonsArtifact),
-		typeof(KineticReboundArtifact),
-		typeof(EndlessPreparationsArtifact),
-		
 		typeof(CoreCycleArtifact),
 		typeof(ShieldSapperArtifact),
 		typeof(SystemRelianceArtifact),
+		
+		typeof(ReaperCannonsArtifact),
+		typeof(KineticReboundArtifact),
+		typeof(EndlessPreparationsArtifact),
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -314,14 +314,22 @@ public sealed class ModEntry : SimpleMod
 		typeof(BattleTacticsArtifact),
 	];
 
-	internal static IReadOnlyList<Type> MidrowObjects { get; } =
-	[
+	internal static IReadOnlyList<Type> MidrowObjects { get; } = [
 		typeof(Wisp),
 		typeof(GreaterWisp),
 		typeof(DormantWisp),
 		typeof(DormantGreaterWisp),
 		
 		typeof(Comet),
+		
+		typeof(DemonCore),
+		typeof(AquaCore),
+		typeof(StoneCore),
+		typeof(LavaCore),
+		typeof(MossCore),
+		typeof(BrimstoneCore),
+		typeof(InfinityCore),
+
 	];
 
 	internal static IReadOnlyList<Type> EnemyTypes { get; } =
@@ -1156,24 +1164,23 @@ public sealed class ModEntry : SimpleMod
 			Starters = new()
 			{
 				cards = [
-					new StarryShieldCard(),
-					new ShinyShotCard()
+					new FireAndIceCard(),
+					new AgressiveDefenseCard()
 				],
-				artifacts = [new LunarPendantArtifact()]
 			},
 			SoloStarters = new StarterDeck()
 			{
 				cards = [
-					new StarryShieldCard(),
-					new ShinyShotCard(),
-					new OrionsBeltCard(),
-					new PiercingLightCard(),
+					new FireAndIceCard(),
+					new LifeAndDeathCard(),
+					new CorePoweredShieldsCard(),
+					new CapacitorSlugCard(),
 					new DodgeColorless(),
-					new BasicShieldColorless()
+					new CannonColorless()
 					],
 			},
 			
-			ExeCardType = typeof(LunaExeCard)
+			ExeCardType = typeof(CentiExeCard)
 		});
 		
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
@@ -1486,8 +1493,19 @@ public sealed class ModEntry : SimpleMod
 								new BulletWardCard(),
 								new ShillelaghCard()
 							]
-					} 
+					}
 					);
+				api.RegisterAltStarters(
+					deck: CentiDeck.Deck,
+					starterDeck: new StarterDeck
+					{
+						cards =
+						[
+							new LifeAndDeathCard(),
+							new PunishmentCard()
+						]
+					}
+				);
 			});
 		
 		_ = new CombatDialogueAll();
@@ -1516,6 +1534,10 @@ public sealed class ModEntry : SimpleMod
 		_ = new CardDialogueLuna();
 		_ = new MemoryDialogueLuna();		
 		_ = new StoryDialogueLuna();
+
+		_ = new CardDialogueCenti();
+		_ = new StoryDialogueCenti();
+		_ = new MemoryDialogueCenti();
 		
 		_ = new Backgrounds();
 		
