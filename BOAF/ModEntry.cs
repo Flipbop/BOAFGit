@@ -329,7 +329,8 @@ public sealed class ModEntry : SimpleMod
 		typeof(MossCore),
 		typeof(BrimstoneCore),
 		typeof(InfinityCore),
-
+		typeof(TempShieldDrone),
+		
 	];
 
 	internal static IReadOnlyList<Type> EnemyTypes { get; } =
