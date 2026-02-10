@@ -24,11 +24,4 @@ internal sealed class DebrisNetArtifact : Artifact, IRegisterable
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["Centi","artifact", "DebrisNet", "description"]).Localize
 		});
 	}
-	public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
-	{
-		base.OnPlayerTakeNormalDamage(state, combat, rawAmount, part);
-		combat.QueueImmediate(new AReconfigure(){Amount = 1});
-		combat.QueueImmediate(new ADetect(){Amount = 1});
-	}
-	
 }

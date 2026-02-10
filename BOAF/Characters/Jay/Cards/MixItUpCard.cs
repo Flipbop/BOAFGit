@@ -54,17 +54,4 @@ internal sealed class MixItUpCard : Card, IRegisterable
 			]
 			
 		};
-	public sealed class ASoulHint : AVariableHint
-	{
-		public override Icon? GetIcon(State s)
-			=> new(ModEntry.Instance.soulEnergySprite.Sprite, null, Colors.textMain);
-
-
-		public override List<Tooltip> GetTooltips(State s)
-			=> [new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::SoulEnergyX")
-			{
-				Description = ModEntry.Instance.Localizations.Localize(["Cull","action", "CurrentSoul", "description"])
-			}];
-	}
-	
 }

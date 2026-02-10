@@ -104,10 +104,16 @@ public sealed class ModEntry : SimpleMod
 	
 	internal ISpriteEntry DemonCoreSprite { get; }
 	internal ISpriteEntry DemonCoreIcon { get; }
+	internal ISpriteEntry DemonCoreEmptyIcon { get; }
+
 	internal ISpriteEntry AquaCoreSprite { get; }
 	internal ISpriteEntry AquaCoreIcon { get; }
+	internal ISpriteEntry AquaCoreEmptyIcon { get; }
+
 	internal ISpriteEntry StoneCoreSprite { get; }
 	internal ISpriteEntry StoneCoreIcon { get; }
+	internal ISpriteEntry StoneCoreEmptyIcon { get; }
+
 	internal ISpriteEntry LavaCoreSprite { get; }
 	internal ISpriteEntry LavaCoreIcon { get; }
 	internal ISpriteEntry BrimstoneCoreSprite { get; }
@@ -204,7 +210,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(Lv2CoreCard),
 		typeof(HardenCard),
 		typeof(BubbleSiphonCard),
-		typeof(ShieldConverterCard), 
+		typeof(DemonicConverterCard), 
 		typeof(IncreasedPowerCard),
 	];
 
@@ -423,10 +429,13 @@ public sealed class ModEntry : SimpleMod
 		
 		DemonCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/DemonCore.png"));
 		DemonCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/DemonCoreIcon.png"));
+		DemonCoreEmptyIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/DemonCoreEmptyIcon.png"));
 		AquaCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/AquaCore.png"));
 		AquaCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/AquaCoreIcon.png"));
+		AquaCoreEmptyIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/AquaCoreEmptyIcon.png"));
 		StoneCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/StoneCore.png"));
 		StoneCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/StoneCoreIcon.png"));
+		StoneCoreEmptyIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/StoneCoreEmptyIcon.png"));
 		BrimstoneCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/BrimstoneCore.png"));
 		BrimstoneCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/BrimstoneCoreIcon.png"));
 		LavaCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/LavaCore.png"));
@@ -1587,6 +1596,9 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoryDialogueLuna();
 
 		_ = new CoreDependentManager();
+		_ = new DemonCoreCheckManager();
+		_ = new StoneCoreCheckManager();
+		_ = new AquaCoreCheckManager();
 		_ = new CardDialogueCenti();
 		_ = new StoryDialogueCenti();
 		_ = new MemoryDialogueCenti();

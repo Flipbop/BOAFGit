@@ -24,36 +24,34 @@ internal sealed class IncreasedPowerCard : Card, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi", "card", "IncreasedPower", "name"]).Localize
 		});
 	}
-
+	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
+	{
+		this.SetIsCoreDependent(true);
+		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
+		{
+			ModEntry.Instance.CoreDependentTrait
+		};
+		return cardTraitEntries;
+	}
 	public override CardData GetData(State state)
 		=> new()
 		{
 			artTint = "FFFFFF",
 			cost = 1,
+			recycle = upgrade == Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 2)}
-			],
-			Upgrade.B =>
-			[
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)}
+				new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true },
+				new AStatus() { status = Status.maxShield, statusAmount = 2, targetPlayer = true },
 			],
 			_ =>
 			[
-				new AAttack(){damage = GetDmg(s, 1)},
-				new AReconfigure(){Amount = 1},
-				new AAttack(){damage = GetDmg(s, 1)}
-
+				new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true },
+				new AStatus() { status = Status.maxShield, statusAmount = 1, targetPlayer = true },
 			]
 
 		};

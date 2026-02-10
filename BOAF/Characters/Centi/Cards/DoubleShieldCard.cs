@@ -11,8 +11,6 @@ internal sealed class DoubleShieldCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
@@ -31,30 +29,24 @@ internal sealed class DoubleShieldCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 0,
-			retain = upgrade == Upgrade.B,
+			cost = upgrade == Upgrade.A? 0 : 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
-			Upgrade.A =>
+			Upgrade.B =>
 			[
-				new AReconfigure(){Amount = 1, reverse = true},
-				new ADetect(){Amount = 1}
+				new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true },
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new AStatus() { status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true }).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new ASpawn(){thing = new Asteroid()}).AsCardAction,
 			],
 			_ => [
-				new AReconfigure(){Amount = 1, reverse = true}
+				new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true },
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+						new AStatus() { status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true }).AsCardAction,
 			]
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is not ControlZCard c)
-				return null;
-			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-		}
-	}
 };

@@ -50,6 +50,22 @@ internal sealed class DemonCore : Asteroid, IRegisterable
 		
 		return actions;
 	}
+
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
+		}
+		return actions;
+	}
 }
 
 
@@ -99,6 +115,22 @@ internal sealed class AquaCore : Asteroid, IRegisterable
 		
 		return actions;
 	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
+		}
+		return actions;
+	}
 }
 
 internal sealed class StoneCore : Asteroid, IRegisterable
@@ -145,6 +177,22 @@ internal sealed class StoneCore : Asteroid, IRegisterable
 			}];
 		}
 		
+		return actions;
+	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
+		}
 		return actions;
 	}
 }
@@ -204,6 +252,22 @@ internal sealed class LavaCore : Asteroid, IRegisterable
 		
 		return actions;
 	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
+		}
+		return actions;
+	}
 }
 
 internal sealed class BrimstoneCore : Asteroid, IRegisterable
@@ -261,6 +325,22 @@ internal sealed class BrimstoneCore : Asteroid, IRegisterable
 		
 		return actions;
 	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
+		}
+		return actions;
+	}
 }
 
 internal sealed class MossCore : Asteroid, IRegisterable
@@ -316,6 +396,22 @@ internal sealed class MossCore : Asteroid, IRegisterable
 				status = Status.tempShield,
 				statusAmount = 2
 			}];
+		}
+		return actions;
+	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
 		}
 		return actions;
 	}
@@ -383,6 +479,22 @@ internal sealed class InfinityCore : Asteroid, IRegisterable
 				damage = 1, 
 				targetPlayer = targetPlayer,
 			}];
+		}
+		return actions;
+	}
+	
+	public override List<CardAction>? GetActionsOnDestroyed(State s, Combat c, bool wasPlayer, int worldX)
+	{
+		List<CardAction> actions = new List<CardAction>();
+		if (s.EnumerateAllArtifacts().Any((a) => a is DebrisNetArtifact))
+		{
+			actions =
+			[
+				new ASpawn()
+				{
+					thing = new Asteroid()
+				}
+			];
 		}
 		return actions;
 	}
