@@ -28,19 +28,25 @@ internal sealed class FireAndIceCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 0 : 1,
+			cost = upgrade switch
+			{
+				Upgrade.A => 0,
+				Upgrade.B => 2,
+				_ => 1
+			},
+			floppable = upgrade != Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 2}
+				new ASpawn(){thing = new LavaCore()},
 			],
 			_ => [
-				new AStatus() {status = Status.evade, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+				new ASpawn(){thing = new DemonCore(), disabled = flipped},
+				new ADummyAction(),
+				new ASpawn(){thing = new AquaCore(), disabled = !flipped},
 			]
 		};
 }

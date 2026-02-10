@@ -23,27 +23,35 @@ internal sealed class CorePoweredShieldsCard : Card, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CorePoweredShield", "name"]).Localize
 		});
 	}
-
+	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
+	{
+		this.SetIsCoreDependent(true);
+		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
+		{
+			ModEntry.Instance.CoreDependentTrait
+		};
+		return cardTraitEntries;
+	}
 	public override CardData GetData(State state)
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 0:1,
-			exhaust = true
+			cost = 1,
 		};
 
+	
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 2},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new AStatus(){status = Status.shield, statusAmount = 3, targetPlayer = true},
+			],
+			Upgrade.B => [
+				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
+				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.comms, partName = "COMMS"},
-				new ADetect(){Amount = 1},
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
+				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
 			]
 		};
 }

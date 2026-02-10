@@ -13,8 +13,8 @@ internal sealed class DemonCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		DemonCoreSprite = ModEntry.Instance.WispSprite;
-		DemonCoreIcon = ModEntry.Instance.WispIcon;
+		DemonCoreSprite = ModEntry.Instance.DemonCoreSprite;
+		DemonCoreIcon = ModEntry.Instance.DemonCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -60,8 +60,8 @@ internal sealed class AquaCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		AquaCoreSprite = ModEntry.Instance.WispSprite;
-		AquaCoreIcon = ModEntry.Instance.WispIcon;
+		AquaCoreSprite = ModEntry.Instance.AquaCoreSprite;
+		AquaCoreIcon = ModEntry.Instance.AquaCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -108,8 +108,8 @@ internal sealed class StoneCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		StoneCoreSprite = ModEntry.Instance.WispSprite;
-		StoneCoreIcon = ModEntry.Instance.WispIcon;
+		StoneCoreSprite = ModEntry.Instance.StoneCoreSprite;
+		StoneCoreIcon = ModEntry.Instance.StoneCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -156,8 +156,8 @@ internal sealed class LavaCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		LavaCoreSprite = ModEntry.Instance.WispSprite;
-		LavaCoreIcon = ModEntry.Instance.WispIcon;
+		LavaCoreSprite = ModEntry.Instance.LavaCoreSprite;
+		LavaCoreIcon = ModEntry.Instance.LavaCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -213,8 +213,8 @@ internal sealed class BrimstoneCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		BrimstoneCoreSprite = ModEntry.Instance.WispSprite;
-		BrimstoneCoreIcon = ModEntry.Instance.WispIcon;
+		BrimstoneCoreSprite = ModEntry.Instance.BrimstoneCoreSprite;
+		BrimstoneCoreIcon = ModEntry.Instance.BrimstoneCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -270,8 +270,8 @@ internal sealed class MossCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		MossCoreSprite = ModEntry.Instance.WispSprite;
-		MossCoreIcon = ModEntry.Instance.WispIcon;
+		MossCoreSprite = ModEntry.Instance.MossCoreSprite;
+		MossCoreIcon = ModEntry.Instance.MossCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -328,8 +328,8 @@ internal sealed class InfinityCore : Asteroid, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		InfinityCoreSprite = ModEntry.Instance.WispSprite;
-		InfinityCoreIcon = ModEntry.Instance.WispIcon;
+		InfinityCoreSprite = ModEntry.Instance.InfinityCoreSprite;
+		InfinityCoreIcon = ModEntry.Instance.InfinityCoreIcon;
 	}
 
 	public override void Render(G g, Vec v)

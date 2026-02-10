@@ -30,23 +30,25 @@ internal sealed class StabilityAndChaosCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade switch
+			{
+				Upgrade.A => 0,
+				Upgrade.B => 2,
+				_ => 1
+			},
+			floppable = upgrade != Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new ADetect(){Amount = 2}
-
-			],
 			Upgrade.B => [
-				new ADetect(){Amount = 1},
-				new AReconfigure(){Amount = 1},
-				new ADetect(){Amount = 1}
+				new ASpawn(){thing = new MossCore()},
 			],
 			_ => [
-				new ADetect(){Amount = 1}
+				new ASpawn(){thing = new StoneCore(), disabled = flipped},
+				new ADummyAction(),
+				new ASpawn(){thing = new AquaCore(), disabled = !flipped},
 			]
 		};
 }

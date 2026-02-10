@@ -28,20 +28,25 @@ internal sealed class LifeAndDeathCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 2,
-			buoyant = upgrade == Upgrade.B
+			cost = upgrade switch
+			{
+				Upgrade.A => 0,
+				Upgrade.B => 2,
+				_ => 1
+			},
+			floppable = upgrade != Upgrade.B,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
-				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 2}
+			Upgrade.B => [
+				new ASpawn(){thing = new BrimstoneCore()},
 			],
 			_ => [
-				new AStatus(){status = Status.tempShield, statusAmount = 2, targetPlayer = true},
-				new AStatus(){status = ModEntry.Instance.SignalBoosterStatus.Status, targetPlayer = true, statusAmount = 1}
+				new ASpawn(){thing = new DemonCore(), disabled = flipped},
+				new ADummyAction(),
+				new ASpawn(){thing = new StoneCore(), disabled = !flipped},
 			]
 		};
 }

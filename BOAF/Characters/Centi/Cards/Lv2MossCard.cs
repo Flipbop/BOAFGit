@@ -32,34 +32,19 @@ internal sealed class Lv2MossCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
-			exhaust = upgrade != Upgrade.A,
+			cost = upgrade == Upgrade.A? 0 :1,
+
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartModification {part = s.ship.parts[0]},
-				new APartModManager.APartModification {part = s.ship.parts[^1]}
+				new ASpawn(){thing = new MossCore(){bubbleShield = true}}
+
 			],
 			_ => [
-				new APartModManager.APartModification {part = s.ship.parts[0]}
+				new ASpawn(){thing = new MossCore()}
 			]
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is HeavyArmoringCard card)
-			{
-				if (card.upgrade == Upgrade.B)
-				{
-					return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-				}
-			}
-			return null;
-		}
-	}
 }

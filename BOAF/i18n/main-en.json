@@ -683,6 +683,12 @@
                 "description": "When a bubble on a midrow object is popped, this ship gains {0} <c=status>SHIELD</c>, then loses 1 <c=status>BUBBLE SIPHON</c>."
             }
         },
+        "cardtrait": {
+            "CoreDependent": {
+                "name": "CORE DEPENDENT",
+                "description": "This card is <c=downside>unplayable</c> unless there is any kind of <c=keyword>Core</c> in the midrow."
+            }
+        },
 
         "artifact": {
             "DemonHeart": {

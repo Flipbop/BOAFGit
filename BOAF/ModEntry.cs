@@ -101,6 +101,25 @@ public sealed class ModEntry : SimpleMod
 	internal IDeckEntry CentiDeck { get; }
 	internal IPlayableCharacterEntryV2 CentiCharacter { get; }
 	internal ISpriteEntry CentiFullBody { get; set; }
+	
+	internal ISpriteEntry DemonCoreSprite { get; }
+	internal ISpriteEntry DemonCoreIcon { get; }
+	internal ISpriteEntry AquaCoreSprite { get; }
+	internal ISpriteEntry AquaCoreIcon { get; }
+	internal ISpriteEntry StoneCoreSprite { get; }
+	internal ISpriteEntry StoneCoreIcon { get; }
+	internal ISpriteEntry LavaCoreSprite { get; }
+	internal ISpriteEntry LavaCoreIcon { get; }
+	internal ISpriteEntry BrimstoneCoreSprite { get; }
+	internal ISpriteEntry BrimstoneCoreIcon { get; }
+	internal ISpriteEntry MossCoreSprite { get; }
+	internal ISpriteEntry MossCoreIcon { get; }
+	internal ISpriteEntry InfinityCoreSprite { get; }
+	internal ISpriteEntry InfinityCoreIcon { get; }
+	internal ICardTraitEntry CoreDependentTrait { get; }
+	internal ISpriteEntry CoreDependentIcon { get; }
+
+	
 	#endregion
 	
 	#region Ships
@@ -401,6 +420,22 @@ public sealed class ModEntry : SimpleMod
 		stardustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/Stardust.png"));
 		residualDustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/ResidualDust.png"));
 		stardustCostSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Icons/StardustCost.png"));
+		
+		DemonCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/DemonCore.png"));
+		DemonCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/DemonCoreIcon.png"));
+		AquaCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/AquaCore.png"));
+		AquaCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/AquaCoreIcon.png"));
+		StoneCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/StoneCore.png"));
+		StoneCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/StoneCoreIcon.png"));
+		BrimstoneCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/BrimstoneCore.png"));
+		BrimstoneCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/BrimstoneCoreIcon.png"));
+		LavaCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/LavaCore.png"));
+		LavaCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/LavaCoreIcon.png"));
+		MossCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/MossCore.png"));
+		MossCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/MossCoreIcon.png"));
+		InfinityCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/InfinityCore.png"));
+		InfinityCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/InfinityCoreIcon.png"));
+		CoreDependentIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/CoreDependentIcon.png"));
 		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
@@ -1241,6 +1276,21 @@ public sealed class ModEntry : SimpleMod
 				.ToList()
 		});
 		
+		CoreDependentTrait = helper.Content.Cards.RegisterTrait("CoreDependent", new()
+		{
+			Name = this.AnyLocalizations.Bind(["Centi","cardtrait", "CoreDependent", "name"]).Localize,
+			Icon = (state, card) => CoreDependentIcon.Sprite,
+			Tooltips = (state, card) => [
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Patient")
+				{
+					Icon = CoreDependentIcon.Sprite,
+					TitleColor = Colors.cardtrait,
+					Title = Localizations.Localize(["Centi","cardtrait", "CoreDependent", "name"]),
+					Description = Localizations.Localize(["Centi","cardtrait", "CoreDependent", "description"])
+				}
+			]
+		});
+		
 		//Vault.charsWithLore.Add(CentiDeck.Deck);
 		CentiFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CentiDeck.Deck, CentiFullBody.Sprite);
@@ -1536,6 +1586,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new MemoryDialogueLuna();		
 		_ = new StoryDialogueLuna();
 
+		_ = new CoreDependentManager();
 		_ = new CardDialogueCenti();
 		_ = new StoryDialogueCenti();
 		_ = new MemoryDialogueCenti();
