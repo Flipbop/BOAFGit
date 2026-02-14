@@ -11,7 +11,7 @@ internal sealed class AquaHeartArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("CodeInspection", new()
+		helper.Content.Artifacts.RegisterArtifact("AquaHeart", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()

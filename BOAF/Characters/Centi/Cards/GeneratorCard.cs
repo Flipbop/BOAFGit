@@ -32,19 +32,25 @@ internal sealed class GeneratorCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			flippable = upgrade == Upgrade.A
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.A => [
+				new AStatus() {status = Status.tempShield, statusAmount = 2, targetPlayer = true},
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
+			],
 			Upgrade.B => [
-				new AMove(){dir = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new ASpawn(){thing = new TempShieldDrone(), offset = -1}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
 			],
 			_ => [
-				new AMove(){dir = 2, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
 			]
 		};
 }
