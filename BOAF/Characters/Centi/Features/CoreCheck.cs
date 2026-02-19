@@ -21,10 +21,10 @@ internal sealed class DemonCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
     public int GetCurrentResourceAmount(State state, Combat combat)
     {
 	    Dictionary<int, StuffBase> check = combat.stuff;
-	    if (check.ContainsValue(new DemonCore()) ||
-	        check.ContainsValue(new LavaCore()) ||
-	        check.ContainsValue(new BrimstoneCore()) ||
-	        check.ContainsValue(new InfinityCore()))
+	    if (check.Values.Any(o => o is DemonCore) ||
+	        check.Values.Any(o => o is LavaCore) ||
+	        check.Values.Any(o => o is BrimstoneCore) ||
+	        check.Values.Any(o => o is InfinityCore))
 		    return 1;
 	    return 0;
     }
@@ -38,7 +38,7 @@ internal sealed class DemonCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
 	    => [
 		    new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::DemonAction")
 		    {
-			    Icon = ModEntry.Instance.stardustCostSprite.Sprite,
+			    Icon = ModEntry.Instance.DemonCoreEmptyIcon.Sprite,
 			    TitleColor = Colors.action,
 			    Title = ModEntry.Instance.Localizations.Localize(["Centi","action", "DemonAction", "name"]),
 			    Description = ModEntry.Instance.Localizations.Localize(["Centi","action", "DemonAction", "description"]),
@@ -61,10 +61,10 @@ internal sealed class AquaCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
 	public int GetCurrentResourceAmount(State state, Combat combat)
 	{
 		Dictionary<int, StuffBase> check = combat.stuff;
-		if (check.ContainsValue(new AquaCore()) ||
-		    check.ContainsValue(new LavaCore()) ||
-		    check.ContainsValue(new MossCore()) ||
-		    check.ContainsValue(new InfinityCore()))
+		if (check.Values.Any(o => o is AquaCore) ||
+		    check.Values.Any(o => o is LavaCore) ||
+		    check.Values.Any(o => o is MossCore) ||
+		    check.Values.Any(o => o is InfinityCore))
 			return 1;
 		return 0;
 	}
@@ -78,7 +78,7 @@ internal sealed class AquaCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::AquaAction")
 			{
-				Icon = ModEntry.Instance.stardustCostSprite.Sprite,
+				Icon = ModEntry.Instance.AquaCoreEmptyIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["Centi","action", "AquaAction", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Centi","action", "AquaAction", "description"]),
@@ -101,10 +101,10 @@ internal sealed class StoneCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
 	public int GetCurrentResourceAmount(State state, Combat combat)
 	{
 		Dictionary<int, StuffBase> check = combat.stuff;
-		if (check.ContainsValue(new StoneCore()) ||
-		    check.ContainsValue(new MossCore()) ||
-		    check.ContainsValue(new BrimstoneCore()) ||
-		    check.ContainsValue(new InfinityCore()))
+		if (check.Values.Any(o => o is StoneCore) ||
+		    check.Values.Any(o => o is MossCore) ||
+		    check.Values.Any(o => o is BrimstoneCore) ||
+		    check.Values.Any(o => o is InfinityCore))
 			return 1;
 		return 0;
 	}
@@ -118,7 +118,7 @@ internal sealed class StoneCoreCheck : IKokoroApi.IV2.IActionCostsApi.IResource
 		=> [
 			new GlossaryTooltip($"action.{ModEntry.Instance.Package.Manifest.UniqueName}::StoneAction")
 			{
-				Icon = ModEntry.Instance.stardustCostSprite.Sprite,
+				Icon = ModEntry.Instance.StoneCoreEmptyIcon.Sprite,
 				TitleColor = Colors.action,
 				Title = ModEntry.Instance.Localizations.Localize(["Centi","action", "StoneAction", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Centi","action", "StoneAction", "description"]),

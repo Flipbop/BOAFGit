@@ -21,7 +21,7 @@ internal sealed class AgressiveDefenseCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/AgressiveDefense.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "AgressiveDefense", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "AggressiveDefense", "name"]).Localize
 		});
 	}
 
