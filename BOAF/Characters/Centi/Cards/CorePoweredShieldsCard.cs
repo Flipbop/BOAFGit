@@ -20,7 +20,7 @@ internal sealed class CorePoweredShieldsCard : Card, IRegisterable
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CorePoweredShields.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CorePoweredShield", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CorePoweredShields", "name"]).Localize
 		});
 	}
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
