@@ -30,24 +30,30 @@ internal sealed class CapacitorSlugCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B ? 2 :1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 1},
-				new AReconfigure(){Amount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AAttack{damage = GetDmg(s, 4)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new AStatus() { status = Status.maxShield, statusAmount = 2, targetPlayer = true }).AsCardAction,
 			],
 			Upgrade.A => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AAttack{damage = GetDmg(s, 3)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new AStatus() { status = Status.maxShield, statusAmount = 1, targetPlayer = true }).AsCardAction,
+				new AStatus() { status = Status.shield, statusAmount = 1, targetPlayer = true }
 			],
 			_ => [
-				new APartModManager.APartRebuild{part = s.ship.parts[0], newPartType = PType.cockpit, partName = "COCKPIT"},
-				new ADetect(){Amount = 1}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AAttack{damage = GetDmg(s, 2)}).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new AStatus() { status = Status.maxShield, statusAmount = 1, targetPlayer = true }).AsCardAction,
 			]
 		};
 }

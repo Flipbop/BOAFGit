@@ -27,16 +27,28 @@ internal sealed class PunishmentCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 0 : 1,
-			recycle = upgrade == Upgrade.B,
-			retain = true
+			cost = 2,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
+			Upgrade.B => [
+				new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true },
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new ASpawn() {thing = new SpaceMine()}).AsCardAction,
+			],
+			Upgrade.A => [
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new AStatus() { status = Status.shield, statusAmount = 3, targetPlayer = true }).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new ASpawn() {thing = new SpaceMine(){bigMine = true}}).AsCardAction,
+			],
 			_ => [
-				new AReconfigure(){Amount = 2}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
+					new AStatus() { status = Status.shield, statusAmount = 2, targetPlayer = true }).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new ASpawn() {thing = new SpaceMine()}).AsCardAction,
 			]
 		};
 }

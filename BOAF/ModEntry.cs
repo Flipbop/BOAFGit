@@ -1184,7 +1184,7 @@ public sealed class ModEntry : SimpleMod
 		#region CentiCharacter
 		CentiCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Centi", new()
 		{
-			Deck = LunaDeck.Deck,
+			Deck = CentiDeck.Deck,
 			Description = this.AnyLocalizations.Bind(["Centi","character", "description"]).Localize,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/CharacterFrame.png")).Sprite,
 			NeutralAnimation = new()
