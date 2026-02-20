@@ -101,7 +101,9 @@ public sealed class ModEntry : SimpleMod
 	internal IDeckEntry CentiDeck { get; }
 	internal IPlayableCharacterEntryV2 CentiCharacter { get; }
 	internal ISpriteEntry CentiFullBody { get; set; }
-	
+	internal IStatusEntry NanomachinesStatus { get; }
+	internal IStatusEntry BubbleSiphonStatus { get; }
+
 	internal ISpriteEntry DemonCoreSprite { get; }
 	internal ISpriteEntry DemonCoreIcon { get; }
 	internal ISpriteEntry DemonCoreEmptyIcon { get; }
@@ -1182,6 +1184,9 @@ public sealed class ModEntry : SimpleMod
 		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
 		# endregion
 		#region CentiCharacter
+		
+		
+		
 		CentiCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Centi", new()
 		{
 			Deck = CentiDeck.Deck,
@@ -1226,6 +1231,31 @@ public sealed class ModEntry : SimpleMod
 			},
 			
 			ExeCardType = typeof(CentiExeCard)
+		});
+		
+		NanomachinesStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("Nanomachines", new()
+		{
+			Definition = new()
+			{
+				icon = residualDustSprite.Sprite,
+				color = new("2134a8"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Centi", "status", "Nanomachines", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Centi", "status", "Nanomachines", "description"])
+				.Localize
+		});
+		BubbleSiphonStatus = ModEntry.Instance.Helper.Content.Statuses.RegisterStatus("BubbleSiphon", new()
+		{
+			Definition = new()
+			{
+				icon = residualDustSprite.Sprite,
+				color = new("2134a8"),
+				isGood = true,
+			},
+			Name = AnyLocalizations.Bind(["Centi", "status", "BubbleSiphon", "name"]).Localize,
+			Description = AnyLocalizations.Bind(["Centi", "status", "BubbleSiphon", "description"])
+				.Localize
 		});
 		
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()

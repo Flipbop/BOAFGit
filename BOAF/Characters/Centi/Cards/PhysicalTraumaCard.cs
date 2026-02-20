@@ -32,21 +32,30 @@ internal sealed class PhysicalTraumaCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 2:3,
-			exhaust = true
+			cost = upgrade switch
+			{
+				Upgrade.B => 3,
+				Upgrade.A => 1,
+				_=> 2
+			},
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty, partName = "SCAFFOLDING"},
-				new ADetect(){Amount = 1},
-				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new AStatus()  { status = ModEntry.Instance.NanomachinesStatus.Status, statusAmount = 2, targetPlayer = true }).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AStatus()  { status = Status.tempPayback, statusAmount = 3, targetPlayer = true }).AsCardAction,
+				new AStatus(){status = Status.tempShield, statusAmount = 4, targetPlayer = true}
 			],
 			_ => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.empty, partName = "SCAFFOLDING"},
-				new AStatus(){status = Status.energyLessNextTurn, statusAmount = 1, targetPlayer = true}
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new AStatus()  { status = ModEntry.Instance.NanomachinesStatus.Status, statusAmount = 1, targetPlayer = true }).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AStatus()  { status = Status.tempPayback, statusAmount = 2, targetPlayer = true }).AsCardAction,
+				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true}
 			]
 		};
 	

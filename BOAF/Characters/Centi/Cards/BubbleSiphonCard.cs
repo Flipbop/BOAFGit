@@ -9,7 +9,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class BubbleSiphonCard : Card, IRegisterable
+internal sealed class BubbleSiphonCard : Card, IRegisterable, IHasCustomCardTraits
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -31,23 +31,36 @@ internal sealed class BubbleSiphonCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = 1,
+			cost = upgrade == Upgrade.B? 0:1,
 		};
+	
+	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
+	{
+		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>();
+		if (this.upgrade == Upgrade.B)
+		{
+			this.SetIsCoreDependent(true);
+			cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
+		}
+		return cardTraitEntries;
+	}
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.A => [
-				new ADetect(){Amount = 2},
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
+				new AStatus() { status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = 2, targetPlayer = true },
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new AStatus() { status = Status.bubbleJuice, statusAmount = 2, targetPlayer = true }).AsCardAction,
 			],
 			Upgrade.B => [
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 2},
-				new ADetect(){Amount = 1},
+				new AStatus() { status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = 1, targetPlayer = true },
+				new AStatus() { status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true },
 			],
 			_ => [
-				new ADetect(){Amount = 1},
-				new AStatus() {targetPlayer = true, status = ModEntry.Instance.SignalBoosterStatus.Status, statusAmount = 1}
+				new AStatus() { status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = 1, targetPlayer = true },
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new AStatus() { status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true }).AsCardAction,
 			]
 		};
 }

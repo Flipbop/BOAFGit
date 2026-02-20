@@ -29,29 +29,24 @@ internal sealed class Lv2CoreCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.B? 3:2,
+			cost = upgrade == Upgrade.A? 1:2,
 			description =
 				ModEntry.Instance.Localizations.Localize([
 					"Centi", "card", "Lv2Core", "description", upgrade.ToString()
 				]),
+			exhaust = upgrade != Upgrade.B
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
-			Upgrade.A => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 3}
-			],
-			Upgrade.B => [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new AReconfigure(){Amount = 1},
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 2}
-			],
 			_=> [
-				new APartModManager.APartRebuild(){part = s.ship.parts[0], newPartType = PType.wing},
-				new ADetect(){Amount = 2}
+				new ASpecificCardOffering()
+				{
+					CanSkip = false,
+					Destination = CardDestination.Hand,
+					Cards = [new Lv2BrimstoneCard(), new Lv2LavaCard(), new Lv2MossCard()]
+				}
 			]
 		};
 }

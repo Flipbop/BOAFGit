@@ -23,12 +23,13 @@ internal sealed class ShieldSapperArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnReceiveArtifact(State state)
+	public override void OnTurnStart(State state, Combat combat)
 	{
-		base.OnReceiveArtifact(state);
-		state.ship.parts.Add(new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite, flip = true});
-		state.ship.parts.Insert(0, new Part() {type = PType.empty, skin = ModEntry.Instance.rebuiltScaffoldSprite});
+		base.OnTurnStart(state, combat);
+		if (state.ship.Get(Status.shield) > 0)
+		{
+			combat.Queue(new AEnergy(){changeAmount = 1});
+			combat.Queue(new AStatus(){status = Status.shield, statusAmount = -1, targetPlayer = true});
+		}
 	}
-	
-	
 }

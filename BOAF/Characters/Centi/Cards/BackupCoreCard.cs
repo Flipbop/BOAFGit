@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class BackupCoreCard : Card, IRegisterable
+internal sealed class BackupCoreCard : Card, IRegisterable, IHasCustomCardTraits
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -35,6 +35,16 @@ internal sealed class BackupCoreCard : Card, IRegisterable
 				]),
 		};
 
+	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
+	{
+		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>();
+		if (this.upgrade != Upgrade.B)
+		{
+			this.SetIsCoreDependent(true);
+			cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
+		}
+		return cardTraitEntries;
+	}
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{

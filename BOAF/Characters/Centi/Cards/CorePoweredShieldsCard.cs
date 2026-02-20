@@ -6,7 +6,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class CorePoweredShieldsCard : Card, IRegisterable
+internal sealed class CorePoweredShieldsCard : Card, IRegisterable, IHasCustomCardTraits
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{

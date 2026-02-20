@@ -33,33 +33,28 @@ internal sealed class TidalWaveCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			exhaust = upgrade != Upgrade.A,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=>upgrade switch
 		{
 			Upgrade.B => [
-				new APartModManager.APartModification {part = s.ship.parts[0]},
-				new APartModManager.APartModification {part = s.ship.parts[^1]}
+				new AStatus() {statusAmount = 1, status = Status.droneShift, targetPlayer = true},
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new ABubbleField()).AsCardAction,
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new DemonCoreCheck(), 1),
+					new AStatus() {statusAmount = 2, status = ModEntry.Instance.BubbleSiphonStatus.Status, targetPlayer = true}).AsCardAction,
+			],
+			Upgrade.A=> [
+				new AStatus() {statusAmount = 1, status = Status.droneShift, targetPlayer = true},
+				new ASpawn(){thing = new Asteroid()},
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new ABubbleField()).AsCardAction,
 			],
 			_ => [
-				new APartModManager.APartModification {part = s.ship.parts[0]}
+				new AStatus() {statusAmount = 1, status = Status.droneShift, targetPlayer = true},
+				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
+					new ABubbleField()).AsCardAction,
 			]
 		};
-	
-	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
-	{
-		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
-		{
-			if (args.Card is HeavyArmoringCard card)
-			{
-				if (card.upgrade == Upgrade.B)
-				{
-					return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
-				}
-			}
-			return null;
-		}
-	}
 }

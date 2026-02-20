@@ -28,15 +28,15 @@ internal sealed class ShieldStorageArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void OnReceiveArtifact(State state)
+	public override void AfterPlayerStatusAction(State state, Combat combat, Status status, AStatusMode mode, int statusAmount)
 	{
-		base.OnReceiveArtifact(state);
-		AReconfigure.codeInspectionAmount = 0;
+		base.AfterPlayerStatusAction(state, combat, status, mode, statusAmount);
+		if (status == Status.shield)
+		{
+			if (state.ship.Get(Status.shield) + statusAmount > state.ship.GetMaxShield())
+			{
+				combat.Queue(new AStatus(){status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true});
+			}
+		}
 	}
-
-	public override int? GetDisplayNumber(State s)
-	{
-		return AReconfigure.codeInspectionAmount;
-	}
-	
 }

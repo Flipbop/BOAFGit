@@ -32,6 +32,7 @@ internal sealed class Lv2BrimstoneCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A? 0 :1,
+			temporary = true
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

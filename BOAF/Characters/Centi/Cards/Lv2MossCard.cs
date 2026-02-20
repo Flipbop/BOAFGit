@@ -33,6 +33,8 @@ internal sealed class Lv2MossCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A? 0 :1,
+			temporary = true
+
 
 		};
 

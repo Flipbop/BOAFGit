@@ -8,7 +8,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class LastStandCard : Card, IRegisterable
+internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -39,7 +39,15 @@ internal sealed class LastStandCard : Card, IRegisterable
 					"Centi", "card", "LastStand", "description", upgrade.ToString()
 				]),
 		};
-
+	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
+	{
+		this.SetIsCoreDependent(true);
+		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
+		{
+			ModEntry.Instance.CoreDependentTrait
+		};
+		return cardTraitEntries;
+	}
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 			{
