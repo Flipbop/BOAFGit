@@ -94,6 +94,8 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry stardustSprite { get; }
 	internal ISpriteEntry residualDustSprite { get; }
 	internal ISpriteEntry stardustCostSprite { get; }
+	internal ICardTraitEntry ShimmeredTrait { get; }
+	internal ISpriteEntry ShimmeredIcon { get; }
 	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
 
 	#endregion
@@ -428,6 +430,7 @@ public sealed class ModEntry : SimpleMod
 		stardustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/Stardust.png"));
 		residualDustSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Status/ResidualDust.png"));
 		stardustCostSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Icons/StardustCost.png"));
+		ShimmeredIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Icons/ShimmeredIcon.png"));
 		
 		DemonCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/DemonCore.png"));
 		DemonCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/DemonCoreIcon.png"));
@@ -1072,6 +1075,21 @@ public sealed class ModEntry : SimpleMod
 				.Localize
 		});
 		
+		ShimmeredTrait = helper.Content.Cards.RegisterTrait("Shimmered", new()
+		{
+			Name = this.AnyLocalizations.Bind(["Luna","cardtrait", "Shimmered", "name"]).Localize,
+			Icon = (state, card) => ShimmeredIcon.Sprite,
+			Tooltips = (state, card) => [
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Shimmered")
+				{
+					Icon = CoreDependentIcon.Sprite,
+					TitleColor = Colors.cardtrait,
+					Title = Localizations.Localize(["Luna","cardtrait", "Shimmered", "name"]),
+					Description = Localizations.Localize(["Luna","cardtrait", "Shimmered", "description"])
+				}
+			]
+		});
+		
 		KassCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("Kass", new NonPlayableCharacterConfigurationV2()
 		{
 			CharacterType = "kass",
@@ -1320,7 +1338,7 @@ public sealed class ModEntry : SimpleMod
 			Name = this.AnyLocalizations.Bind(["Centi","cardtrait", "CoreDependent", "name"]).Localize,
 			Icon = (state, card) => CoreDependentIcon.Sprite,
 			Tooltips = (state, card) => [
-				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::Patient")
+				new GlossaryTooltip($"action.{Instance.Package.Manifest.UniqueName}::CoreDependent")
 				{
 					Icon = CoreDependentIcon.Sprite,
 					TitleColor = Colors.cardtrait,
@@ -1621,6 +1639,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new StardustManager();
 		_ = new ResidualDustManager();
 		_ = new StardustCostManager();
+		_ = new ShimmeredManager();
 		_ = new CardDialogueLuna();
 		_ = new MemoryDialogueLuna();		
 		_ = new StoryDialogueLuna();

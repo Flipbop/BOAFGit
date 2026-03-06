@@ -74,6 +74,26 @@ public sealed class ApiImplementation : IBOAFApi
 			Description = ModEntry.Instance.Localizations.Localize(["Jay","status", "LessEnergyAllTurns", "description"])
 		};
 	#endregion
-	
 
+	#region Luna
+	public IDeckEntry LunaDeck => ModEntry.Instance.LunaDeck;
+	public IStatusEntry StardustStatus => ModEntry.Instance.StardustStatus;
+	public IStatusEntry ResidualDustStatus => ModEntry.Instance.StardustStatus;
+	public Tooltip GetStardustTooltip(bool amount)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::Stardust")
+		{
+			Icon = ModEntry.Instance.stardustSprite.Sprite,
+			TitleColor = Colors.status,
+			Title = ModEntry.Instance.Localizations.Localize(["Luna","status", "Stardust", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Luna","status", "Stardust", "description"])
+		};
+	public Tooltip GetResidualDustTooltip(bool amount)
+		=> new GlossaryTooltip($"status.{ModEntry.Instance.Package.Manifest.UniqueName}::ResidualDust")
+		{
+			Icon = ModEntry.Instance.residualDustSprite.Sprite,
+			TitleColor = Colors.status,
+			Title = ModEntry.Instance.Localizations.Localize(["Luna","status", "ResidualDust", "name"]),
+			Description = ModEntry.Instance.Localizations.Localize(["Luna","status", "ResidualDust", "description"])
+		};
+	#endregion
 }

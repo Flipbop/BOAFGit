@@ -21,4 +21,11 @@ public interface IBOAFApi
 	IStatusEntry LessEnergyAllTurnsStatus { get; }
 	Tooltip GetSignalBoosterTooltip(bool onOrOff);
 	Tooltip GetLessEnergyAllTurnsTooltip(bool onOrOff);
+	
+	IDeckEntry LunaDeck { get; }
+	IStatusEntry StardustStatus { get; }
+	IStatusEntry ResidualDustStatus { get; }
+	Tooltip GetStardustTooltip(bool onOrOff);
+	Tooltip GetResidualDustTooltip(bool onOrOff);
+
 }

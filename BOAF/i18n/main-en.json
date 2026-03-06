@@ -497,7 +497,7 @@
         "cardtrait": {
             "Shimmered": {
                 "name": "Shimmered",
-                "description": "The first time you play this card, all of the <c=status>STARDUST</c> costs are ignored."
+                "description": "The first time you pay the <c=status>STARDUST</c> costs on this card, it's free."
             }
         },
 
@@ -609,9 +609,9 @@
             "LunaExe": {
                 "name": "Luna.EXE",
                 "description": {
-                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=a661cb>Luna</c> cards to your hand.",
-                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=a661cb>Luna</c> cards to your hand.",
-                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=a661cb>Luna</c> cards to your hand."
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp, shimmered</c> <c=a661cb>Luna</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp, shimmered</c> <c=a661cb>Luna</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp, shimmered</c> <c=a661cb>Luna</c> cards to your hand."
                 }
             }
         }

@@ -24,6 +24,7 @@ internal sealed class StardustCost : IKokoroApi.IV2.IActionCostsApi.IResource
 
     public void Pay(State s, Combat c, int amount)
     {
+	    
         c.QueueImmediate(new AStatus(){status = ModEntry.Instance.StardustStatus.Status, statusAmount = -amount, targetPlayer = true});
         
         

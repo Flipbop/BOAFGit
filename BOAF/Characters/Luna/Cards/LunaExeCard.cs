@@ -37,7 +37,7 @@ internal sealed class LunaExeCard : Card, IRegisterable
 
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> [
-			new ACardOffering
+			new AShimmeredCardOffering
 			{
 				amount = GetChoiceCount(),
 				limitDeck = ModEntry.Instance.LunaDeck.Deck,
@@ -49,4 +49,12 @@ internal sealed class LunaExeCard : Card, IRegisterable
 				dialogueSelector = $".summon{ModEntry.Instance.LunaDeck.UniqueName}"
 			}
 		];
+}
+
+public class AShimmeredCardOffering : ACardOffering
+{
+	public override void Begin(G g, State s, Combat c)
+	{
+		base.Begin(g, s, c);
+	}
 }
