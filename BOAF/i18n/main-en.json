@@ -497,7 +497,7 @@
         "cardtrait": {
             "Shimmered": {
                 "name": "Shimmered",
-                "description": "The first time you pay the <c=status>STARDUST</c> costs on this card, it's free."
+                "description": "All <c=status>STARDUST</c> costs on this card are free the first time you would pay for them."
             }
         },
 

@@ -53,8 +53,14 @@ internal sealed class LunaExeCard : Card, IRegisterable
 
 public class AShimmeredCardOffering : ACardOffering
 {
-	public override void Begin(G g, State s, Combat c)
+	public override Route? BeginWithRoute(G g, State s, Combat c)
 	{
-		base.Begin(g, s, c);
+		var route = (CardReward?) base.BeginWithRoute(g, s, c);
+		if (route?.cards != null)
+			foreach (Card card in route.cards)
+			{
+				card.SetIsShimmered(true);
+			}
+		return route;
 	}
 }
