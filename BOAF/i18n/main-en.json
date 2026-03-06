@@ -494,6 +494,12 @@
                 "description": "When destroyed, gives you 1 <c=status>RESIDUAL DUST</c>."
             }
         },
+        "cardtrait": {
+            "Shimmered": {
+                "name": "Shimmered",
+                "description": "The first time you play this card, all of the <c=status>STARDUST</c> costs are ignored."
+            }
+        },
 
         "artifact": {
             "LunarPendant": {
