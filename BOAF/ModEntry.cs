@@ -55,7 +55,6 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry GreaterWispIcon { get; }
 	internal ISpriteEntry DormantGreaterWispIcon { get; }
 	internal ISpriteEntry DormantGreaterWispSprite { get; }
-
 	#endregion
 	#region Jay
 	internal IDeckEntry JayDeck { get; }
@@ -82,6 +81,7 @@ public sealed class ModEntry : SimpleMod
 	internal string rebuiltScaffoldSprite { get; }
 	internal string rebuiltWingSprite { get; }
 	internal string rebuiltCommsSprite { get; }
+	
 	internal INonPlayableCharacterEntryV2 ValvCharacter { get; }
 	
 	#endregion
@@ -96,8 +96,10 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry stardustCostSprite { get; }
 	internal ICardTraitEntry ShimmeredTrait { get; }
 	internal ISpriteEntry ShimmeredIcon { get; }
-	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
+	
 
+	
+	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
 	#endregion
 	#region Centi
 	internal IDeckEntry CentiDeck { get; }
@@ -134,9 +136,27 @@ public sealed class ModEntry : SimpleMod
 	
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
+	internal string thanatosCannonSprite { get; }
+	internal string thanatosCockpitSprite { get; }
+	internal string thanatosBaySprite { get; }
+	internal string thanatosWingSprite { get; }
+	internal ISpriteEntry thanatosChassisSprite { get; }
 	internal IShipEntry VulcanShip { get; }
+	
 	internal IShipEntry AthenaShip { get; }
+	internal string athenaCannonSprite { get; }
+	internal string athenaCockpitSprite { get; }
+	internal string athenaBaySprite { get; }
+	internal string athenaWingSprite { get; }
+	internal ISpriteEntry athenaChassisSprite { get; }
 
+	internal IShipEntry NeptuneShip { get; }
+	internal string neptuneCannonSprite { get; }
+	internal string neptuneCockpitSprite { get; }
+	internal string neptuneBaySprite { get; }
+	internal string neptuneCommsSprite { get; }
+	internal ISpriteEntry neptuneChassisSprite { get; }
+	
 	#endregion
 	public ISpriteEntry BGJayWorkshopSprite { get; }
 	public IModHelper helper { get; }
@@ -450,6 +470,25 @@ public sealed class ModEntry : SimpleMod
 		InfinityCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/InfinityCore.png"));
 		InfinityCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/InfinityCoreIcon.png"));
 		CoreDependentIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/CoreDependentIcon.png"));
+		
+		//Insert Eva Here
+		
+		thanatosWingSprite = helper.Content.Ships.RegisterPart("ThanatosWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_wing.png")).Sprite }).UniqueName;
+		thanatosCannonSprite = helper.Content.Ships.RegisterPart("ThanatosCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon.png")).Sprite }).UniqueName;
+		thanatosCockpitSprite = helper.Content.Ships.RegisterPart("ThanatosCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cockpit.png")).Sprite }).UniqueName;
+		thanatosBaySprite = helper.Content.Ships.RegisterPart("ThanatosBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_missile.png")).Sprite }).UniqueName;
+		thanatosChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_chassis.png"));
+		//Insert Vulcan Here
+		athenaWingSprite = helper.Content.Ships.RegisterPart("AthenaWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_wing.png")).Sprite }).UniqueName;
+		athenaCannonSprite = helper.Content.Ships.RegisterPart("AthenaCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_cannon.png")).Sprite }).UniqueName;
+		athenaCockpitSprite = helper.Content.Ships.RegisterPart("AthenaCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_cockpit.png")).Sprite }).UniqueName;
+		athenaBaySprite = helper.Content.Ships.RegisterPart("AthenaBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_missile.png")).Sprite }).UniqueName;
+		athenaChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_chassis.png"));
+		neptuneCommsSprite = helper.Content.Ships.RegisterPart("NeptuneComms", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_comms.png")).Sprite }).UniqueName;
+		neptuneCannonSprite = helper.Content.Ships.RegisterPart("NeptuneCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_cannon.png")).Sprite }).UniqueName;
+		neptuneCockpitSprite = helper.Content.Ships.RegisterPart("NeptuneCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_cockpit.png")).Sprite }).UniqueName;
+		neptuneBaySprite = helper.Content.Ships.RegisterPart("NeptuneBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_missile.png")).Sprite }).UniqueName;
+		neptuneChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_chassis.png"));
 		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
 		this.helper = helper;
@@ -1368,33 +1407,33 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "wing_ares",
+                            skin = "ThanatosCannon",
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = "ThanatosWing",
                         },
                         new Part
                         {
                             type = PType.cockpit,
-                            skin = "cockpit_artemis",
+                            skin = "ThanatosCockpit",
                         },
                         new Part
                         {
                             type = PType.missiles,
-                            skin = "missiles_artemis",
+                            skin = "ThanatosBay",
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = "ThanatosWing",
                             flip = true,
                         },
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "wing_ares",
+                            skin = "ThanatosCannon",
                             active = false,
                             flip = true,
                         }
@@ -1418,7 +1457,7 @@ public sealed class ModEntry : SimpleMod
                 typeof(HunterCannonsArtifact),
                 typeof(ReaperCannonsArtifact)
             },
-            //UnderChassisSprite = "chassis_boxy",
+            UnderChassisSprite = thanatosChassisSprite.Sprite,
             Name = AnyLocalizations.Bind(["ship", "Thanatos", "name"]).Localize,
             Description = AnyLocalizations.Bind(["ship", "Thanatos", "description"]).Localize
         });
@@ -1502,27 +1541,27 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = "AthenaWing",
                         },
                         new Part
                         {
                             type = PType.cockpit,
-                            skin = "cockpit_artemis",
-                        },
-                        new Part
-                        {
-                            type = PType.missiles,
-                            skin = "missiles_artemis",
+                            skin = "AthenaCockpit",
                         },
                         new Part
                         {
 	                        type = PType.cannon,
-	                        skin = "wing_ares",
+	                        skin = "AthenaCannon",
+                        },
+                        new Part
+                        {
+	                        type = PType.missiles,
+	                        skin = "AthenaBay",
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = "AthenaWing",
                             flip = true,
                         },
                     }
@@ -1545,9 +1584,68 @@ public sealed class ModEntry : SimpleMod
                 typeof(BattleTacticsArtifact),
                 typeof(EndlessPreparationsArtifact)
             },
-            //UnderChassisSprite = "chassis_boxy",
+            UnderChassisSprite = athenaChassisSprite.Sprite,
             Name = AnyLocalizations.Bind(["ship", "Athena", "name"]).Localize,
             Description = AnyLocalizations.Bind(["ship", "Athena", "description"]).Localize
+        });
+		NeptuneShip = helper.Content.Ships.RegisterShip("Neptune", new ShipConfiguration()
+        {
+            Ship = new StarterShip()
+            {
+                ship = new Ship()
+                {
+                    hull = 6,
+                    hullMax = 6,
+                    shieldMaxBase = 4,
+                    parts =
+                    {
+                        new Part
+                        {
+                            type = PType.missiles,
+                            skin = "NeptuneBay",
+                        },
+                        new Part
+                        {
+                            type = PType.cannon,
+                            skin = "NeptuneCannon",
+                        },
+                        new Part
+                        {
+	                        type = PType.cockpit,
+	                        skin = "NeptuneCockpit",
+                        },
+                        new Part
+                        {
+	                        type = PType.comms,
+	                        skin = "NeptuneComms",
+                        },
+                        new Part
+                        {
+                            type = PType.missiles,
+                            skin = "NeptuneBay",
+                            flip = true,
+                            active = false
+                        },
+                    }
+                },
+                cards =
+                {
+	                new BasicShieldColorless(),
+	                new DodgeColorless(),
+	                new CannonColorless(),
+                },
+                artifacts =
+                {
+                    new ShieldPrep(),
+                }
+            },
+            ExclusiveArtifactTypes = new HashSet<Type>()
+            {
+
+            },
+            UnderChassisSprite = neptuneChassisSprite.Sprite,
+            Name = AnyLocalizations.Bind(["ship", "Neptune", "name"]).Localize,
+            Description = AnyLocalizations.Bind(["ship", "Neptune", "description"]).Localize
         });
 		#endregion
 		
