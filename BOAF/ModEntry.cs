@@ -1407,33 +1407,33 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "ThanatosCannon",
+                            skin = thanatosCannonSprite,
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "ThanatosWing",
+                            skin = thanatosWingSprite,
                         },
                         new Part
                         {
                             type = PType.cockpit,
-                            skin = "ThanatosCockpit",
+                            skin = thanatosCockpitSprite,
                         },
                         new Part
                         {
                             type = PType.missiles,
-                            skin = "ThanatosBay",
+                            skin = thanatosBaySprite,
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "ThanatosWing",
+                            skin = thanatosWingSprite,
                             flip = true,
                         },
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "ThanatosCannon",
+                            skin = thanatosCannonSprite,
                             active = false,
                             flip = true,
                         }
@@ -1541,27 +1541,27 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.wing,
-                            skin = "AthenaWing",
+                            skin = athenaWingSprite,
                         },
                         new Part
                         {
                             type = PType.cockpit,
-                            skin = "AthenaCockpit",
+                            skin = athenaCockpitSprite,
                         },
                         new Part
                         {
 	                        type = PType.cannon,
-	                        skin = "AthenaCannon",
+	                        skin = athenaCannonSprite,
                         },
                         new Part
                         {
 	                        type = PType.missiles,
-	                        skin = "AthenaBay",
+	                        skin = athenaBaySprite,
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "AthenaWing",
+                            skin = athenaWingSprite,
                             flip = true,
                         },
                     }
@@ -1602,27 +1602,27 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.missiles,
-                            skin = "NeptuneBay",
+                            skin = neptuneBaySprite,
                         },
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "NeptuneCannon",
+                            skin = neptuneCannonSprite,
                         },
                         new Part
                         {
 	                        type = PType.cockpit,
-	                        skin = "NeptuneCockpit",
+	                        skin = neptuneCockpitSprite,
                         },
                         new Part
                         {
 	                        type = PType.comms,
-	                        skin = "NeptuneComms",
+	                        skin = neptuneCommsSprite,
                         },
                         new Part
                         {
                             type = PType.missiles,
-                            skin = "NeptuneBay",
+                            skin = neptuneBaySprite,
                             flip = true,
                             active = false
                         },
