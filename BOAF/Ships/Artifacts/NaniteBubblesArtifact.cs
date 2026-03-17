@@ -10,7 +10,7 @@ internal sealed class NaniteBubblesArtifact : Artifact, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		helper.Content.Artifacts.RegisterArtifact("BubbleGenerator", new()
+		helper.Content.Artifacts.RegisterArtifact("NaniteBubbles", new()
 		{
 			ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
@@ -19,7 +19,7 @@ internal sealed class NaniteBubblesArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				unremovable = true
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/Artifacts/NaninteBubbles.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/Artifacts/NaniteBubbles.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "NaniteBubbles", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "NaniteBubbles", "description"]).Localize
 		});
