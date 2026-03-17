@@ -344,6 +344,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(ReaperCannonsArtifact),
 		typeof(KineticReboundArtifact),
 		typeof(EndlessPreparationsArtifact),
+		typeof(NaniteBubblesArtifact),
 	];
 
 	internal static IReadOnlyList<Type> DuoArtifacts { get; } = [
@@ -364,6 +365,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(HunterCannonsArtifact),
 		typeof(VulcanPlatingArtifact),
 		typeof(BattleTacticsArtifact),
+		typeof(BubbleGeneratorArtifact),
 	];
 
 	internal static IReadOnlyList<Type> MidrowObjects { get; } = [
