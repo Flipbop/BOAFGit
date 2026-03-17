@@ -110,7 +110,7 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 			hullMax = 15,
 			shieldMaxBase = 5,
 			ai = this,
-			chassisUnder = "chassis_lawless",
+			chassisUnder = ModEntry.Instance.neptuneChassisSprite.LocalName,
 			parts = parts
 		};
 	}

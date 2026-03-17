@@ -91,7 +91,7 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 			hullMax = 12,
 			shieldMaxBase = 8,
 			ai = this,
-			chassisUnder = "chassis_lawless",
+			chassisUnder = ModEntry.Instance.athenaChassisSprite.LocalName,
 			parts = parts
 		};
 	}
