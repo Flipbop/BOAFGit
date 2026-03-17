@@ -1199,7 +1199,7 @@
             },
             "NaniteBubbles": {
                 "name": "NANITE BUBBLES",
-                "description": "When a <c=midrow>midrow object</c> loses it's bubble, launch a <c=keyword>duplicate</c> of that object."
+                "description": "When a <c=midrow>midrow object</c> loses its bubble, launch a <c=keyword>duplicate</c> of that object."
             }
         },
         "card":{

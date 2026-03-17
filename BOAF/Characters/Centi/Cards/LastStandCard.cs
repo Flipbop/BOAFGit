@@ -32,7 +32,7 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ?  2 : 3,
+			cost = upgrade == Upgrade.A ?  1 : 2,
 			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
@@ -54,13 +54,11 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 			
 				Upgrade.B =>
 				[
-					new ADetect(){Amount = 5},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.brittle}
+					new ALastStand() {bUpgrade = true}
 				],
 				_ =>
 				[
-					new ADetect(){Amount = 4},
-					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
+					new ALastStand() {bUpgrade = false}
 				]
 			
 		};
@@ -69,7 +67,7 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not OveruseCard)
+			if (args.Card is not LastStandCard && args.Card.upgrade != Upgrade.B)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}
