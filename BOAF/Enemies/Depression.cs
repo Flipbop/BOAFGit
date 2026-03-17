@@ -53,17 +53,17 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 			new Part {
 				key = "wing.left",
 				type = PType.wing,
-				skin = "missiles_gemini_off"
+				skin = ModEntry.Instance.athenaWingSprite
 			},
 			new Part {
 				key = "cannon.left",
 				type = PType.cannon,
-				skin = "wing_knight"
+				skin = ModEntry.Instance.athenaCannonSprite
 			},
 			new Part {
 				key = "cannon.right",
 				type = PType.cannon,
-				skin = "wing_knight"
+				skin = ModEntry.Instance.athenaCannonSprite
 			},
 			new Part()
 			{
@@ -75,13 +75,13 @@ internal sealed class DepressionEnemy : AI, IRegisterableEnemy
 			new Part {
 				key = "cockpit",
 				type = PType.cockpit,
-				skin = "cockpit_wizard",
+				skin = ModEntry.Instance.athenaCockpitSprite,
 				stunModifier = PStunMod.stunnable
 			},
 			new Part {
 				key = "wing.right",
 				type = PType.wing,
-				skin = "missiles_gemini_off",
+				skin = ModEntry.Instance.athenaWingSprite,
 				flip = true
 			},
 		];

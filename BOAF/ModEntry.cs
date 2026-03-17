@@ -137,7 +137,6 @@ public sealed class ModEntry : SimpleMod
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
 	internal string thanatosCannonSprite { get; }
-	internal string thanatosCannonInactiveSprite { get; }
 	internal string thanatosCockpitSprite { get; }
 	internal string thanatosBaySprite { get; }
 	internal string thanatosWingSprite { get; }
@@ -155,8 +154,6 @@ public sealed class ModEntry : SimpleMod
 	internal string neptuneCannonSprite { get; }
 	internal string neptuneCockpitSprite { get; }
 	internal string neptuneBaySprite { get; }
-	internal string neptuneBayInactiveSprite { get; }
-
 	internal string neptuneCommsSprite { get; }
 	internal ISpriteEntry neptuneChassisSprite { get; }
 	
@@ -479,8 +476,8 @@ public sealed class ModEntry : SimpleMod
 		//Insert Eva Here
 		
 		thanatosWingSprite = helper.Content.Ships.RegisterPart("ThanatosWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_wing.png")).Sprite }).UniqueName;
-		thanatosCannonSprite = helper.Content.Ships.RegisterPart("ThanatosCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon.png")).Sprite }).UniqueName;
-		thanatosCannonInactiveSprite = helper.Content.Ships.RegisterPart("ThanatosCannon_inactive", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon_inactive.png")).Sprite }).UniqueName;
+		thanatosCannonSprite = helper.Content.Ships.RegisterPart("ThanatosCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon.png")).Sprite, 
+			DisabledSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon_inactive.png")).Sprite}).UniqueName;
 		thanatosCockpitSprite = helper.Content.Ships.RegisterPart("ThanatosCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cockpit.png")).Sprite }).UniqueName;
 		thanatosBaySprite = helper.Content.Ships.RegisterPart("ThanatosBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_missile.png")).Sprite }).UniqueName;
 		thanatosChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_chassis.png"));
@@ -493,8 +490,8 @@ public sealed class ModEntry : SimpleMod
 		neptuneCommsSprite = helper.Content.Ships.RegisterPart("NeptuneComms", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_comms.png")).Sprite }).UniqueName;
 		neptuneCannonSprite = helper.Content.Ships.RegisterPart("NeptuneCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_cannon.png")).Sprite }).UniqueName;
 		neptuneCockpitSprite = helper.Content.Ships.RegisterPart("NeptuneCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_cockpit.png")).Sprite }).UniqueName;
-		neptuneBaySprite = helper.Content.Ships.RegisterPart("NeptuneBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_missile.png")).Sprite }).UniqueName;
-		neptuneBayInactiveSprite = helper.Content.Ships.RegisterPart("NeptuneBay_inactive", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_missile_inactive.png")).Sprite }).UniqueName;
+		neptuneBaySprite = helper.Content.Ships.RegisterPart("NeptuneBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_missile.png")).Sprite, 
+			DisabledSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_missile_inactive.png")).Sprite}).UniqueName;
 		neptuneChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_chassis.png"));
 		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));

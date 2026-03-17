@@ -52,8 +52,8 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 		List<Part> parts = [
 			new Part {
 				key = "outerwing.left",
-				type = PType.wing,
-				skin = "missiles_gemini_off"
+				type = PType.comms,
+				skin = ModEntry.Instance.neptuneCommsSprite,
 			},
 			new Part()
 			{
@@ -64,28 +64,30 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 			new Part {
 				key = "innerwing.left",
 				type = PType.wing,
-				skin = "missiles_gemini_off"
+				skin = ModEntry.Instance.neptuneBaySprite,
+				active = false
 			},
 			new Part {
 				key = "cannon.left",
 				type = PType.cannon,
-				skin = "wing_knight"
+				skin = ModEntry.Instance.neptuneCannonSprite
 			},
 			new Part {
 				key = "cockpit",
 				type = PType.cockpit,
-				skin = "cockpit_wizard"
+				skin = ModEntry.Instance.neptuneCockpitSprite
 			},
 			new Part {
 				key = "cannon.right",
 				type = PType.cannon,
-				skin = "wing_knight",
+				skin = ModEntry.Instance.neptuneCannonSprite,
 				flip = true
 			},
 			new Part {
 				key = "innerwing.right",
 				type = PType.wing,
-				skin = "missiles_gemini_off",
+				skin = ModEntry.Instance.neptuneBaySprite,
+				active = false,
 				flip = true
 			},
 			new Part()
@@ -97,8 +99,8 @@ internal sealed class DenialEnemy : AI, IRegisterableEnemy
 			},
 			new Part {
 				key = "outerwing.right",
-				type = PType.wing,
-				skin = "missiles_gemini_off",
+				type = PType.comms,
+				skin = ModEntry.Instance.neptuneCommsSprite,
 				flip = true
 			},
 		];
