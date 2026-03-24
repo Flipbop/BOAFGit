@@ -105,6 +105,8 @@ public sealed class ModEntry : SimpleMod
 	internal IDeckEntry CentiDeck { get; }
 	internal IPlayableCharacterEntryV2 CentiCharacter { get; }
 	internal ISpriteEntry CentiFullBody { get; set; }
+	internal Spr UncommonCentiBorder { get; }
+	internal Spr RareCentiBorder { get; }
 	internal IStatusEntry NanomachinesStatus { get; }
 	internal IStatusEntry BubbleSiphonStatus { get; }
 
@@ -198,7 +200,7 @@ public sealed class ModEntry : SimpleMod
 		typeof(LifeAndDeathCard),
 		typeof(StabilityAndChaosCard),
 		typeof(CapacitorSlugCard),
-		typeof(CorePoweredShieldsCard),
+		typeof(InstaShieldsCard),
 		typeof(DoubleShieldCard),
 		typeof(PunishmentCard),
 		typeof(GeneratorCard),
@@ -539,7 +541,7 @@ public sealed class ModEntry : SimpleMod
 		
 		CullDeck = helper.Content.Decks.RegisterDeck("Cull", new()
 		{
-			Definition = new() { color = new("272727"), titleColor = Colors.white },
+			Definition = new() { color = new("272727"), titleColor = new ("b300fa") },
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/FrameCommon.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Cull","character", "name"]).Localize,
@@ -561,10 +563,11 @@ public sealed class ModEntry : SimpleMod
 		});
 		CentiDeck = helper.Content.Decks.RegisterDeck("Centi", new()
 		{
-			Definition = new() { color = new("a661cb"), titleColor = Colors.black },
+			Definition = new() { color = new("5f5f5f"), titleColor = Colors.white },
 			DefaultCardArt = StableSpr.cards_colorless,
-			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/CardFrame.png")).Sprite,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/FrameCommon.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Centi","character", "name"]).Localize,
+			ShineColorOverride = _ => new Color(0, 0, 0),
 		});
 		
 		foreach (var registerableType in RegisterableTypes)
@@ -1247,7 +1250,8 @@ public sealed class ModEntry : SimpleMod
 		#region CentiCharacter
 		
 		
-		
+		UncommonCentiBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/FrameUncommon.png")).Sprite;
+		RareCentiBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/FrameRare.png")).Sprite;
 		CentiCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Centi", new()
 		{
 			Deck = CentiDeck.Deck,
@@ -1284,7 +1288,7 @@ public sealed class ModEntry : SimpleMod
 				cards = [
 					new FireAndIceCard(),
 					new LifeAndDeathCard(),
-					new CorePoweredShieldsCard(),
+					new InstaShieldsCard(),
 					new CapacitorSlugCard(),
 					new DodgeColorless(),
 					new CannonColorless()

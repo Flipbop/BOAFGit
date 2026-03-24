@@ -32,6 +32,7 @@ internal sealed class BubbleSiphonCard : Card, IRegisterable, IHasCustomCardTrai
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.B? 0:1,
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 	
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)

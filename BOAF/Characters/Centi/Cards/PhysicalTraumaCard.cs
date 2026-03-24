@@ -38,6 +38,7 @@ internal sealed class PhysicalTraumaCard : Card, IRegisterable
 				Upgrade.A => 1,
 				_=> 2
 			},
+			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

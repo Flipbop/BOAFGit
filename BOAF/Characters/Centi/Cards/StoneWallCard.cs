@@ -31,6 +31,7 @@ internal sealed class StoneWallCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 1 : 2,
 			exhaust = true,
+			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

@@ -241,7 +241,7 @@
             },
             "Detect": {
                 "name": "DETECT",
-                "description": "Look at the leftmost part of your ship and preform an action <c=keyword>{0} time(s)</c> based on what part it is:",
+                "description": "Look at the leftmost part of your ship and perform an action <c=keyword>{0} time(s)</c> based on what part it is:",
                 "wing": "Wing: <c=action>DRAW 2</c>",
                 "cannon": "Cannon: <c=action>ATTACK 2</c>",
                 "cockpit": "Cockpit: <c=status>SHIELD 1, TEMP SHIELD 1</c>",
@@ -439,7 +439,7 @@
             "Overuse": {
                 "name": "Overuse",
                 "description": {
-                    "None": "<c=action>Detect 3.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
+                    "None": "<c=action>Detect 4.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
                     "A": "<c=action>Detect 4.</c> The leftmost part of your ship becomes <c=status>Weak</c> for the rest of combat.",
                     "B": "<c=action>Detect 5.</c> The leftmost part of your ship becomes <c=status>Brittle</c> for the rest of combat."
                 }
@@ -465,7 +465,7 @@
             "description": [
                 "<c=8A3388>LUNA</c>",
                 "Your amateur Star wizard.",
-                "Uses a unique resource called <c=status>Stardust</c> to preform actions, but has to manage this resource across multiple battles. A lot of her cards are <c=keyword>dual-sided</c> so you can decide whether or not you want to spend <c=status>Stardust</c> for a more powerful effect."
+                "Uses a unique resource called <c=status>Stardust</c> to perform actions, but has to manage this resource across multiple battles. A lot of her cards are <c=keyword>dual-sided</c>."
             ],
             "nameKass": "Kass"
         },
@@ -727,7 +727,8 @@
             },
             "SystemReliance": {
                 "name": "SYSTEM RELIANCE",
-                "description": "Choose a card in your deck. Make it <c=keyword>buoyant</c>, <c=keyword>exhaust</c>, <c=keyword>retain</c>, and <c=keyword>reduce it's cost by 1</c>."
+                "description": "Choose a card in your deck. Make it <c=keyword>buoyant</c>, <c=keyword>exhaust</c>, <c=keyword>retain</c>, and <c=keyword>reduce it's cost by 1</c>.",
+                "ui": "Added Buoyant, Exhaust, Retain, and made the card cheaper!"
             },
             "Duo": {
                 "CleoBooks": {
@@ -785,8 +786,8 @@
             "CapacitorSlug": {
                 "name": "Capacitor Slug"
             },
-            "CorePoweredShields": {
-                "name": "Core-Powered Shields"
+            "InstaShields": {
+                "name": "Insta Shields"
             },
             "DoubleShield": {
                 "name": "Double Shield"
@@ -803,9 +804,9 @@
             "BackupCore": {
                 "name": "Backup Core",
                 "description": {
-                    "None": "Launch a copy of the last <c=keyword>CORE</c> you launched.",
-                    "A": "Launch a <c=keyword>bubbled</c> copy of the last <c=keyword>CORE</c> you launched.",
-                    "B": "Launch a copy of the last <c=keyword>CORE</c> you launched."
+                    "None": "Launch a copy of a <c=midrow>CORE</c> in the midrow.",
+                    "A": "Launch a <c=keyword>bubbled</c> copy of a <c=midrow>CORE</c> in the midrow.",
+                    "B": "Launch a copy of an object in the midrow."
                 }
             },
             "Lv2Core": {

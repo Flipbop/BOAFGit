@@ -38,7 +38,8 @@ internal sealed class IncreasedPowerCard : Card, IRegisterable, IHasCustomCardTr
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			recycle = upgrade == Upgrade.B
+			recycle = upgrade == Upgrade.B,
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

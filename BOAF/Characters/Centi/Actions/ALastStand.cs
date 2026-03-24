@@ -7,7 +7,7 @@ using Flipbop.BOAF;
 
 namespace Flipbop.BOAF;
 
-public sealed class ALastStand : DynamicWidthCardAction
+public sealed class ALastStand : CardAction
 {
   public bool bUpgrade = false;
 

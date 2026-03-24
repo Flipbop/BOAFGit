@@ -32,6 +32,7 @@ internal sealed class AllTogetherCard : Card, IRegisterable
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A? 0:1,
 			retain = upgrade == Upgrade.B,
+			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

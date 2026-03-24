@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Flipbop.BOAF;
 
-internal sealed class BasicShotDualCard : Card, IRegisterable
+internal sealed class BasicShotDualCard : CannonColorless, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{

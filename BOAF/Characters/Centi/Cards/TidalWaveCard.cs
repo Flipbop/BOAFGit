@@ -33,6 +33,7 @@ internal sealed class TidalWaveCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = 1,
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

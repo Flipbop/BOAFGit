@@ -28,37 +28,31 @@ internal sealed class BackupCoreCard : Card, IRegisterable, IHasCustomCardTraits
 		{
 			artTint = "FFFFFF",
 			cost = 1,
-			infinite = true,
 			description =
 			ModEntry.Instance.Localizations.Localize([
 			"Centi", "card", "BackupCore", "description", upgrade.ToString()
 				]),
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
 	{
 		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>();
-		if (this.upgrade != Upgrade.B)
-		{
-			this.SetIsCoreDependent(true);
-			cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
-		}
+		this.SetIsCoreDependent(true);
+		cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
 		return cardTraitEntries;
 	}
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 		{
 			Upgrade.B => [
-				new AStatus(){status = Status.tempShield, statusAmount = 3, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+				new ABackupCore() {anyObject = true}
 			],
 			Upgrade.A => [
-				new AStatus(){status = Status.shield, statusAmount = 2, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+				new ABackupCore() {bubbled = true}
 			],
 			_=>[
-				new AStatus(){status = Status.shield, statusAmount = 1, targetPlayer = true},
-				new AReconfigure(){Amount = 1}
+				new ABackupCore()
 			]
 		};
 }

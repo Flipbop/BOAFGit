@@ -3,6 +3,7 @@ using Nickel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using HarmonyLib;
 
 namespace Flipbop.BOAF;
 
@@ -23,6 +24,12 @@ internal sealed class BubbleGeneratorArtifact : Artifact, IRegisterable
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "BubbleGenerator", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "BubbleGenerator", "description"]).Localize
 		});
+		
+		ModEntry.Instance.Harmony.Patch(
+			original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.Set)),
+			prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Bubble_Bay_Swap_Prefix)),
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(Bubble_Bay_Swap_Postfix))
+		);
 	}
 
 	public override void OnTurnStart(State state, Combat combat)
@@ -30,6 +37,27 @@ internal sealed class BubbleGeneratorArtifact : Artifact, IRegisterable
 		base.OnTurnStart(state, combat);
 		combat.QueueImmediate(new AStatus() {status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true});
 	}
-	
-	
+
+	private static void Bubble_Bay_Swap_Prefix(Ship __instance, out int __state)
+	{
+		
+		__state = __instance.Get(Status.bubbleJuice);
+	}
+	private static void Bubble_Bay_Swap_Postfix(Ship __instance, in int __state)
+	{
+		
+		if (__state >= __instance.Get(Status.bubbleJuice))
+		{
+			foreach (Part p in __instance.parts)
+			{
+				if (p is { active: true, skin: "NeptuneBay" })
+				{
+					p.active = false;
+				} else if (p is { active: false, skin: "NeptuneBay" })
+				{
+					p.active = true;
+				}
+			}
+		}
+	}
 }

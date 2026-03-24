@@ -38,6 +38,7 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 				ModEntry.Instance.Localizations.Localize([
 					"Centi", "card", "LastStand", "description", upgrade.ToString()
 				]),
+			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
 	{

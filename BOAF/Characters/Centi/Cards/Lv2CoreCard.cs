@@ -34,7 +34,8 @@ internal sealed class Lv2CoreCard : Card, IRegisterable
 				ModEntry.Instance.Localizations.Localize([
 					"Centi", "card", "Lv2Core", "description", upgrade.ToString()
 				]),
-			exhaust = upgrade != Upgrade.B
+			exhaust = upgrade != Upgrade.B,
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

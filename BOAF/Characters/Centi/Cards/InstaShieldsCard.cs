@@ -6,7 +6,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class CorePoweredShieldsCard : Card, IRegisterable, IHasCustomCardTraits
+internal sealed class InstaShieldsCard : Card, IRegisterable, IHasCustomCardTraits
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,8 +19,8 @@ internal sealed class CorePoweredShieldsCard : Card, IRegisterable, IHasCustomCa
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/CorePoweredShields.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "CorePoweredShields", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/InstaShields.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "InstaShields", "name"]).Localize
 		});
 	}
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)

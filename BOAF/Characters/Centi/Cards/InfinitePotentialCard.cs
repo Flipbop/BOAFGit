@@ -31,7 +31,8 @@ internal sealed class InfinitePotentialCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.B ? 2 : 1,
-			exhaust = upgrade != Upgrade.B
+			exhaust = upgrade != Upgrade.B,
+			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)

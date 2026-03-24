@@ -31,7 +31,7 @@ internal sealed class DemonicConverterCard : Card, IRegisterable
 		{
 			artTint = "FFFFFF",
 			cost = upgrade == Upgrade.A ? 1: 2,
-			
+			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
