@@ -804,9 +804,9 @@
             "BackupCore": {
                 "name": "Backup Core",
                 "description": {
-                    "None": "Launch a copy of a <c=midrow>CORE</c> in the midrow.",
-                    "A": "Launch a <c=keyword>bubbled</c> copy of a <c=midrow>CORE</c> in the midrow.",
-                    "B": "Launch a copy of an object in the midrow."
+                    "None": "Choose a <c=midrow>CORE</c> in the midrow. Launch a copy of it.",
+                    "A": "Choose a <c=midrow>CORE</c> in the midrow. Launch a <c=keyword>bubbled</c> copy of it.",
+                    "B": "Choose an object in the midrow. Launch a copy of it."
                 }
             },
             "Lv2Core": {
