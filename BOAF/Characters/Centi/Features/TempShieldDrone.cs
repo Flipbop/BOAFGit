@@ -13,8 +13,8 @@ internal sealed class TempShieldDrone : ShieldDrone, IRegisterable
 
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		DroneSprite = ModEntry.Instance.WispSprite;
-		DroneIcon = ModEntry.Instance.WispIcon;
+		DroneSprite = ModEntry.Instance.TempShieldDroneSprite;
+		DroneIcon = ModEntry.Instance.TempShieldDroneIcon;
 	}
 
 	public override void Render(G g, Vec v)
@@ -42,7 +42,7 @@ internal sealed class TempShieldDrone : ShieldDrone, IRegisterable
 		{
 			fromDroneX = x,
 			isBeam = true, 
-			targetPlayer = !targetPlayer,
+			targetPlayer = targetPlayer,
 			statusAmount = 2,
 			status = Status.tempShield
 		}];

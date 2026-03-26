@@ -628,21 +628,21 @@
         "action": {
             "DemonAction": {
                 "name": "DEMON ACTION",
-                "description": "You must have a <c=keyword>DEMON CORE</c> in the midrow for this action to happen."
+                "description": "You must have a <c=midrow>DEMON CORE</c> in the midrow for this action to happen."
             },
             "AquaAction": {
                 "name": "AQUA ACTION",
-                "description": "You must have a <c=keyword>AQUA CORE</c> in the midrow for this action to happen."
+                "description": "You must have an <c=midrow>AQUA CORE</c> in the midrow for this action to happen."
             },
             "StoneAction": {
                 "name": "STONE ACTION",
-                "description": "You must have a <c=keyword>STONE CORE</c> in the midrow for this action to happen."
+                "description": "You must have a <c=midrow>STONE CORE</c> in the midrow for this action to happen."
             }
         },
         "cardTrait": {
             "CoreDependent": {
                 "name": "Core Dependent",
-                "description": "This card cannot be played unless there is at least 1 <c=keyword>CORE</c> of any variety in the midrow."
+                "description": "This card cannot be played unless there is at least 1 <c=midrow>CORE</c> of any variety in the midrow."
             }
         },
         "midrow": {
@@ -660,23 +660,23 @@
             },
             "LavaCore" : {
                 "name": "LAVA CORE",
-                "description" : "Can be used in place of a <c=keyword>DEMON CORE</c> or <c=keyword>AQUA CORE</c>."
+                "description" : "Can be used in place of a <c=midrow>DEMON CORE</c> and <c=midrow>AQUA CORE</c>."
             },
             "MossCore" : {
                 "name": "MOSS CORE",
-                "description" : "Can be used in place of a <c=keyword>STONE CORE</c> or <c=keyword>AQUA CORE</c>."
+                "description" : "Can be used in place of a <c=midrow>STONE CORE</c> and <c=midrow>AQUA CORE</c>."
             },
             "BrimstoneCore" : {
                 "name": "BRIMSTONE CORE",
-                "description" : "Can be used in place of a <c=keyword>DEMON CORE</c> or <c=keyword>STONE CORE</c>."
+                "description" : "Can be used in place of a <c=midrow>DEMON CORE</c> and <c=midrow>STONE CORE</c>."
             },
             "InfinityCore" : {
                 "name": "INFINITY CORE",
-                "description" : "Can be used in place of any <c=keyword>CORE</c>."
+                "description" : "Can be used in place of any <c=midrow>CORE</c>."
             },
             "TempShieldDrone": {
                 "name": "TEMP SHIELD DRONE",
-                "description": "Shoots 2 <c=status>TEMP SHIELD</c> at the ship it's aiming at."
+                "description": "Shoots <c=status>2 TEMP SHIELD</c> at the ship it's aiming at."
             }
         },
         "status": {
@@ -686,40 +686,40 @@
             },
             "BubbleSiphon": {
                 "name": "Bubble Siphon",
-                "description": "When a bubble on a midrow object is popped, this ship gains {0} <c=status>SHIELD</c>, then loses 1 <c=status>BUBBLE SIPHON</c>."
+                "description": "When a bubble on a midrow object is popped, this ship gains {0} <c=status>SHIELD</c>, then loses <c=status>1 BUBBLE SIPHON</c>."
             }
         },
         "cardtrait": {
             "CoreDependent": {
                 "name": "CORE DEPENDENT",
-                "description": "This card is <c=downside>unplayable</c> unless there is any kind of <c=keyword>Core</c> in the midrow."
+                "description": "This card is <c=downside>unplayable</c> unless there is any kind of <c=midrow>CORE</c> in the midrow."
             }
         },
 
         "artifact": {
             "DemonHeart": {
                 "name": "DEMON HEART",
-                "description": "All <c=keyword>DEMON CORES</c> will fire a <c=redd>1</c> damage attack after your turn."
+                "description": "All <c=midrow>DEMON CORES</c> will fire a <c=redd>1</c> damage attack after your turn."
             },
             "StoneHeart": {
                 "name": "STONE HEART",
-                "description": "All <c=keyword>STONE CORES</c> will fire <c=keyword>1</c> <c=status>SHIELD</c> back to you after your turn."
+                "description": "All <c=midrow>STONE CORES</c> will fire <c=keyword>1</c> <c=status>SHIELD</c> back to you after your turn."
             },
             "AquaHeart": {
                 "name": "AQUA HEART",
-                "description": "All <c=keyword>AQUA CORES</c> will fire <c=keyword>2</c> <c=status>TEMP SHIELD</c> back to you after your turn."
+                "description": "All <c=midrow>AQUA CORES</c> will fire <c=keyword>2</c> <c=status>TEMP SHIELD</c> back to you after your turn."
             },
             "DebrisNet": {
                 "name": "DEBRIS NET",
-                "description": "When a <c=keyword>CORE</c> is destroyed, launch an <c=keyword>asteroid</c>."
+                "description": "When a <c=midrow>CORE</c> is destroyed, launch an <c=keyword>asteroid</c>."
             },
             "ShieldStorage": {
                 "name": "SHIELD STORAGE",
-                "description": "Anytime you gain shield past your maximum, gain 1 <c=status>BUBBLE JUICE</c>."
+                "description": "Anytime you gain shield past your maximum, gain <c=status>1 BUBBLE</c>."
             },
             "CoreCycle": {
                 "name": "CORE CYCLE",
-                "description": "Start each combat with 2 random <c=keyword>CORES</c> in the midrow nearby."
+                "description": "Start each combat with 2 random <c=midrow>CORES</c> in the midrow nearby."
             },
             "ShieldSapper": {
                 "name": "SHIELD SAPPER",
@@ -803,10 +803,18 @@
             },
             "BackupCore": {
                 "name": "Backup Core",
-                "description": {
+                "descriptionOLD": {
                     "None": "Choose a <c=midrow>CORE</c> in the midrow. Launch a copy of it.",
                     "A": "Choose a <c=midrow>CORE</c> in the midrow. Launch a <c=keyword>bubbled</c> copy of it.",
                     "B": "Choose an object in the midrow. Launch a copy of it."
+                },
+                "description": {
+                    "None": "Launch a random <c=midrow>CORE</c> of it. More powerful cores are less likely.",
+                    "A": "Launch a random <c=midrow>bubbled CORE</c> of it. More powerful cores are less likely.",
+                    "B": "Launch a random <c=midrow>CORE</c> of it. More powerful cores are less likely."
+                },
+                "ui" : {
+                    "cancel" : "CANCEL"
                 }
             },
             "Lv2Core": {
@@ -838,9 +846,9 @@
             "LastStand": {
                 "name": "Last Stand",
                 "description": {
-                    "None": "Destroy all <c=keyword>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
-                    "A": "Destroy all <c=keyword>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
-                    "B": "Destroy all <c=keyword>CORES</c> in the midrow. Replace them with asteroids and attack for <c=redd>1</c> for each core destroyed."
+                    "None": "Destroy all <c=midrow>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
+                    "A": "Destroy all <c=midrow>CORES</c> in the midrow. Attack for <c=redd>2</c> for each core destroyed.",
+                    "B": "Destroy all <c=midrow>CORES</c> in the midrow. Replace them with <c=midrow>bubbled asteroids</c>."
                 }
             },
             "PhysicalTrauma": {
@@ -863,9 +871,9 @@
             "CentiExe": {
                 "name": "Centi.EXE",
                 "description": {
-                    "None": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
-                    "A": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
-                    "B": "Launch a random <c=keyword>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand."
+                    "None": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
+                    "A": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
+                    "B": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand."
                 }
             }
         }
@@ -1196,7 +1204,7 @@
             },
             "BubbleGenerator": {
                 "name": "BUBBLE GENERATOR",
-                "description": "You gain 1 <c=status>BUBBLE JUICE</c> at the beginning of your turn. When you spend <c=status>BUBBLE JUICE</c>, <c=keyword>swap your active bay.</c>"
+                "description": "You gain 1 <c=status>BUBBLE</c> at the beginning of your turn. When you spend a <c=status>BUBBLE</c>, <c=keyword>swap your active bay.</c>"
             },
             "NaniteBubbles": {
                 "name": "NANITE BUBBLES",

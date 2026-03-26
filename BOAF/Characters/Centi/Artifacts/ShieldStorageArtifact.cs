@@ -1,13 +1,15 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class ShieldStorageArtifact : Artifact, IRegisterable
+internal sealed class ShieldStorageArtifact : Artifact, IRegisterable, IKokoroApi.IV2.IStatusLogicApi.IHook, IKokoroApi.IV2.IHookPriority
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -28,15 +30,29 @@ internal sealed class ShieldStorageArtifact : Artifact, IRegisterable
 		});
 	}
 
-	public override void AfterPlayerStatusAction(State state, Combat combat, Status status, AStatusMode mode, int statusAmount)
+	public double HookPriority
+		=> double.MinValue;
+
+	public int ModifyStatusChange(IKokoroApi.IV2.IStatusLogicApi.IHook.IModifyStatusChangeArgs args)
 	{
-		base.AfterPlayerStatusAction(state, combat, status, mode, statusAmount);
-		if (status == Status.shield)
+		if (!args.Ship.isPlayerShip)
+			return args.NewAmount;
+		if (args.Status != Status.shield)
+			return args.NewAmount;
+
+		var maxShield = args.Ship.GetMaxShield();
+		var overshield = Math.Max(0, args.NewAmount - maxShield);
+		if (overshield <= 0)
+			return args.NewAmount;
+
+		var newAmount = args.NewAmount - overshield;
+		args.Combat.QueueImmediate(new AStatus
 		{
-			if (state.ship.Get(Status.shield) + statusAmount > state.ship.GetMaxShield())
-			{
-				combat.Queue(new AStatus(){status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true});
-			}
-		}
+			status = Status.bubbleJuice,
+			statusAmount = 1,
+			targetPlayer = true,
+			artifactPulse = Key(),
+		});
+		return newAmount;
 	}
 }

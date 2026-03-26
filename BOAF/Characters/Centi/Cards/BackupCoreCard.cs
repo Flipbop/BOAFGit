@@ -32,27 +32,37 @@ internal sealed class BackupCoreCard : Card, IRegisterable, IHasCustomCardTraits
 			ModEntry.Instance.Localizations.Localize([
 			"Centi", "card", "BackupCore", "description", upgrade.ToString()
 				]),
-			artOverlay = ModEntry.Instance.UncommonCentiBorder
 		};
 
 	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
 	{
 		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>();
-		this.SetIsCoreDependent(true);
-		cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
+		if (upgrade != Upgrade.B)
+		{
+			this.SetIsCoreDependent(true);
+			cardTraitEntries.Add(ModEntry.Instance.CoreDependentTrait);
+		}
 		return cardTraitEntries;
 	}
+
+	//CHANGE TO OLD FORM WHEN POSSIBLE
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
-		{
-			Upgrade.B => [
-				new ABackupCore() {anyObject = true}
-			],
-			Upgrade.A => [
-				new ABackupCore() {bubbled = true}
-			],
-			_=>[
-				new ABackupCore()
-			]
-		};
+	{
+		List<CardAction> actions = new(); 
+		
+		var rand = new Rand(s.rngCurrentEvent.seed);
+		var potentialCore = new WeightedRandom<Core>();
+		potentialCore.Add(new(25,new DemonCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(25,new AquaCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(25,new StoneCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(8,new LavaCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(8,new MossCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(8,new BrimstoneCore(){bubbleShield = upgrade == Upgrade.B}));
+		potentialCore.Add(new(1,new InfinityCore(){bubbleShield = upgrade == Upgrade.B}));
+		var core = potentialCore.Next(rand);
+		
+		actions.Add(new ASpawn{thing = core});
+		
+		return actions;
+	}
 }

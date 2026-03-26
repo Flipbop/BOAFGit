@@ -15,7 +15,7 @@ internal sealed class CentiExeCard : Card, IRegisterable
 			Meta = new()
 			{
 				deck = Deck.colorless,
-				rarity = Rarity.common,
+				rarity = Rarity.uncommon,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,
@@ -36,17 +36,33 @@ internal sealed class CentiExeCard : Card, IRegisterable
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> [
-			new ACardOffering
-			{
-				amount = GetChoiceCount(),
-				limitDeck = ModEntry.Instance.CentiDeck.Deck,
-				makeAllCardsTemporary = true,
-				overrideUpgradeChances = false,
-				canSkip = false,
-				inCombat = true,
-				discount = -1,
-				dialogueSelector = $".summon{ModEntry.Instance.CentiDeck.UniqueName}"
-			}
-		];
+	{
+		List<CardAction> actions = new(); 
+		
+		var rand = new Rand(s.rngCurrentEvent.seed);
+		var potentialCore = new WeightedRandom<Core>();
+		potentialCore.Add(new(25,new DemonCore()));
+		potentialCore.Add(new(25,new AquaCore()));
+		potentialCore.Add(new(25,new StoneCore()));
+		potentialCore.Add(new(8,new LavaCore()));
+		potentialCore.Add(new(8,new MossCore()));
+		potentialCore.Add(new(8,new BrimstoneCore()));
+		potentialCore.Add(new(1,new InfinityCore()));
+		var core = potentialCore.Next(rand);
+		
+		actions.Add(new ASpawn{thing = core});
+		actions.Add(new ACardOffering
+		{
+			amount = GetChoiceCount(),
+			limitDeck = ModEntry.Instance.CentiDeck.Deck,
+			makeAllCardsTemporary = true,
+			overrideUpgradeChances = false,
+			canSkip = false,
+			inCombat = true,
+			discount = -1,
+			dialogueSelector = $".summon{ModEntry.Instance.CentiDeck.UniqueName}"
+		});
+		
+		return actions;
+	}
 }

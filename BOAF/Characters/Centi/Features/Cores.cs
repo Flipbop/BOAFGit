@@ -6,7 +6,9 @@ using Nickel;
 
 namespace Flipbop.BOAF;
 
-internal sealed class DemonCore : Asteroid, IRegisterable
+internal class Core : Asteroid {}
+
+internal class DemonCore : Core, IRegisterable
 {
 	private static ISpriteEntry DemonCoreSprite = null!;
 	private static ISpriteEntry DemonCoreIcon = null!;
@@ -69,7 +71,7 @@ internal sealed class DemonCore : Asteroid, IRegisterable
 }
 
 
-internal sealed class AquaCore : Asteroid, IRegisterable
+internal class AquaCore : Core, IRegisterable
 {
 	private static ISpriteEntry AquaCoreSprite = null!;
 	private static ISpriteEntry AquaCoreIcon = null!;
@@ -133,7 +135,7 @@ internal sealed class AquaCore : Asteroid, IRegisterable
 	}
 }
 
-internal sealed class StoneCore : Asteroid, IRegisterable
+internal class StoneCore : Core, IRegisterable
 {
 	private static ISpriteEntry StoneCoreSprite = null!;
 	private static ISpriteEntry StoneCoreIcon = null!;
@@ -197,7 +199,7 @@ internal sealed class StoneCore : Asteroid, IRegisterable
 	}
 }
 
-internal sealed class LavaCore : Asteroid, IRegisterable
+internal sealed class LavaCore : Core, IRegisterable
 {
 	private static ISpriteEntry LavaCoreSprite = null!;
 	private static ISpriteEntry LavaCoreIcon = null!;
@@ -270,7 +272,7 @@ internal sealed class LavaCore : Asteroid, IRegisterable
 	}
 }
 
-internal sealed class BrimstoneCore : Asteroid, IRegisterable
+internal sealed class BrimstoneCore : Core, IRegisterable
 {
 	private static ISpriteEntry BrimstoneCoreSprite = null!;
 	private static ISpriteEntry BrimstoneCoreIcon = null!;
@@ -343,7 +345,7 @@ internal sealed class BrimstoneCore : Asteroid, IRegisterable
 	}
 }
 
-internal sealed class MossCore : Asteroid, IRegisterable
+internal sealed class MossCore : Core, IRegisterable
 {
 	private static ISpriteEntry MossCoreSprite = null!;
 	private static ISpriteEntry MossCoreIcon = null!;
@@ -417,7 +419,7 @@ internal sealed class MossCore : Asteroid, IRegisterable
 	}
 }
 
-internal sealed class InfinityCore : Asteroid, IRegisterable
+internal sealed class InfinityCore : Core, IRegisterable
 {
 	private static ISpriteEntry InfinityCoreSprite = null!;
 	private static ISpriteEntry InfinityCoreIcon = null!;

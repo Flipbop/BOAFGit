@@ -40,17 +40,17 @@ internal sealed class GeneratorCard : Card, IRegisterable
 			Upgrade.A => [
 				new AStatus() {status = Status.tempShield, statusAmount = 2, targetPlayer = true},
 				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
-					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true, targetPlayer = true}}).AsCardAction,
 			],
 			Upgrade.B => [
 				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new AquaCoreCheck(), 1),
-					new ASpawn(){thing = new TempShieldDrone(), offset = -1}).AsCardAction,
+					new ASpawn(){thing = new TempShieldDrone(){targetPlayer = true}, offset = -1}).AsCardAction,
 				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
-					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true, targetPlayer = true}}).AsCardAction,
 			],
 			_ => [
 				ModEntry.Instance.KokoroApi.ActionCosts.MakeCostAction(ModEntry.Instance.KokoroApi.ActionCosts.MakeResourceCost(new StoneCoreCheck(), 1),
-					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true}}).AsCardAction,
+					new ASpawn(){thing = new ShieldDrone(){bubbleShield = true, targetPlayer = true}}).AsCardAction,
 			]
 		};
 }

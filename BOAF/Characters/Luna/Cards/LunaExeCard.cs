@@ -15,7 +15,7 @@ internal sealed class LunaExeCard : Card, IRegisterable
 			Meta = new()
 			{
 				deck = Deck.colorless,
-				rarity = Rarity.common,
+				rarity = Rarity.uncommon,
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
 			Art = StableSpr.cards_colorless,

@@ -108,8 +108,9 @@ public sealed class ModEntry : SimpleMod
 	internal Spr UncommonCentiBorder { get; }
 	internal Spr RareCentiBorder { get; }
 	internal IStatusEntry NanomachinesStatus { get; }
+	internal ISpriteEntry nanomachinesSprite { get; }
 	internal IStatusEntry BubbleSiphonStatus { get; }
-
+	internal ISpriteEntry bubbleSiphonSprite { get; }
 	internal ISpriteEntry DemonCoreSprite { get; }
 	internal ISpriteEntry DemonCoreIcon { get; }
 	internal ISpriteEntry DemonCoreEmptyIcon { get; }
@@ -130,6 +131,8 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry MossCoreIcon { get; }
 	internal ISpriteEntry InfinityCoreSprite { get; }
 	internal ISpriteEntry InfinityCoreIcon { get; }
+	internal ISpriteEntry TempShieldDroneSprite { get; }
+	internal ISpriteEntry TempShieldDroneIcon { get; }
 	internal ICardTraitEntry CoreDependentTrait { get; }
 	internal ISpriteEntry CoreDependentIcon { get; }
 
@@ -473,7 +476,12 @@ public sealed class ModEntry : SimpleMod
 		MossCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/MossCoreIcon.png"));
 		InfinityCoreSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/InfinityCore.png"));
 		InfinityCoreIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/InfinityCoreIcon.png"));
+		TempShieldDroneSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Midrow/TempShieldDrone.png"));
+		TempShieldDroneIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/TempShieldDroneIcon.png"));
 		CoreDependentIcon = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Icons/CoreDependentIcon.png"));
+		nanomachinesSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Status/Nanomachines.png"));
+		bubbleSiphonSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Status/BubbleSiphon.png"));
+
 		
 		//Insert Eva Here
 		
@@ -1302,8 +1310,8 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = residualDustSprite.Sprite,
-				color = new("2134a8"),
+				icon = nanomachinesSprite.Sprite,
+				color = new("a3a3a3"),
 				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Centi", "status", "Nanomachines", "name"]).Localize,
@@ -1314,8 +1322,8 @@ public sealed class ModEntry : SimpleMod
 		{
 			Definition = new()
 			{
-				icon = residualDustSprite.Sprite,
-				color = new("2134a8"),
+				icon = bubbleSiphonSprite.Sprite,
+				color = new("1ccfe2"),
 				isGood = true,
 			},
 			Name = AnyLocalizations.Bind(["Centi", "status", "BubbleSiphon", "name"]).Localize,
@@ -1755,7 +1763,8 @@ public sealed class ModEntry : SimpleMod
 		_ = new CoreDependentManager();
 		_ = new DemonCoreCheckManager();
 		_ = new StoneCoreCheckManager();
-		_ = new AquaCoreCheckManager();
+		_ = new AquaCoreCheckManager();		
+		_ = new NanomachinesManager();
 		_ = new CardDialogueCenti();
 		_ = new StoryDialogueCenti();
 		_ = new MemoryDialogueCenti();

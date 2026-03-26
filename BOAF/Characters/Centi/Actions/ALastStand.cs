@@ -20,17 +20,10 @@ public sealed class ALastStand : CardAction
     {
       foreach (var stuff in c.stuff)
       {
-        if (stuff.Value is DemonCore || 
-            stuff.Value is AquaCore ||
-            stuff.Value is StoneCore ||
-            stuff.Value is BrimstoneCore ||
-            stuff.Value is MossCore ||
-            stuff.Value is LavaCore ||
-            stuff.Value is InfinityCore)
+        if (stuff.Value is Core)
         {
           c.Queue(new AKillThisDrone() {droneX = stuff.Value.x, fromPlayer = true});
-          c.Queue(new ASpawnFromMidrow() {thing = new Asteroid(), byPlayer = true, worldX = stuff.Value.x});
-          count++;
+          c.Queue(new ASpawnFromMidrow() {thing = new Asteroid() {bubbleShield = true}, byPlayer = true, worldX = stuff.Value.x});
         }
       }
     }
@@ -38,13 +31,7 @@ public sealed class ALastStand : CardAction
     {
       foreach (var stuff in c.stuff)
       {
-        if (stuff.Value is DemonCore || 
-            stuff.Value is AquaCore ||
-            stuff.Value is StoneCore ||
-            stuff.Value is BrimstoneCore ||
-            stuff.Value is MossCore ||
-            stuff.Value is LavaCore ||
-            stuff.Value is InfinityCore)
+        if (stuff.Value is Core)
         {
           c.Queue(new AKillThisDrone() {droneX = stuff.Value.x, fromPlayer = true});
           count++;
@@ -54,11 +41,7 @@ public sealed class ALastStand : CardAction
 
     for (int i = 0; i < count; i++)
     {
-      if (bUpgrade)
-      {
-        c.Queue(new AAttack() {damage = Card.GetActualDamage(s, 1)});
-      }
-      else
+      if (!bUpgrade)
       {
         c.Queue(new AAttack() {damage = Card.GetActualDamage(s, 2)});
       }

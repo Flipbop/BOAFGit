@@ -41,7 +41,7 @@ internal sealed class CoreCycleArtifact : Artifact, IRegisterable
 			Dictionary<int, StuffBase> stuff = combat.stuff;
 			int key = num;
 			
-			var potentialCore = new WeightedRandom<Asteroid>();
+			var potentialCore = new WeightedRandom<Core>();
 			potentialCore.Add(new(25,new DemonCore()));
 			potentialCore.Add(new(25,new AquaCore()));
 			potentialCore.Add(new(25,new StoneCore()));

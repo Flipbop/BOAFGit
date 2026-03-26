@@ -24,15 +24,8 @@ internal sealed class CoreDependentManager
 			State state = data.State;
 			if (state.route is Combat combat)
 			{
-				if (CoreDependentExt.GetIsCoreDependent(data.Card) && !(
-					    combat.stuff.ContainsValue(new DemonCore()) || 
-					    combat.stuff.ContainsValue(new AquaCore()) || 
-					    combat.stuff.ContainsValue(new StoneCore()) ||
-					    combat.stuff.ContainsValue(new MossCore()) ||
-					    combat.stuff.ContainsValue(new LavaCore()) ||
-					    combat.stuff.ContainsValue(new BrimstoneCore()) ||
-					    combat.stuff.ContainsValue(new InfinityCore())
-					    ))
+				if (CoreDependentExt.GetIsCoreDependent(data.Card) && !
+					    combat.stuff.Values.Any(o => o is Core))
 				{
 					data.SetOverride(ModEntry.Instance.helper.Content.Cards.UnplayableCardTrait, true);
 				}
