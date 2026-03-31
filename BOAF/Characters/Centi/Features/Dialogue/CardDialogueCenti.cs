@@ -38,7 +38,7 @@ internal class CardDialogueCenti
                     dialogue =
                     [
                         new(AmCat, "How exactly do these cores work?"),
-                        new(AmCenti,  "A bunch of technology I don't understand.")
+                        new(AmCenti,  "A bunch of technology I don't entirely understand.")
                     ]
                 }
             },

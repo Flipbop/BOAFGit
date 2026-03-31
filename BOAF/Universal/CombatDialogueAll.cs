@@ -314,7 +314,7 @@ internal class CombatDialogueAll
                 }
                 
             },
-            /*{
+            {
                 "CentiWentMissing_Cull_0", new()
                 {
                     type = NodeType.combat,
@@ -329,7 +329,8 @@ internal class CombatDialogueAll
                     ]
                 }
                 
-            },{
+            },/*
+            {
                 "EvaWentMissing_Cull_0", new()
                 {
                     type = NodeType.combat,
@@ -551,7 +552,7 @@ internal class CombatDialogueAll
                     ]
                 }
             },
-            /*{
+            {
                 "Duo_AboutToDieAndLoop_Cull_9", new()
                 { 
                     type = NodeType.combat, 
@@ -566,7 +567,7 @@ internal class CombatDialogueAll
                         new(AmCull, "angry", "Don't quit on us just yet!")
                     ]
                 }
-            },
+            },/*
                {
                    "Duo_AboutToDieAndLoop_Cull_10", new()
                    {
@@ -1436,7 +1437,7 @@ internal class CombatDialogueAll
                     ]
                 }
             },
-            /*{
+            {
                 "CentiWentMissing_Jay_0", new()
                 {
                     type = NodeType.combat,
@@ -1450,7 +1451,7 @@ internal class CombatDialogueAll
                         new(AmJay, "angry", "Who unplugged the cyborg?")
                     ]
                 }
-            },
+            },/*
             {
                 "EvaWentMissing_Jay_0", new()
                 {
@@ -1656,7 +1657,7 @@ internal class CombatDialogueAll
                     ]
                 }
             },
-            /*{
+            {
                 "Duo_AboutToDieAndLoop_Jay_8", new()
                 {
                     type = NodeType.combat,
@@ -1671,7 +1672,7 @@ internal class CombatDialogueAll
                         new(AmJay, "nervous", "Oh no!")
                     ]
                 }
-            },
+            },/*
             {
                 "Duo_AboutToDieAndLoop_Jay_9", new()
                 {
@@ -2540,7 +2541,7 @@ internal class CombatDialogueAll
                     ]
                 }
             },
-            /*{
+            {
                 "CentiWentMissing_Luna_0", new()
                 {
                     type = NodeType.combat,
@@ -2554,7 +2555,7 @@ internal class CombatDialogueAll
                         new(AmLuna, "nervous", "How did we lose an 8ft tall cyborg?")
                     ]
                 }
-            },
+            },/*
             {
                 "EvaWentMissing_Luna_0", new()
                 {
@@ -2744,7 +2745,7 @@ internal class CombatDialogueAll
                     ]
                 }
             },
-            /*{
+            {
                 "Duo_AboutToDieAndLoop_Luna_7", new()
                 {
                     type = NodeType.combat,
@@ -2759,7 +2760,7 @@ internal class CombatDialogueAll
                         new(AmLuna, "nervous", "That's not good! You need to keep them charged!")
                     ]
                 }
-            },
+            },/*
             {
                 "Duo_AboutToDieAndLoop_Luna_8", new()
                 {
@@ -3325,7 +3326,1079 @@ internal class CombatDialogueAll
             },
             #endregion
             #region Centi
-            
+             {
+                "ThatsALotOfDamageToUs_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    minDamageDealtToPlayerThisTurn = 3,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "The ship can't sustain this kind or torment!")
+                    ]
+                }
+            },
+            {
+                "ThatsALotOfDamageToUs_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    minDamageDealtToPlayerThisTurn = 3,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "That won't buffer out.")
+                    ]
+                }
+            },
+            {
+                "ThatsALotOfDamageToUs_Centi_2", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    minDamageDealtToPlayerThisTurn = 3,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "That's a lot of damage...")
+                    ]
+                }
+            },
+            {
+                "ThatsALotOfDamageToThem_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisTurn = 10,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Hell yeah.")
+                    ]
+                }
+            },
+            {
+                "ThatsALotOfDamageToThem_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisTurn = 10,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "That's got to hurt.")
+                    ]
+                }
+            },
+            {
+                "WeGotShotButTookNoDamage_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    maxDamageDealtToPlayerThisTurn = 0,
+                    lastTurnPlayerStatuses = [Status.perfectShield],
+
+                    oncePerRun = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "I love perfect shield.")
+                    ]
+                }
+            },
+            {
+                "WeGotShotButTookNoDamage_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    maxDamageDealtToPlayerThisTurn = 0,
+                    lastTurnPlayerStatuses = [Status.perfectShield],
+
+                    oncePerRun = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Was something supposed to happen?")
+                    ]
+                }
+            },
+            {
+                "WeGotShotButTookNoDamage_Centi_2", new()
+                {
+                    type = NodeType.combat,
+                    enemyShotJustHit = true,
+                    maxDamageDealtToPlayerThisTurn = 0,
+                    lastTurnPlayerStatuses = [Status.perfectShield],
+
+                    oncePerRun = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Nothing to be worried about.")
+                    ]
+                }
+            },
+            {
+                "WeAreMovingAroundALot_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    minMovesThisTurn = 3,
+                    oncePerRun = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Be sure not to wear out the engines.")
+                    ]
+                }
+            },
+            {
+                "HandOnlyHasTrashCards_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    oncePerRun = true,
+                    handFullOfTrash = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "What a waste of space.")
+                    ]
+                }
+            },
+            {
+                "HandOnlyHasUnplayableCards_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    oncePerRun = true,
+                    handFullOfUnplayableCards = true,
+                    allPresent = [AmCenti],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Who's fault is this?")
+                    ]
+                }
+            },
+            {
+                "BooksWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["booksWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingBooks],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Who misplaced the small one?")
+                    ]
+                }
+            },
+            {
+                "CatWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CatWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingCat],
+                    dialogue =
+                    [
+                        new(who: AmCenti, "nervous", "Uh... is she supposed to do that?")
+                    ]
+                }
+            },
+            {
+                "DizzyWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["dizzyWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingDizzy],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "I hope I can cover for him while he is gone.")
+                    ]
+                }
+            },
+            {
+                "DrakeWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["drakeWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingDrake],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Not too mad about losing her, actually.")
+                    ]
+                }
+            },
+            {
+                "IsaacWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["issacWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingIsaac],
+
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "Drone bro! Come back!")
+                    ]
+                }
+            },
+            {
+                "MaxWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["maxWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingMax],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Awww, he was cool.")
+                    ]
+                }
+            },
+            {
+                "PeriWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["periWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingPeri],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "How do we plan on fighting now?")
+                    ]
+                }
+            },
+            {
+                "RiggsWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["riggsWentMissing"],
+                    lastTurnPlayerStatuses = [Status.missingRiggs],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Her skills could have been useful...")
+                    ]
+                }
+            },
+            {
+                "CullWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CullWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCull],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Is he able to do that normally?")
+                    ]
+                }
+                
+            },
+            {
+                "JayWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["JayWentMissing"],
+                    lastTurnPlayerStatuses = [MissingJay],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Aw, I liked his nanomachines.")
+                    ]
+                }
+            },
+            {
+                "LunaWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["LunaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingLuna],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Magic is so confusing, will she come back?")
+                    ]
+                }
+                
+            },
+            /*{
+                "EvaWentMissing_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["EvaWentMissing"],
+                    lastTurnPlayerStatuses = [MissingEva],
+                    dialogue =
+                    [
+                        new(AmCenti, "angry", "Bring her back. Now.")
+                    ]
+                }
+                
+            },*/
+            {
+                "WeDontOverlapWithEnemyAtAll_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    shipsDontOverlapAtAll = true,
+                    nonePresent = ["crab", "scrap"],
+                    oncePerRun = true,
+                    oncePerRunTags = ["NoOverlapBetweenShips"],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Good, now I deploy cores in saftey.")
+                    ]
+                }
+            },
+            {
+                "WeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    priority = true,
+                    shipsDontOverlapAtAll = true,
+                    oncePerCombatTags = ["NoOverlapBetweenShipsSeeker"],
+                    anyDronesHostile = ["missile_seeker"],
+                    nonePresent = ["crab"],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Ok, who's idea was it to invent seekers?")
+                    ]
+                }
+            },
+            {
+                "BlockedALotOfAttackWithArmor_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyShotJustHit = true,
+                    minDamageBlockedByPlayerArmorThisTurn = 3,
+                    oncePerCombatTags = ["YowzaThatWasALOTofArmorBlock"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "Hehe, they can't get through the armor.")
+                    ]
+                }
+            },
+            {
+                "BlockedAnEnemyAttackWithArmor_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyShotJustHit = true,
+                    minDamageBlockedByPlayerArmorThisTurn = 1,
+                    oncePerCombatTags = ["WowArmorISPrettyCoolHuh"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "Hopefully that armor holds.")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmDizzy],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "Are these shields not enough?"),
+                        new(AmDizzy, "nervous", "I don't know!")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmPeri],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmPeri, "mad", "Keep the shields up!"),
+                        new(AmCenti, "nervous", "I'm trying!")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_2", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmIsaac],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmIsaac, "nervous", "We aren't blocking enough shots!"),
+                        new(AmCenti, "nervous", "I can only do so much!")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_3", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmDrake],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmDrake, "nervous", "Oh no, I'm NOT going out like this!"),
+                        new(AmCenti, "squint", "...")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_4", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmBooks],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmBooks, "paws", "Aw nuts! We were so close!"),
+                        new(AmCenti, "squint", "Careful with your language, Books.")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_5", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmMax],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Our momentum is gone."),
+                        new(AmMax, "squint", "We just gotta lock in.")
+                    ]
+                }
+            },
+            {
+                "Duo_AboutToDieAndLoop_Centi_6", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmCat],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Should I prepare for rest mode?"),
+                        new(AmCat, "squint", "We'll be fine. Hopefully.")
+                    ]
+                }
+            },
+            /*
+               {
+                   "Duo_AboutToDieAndLoop_Centi_10", new()
+                   {
+                       type = NodeType.combat,
+                       allPresent = [AmCenti, AmEva],
+                       enemyShotJustHit = true,
+                       maxHull = 2,
+                       oncePerCombatTags = ["aboutToDie"],
+                       oncePerRun = true,
+                       dialogue =
+                       [
+                           new(AmEva, "sad", "I don't like this.."),
+                           new(AmCenti, "This isn't the end, alright?")
+                       ]
+                   }
+            },*/
+            {
+                "EmptyHandWithEnergy_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    handEmpty = true,
+                    minEnergy = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "We're out?")
+                    ]
+                }
+            },
+            {
+                "EmptyHandWithEnergy_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    handEmpty = true,
+                    minEnergy = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "I suppose this is better than the reverse."),
+                    ]
+                }
+            },
+            {
+                "EnemyArmorHitLots_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    playerShotJustHit = true,
+                    minDamageBlockedByEnemyArmorThisTurn = 3,
+                    oncePerCombat = true,
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Why are we hitting the armor?")
+                    ]
+                }
+            },
+            {
+                "EnemyArmorHit_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    playerShotJustHit = true,
+                    minDamageBlockedByEnemyArmorThisTurn = 1,
+                    oncePerCombat = true,
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Armor is only cool when we use it.")
+                    ]
+                }
+            },
+            {
+                "EnemyHasBrittle_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyHasBrittlePart = true,
+                    oncePerRunTags = ["yelledAboutBrittle"],
+                    dialogue =
+                    [
+                        new(AmCenti, "INCREDIBLY WEAK ARMOR DETECTED.")
+                    ]
+                }
+            },
+            {
+                "EnemyHasBrittle_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyHasBrittlePart = true,
+                    oncePerRunTags = ["yelledAboutBrittle"],
+                    dialogue =
+                    [
+                        new(AmCenti, "Put a slug or two into the brittle spot.")
+                    ]
+                }
+            },
+            {
+                "EnemyHasWeakness_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyHasWeakPart = true,
+                    oncePerRunTags = ["yelledAboutWeakness"],
+                    dialogue =
+                    [
+                        new(AmCenti, "Their hull is already craked a bit.")
+                    ]
+                }
+            },
+            {
+                "ExpensiveCardPlayed_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    minCostOfCardJustPlayed = 4,
+                    oncePerCombatTags = ["ExpensiveCardPlayed"],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "That better pay off.")
+                    ]
+                }
+            },
+            {
+                "FreezeIsMaxSize_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, "crystal"],
+                    turnStart = true,
+                    enemyIntent = "biggestCrystal",
+                    oncePerCombatTags = ["biggestCrystalShout"],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "That thing is... big.")
+                    ]
+                }
+            },
+            {
+                "JustHitGeneric_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisAction = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "Direct hit!")
+                    ]
+                }
+            },
+            {
+                "JustHitGeneric_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisAction = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "Good shot!")
+                    ]
+                }
+            },
+            {
+                "JustHitGeneric_Centi_2", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisAction = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "Hit them again!")
+                    ]
+                }
+            },
+            {
+                "JustPlayedADraculaCard_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    whoDidThat = Deck.dracula,
+                    nonePresent = ["dracula"],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Seriously, how does magic work?")
+                    ]
+                }
+            },
+            {
+                "JustPlayedAnEphemeralCard_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    whoDidThat = Deck.ephemeral,
+                    priority = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "And it's gone.")
+                    ]
+                }
+            },
+            {
+                "LookOutMissile_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti, AmIsaac],
+                    priority = true,
+                    once = true,
+                    oncePerRunTags = ["goodMissileAdvice"],
+                    dialogue =
+                    [
+                        new(AmIsaac, "How do we want to dispose of that missile?"),
+                        new(AmCenti, "neutral", "One of us could throw something at it.")
+                    ]
+                }
+            },
+            {
+                "ManyFlips_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    minTimesYouFlippedACardThisTurn = 4,
+                    oncePerCombat = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Is this entertaining to you?")
+                    ]
+                }
+            },
+            {
+                "ManyTurns_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    minTurnsThisCombat = 9,
+                    oncePerCombatTags = ["manyTurns"],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "This is boring.")
+                    ]
+                }
+            },
+            {
+                "ManyTurns_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    minTurnsThisCombat = 9,
+                    oncePerCombatTags = ["manyTurns"],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Just kill them already.")
+                    ]
+                }
+            },
+            {
+                "OneHitPointThisIsFine_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    enemyShotJustHit = true,
+                    maxHull = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "Uhhhh...")
+                    ]
+                }
+            },
+            {
+                "OneHitPointThisIsFine_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    oncePerCombatTags = ["aboutToDie"],
+                    oncePerRun = true,
+                    enemyShotJustHit = true,
+                    maxHull = 1,
+                    lastTurnPlayerStatuses = [Status.corrode],
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous", "Not again...")
+                    ]
+                }
+            },
+            {
+                "OverheatGeneric_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    goingToOverheat = true,
+                    oncePerCombatTags = ["OverheatGeneric"],
+                    dialogue =
+                    [
+                        new(AmCenti, "This heat is going to fry my circuits.")
+                    ]
+                }
+            },
+            {
+                "StrafeMissedGood_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCull],
+                    playerShotJustMissed = true,
+                    playerShotWasFromStrafe = true,
+                    hasArtifacts = ["Recalibrator", "GrazerBeam"],
+                    oncePerCombat = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint","I guess??")
+                    ]
+                }
+            },
+            {
+                "TookZeroDamageAtLowHealth_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyShotJustHit = true,
+                    maxHull = 2,
+                    maxDamageDealtToPlayerThisTurn = 0,
+                    dialogue =
+                    [
+                        new(AmCenti, "nervous","Don't like that at all!")
+                    ]
+                }
+            },
+            {
+                "VeryManyTurns_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    minTurnsThisCombat = 20,
+                    oncePerCombatTags = ["veryManyTurns"],
+                    oncePerRun = true,
+                    turnStart = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "I am going to run out of power at the rate this fight is going.")
+                    ]
+                }
+            },
+            {
+                "WeGotHurtButNotTooBad_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    enemyShotJustHit = true,
+                    minDamageDealtToPlayerThisTurn = 1,
+                    maxDamageDealtToPlayerThisTurn = 1,
+                    dialogue =
+                    [
+                        new(AmCenti, "angry", "Don't try it.")
+                    ]
+                }
+            },
+            {
+                "WeMissedOopsie_Centi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustMissed = true,
+                    oncePerCombat = true,
+                    doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Who's idea was that?")
+                    ]
+                }
+            },
+            {
+                "WeMissedOopsie_Centi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustMissed = true,
+                    oncePerCombat = true,
+                    doesNotHaveArtifacts = ["Recalibrator", "GrazerBeam"],
+                    dialogue =
+                    [
+                        new(AmCenti, "Can we not miss next time?")
+                    ]
+                }
+            },
+            {
+                "WeAreCorroded_Multi_0_Centi", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    lastTurnPlayerStatuses = [Status.corrode],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "squint", "Please tell me we can end this quickly.")
+                    ]
+                }
+            },
+            {
+                "WeAreCorroded_Multi_1_Centi", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    lastTurnPlayerStatuses = [Status.corrode],
+                    oncePerRun = true,
+                    dialogue =
+                    [
+                        new(AmCenti, "angry", "This corrosion is going to eat away at both me AND the ship!")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmPeri],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmPeri, "mad", "Where did they go??")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_1", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmRiggs],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmRiggs, "nervous", "They will come back, right?")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_2", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmDizzy],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmDizzy, "intense", "Centi! We need you!")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_3", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCat],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmCat, "Please don't tell me I'm next...")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_4", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmIsaac],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmIsaac, "I'll protect your cores while you are gone, bud.")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_5", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmDrake],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmDrake, "Bring them back. I'm not asking.")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_6", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmMax],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmMax, "Nope. Not good.")
+                    ]
+                }
+            },
+            {
+                "CentiWentMissing_Multi_7", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmBooks],
+                    priority = true,
+                    oncePerRun = true,
+                    oncePerCombatTags = ["CentiWentMissing"],
+                    lastTurnPlayerStatuses = [MissingCenti],
+                    dialogue =
+                    [
+                        new(AmBooks, "Robo-bird, come back!")
+                    ]
+                }
+            },
+            {
+                "CentiJustHit_Multi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    playerShotJustHit = true,
+                    minDamageDealtToEnemyThisAction = 1,
+                    whoDidThat = AmCullDeck,
+                    oncePerCombatTags = ["CentiShotAGuy"],
+                    dialogue =
+                    [
+                        new(AmCenti,  "Clean hit.")
+                    ]
+                }
+            },
+            {
+                "CentiGotPerfect_Multi_0", new()
+                {
+                    type = NodeType.combat,
+                    allPresent = [AmCenti],
+                    oncePerRun = true,
+                    lastTurnPlayerStatuses = [Status.perfectShield],
+                    dialogue =
+                    [
+                        new(AmCenti, "neutral", "The most perfect defense."),
+                    ]
+                }
+            },
             #endregion
             #region Eva
             #endregion
@@ -3339,6 +4412,7 @@ internal class CombatDialogueAll
                         new("66ea84d6", AmCull, "nervous", "Oh, that's... that's a lot of guns."),
                         new("66ea84d6", AmJay, "nervous", "Please have mercy."),
                         new("66ea84d6", AmLuna, "nervous", "I'm sorry."),
+                        new("66ea84d6", AmCenti, "nervous", "Now, hold on..."),
                     ],
                 }
             },
@@ -3350,6 +4424,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "squint", "Please no seekers."),
                         new(EMod.countFromStart, 1, AmJay, "angry", "Your Engine Stall is very annoying to clean up."),
                         new(EMod.countFromStart, 1, AmLuna, "angry", "Can you, like, let us move, please?"),
+                        new(EMod.countFromStart, 1, AmCenti, "Missiles got nothing on me."),
                     ]
                 }
             },
@@ -3361,6 +4436,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 2, AmCull, "Woah."),
                         new(EMod.countFromStart, 2, AmJay, "squint", "What?"),
                         new(EMod.countFromStart, 2, AmLuna, "Really?"),
+                        new(EMod.countFromStart, 2, AmCenti, "Uh, no?"),
                     ]
                 }
             },
@@ -3372,6 +4448,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 2, AmCull, "neutral", "That's so cool!"),
                         new(EMod.countFromStart, 2, AmJay, "squint", "That's preposterous."),
                         new(EMod.countFromStart, 2, AmLuna, "Wow!"),
+                        new(EMod.countFromStart, 2, AmCenti, "Where did you hear that?"),
                     ]
                 }
             },
@@ -3383,7 +4460,8 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "sad", "Aw man."),
                         new(EMod.countFromStart, 1, AmJay, "neutral", "Finally."),
                         new(EMod.countFromStart, 1, AmLuna, "sad", "Awwwwww."),
-                        
+                        new(EMod.countFromStart, 1, AmCenti, "neutral", "Good."),
+
                     ]
                 }
             },
@@ -3394,7 +4472,8 @@ internal class CombatDialogueAll
                     [
                         new(EMod.countFromStart, 1, AmCull, "squint", "Do I know you?"),
                         new(EMod.countFromStart, 1, AmJay, "squint", "And you are?"),
-                        new(EMod.countFromStart, 1, AmLuna, "squint", "Have we met?"),
+                        new(EMod.countFromStart, 1, AmCenti, "squint", "Have we met?"),
+
                     ]
                 }
             },
@@ -3406,6 +4485,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "squint", "You're lucky. Don't try that again."),
                         new(EMod.countFromStart, 1, AmJay, "squint", "Can you stop trying to kill us?"),
                         new(EMod.countFromStart, 1, AmLuna, "squint", "Drake, just stop."),
+                        new(EMod.countFromStart, 1, AmCenti, "squint", "you're still doing this? Really?"),
                     ]
                 }
             },
@@ -3417,6 +4497,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "angry", "I really don't like this heat."),
                         new(EMod.countFromStart, 1, AmJay, "angry", "The hull is at risk cause of you."),
                         new(EMod.countFromStart, 1, AmLuna, "angry", "Really? C'mon."),
+                        new(EMod.countFromStart, 1, AmCenti, "angry", "I thought you would be better than this."),
                     ]
                 }
             },
@@ -3428,6 +4509,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 2, AmCull, "squint", "What does that even mean?"),
                         new(EMod.countFromStart, 2, AmJay, "neutral", "Old ships have such a nice quality to them."),
                         new(EMod.countFromStart, 2, AmLuna, "neutral", "Yar-har!"),
+                        new(EMod.countFromStart, 2, AmCenti, "neutral", "Ah, an old fashioned pirate."),
                     ]
                 }
             },
@@ -3439,6 +4521,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 2, AmCull, "Why do you want these rocks?"),
                         new(EMod.countFromStart, 2, AmJay, "These rocks could make excellent plating."),
                         new(EMod.countFromStart, 2, AmLuna, "Anything shiny in these rocks?"),
+                        new(EMod.countFromStart, 2, AmCenti, "They are just rocks..."),
                     ]
                 }
             },
@@ -3450,6 +4533,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "neutral", "Hold one moment, we aren't finished."),
                         new(EMod.countFromStart, 1, AmJay, "neutral", "Please wait right there."),
                         new(EMod.countFromStart, 1, AmLuna, "neutral", "Slow your roll."),
+                        new(EMod.countFromStart, 1, AmCenti, "neutral", "Stop right there, frog scum."),
                     ]
                 }
             },
@@ -3461,6 +4545,7 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "squint", "How does this even happen?"),
                         new(EMod.countFromStart, 1, AmJay, "squint", "Where did you get those missiles?"),
                         new(EMod.countFromStart, 1, AmLuna, "squint", "How does this keep happening?"),
+                        new(EMod.countFromStart, 1, AmCenti, "squint", "Again with this?"),
                     ]
                 }
             },
@@ -3472,6 +4557,8 @@ internal class CombatDialogueAll
                         new(EMod.countFromStart, 1, AmCull, "angry", "Can we please cool the ship down?"),
                         new(EMod.countFromStart, 1, AmJay, "angry", "Please stop melting the hull."),
                         new(EMod.countFromStart, 1, AmLuna, "angry", "This is your fault, you know?"),
+                        new(EMod.countFromStart, 1, AmCenti, "angry", "You really got to stop."),
+
                     ]
                 }
             },

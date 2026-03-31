@@ -53,7 +53,7 @@ internal class StoryDialogueJay
                 dialogue = [
                     new (AmCat, "squint", "Judging by the fact that space travel has not been revolutionized recently, it didn't work out?", flipped: true ),
                     new (AmJay,"nervous","You could say that." ),
-                    new (AmCat, "neutral", "That \"bat dude\" she mentioned, I think I know who that is.", flipped: true ),
+                    new (AmCat, "neutral", "That \"bat dude\" she mentioned, I think I know who that is. His name is Smiff.", flipped: true ),
                     new (AmJay,"neutral","Really? I need to talk to him!" ),
                     new (AmCat, "neutral", "No guarantee we see him, but we can try!", flipped: true ),
                 ]

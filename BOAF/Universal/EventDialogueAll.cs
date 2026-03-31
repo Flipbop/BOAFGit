@@ -170,7 +170,59 @@ internal class EventDialogueAll
             }},
             #endregion
             #region Centi
-            
+            {$"ChoiceCardRewardOfYourColorChoice_{AmCenti}", new(){
+                type = NodeType.@event,
+                oncePerRun = true,
+                allPresent = [ AmCenti ],
+                bg = "BGBootSequence",
+                dialogue = [
+                    new(AmCenti, "squint", "Is this what malware feels like for computers?"),
+                    new(AmCat, "Energy readings are back to normal.")
+                ]
+            }},
+            {"ShopkeeperInfinite_Centi_Multi_0", new(){
+                type = NodeType.@event,
+                lookup = [ "shopBefore" ],
+                bg = "BGShop",
+                allPresent = [ AmCenti ],
+                dialogue = [
+                    new(AmCenti, "neutral", "Morning."),
+                    new(AmShopkeeper, "Is it?", true),
+                    new(new Jump{key = "NewShop"})
+                ]
+            }},
+            {"ShopkeeperInfinite_Centi_Multi_1", new(){
+                type = NodeType.@event,
+                lookup = [ "shopBefore" ],
+                bg = "BGShop",
+                allPresent = [ AmCenti ],
+                dialogue = [
+                    new(AmCenti, "neutral", "I like your shop!"),
+                    new(AmShopkeeper, "Thank you!", true),
+                    new(new Jump{key = "NewShop"})
+                ]
+            }},
+            {$"CrystallizedFriendEvent_{AmCenti}", new(){
+                type = NodeType.@event,
+                oncePerRun = true,
+                allPresent = [ AmCenti ],
+                bg = "BGCrystalizedFriend",
+                dialogue = [
+                    new(new Wait{secs = 1.5}),
+                    new(AmCenti, "gameover", "BOOTUP SEQUENCE INITIATED..."),
+                    new(AmCenti, "squint", "...urgh, hello.")
+
+                ]
+            }},
+            {$"LoseCharacterCard_{AmCenti}", new(){
+                type = NodeType.@event,
+                allPresent = [ AmCenti ],
+                oncePerRun = true,
+                bg = "BGSupernova",
+                dialogue = [
+                    new(AmCenti, "nervous", "Hopefully that's it.")
+                ]
+            }},
             #endregion
             #region Eva
             
