@@ -452,9 +452,9 @@
             "JayExe": {
                 "name": "Jay.EXE",
                 "description": {
-                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand.",
-                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand.",
-                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=001ab7>Jay</c> cards to your hand."
+                    "None": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=0c4ab0>Jay</c> cards to your hand.",
+                    "A": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=0c4ab0>Jay</c> cards to your hand.",
+                    "B": "Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=0c4ab0>Jay</c> cards to your hand."
                 }
             }
     }
@@ -682,7 +682,7 @@
         "status": {
             "Nanomachines": {
                 "name": "Nanomachines",
-                "description": "When this ship is hit by an attack it gains <c=status>TEMP SHIELD</c> equal to the attack's damage. <c=downside>Lose 1 at the start of turn.</c>"
+                "description": "When this ship takes damage it gains <c=status>TEMP SHIELD</c> equal to the damage. <c=downside>Lose 1 at the start of turn.</c>"
             },
             "BubbleSiphon": {
                 "name": "Bubble Siphon",
@@ -809,9 +809,9 @@
                     "B": "Choose an object in the midrow. Launch a copy of it."
                 },
                 "description": {
-                    "None": "Launch a random <c=midrow>CORE</c> of it. More powerful cores are less likely.",
-                    "A": "Launch a random <c=midrow>bubbled CORE</c> of it. More powerful cores are less likely.",
-                    "B": "Launch a random <c=midrow>CORE</c> of it. More powerful cores are less likely."
+                    "None": "Launch a random <c=midrow>CORE</c>. More powerful cores are less likely.",
+                    "A": "Launch a random <c=midrow>bubbled CORE</c>. More powerful cores are less likely.",
+                    "B": "Launch a random <c=midrow>CORE</c>. More powerful cores are less likely."
                 },
                 "ui" : {
                     "cancel" : "CANCEL"

@@ -48,9 +48,8 @@ internal sealed class CentiExeCard : Card, IRegisterable
 		potentialCore.Add(new(8,new MossCore()));
 		potentialCore.Add(new(8,new BrimstoneCore()));
 		potentialCore.Add(new(1,new InfinityCore()));
-		var core = potentialCore.Next(rand);
 		
-		actions.Add(new ASpawn{thing = core});
+		actions.Add(new ASpawn{thing = potentialCore.Next(rand)});
 		actions.Add(new ACardOffering
 		{
 			amount = GetChoiceCount(),

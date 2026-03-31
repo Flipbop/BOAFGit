@@ -557,7 +557,7 @@ public sealed class ModEntry : SimpleMod
 		});
 		JayDeck = helper.Content.Decks.RegisterDeck("Jay", new()
 		{
-			Definition = new() { color = new("001ab7"), titleColor = Colors.white },
+			Definition = new() { color = new("0c4ab0"), titleColor = Colors.white },
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/CardFrame.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Jay","character", "name"]).Localize,

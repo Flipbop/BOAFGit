@@ -59,9 +59,8 @@ internal sealed class BackupCoreCard : Card, IRegisterable, IHasCustomCardTraits
 		potentialCore.Add(new(8,new MossCore(){bubbleShield = upgrade == Upgrade.B}));
 		potentialCore.Add(new(8,new BrimstoneCore(){bubbleShield = upgrade == Upgrade.B}));
 		potentialCore.Add(new(1,new InfinityCore(){bubbleShield = upgrade == Upgrade.B}));
-		var core = potentialCore.Next(rand);
 		
-		actions.Add(new ASpawn{thing = core});
+		actions.Add(new ASpawn{thing = potentialCore.Next(rand)});
 		
 		return actions;
 	}

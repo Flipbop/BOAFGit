@@ -94,7 +94,7 @@ internal sealed class NanomachinesManager : IKokoroApi.IV2.IStatusRenderingApi.I
 			if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
 				return false;
 
-			args.Amount = 0;
+			args.Amount -= 1;
 			return false;
 		}
 	}
