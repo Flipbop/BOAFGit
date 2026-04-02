@@ -271,7 +271,7 @@ internal class MemoryDialogueCenti
                     new (AmCenti, "sob", "If part of you isn't dead, then there is something remaining."),
                     new (AmCenti, "cry", "Something... alive in me."),
                     new (AmCenti, "ghost", "...", true),
-                    new (AmCenti, "neutral", "You are gone. You have been for the last 6 years."),
+                    new (AmCenti, "sad", "You are gone. You have been for the last 6 years."),
                     new (AmCenti, "neutral", "But I am not. I am as alive as you once were."),
                     new (AmCenti, "neutral", "I may live inside a different body than I once did, but I am very much alive."),
                     new (AmCenti, "fade", "...", true),
