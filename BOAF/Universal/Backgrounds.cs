@@ -57,10 +57,17 @@ public class Backgrounds
                     i--;
                 }
             }
-            /*else if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.LunaDeck.Deck) &&
-                     s2.storyVars.memoryUnlockLevel.GetValueOrDefault(ModEntry.Instance.LunaDeck.Deck) > 0) {
-                __result.RemoveAt(i);
-                i--;
+            /*else if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.LunaDeck.Deck)) {
+                if ((s2.storyVars.HasEverSeen("RunWinWho_Luna_2") || s2.storyVars.HasEverSeen("Luna_Post_Dillian")) && !s2.storyVars.HasEverSeen("Luna_Intro_2")) {
+                    __result.RemoveAt(i);
+                    i--;
+                }
+            }
+            else if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.CentiDeck.Deck)) {
+                if ((s2.storyVars.HasEverSeen("RunWinWho_Centi_2") || s2.storyVars.HasEverSeen("Centi_Post_Drake")) && !s2.storyVars.HasEverSeen("Centi_Intro_2")) {
+                    __result.RemoveAt(i);
+                    i--;
+                }
             }*/
         }
     }
@@ -136,6 +143,27 @@ public class Backgrounds
         }
     }
     
+    public class BGCentiSpace : BG {
+        public bool explosion = false;
+        public bool blackout = false;
+        
+        public override void OnAction(State s, string action) {
+            if (action == "explosion")
+            {
+                explosion = true;
+                blackout = true;
+            }
+        }
+
+        public override void Render(G g, double t, Vec offset) {
+            Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
+            BGComponents.Letterbox();
+
+            if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
+            if (blackout) Draw.Fill(Colors.black);
+        }
+    }
+    
     public class BGBattleMemory : BG
     {
         public bool prefight = true;
@@ -189,7 +217,7 @@ public class Backgrounds
                 s.storyVars.memoryUnlockLevel[ModEntry.Instance.JayDeck.Deck] = 1;
                 s.ChangeRoute(s.MakeRunWinRoute);
             }
-            /*else if (action == "runwinwho_reset_Luna") {
+            else if (action == "runwinwho_reset_Luna") {
                 charPickDeck = null;
                 s.storyVars.runWinChar = null;
                 charPickTimer = null;
@@ -203,7 +231,7 @@ public class Backgrounds
                 s.storyVars.memoryUnlockLevel[ModEntry.Instance.CentiDeck.Deck] = 1;
                 s.ChangeRoute(s.MakeRunWinRoute);
             }
-            else if (action == "runwinwho_reset_Eva") {
+            /*else if (action == "runwinwho_reset_Eva") {
                 charPickDeck = null;
                 s.storyVars.runWinChar = null;
                 charPickTimer = null;

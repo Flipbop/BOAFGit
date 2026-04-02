@@ -623,7 +623,8 @@
                 "<c=8A3388>CENTI</c>",
                 "Your cybernetic sentinel.",
                 "Their cards require certain <c=keyword>cores</c> to be in the midrow to function, and provide large defense in a variety of forms."
-            ]
+            ],
+            "nameGuard": "AVON Guard"
         },
         "action": {
             "DemonAction": {

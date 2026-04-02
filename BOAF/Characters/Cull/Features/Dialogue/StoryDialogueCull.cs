@@ -173,6 +173,24 @@ internal class StoryDialogueCull
                     new (AmCull, "I've been alive for so long I don't remember anything before my job.")
                 ]
             }},
+            {"Cull_Centi_0__PREEMPTIVE", new(){
+                type = NodeType.@event,
+                lookup = [ "zone_first"],
+                once = true,
+                allPresent = [ AmCull, AmCenti ],
+                bg = "BGRunStart",
+                requiredScenes = [ "Cull_Memory_1", "Centi_Intro_0"],
+                dialogue = [
+                    new (AmCenti, "Your magic confuses me.", true), 
+                    new (AmCull, "Oh? Why is that?"),
+                    new (AmCenti, "squint","There are no records anywhere in any databases I have access to that match what I have seen you do.", true),
+                    new (AmCull, "squint", "Not entirely surprised."),
+                    new (AmCenti, "Why is that?", true),
+                    new (AmCull, "My profession was a little... off the books."),
+                    new (AmCenti, "squint", "Hmm, very well.", true),
+
+                ]
+            }},
         });
     }
 }

@@ -46,7 +46,7 @@ internal class MemoryDialogueLuna
                     $"runWin_{AmLuna}"
                 ],
                 requiredScenes = [
-                    "Luna_Post_Smiff", "Luna_Memory_2"
+                    "Luna_Post_Dillian", "Luna_Memory_2"
                 ],
                 dialogue = [
                     
@@ -200,7 +200,7 @@ internal class MemoryDialogueLuna
             {"Depression_Power_Up", new(){
                 type = NodeType.@event,
                 allPresent = [AmLuna, AmCull],
-                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                nonePresent = [AmJay, AmCenti, /*AmEva*/],
                 dialogue = [
                     new (AmLuna, "nervous", "How are we supposed to kill it now?!" ),
                     new (AmCull,"angry","Outlast the underdrive! Go on the defensive!" ),
@@ -209,7 +209,7 @@ internal class MemoryDialogueLuna
             {"Depression_Callout_Multi_0", new(){
                 type = NodeType.combat,
                 allPresent = [AmLuna, AmCull, AmVoid],
-                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                nonePresent = [AmJay, AmCenti,/* AmEva*/],
                 dialogue = [
                     new (AmVoid, "1 C0UL??D H4\\/E <c=part>SAVED HER</c>." ),
                     new (AmLuna, "sob", "...")
@@ -219,7 +219,7 @@ internal class MemoryDialogueLuna
             {"Depression_Callout_Multi_1", new(){
                 type = NodeType.combat,
                 allPresent = [AmLuna, AmCull, AmVoid],
-                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                nonePresent = [AmJay, AmCenti,/* AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'??L VI5IT 4S <c=part>OFTEN AS I CAN</c>." ),
                     new (AmLuna, "tear", "...")
@@ -229,7 +229,7 @@ internal class MemoryDialogueLuna
             {"Depression_Callout_Multi_2", new(){
                 type = NodeType.combat,
                 allPresent = [AmLuna, AmCull, AmVoid],
-                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                nonePresent = [AmJay, AmCenti, /*AmEva*/],
                 dialogue = [
                     new (AmVoid, "1 W4SN,T <c=part>FAST ENOUGH</c>." ),
                     new (AmLuna, "sad", "...")
@@ -243,7 +243,7 @@ internal class MemoryDialogueLuna
                     "after_void"
                 ],
                 allPresent = [AmLuna, AmCull, AmVoid],
-                nonePresent = [AmJay, /*AmCenti, AmEva*/],
+                nonePresent = [AmJay, AmCenti, /*AmEva*/],
                 requiredScenes = ["Luna_Memory_3"],
                 dialogue = [
                     new (new BGAction{action = "fight"}),  

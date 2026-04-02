@@ -164,7 +164,7 @@ internal class StoryDialogueJay
                     new (AmJay, "angry", "He is the reason my sister is dead."),
                     new (AmDrake, "squint","Really? THAT guy? He's harmless. How would he even do that?", true),
                     new (AmJay, "angry", "He sold her a faulty part that ended up causing a critical failure in an engine, causing an explosion that killed her."),
-                    new (AmDrake, "nervous", "Oh.", true)
+                    new (AmDrake, "panic", "Oh.", true)
                 ]
             }},
             {"Jay_Luna_0", new(){
@@ -182,6 +182,23 @@ internal class StoryDialogueJay
                     new (AmLuna, "It really is just everywhere, it's just often too small to see or use. You just need to have the right magic to get it in large enough clumps.", true),
                     new (AmJay,  "You don't suppose I could get in on that? I would love to have a material like that."),
                     new (AmLuna, "Sorry! It takes years of practice to get it right. I'm barely proficient enough with it as is.", true)
+                ]
+            }},
+            {"Jay_Centi_0", new(){
+                type = NodeType.@event,
+                lookup = [ "zone_first"],
+                once = true,
+                allPresent = [ AmJay, AmCenti ],
+                bg = "BGRunStart",
+                requiredScenes = [ "Jay_Intro_0", "Centi_Intro_2_PREEMPTIVE"],
+                dialogue = [
+                    new (AmJay, "Centi, I've got to ask, who engineered your body?"),
+                    new (AmCenti, "That's private.", true),
+                    new (AmJay, "squint", "What, really? It can't be that hard to tell me."),
+                    new (AmCenti,"I would rather not talk about her.", true),
+                    new (AmJay, "Do I know her?"),
+                    new (AmCenti,  "squint","...", true),
+                    new (AmJay, "Alright, stay quiet. I'll stop prying.")
                 ]
             }},
         });

@@ -99,7 +99,24 @@ internal class StoryDialogueLuna
                 dialogue = [
                     
                 ]
-            }}
+            }},
+            {"Luna_Centi_0_PREEMPTIVE", new(){
+                type = NodeType.@event,
+                lookup = [ "zone_first"],
+                once = true,
+                allPresent = [ AmLuna, AmCenti ],
+                bg = "BGRunStart",
+                requiredScenes = [ "Luna_Intro_0_PREEMPTIVE", "Centi_Intro_0_PREEMPTIVE"],
+                dialogue = [
+                    new (AmLuna, "Centi, have you noticed your special Cores are loaded with Stardust?"),
+                    new (AmCenti, "squint","They are?", true),
+                    new (AmLuna,  "One hundred percent."),
+                    new (AmCenti,"squint","Does that... mean anything?", true),
+                    new (AmLuna, "I can't use it, the Stardust is too densely packed into the core for me to do anything with it."),
+                    new (AmLuna,"I just thought it was cool! It's probably where they get all their power from!"),
+                    new (AmCenti, "I guess so.", true)
+                ]
+            }},
         });
     }
 }

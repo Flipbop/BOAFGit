@@ -42,7 +42,7 @@ internal class MemoryDialogueJay
                     new(new Wait{secs = 3}),
                     new (AmJay, "neutral", "Back here again. What for?" ),
                     new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?", flipped: true ),
-                    new (AmJay, "neutral", "The person Valv bought the part from, some \"bat dude\" as she put it." ),
+                    new (AmJay, "neutral", "The person Valv bought the part from. CAT says his name is Smiff." ),
                     new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here.", flipped: true ),
                     new (new BGAction(){action = "runwinwho_reset_Jay"}),
                 ]
@@ -209,7 +209,7 @@ internal class MemoryDialogueJay
             {"Anger_Power_Up", new(){
                 type = NodeType.@event,
                 allPresent = [AmJay, AmCull],
-                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
+                nonePresent = [AmLuna, AmCenti,/* AmEva*/],
                 dialogue = [
                     new (AmJay, "nervous", "Did it just power up?!" ),
                     new (AmCull,"angry","I told you this would be no easy battle! Stand your ground!" ),
@@ -218,7 +218,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_0", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
+                nonePresent = [AmLuna, AmCenti,/* AmEva*/],
                 dialogue = [
                     new (AmVoid, "1'M AB0UT TO MA??KE IT\n<c=part>YOUR PROBLEM.</c>" ),
                     new (AmJay, "sob", "...")
@@ -228,7 +228,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_1", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
+                nonePresent = [AmLuna, AmCenti, /*AmEva*/],
                 dialogue = [
                     new (AmVoid, "THAT'S N??0T <c=part>THE POINT.</c>" ),
                     new (AmJay, "sad", "...")
@@ -237,7 +237,7 @@ internal class MemoryDialogueJay
             {"Anger_Callout_Multi_2", new(){
                 type = NodeType.combat,
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
+                nonePresent = [AmLuna, AmCenti,/* AmEva*/],
                 dialogue = [
                     new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
                     new (AmJay, "tear", "...")
@@ -252,7 +252,7 @@ internal class MemoryDialogueJay
                     "after_void"
                 ],
                 allPresent = [AmJay, AmCull, AmVoid],
-                nonePresent = [AmLuna, /*AmCenti, AmEva*/],
+                nonePresent = [AmLuna, AmCenti,/* AmEva*/],
                 requiredScenes = ["Jay_Memory_3"],
                 dialogue = [
                     new (new BGAction{action = "fight"}),  

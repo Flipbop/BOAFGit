@@ -3783,7 +3783,7 @@ internal class CombatDialogueAll
                     oncePerRun = true,
                     dialogue =
                     [
-                        new(AmDrake, "nervous", "Oh no, I'm NOT going out like this!"),
+                        new(AmDrake, "panic", "Oh no, I'm NOT going out like this!"),
                         new(AmCenti, "squint", "...")
                     ]
                 }

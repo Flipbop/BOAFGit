@@ -96,9 +96,6 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry stardustCostSprite { get; }
 	internal ICardTraitEntry ShimmeredTrait { get; }
 	internal ISpriteEntry ShimmeredIcon { get; }
-	
-
-	
 	internal INonPlayableCharacterEntryV2 KassCharacter { get; }
 	#endregion
 	#region Centi
@@ -135,8 +132,8 @@ public sealed class ModEntry : SimpleMod
 	internal ISpriteEntry TempShieldDroneIcon { get; }
 	internal ICardTraitEntry CoreDependentTrait { get; }
 	internal ISpriteEntry CoreDependentIcon { get; }
+	internal INonPlayableCharacterEntryV2 GuardCharacter { get; }
 
-	
 	#endregion
 	
 	#region Ships
@@ -147,7 +144,13 @@ public sealed class ModEntry : SimpleMod
 	internal string thanatosWingSprite { get; }
 	internal ISpriteEntry thanatosChassisSprite { get; }
 	internal IShipEntry VulcanShip { get; }
-	
+	internal string vulcanCannonSprite { get; }
+	internal string vulcanCockpitSprite { get; }
+	internal string vulcanBaySprite { get; }
+	internal string vulcanLeftWingSprite { get; }
+	internal string vulcanMidWingSprite { get; }
+	internal string vulcanRightWingSprite { get; }
+	internal ISpriteEntry vulcanChassisSprite { get; }
 	internal IShipEntry AthenaShip { get; }
 	internal string athenaCannonSprite { get; }
 	internal string athenaCockpitSprite { get; }
@@ -491,7 +494,13 @@ public sealed class ModEntry : SimpleMod
 		thanatosCockpitSprite = helper.Content.Ships.RegisterPart("ThanatosCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cockpit.png")).Sprite }).UniqueName;
 		thanatosBaySprite = helper.Content.Ships.RegisterPart("ThanatosBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_missile.png")).Sprite }).UniqueName;
 		thanatosChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_chassis.png"));
-		//Insert Vulcan Here
+		vulcanLeftWingSprite = helper.Content.Ships.RegisterPart("VulcanLeftWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_wing0.png")).Sprite }).UniqueName; 
+		vulcanMidWingSprite = helper.Content.Ships.RegisterPart("VulcanMidWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_wing1.png")).Sprite }).UniqueName; 
+		vulcanRightWingSprite = helper.Content.Ships.RegisterPart("VulcanRightWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_wing2.png")).Sprite }).UniqueName; 
+		vulcanCannonSprite = helper.Content.Ships.RegisterPart("VulcanCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_cannon.png")).Sprite }).UniqueName;
+		vulcanCockpitSprite = helper.Content.Ships.RegisterPart("VulcanCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_cockpit.png")).Sprite }).UniqueName;
+		vulcanBaySprite = helper.Content.Ships.RegisterPart("VulcanBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_missile.png")).Sprite }).UniqueName;
+		vulcanChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_chassis.png"));
 		athenaWingSprite = helper.Content.Ships.RegisterPart("AthenaWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_wing.png")).Sprite }).UniqueName;
 		athenaCannonSprite = helper.Content.Ships.RegisterPart("AthenaCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_cannon.png")).Sprite }).UniqueName;
 		athenaCockpitSprite = helper.Content.Ships.RegisterPart("AthenaCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_cockpit.png")).Sprite }).UniqueName;
@@ -1255,7 +1264,7 @@ public sealed class ModEntry : SimpleMod
 		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
 		# endregion
-		#region CentiCharacter
+		#region Centi Character
 		
 		
 		UncommonCentiBorder = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/FrameUncommon.png")).Sprite;
@@ -1366,7 +1375,7 @@ public sealed class ModEntry : SimpleMod
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
 		{
 			CharacterType = CentiDeck.UniqueName,
-			LoopTag = "tear",
+			LoopTag = "cry",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Cry/{i}.png")).Sprite)
 				.ToList()
@@ -1387,6 +1396,38 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Sob/{i}.png")).Sprite)
 				.ToList()
 		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "livingneutral",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNeutral/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "livingnervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "ghost",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/GhostCenti.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = CentiDeck.UniqueName,
+			LoopTag = "fade",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/GhostCenti.png")).Sprite)
+				.ToList()
+		});
 		
 		CoreDependentTrait = helper.Content.Cards.RegisterTrait("CoreDependent", new()
 		{
@@ -1401,6 +1442,23 @@ public sealed class ModEntry : SimpleMod
 					Description = Localizations.Localize(["Centi","cardtrait", "CoreDependent", "description"])
 				}
 			]
+		});
+		
+		GuardCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("AVONGuard", new NonPlayableCharacterConfigurationV2()
+		{
+			CharacterType = "guard",
+			Name = AnyLocalizations.Bind(["Centi","character", "nameGuard"]).Localize,
+			
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = GuardCharacter.CharacterType,
+			LoopTag = "neutral",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/AVONGuard.png")).Sprite)
+				.ToList()
 		});
 		
 		//Vault.charsWithLore.Add(CentiDeck.Deck);
@@ -1491,33 +1549,33 @@ public sealed class ModEntry : SimpleMod
                         new Part
                         {
                             type = PType.missiles,
-                            skin = "missiles_artemis",
+                            skin = vulcanBaySprite,
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = vulcanLeftWingSprite,
                         },
                         new Part
                         {
                             type = PType.cockpit,
-                            skin = "cockpit_artemis",
+                            skin = vulcanCockpitSprite,
                         },
                         new Part
                         {
                             type = PType.cannon,
-                            skin = "cannon_artemis",
+                            skin = vulcanCannonSprite,
                         },
                         new Part
                         {
                             type = PType.wing,
-                            skin = "wing_player",
+                            skin = vulcanMidWingSprite,
                             flip = true,
                         },
                         new Part
                         {
 	                        type = PType.wing,
-	                        skin = "wing_player",
+	                        skin = vulcanRightWingSprite,
 	                        flip = true
                         },
                     }
@@ -1539,7 +1597,7 @@ public sealed class ModEntry : SimpleMod
 	            typeof(VulcanPlatingArtifact),
 	            typeof(KineticReboundArtifact)
             },
-            //UnderChassisSprite = "chassis_boxy",
+            UnderChassisSprite = vulcanChassisSprite.Sprite,
             Name = AnyLocalizations.Bind(["ship", "Vulcan", "name"]).Localize,
             Description = AnyLocalizations.Bind(["ship", "Vulcan", "description"]).Localize
         });
@@ -1669,7 +1727,8 @@ public sealed class ModEntry : SimpleMod
 		
 		DB.backgrounds.Add("BGJayWorkshop", typeof(Backgrounds.BGJayWorkshop));
 		DB.backgrounds.Add("BGLunaAcademy", typeof(Backgrounds.BGLunaAcademy));
-
+		DB.backgrounds.Add("BGCentiSpace", typeof(Backgrounds.BGCentiSpace));
+		
 		DB.backgrounds.Add("BGBattleMemory", typeof(Backgrounds.BGBattleMemory));
 		DB.backgrounds.Add("BGRunWinCustom", typeof(Backgrounds.BGRunWinCustom));
 

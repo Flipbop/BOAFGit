@@ -53,41 +53,41 @@ internal sealed class AngerEnemy : AI, IRegisterableEnemy
 			new Part {
 				key = "cannon.left",
 				type = PType.cannon,
-				skin = "wing_knight"
+				skin = ModEntry.Instance.vulcanCannonSprite
 			},
 			new Part {
 				key = "wing",
 				type = PType.wing,
-				skin = "missiles_gemini_off",
+				skin = ModEntry.Instance.vulcanMidWingSprite,
 			},
 			new Part {
 				key = "power.left",
 				type = PType.cannon,
-				skin = "wing_knight"
+				skin = ModEntry.Instance.vulcanCannonSprite
 			},
 			new Part {
 				key = "cockpit",
 				type = PType.cockpit,
 				damageModifier = PDamMod.weak,
 				stunModifier = PStunMod.stunnable,
-				skin = "cockpit_wizard"
+				skin = ModEntry.Instance.vulcanCockpitSprite
 			},
 			new Part {
 				key = "power.right",
 				type = PType.cannon,
-				skin = "wing_knight",
+				skin = ModEntry.Instance.vulcanCannonSprite,
 				flip = true
 			},
 			new Part {
 				key = "wing",
 				type = PType.wing,
-				skin = "missiles_gemini_off",
+				skin = ModEntry.Instance.vulcanMidWingSprite,
 				flip = true
 			},
 			new Part {
 				key = "cannon.right",
 				type = PType.cannon,
-				skin = "wing_knight",
+				skin = ModEntry.Instance.vulcanCannonSprite,
 				flip = true
 			},
 		];
