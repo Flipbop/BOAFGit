@@ -249,7 +249,7 @@ internal class MemoryDialogueCenti
                 dialogue = [
                     new (new BGAction{action = "fight"}),  
                     new(new Wait{secs = 1}),
-                    new (AmCenti, "nervous", "...is it... are we finished."),
+                    new (AmCenti, "nervous", "...is it... are we finished?"),
                     new (AmCull, "squint", "That should be it. There is no guarantee this will work for you.", true),
                     new (AmCenti, "ghost", "..."),
                     new (AmCull, "Never mind, looks like it did. I'll let you have your moment.", true),
