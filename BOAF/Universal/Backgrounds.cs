@@ -41,6 +41,12 @@ public class Backgrounds
             if (luna.fire) __result = new MusicState { scene = Song.Riggs };
         }
         
+        if (__instance.bg is BGCentiSpace centi)
+        {
+            if (centi.alarm || centi.explosion) __result = new MusicState { scene = Song.Silence };
+            if (centi.argument) __result = new MusicState { scene = Song.Riggs };
+        }
+        
         if (__instance.bg is BGBattleMemory battle)
         {
             if (battle.prefight) __result = new MusicState { scene = Song.Polytrope, sceneLayer = SceneLayer.Intro};
@@ -146,12 +152,23 @@ public class Backgrounds
     public class BGCentiSpace : BG {
         public bool explosion = false;
         public bool blackout = false;
-        
+        public bool alarm = false;
+        public bool argument = false;
+
         public override void OnAction(State s, string action) {
             if (action == "explosion")
             {
                 explosion = true;
                 blackout = true;
+                alarm = false;
+            }
+            if (action == "alarm") alarm = true;
+            if (action == "argument")
+            {
+                explosion = false;
+                blackout = false;
+                alarm = false;
+                argument = true;
             }
         }
 
@@ -161,6 +178,7 @@ public class Backgrounds
 
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
+            if (alarm) Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);
         }
     }
     

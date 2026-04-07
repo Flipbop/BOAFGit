@@ -133,6 +133,7 @@ public sealed class ModEntry : SimpleMod
 	internal ICardTraitEntry CoreDependentTrait { get; }
 	internal ISpriteEntry CoreDependentIcon { get; }
 	internal INonPlayableCharacterEntryV2 GuardCharacter { get; }
+	internal INonPlayableCharacterEntryV2 LivingCentiCharacter { get; }
 
 	#endregion
 	
@@ -499,7 +500,7 @@ public sealed class ModEntry : SimpleMod
 		vulcanRightWingSprite = helper.Content.Ships.RegisterPart("VulcanRightWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_wing2.png")).Sprite }).UniqueName; 
 		vulcanCannonSprite = helper.Content.Ships.RegisterPart("VulcanCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_cannon.png")).Sprite }).UniqueName;
 		vulcanCockpitSprite = helper.Content.Ships.RegisterPart("VulcanCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_cockpit.png")).Sprite }).UniqueName;
-		vulcanBaySprite = helper.Content.Ships.RegisterPart("VulcanBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_missile.png")).Sprite }).UniqueName;
+		vulcanBaySprite = helper.Content.Ships.RegisterPart("VulcanBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_missiles.png")).Sprite }).UniqueName;
 		vulcanChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Vulcan/vulcan_chassis.png"));
 		athenaWingSprite = helper.Content.Ships.RegisterPart("AthenaWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_wing.png")).Sprite }).UniqueName;
 		athenaCannonSprite = helper.Content.Ships.RegisterPart("AthenaCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Athena/athena_cannon.png")).Sprite }).UniqueName;
@@ -1396,38 +1397,6 @@ public sealed class ModEntry : SimpleMod
 				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Sob/{i}.png")).Sprite)
 				.ToList()
 		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = CentiDeck.UniqueName,
-			LoopTag = "livingneutral",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNeutral/{i}.png")).Sprite)
-				.ToList()
-		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = CentiDeck.UniqueName,
-			LoopTag = "livingnervous",
-			Frames = Enumerable.Range(0, 4)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNervous/{i}.png")).Sprite)
-				.ToList()
-		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = CentiDeck.UniqueName,
-			LoopTag = "ghost",
-			Frames = Enumerable.Range(0, 1)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/GhostCenti.png")).Sprite)
-				.ToList()
-		});
-		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
-		{
-			CharacterType = CentiDeck.UniqueName,
-			LoopTag = "fade",
-			Frames = Enumerable.Range(0, 1)
-				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/GhostCenti.png")).Sprite)
-				.ToList()
-		});
 		
 		CoreDependentTrait = helper.Content.Cards.RegisterTrait("CoreDependent", new()
 		{
@@ -1455,13 +1424,48 @@ public sealed class ModEntry : SimpleMod
 			CharacterType = GuardCharacter.CharacterType,
 			LoopTag = "neutral",
 			Frames = Enumerable.Range(0, 1)
-				.Select(i =>
-					helper.Content.Sprites
-						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/AVONGuard.png")).Sprite)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Guard/{i}.png")).Sprite)
 				.ToList()
 		});
+		LivingCentiCharacter = helper.Content.Characters.V2.RegisterNonPlayableCharacter("LivingCenti", new NonPlayableCharacterConfigurationV2()
+		{
+			CharacterType = "livingcenti",
+			Name = AnyLocalizations.Bind(["Centi","character", "name"]).Localize,
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        		{
+        			CharacterType = LivingCentiCharacter.CharacterType,
+        			LoopTag = "neutral",
+        			Frames = Enumerable.Range(0, 4)
+        				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNeutral/{i}.png")).Sprite)
+        				.ToList()
+        		});
+        		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+        		{
+        			CharacterType = LivingCentiCharacter.CharacterType,
+        			LoopTag = "nervous",
+        			Frames = Enumerable.Range(0, 4)
+        				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/LivingNervous/{i}.png")).Sprite)
+        				.ToList()
+        		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = LivingCentiCharacter.CharacterType,
+			LoopTag = "ghost",
+			Frames = Enumerable.Range(0, 1)
+			.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Ghost/{i}.png")).Sprite)
+                				.ToList()
+                		});
+                		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+                		{
+                			CharacterType = LivingCentiCharacter.CharacterType,
+                			LoopTag = "fade",
+                			Frames = Enumerable.Range(0, 1)
+                				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Centi/Character/Ghost/{i}.png")).Sprite)
+                				.ToList()
+                		});
 		
-		//Vault.charsWithLore.Add(CentiDeck.Deck);
+		Vault.charsWithLore.Add(CentiDeck.Deck);
 		CentiFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CentiDeck.Deck, CentiFullBody.Sprite);
 		# endregion

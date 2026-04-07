@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
+using Microsoft.Extensions.Logging;
 
 namespace Flipbop.BOAF;
 
@@ -32,32 +33,35 @@ internal sealed class BubbleGeneratorArtifact : Artifact, IRegisterable
 		);
 	}
 
-	public override void OnTurnStart(State state, Combat combat)
-	{
-		base.OnTurnStart(state, combat);
-		combat.QueueImmediate(new AStatus() {status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true});
-	}
-
 	private static void Bubble_Bay_Swap_Prefix(Ship __instance, out int __state)
 	{
 		
 		__state = __instance.Get(Status.bubbleJuice);
+		
 	}
 	private static void Bubble_Bay_Swap_Postfix(Ship __instance, in int __state)
 	{
-		
-		if (__state >= __instance.Get(Status.bubbleJuice))
+
+		if (__state > __instance.Get(Status.bubbleJuice))
 		{
+
 			foreach (Part p in __instance.parts)
-			{
-				if (p is { active: true, skin: "NeptuneBay" })
+			{					
+				if (p is { active: true, key: "NeptuneBay" })
 				{
 					p.active = false;
-				} else if (p is { active: false, skin: "NeptuneBay" })
+
+				} else if (p is { active: false, key: "NeptuneBay" })
 				{
 					p.active = true;
 				}
 			}
 		}
 	}
+	
+	public override void OnTurnStart(State state, Combat combat)
+    	{
+    		base.OnTurnStart(state, combat);
+    		combat.QueueImmediate(new AStatus() {status = Status.bubbleJuice, statusAmount = 1, targetPlayer = true});
+    	}
 }

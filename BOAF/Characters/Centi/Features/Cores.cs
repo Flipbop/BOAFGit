@@ -42,12 +42,7 @@ internal class DemonCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is DemonHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				damage = 1, 
-				targetPlayer = targetPlayer,
-			}];
+			actions.Add(new AAttack() {fromDroneX = x, damage = 1, targetPlayer = targetPlayer});
 		}
 		
 		return actions;
@@ -105,14 +100,7 @@ internal class AquaCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is AquaHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.tempShield,
-				statusAmount = 2
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.tempShield, statusAmount = 2 });
 		}
 		
 		return actions;
@@ -169,14 +157,7 @@ internal class StoneCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is StoneHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.shield,
-				statusAmount = 1
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.shield, statusAmount = 1 });
 		}
 		
 		return actions;
@@ -233,23 +214,11 @@ internal sealed class LavaCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is AquaHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.tempShield,
-				statusAmount = 2
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.tempShield, statusAmount = 2 });
 		}
 		if (s.EnumerateAllArtifacts().Any((a) => a is DemonHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				damage = 1, 
-				targetPlayer = targetPlayer,
-			}];
+			actions.Add(new AAttack() {fromDroneX = x, damage = 1, targetPlayer = targetPlayer});
 		}
 		
 		return actions;
@@ -306,23 +275,11 @@ internal sealed class BrimstoneCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is StoneHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.shield,
-				statusAmount = 1
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.shield, statusAmount = 1 });
 		}
 		if (s.EnumerateAllArtifacts().Any((a) => a is DemonHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				damage = 1, 
-				targetPlayer = targetPlayer,
-			}];
+			actions.Add(new AAttack() {fromDroneX = x, damage = 1, targetPlayer = targetPlayer});
 		}
 		
 		return actions;
@@ -379,25 +336,11 @@ internal sealed class MossCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is StoneHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.shield,
-				statusAmount = 1
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.shield, statusAmount = 1 });
 		}
 		if (s.EnumerateAllArtifacts().Any((a) => a is AquaHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.tempShield,
-				statusAmount = 2
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.tempShield, statusAmount = 2 });
 		}
 		return actions;
 	}
@@ -453,34 +396,15 @@ internal sealed class InfinityCore : Core, IRegisterable
 		List<CardAction> actions = new List<CardAction>();
 		if (s.EnumerateAllArtifacts().Any((a) => a is StoneHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.shield,
-				statusAmount = 1
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.shield, statusAmount = 1 });
 		}
 		if (s.EnumerateAllArtifacts().Any((a) => a is AquaHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				isBeam = true,
-				targetPlayer = !targetPlayer,
-				status = Status.tempShield,
-				statusAmount = 2
-			}];
+			actions.Add(new AAttack {fromDroneX = x, isBeam = true, targetPlayer = !targetPlayer, status = Status.tempShield, statusAmount = 2 });
 		}
 		if (s.EnumerateAllArtifacts().Any((a) => a is DemonHeartArtifact))
 		{
-			actions = [new AAttack
-			{
-				fromDroneX = x,
-				damage = 1, 
-				targetPlayer = targetPlayer,
-			}];
+			actions.Add(new AAttack() {fromDroneX = x, damage = 1, targetPlayer = targetPlayer});
 		}
 		return actions;
 	}

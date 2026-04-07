@@ -49,6 +49,7 @@ static class CommonDefinitions
 
     internal static string AmValv = Instance.ValvCharacter.CharacterType;
     internal static string AmKass = Instance.KassCharacter.CharacterType;
+    internal static string AmLivingCenti = Instance.LivingCentiCharacter.CharacterType;
     internal static string AmGuard = Instance.GuardCharacter.CharacterType;
 
 }

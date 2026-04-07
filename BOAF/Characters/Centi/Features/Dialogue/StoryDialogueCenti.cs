@@ -163,9 +163,18 @@ internal class StoryDialogueCenti
                 once = true,
                 bg = "BGRunStart",
                 allPresent = [ AmCenti, AmDrake ],
-                requiredScenes = [ "Centi_Post_Drake_PREEMPTIVE", "Centi_Memory_2"],
+                requiredScenes = ["Centi_Memory_3"],
                 dialogue = [
-                    
+                    new(AmCenti, "neutral", "Drake, can we talk?"),
+                    new(AmDrake, "sad", "Yeah, of course.", true),
+                    new(AmCenti, "sob", "I have been dealing with a lot since you revived me."),
+                    new(AmCenti, "For the longest time, I believed I was still dead. Piloting a shell of my former self."),
+                    new(AmCenti, "angry","And I blamed you. I still do."),
+                    new(AmCenti, "cry", "But I am tired of this."),
+                    new(AmDrake, "sad", "What are you saying.", true),
+                    new(AmCenti, "cry", "I am saying that I may never be able to forgive you. But I am willing to forget."),
+                    new(AmCenti, "sad", "I want this pain between us to end."),
+                    new(AmDrake, "sad", "I would like that a lot.", true),
                 ]
             }},
         });
