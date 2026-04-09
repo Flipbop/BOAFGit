@@ -687,7 +687,7 @@
             },
             "BubbleSiphon": {
                 "name": "Bubble Siphon",
-                "description": "When a bubble on a midrow object is popped, this ship gains {0} <c=status>SHIELD</c>, then loses <c=status>1 BUBBLE SIPHON</c>."
+                "description": "When a bubble on a <c=midrow>midrow object</c> is popped by an attack, this ship gains {0} <c=status>SHIELD</c>, then loses <c=status>1 BUBBLE SIPHON</c>."
             }
         },
         "cardtrait": {
@@ -1209,7 +1209,7 @@
             },
             "NaniteBubbles": {
                 "name": "NANITE BUBBLES",
-                "description": "When a <c=midrow>midrow object</c> loses its bubble, launch a <c=keyword>duplicate</c> of that object."
+                "description": "When a bubble on a <c=midrow>midrow object</c> is popped by an attack, launch a <c=keyword>duplicate</c> of that object."
             }
         },
         "card":{

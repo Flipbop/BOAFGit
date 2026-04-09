@@ -7,29 +7,56 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class BubbleSiphonManager : IKokoroApi.IV2.IStatusRenderingApi.IHook
+internal sealed class BubbleSiphonManager
 {
 
 	public BubbleSiphonManager()
 	{
-		ModEntry.Instance.KokoroApi.StatusLogic.RegisterHook(new Hook());
-		
+		ModEntry.Instance.Harmony.Patch(
+			original: AccessTools.DeclaredMethod(typeof(AAttack), nameof(AAttack.Begin)),
+			prefix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AAttack_Bubble_Pop_Prefix)),
+			postfix: new HarmonyMethod(MethodBase.GetCurrentMethod()!.DeclaringType!, nameof(AAttack_Bubble_Pop_Postfix))
+		);
+	}
+
+	private static void AAttack_Bubble_Pop_Prefix(Combat c, out int __result)
+	{
+		int count = 0;
+		foreach (var midrowObject in c.stuff)
+		{
+			if (midrowObject.Value.bubbleShield)
+			{
+				count++;
+			}
+		}
+		__result = count;
 	}
 	
-	private sealed class Hook : IKokoroApi.IV2.IStatusLogicApi.IHook
+	private static void AAttack_Bubble_Pop_Postfix(State s, Combat c, in int __result)
 	{
-		public IReadOnlySet<Status> GetStatusesToCallTurnTriggerHooksFor(
-			IKokoroApi.IV2.IStatusLogicApi.IHook.IGetStatusesToCallTurnTriggerHooksForArgs args)
+		int count = 0;
+		foreach (var midrowObject in c.stuff)
 		{
-			return new HashSet<Status>() {ModEntry.Instance.NanomachinesStatus.Status};;
+			if (midrowObject.Value.bubbleShield)
+			{
+				count++;
+			}
 		}
-		public bool HandleStatusTurnAutoStep(IKokoroApi.IV2.IStatusLogicApi.IHook.IHandleStatusTurnAutoStepArgs args)
-		{
-			if (args.Timing != IKokoroApi.IV2.IStatusLogicApi.StatusTurnTriggerTiming.TurnStart)
-				return false;
 
-			args.Amount -= 1;
-			return false;
+		if (count >= __result)
+			return;
+		for (int i = 0; i < count - __result; i++)
+		{
+			if (s.ship.statusEffects.ContainsKey(ModEntry.Instance.BubbleSiphonStatus.Status))
+			{
+				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = true});
+				c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = s.ship.Get(ModEntry.Instance.BubbleSiphonStatus.Status), targetPlayer = true, timer = 0.0});
+			}
+			if (c.otherShip.statusEffects.ContainsKey(ModEntry.Instance.BubbleSiphonStatus.Status))
+			{
+				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = false});
+				c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = c.otherShip.Get(ModEntry.Instance.BubbleSiphonStatus.Status), targetPlayer = false, timer = 0.0});
+			}
 		}
 	}
 }

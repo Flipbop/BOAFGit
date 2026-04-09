@@ -1261,7 +1261,7 @@ public sealed class ModEntry : SimpleMod
 				.ToList()
 		});
 		
-		Vault.charsWithLore.Add(LunaDeck.Deck);
+		//Vault.charsWithLore.Add(LunaDeck.Deck);
 		LunaFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Luna/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(LunaDeck.Deck, LunaFullBody.Sprite);
 		# endregion
@@ -1465,7 +1465,7 @@ public sealed class ModEntry : SimpleMod
                 				.ToList()
                 		});
 		
-		Vault.charsWithLore.Add(CentiDeck.Deck);
+		//Vault.charsWithLore.Add(CentiDeck.Deck);
 		CentiFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CentiDeck.Deck, CentiFullBody.Sprite);
 		# endregion

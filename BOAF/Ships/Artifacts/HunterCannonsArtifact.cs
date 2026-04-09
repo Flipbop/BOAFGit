@@ -37,7 +37,7 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 			foreach (Part p in state.ship.parts)
 			{
 				
-				if (p.active && p.key == "ThanatosCannon")
+				if (p.active && p.skin == ModEntry.Instance.thanatosCannonSprite)
 				{
 					p.active = false;
 				}
@@ -53,7 +53,7 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 			war = true;
 			foreach (Part p in state.ship.parts)
 			{
-				if (p.active && p.key == "ThanatosCannon" && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+				if (p.active && p.skin == ModEntry.Instance.thanatosCannonSprite && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
 				{
 					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", true);
 				}

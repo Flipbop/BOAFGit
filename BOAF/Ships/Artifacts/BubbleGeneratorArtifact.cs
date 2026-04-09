@@ -47,11 +47,10 @@ internal sealed class BubbleGeneratorArtifact : Artifact, IRegisterable
 
 			foreach (Part p in __instance.parts)
 			{					
-				if (p is { active: true, key: "NeptuneBay" })
+				if (p.active && p.skin == ModEntry.Instance.neptuneBaySprite)
 				{
 					p.active = false;
-
-				} else if (p is { active: false, key: "NeptuneBay" })
+				} else if (!p.active && p.skin == ModEntry.Instance.neptuneBaySprite)
 				{
 					p.active = true;
 				}
