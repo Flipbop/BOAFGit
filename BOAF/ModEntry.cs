@@ -414,6 +414,10 @@ public sealed class ModEntry : SimpleMod
 
 	public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
 	{
+		#region Register Sprites
+		
+		
+		
 		harvestAttackSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Icons/HarvestAttack.png"));
 		soulEnergySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulEnergy.png"));
 		soulDrainSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Cull/Status/SoulDrain.png"));
@@ -515,6 +519,8 @@ public sealed class ModEntry : SimpleMod
 		neptuneChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_chassis.png"));
 		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
+		#endregion
+		
 		this.helper = helper;
 		
 		Instance = this;
@@ -1828,6 +1834,7 @@ public sealed class ModEntry : SimpleMod
 		_ = new StoneCoreCheckManager();
 		_ = new AquaCoreCheckManager();		
 		_ = new NanomachinesManager();
+		_ = new BubbleSiphonManager();
 		_ = new CardDialogueCenti();
 		_ = new StoryDialogueCenti();
 		_ = new MemoryDialogueCenti();

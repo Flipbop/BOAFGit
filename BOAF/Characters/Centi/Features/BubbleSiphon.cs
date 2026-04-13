@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
+using Microsoft.Extensions.Logging;
 using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
@@ -19,7 +20,7 @@ internal sealed class BubbleSiphonManager
 		);
 	}
 
-	private static void AAttack_Bubble_Pop_Prefix(Combat c, out int __result)
+	private static void AAttack_Bubble_Pop_Prefix(Combat c, out int __state)
 	{
 		int count = 0;
 		foreach (var midrowObject in c.stuff)
@@ -29,10 +30,10 @@ internal sealed class BubbleSiphonManager
 				count++;
 			}
 		}
-		__result = count;
+		__state = count;
 	}
 	
-	private static void AAttack_Bubble_Pop_Postfix(State s, Combat c, in int __result)
+	private static void AAttack_Bubble_Pop_Postfix(State s, Combat c, in int __state)
 	{
 		int count = 0;
 		foreach (var midrowObject in c.stuff)
@@ -43,19 +44,19 @@ internal sealed class BubbleSiphonManager
 			}
 		}
 
-		if (count >= __result)
+		if (count >= __state)
 			return;
-		for (int i = 0; i < count - __result; i++)
+		for (int i = 0; i < __state - count; i++)
 		{
 			if (s.ship.statusEffects.ContainsKey(ModEntry.Instance.BubbleSiphonStatus.Status))
 			{
-				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = true});
 				c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = s.ship.Get(ModEntry.Instance.BubbleSiphonStatus.Status), targetPlayer = true, timer = 0.0});
+				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = true});
 			}
 			if (c.otherShip.statusEffects.ContainsKey(ModEntry.Instance.BubbleSiphonStatus.Status))
 			{
-				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = false});
 				c.QueueImmediate(new AStatus(){status = Status.shield, statusAmount = c.otherShip.Get(ModEntry.Instance.BubbleSiphonStatus.Status), targetPlayer = false, timer = 0.0});
+				c.QueueImmediate(new AStatus(){status = ModEntry.Instance.BubbleSiphonStatus.Status, statusAmount = -1, targetPlayer = false});
 			}
 		}
 	}

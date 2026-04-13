@@ -32,7 +32,7 @@ internal sealed class NaniteBubblesArtifact : Artifact, IRegisterable
 		);
 	}
 	
-	private static void AAttack_Bubble_Pop_Prefix(Combat c, out List<StuffBase> __result)
+	private static void AAttack_Bubble_Pop_Prefix(Combat c, out List<StuffBase> __state)
 	{
 		List<StuffBase> objects = [];
 		foreach (var midrowObject in c.stuff)
@@ -42,27 +42,27 @@ internal sealed class NaniteBubblesArtifact : Artifact, IRegisterable
 				objects.Add(midrowObject.Value);
 			}
 		}
-		__result = objects;
+		__state = objects;
 	}
 	
-	private static void AAttack_Bubble_Pop_Postfix(State s, Combat c, in List<StuffBase> __result)
+	private static void AAttack_Bubble_Pop_Postfix(State s, Combat c, in List<StuffBase> __state)
 	{
 		foreach (var midrowObject in c.stuff)
 		{
 			if (midrowObject.Value.bubbleShield)
 			{
-				__result.Remove(midrowObject.Value);
+				__state.Remove(midrowObject.Value);
 			}
 		}
 
-		if (__result.Count <= 0)
+		if (__state.Count <= 0)
 			return;
 		if (s.EnumerateAllArtifacts().FirstOrDefault(a => a is NaniteBubblesArtifact) is not { })
 			return;
-		foreach (var midrowObject in __result)
+		foreach (var midrowObject in __state)
 		{
-			c.QueueImmediate(new ASpawn() {thing = midrowObject, fromPlayer = true, timer = 0.0});
+			StuffBase newObject = Mutil.DeepCopy(midrowObject);
+			c.QueueImmediate(new ASpawn() {thing = newObject, fromPlayer = true, timer = 0.0});
 		}
 	}
-	
 }
