@@ -40,7 +40,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 				foreach (Part p in state.ship.parts)
 				{
 				
-					if (p.active && p.skin == "wing_ares")
+					if (p.active && p.skin == ModEntry.Instance.thanatosCannonSuperSprite)
 					{
 						p.active = false;
 					}
@@ -61,7 +61,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 			war = true;
 			foreach (Part p in state.ship.parts)
 			{
-				if (p.active && p.skin == "wing_ares" && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
+				if (p.active && p.skin == ModEntry.Instance.thanatosCannonSuperSprite && !ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(p, "previouslyActive", false))
 				{
 					ModEntry.Instance.helper.ModData.SetModData(p, "previouslyActive", true);
 				}
@@ -97,6 +97,13 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 				artifact.OnRemoveArtifact(state);
 		}
 		state.artifacts.RemoveAll((Predicate<Artifact>) (r => r.Key() == artifactType));
+		foreach (Part p in state.ship.parts)
+		{
+			if (p.skin == ModEntry.Instance.thanatosCannonSprite)
+			{
+				p.skin = ModEntry.Instance.thanatosCannonSuperSprite;
+			}
+		}
 	}
 
 	public override int? GetDisplayNumber(State s)

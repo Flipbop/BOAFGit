@@ -140,6 +140,7 @@ public sealed class ModEntry : SimpleMod
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
 	internal string thanatosCannonSprite { get; }
+	internal string thanatosCannonSuperSprite { get; }
 	internal string thanatosCockpitSprite { get; }
 	internal string thanatosBaySprite { get; }
 	internal string thanatosWingSprite { get; }
@@ -496,6 +497,8 @@ public sealed class ModEntry : SimpleMod
 		thanatosWingSprite = helper.Content.Ships.RegisterPart("ThanatosWing", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_wing.png")).Sprite }).UniqueName;
 		thanatosCannonSprite = helper.Content.Ships.RegisterPart("ThanatosCannon", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon.png")).Sprite, 
 			DisabledSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon_inactive.png")).Sprite}).UniqueName;
+		thanatosCannonSuperSprite = helper.Content.Ships.RegisterPart("ThanatosCannonSuper", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon_super.png")).Sprite, 
+			DisabledSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cannon_inactive_super.png")).Sprite}).UniqueName;
 		thanatosCockpitSprite = helper.Content.Ships.RegisterPart("ThanatosCockpit", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_cockpit.png")).Sprite }).UniqueName;
 		thanatosBaySprite = helper.Content.Ships.RegisterPart("ThanatosBay", new() { Sprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_missile.png")).Sprite }).UniqueName;
 		thanatosChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/thanatos_chassis.png"));

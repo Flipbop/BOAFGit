@@ -15,3 +15,12 @@
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/obj/Debug/net8.0/BOAF.dll
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/bin/Debug/net8.0/BOAF.deps.json
 /Users/christopherfranson/Desktop/Cobalt Core Mods/BOAFGit/BOAF/bin/Debug/net8.0/BOAF.dll
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.dll
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.csproj.AssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\bin\Debug\net8.0\BOAF.deps.json
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\bin\Debug\net8.0\BOAF.dll
+C:\Users\chris\OneDrive\Desktop\Cobalt Core Mods\BOAFGit\BOAF\obj\Debug\net8.0\BOAF.sourcelink.json

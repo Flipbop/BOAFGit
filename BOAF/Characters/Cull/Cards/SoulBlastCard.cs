@@ -30,7 +30,7 @@ internal sealed class SoulBlastCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ? 1: 2,
+			cost = 2,
 			artOverlay = ModEntry.Instance.UncommonCullBorder
 
 		};
