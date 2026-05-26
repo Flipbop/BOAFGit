@@ -19,7 +19,7 @@ internal sealed class HunterCannonsArtifact : Artifact, IRegisterable
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				unremovable = true
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/Artifacts/HunterCannons.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/Artifacts/HunterCannon.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "HunterCannons", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "HunterCannons", "description"]).Localize
 		});

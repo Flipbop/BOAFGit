@@ -44,6 +44,10 @@ internal sealed class SystemRelianceArtifact : Artifact, IRegisterable
 		if (ModEntry.Instance.helper.ModData.GetModDataOrDefault<bool>(__instance, "SystemReliant", false))
 		{
 			__result.cost -= 1;
+			if (__result.cost <= 0)
+			{
+				__result.cost = 0;
+			}
 		}
 	}
 }

@@ -289,6 +289,8 @@ public sealed class ModEntry : SimpleMod
 		typeof(BasicDodgeDualCard),
 		typeof(AthenaTacticsCard),
 		
+		typeof(BasicLaunchCard),
+		
 		typeof(AngerCard),
 		typeof(DepressionCard),
 		typeof(DenialCard),
@@ -1720,6 +1722,7 @@ public sealed class ModEntry : SimpleMod
 	                new BasicShieldColorless(),
 	                new DodgeColorless(),
 	                new CannonColorless(),
+	                new BasicLaunchCard()
                 },
                 artifacts =
                 {

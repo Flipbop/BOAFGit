@@ -620,7 +620,7 @@
         "character": {
             "name": "Centi",
             "description": [
-                "<c=8A3388>CENTI</c>",
+                "<c=5f5f5f>CENTI</c>",
                 "Your cybernetic sentinel.",
                 "Their cards require certain <c=keyword>cores</c> to be in the midrow to function, and provide large defense in a variety of forms."
             ],
@@ -677,7 +677,7 @@
             },
             "TempShieldDrone": {
                 "name": "TEMP SHIELD DRONE",
-                "description": "Shoots <c=status>2 TEMP SHIELD</c> at the ship it's aiming at."
+                "description": "Beams <c=status>2 TEMP SHIELD</c> at it's target once per turn."
             }
         },
         "status": {
@@ -872,9 +872,9 @@
             "CentiExe": {
                 "name": "Centi.EXE",
                 "description": {
-                    "None": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
-                    "A": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand.",
-                    "B": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=8A3388>Centi</c> cards to your hand."
+                    "None": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=5f5f5f>Centi</c> cards to your hand.",
+                    "A": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=5f5f5f>Centi</c> cards to your hand.",
+                    "B": "Launch a random <c=midrow>CORE</c>. Add 1 of {{Count}} <c=cardtrait>discount, temp</c> <c=5f5f5f>Centi</c> cards to your hand."
                 }
             }
         }
@@ -1224,6 +1224,9 @@
             },
             "AthenaTactics": {
                 "name": "Plan B"
+            },
+            "BasicLaunch" : {
+                "name": "Basic Deploy"
             }
         }
     },

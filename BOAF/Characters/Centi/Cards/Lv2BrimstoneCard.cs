@@ -20,7 +20,8 @@ internal sealed class Lv2BrimstoneCard : Card, IRegisterable
 			{
 				deck = ModEntry.Instance.CentiDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
+				dontOffer = true
 			},
 			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Lv2Brimstone.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Lv2Brimstone", "name"]).Localize

@@ -2,30 +2,25 @@ using Nanoray.PluginManager;
 using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
-using daisyowl.text;
-using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class Lv2MossCard : Card, IRegisterable
+internal sealed class BasicLaunchCard : CannonColorless, IRegisterable
 {
-
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
-		//ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CentiDeck.Deck,
+				deck = Deck.colorless,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B],
 				dontOffer = true
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/Lv2Moss.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "Lv2Moss", "name"]).Localize
+			Art = StableSpr.cards_colorless,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship", "card", "BasicShotDual", "name"]).Localize
 		});
 	}
 
@@ -33,21 +28,22 @@ internal sealed class Lv2MossCard : Card, IRegisterable
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A? 0 :1,
-			temporary = true
-
-
+			cost = 1,
 		};
 
 	public override List<CardAction> GetActions(State s, Combat c)
-		=>upgrade switch
+		=> upgrade switch
 		{
+			Upgrade.A => [
+				new ASpawn(){thing = new Asteroid()},
+				new AStatus(){status = Status.droneShift, statusAmount = 1, targetPlayer = true}
+			],
 			Upgrade.B => [
-				new ASpawn(){thing = new MossCore(){bubbleShield = true}}
-
+				new ASpawn(){thing = new Asteroid(), offset = -1},
+				new ASpawn(){thing = new Asteroid(), offset = 1}
 			],
 			_ => [
-				new ASpawn(){thing = new MossCore()}
+				new ASpawn(){thing = new Asteroid()}
 			]
 		};
 }

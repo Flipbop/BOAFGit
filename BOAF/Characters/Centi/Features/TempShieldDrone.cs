@@ -31,6 +31,7 @@ internal sealed class TempShieldDrone : ShieldDrone, IRegisterable
 				TitleColor = Colors.midrow,
 				Title = ModEntry.Instance.Localizations.Localize(["Centi","midrow", "TempShieldDrone", "name"]),
 				Description = ModEntry.Instance.Localizations.Localize(["Centi","midrow", "TempShieldDrone", "description"]),
+				flipIconY = targetPlayer
 			},
 			.. (bubbleShield ? [new TTGlossary("midrow.bubbleShield")] : Array.Empty<Tooltip>())
 		];

@@ -19,7 +19,7 @@ internal sealed class ReaperCannonsArtifact : Artifact, IRegisterable
 				owner = Deck.colorless,
 				pools = ModEntry.GetArtifactPools(MethodBase.GetCurrentMethod()!.DeclaringType!)
 			},
-			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/Artifacts/ReaperCannons.png")).Sprite,
+			Sprite = helper.Content.Sprites.RegisterSprite(ModEntry.Instance.Package.PackageRoot.GetRelativeFile("assets/Ship/Thanatos/Artifacts/ReaperCannon.png")).Sprite,
 			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "ReaperCannons", "name"]).Localize,
 			Description = ModEntry.Instance.AnyLocalizations.Bind(["ship","artifact", "ReaperCannons", "description"]).Localize
 		});
