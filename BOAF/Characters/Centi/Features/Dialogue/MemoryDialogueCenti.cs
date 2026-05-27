@@ -26,7 +26,7 @@ internal class MemoryDialogueCenti
                     new (AmVoid,"neutral","You still have all of your memories, yes?", flipped: true),
                     new (AmCenti, "neutral", "I do." ),
                     new (AmVoid,"neutral","You are not alone in that. The others like you are also grieving.", flipped: true),
-                    new (AmVoid,"neutral","There is only one death in your past. If you want to move on, you have to stop running from it.", flipped: true),
+                    new (AmVoid,"neutral","There is only one death of great importance in your past. If you want to move on, you have to stop running from it.", flipped: true),
                 ]
             }},
             {"RunWinWho_Centi_2", new(){
@@ -67,10 +67,52 @@ internal class MemoryDialogueCenti
                     new (AmCenti, "sad", "I thought I would. All I feel now is hollow." ),
                     new (AmVoid,"neutral","That is expected. You are almost done.", flipped: true ),
                     new (AmCenti, "cry", "Almost? There is still more?" ),
-                    new (AmVoid,"neutral","Correct. You are ready for the final stage.", flipped: true ),
+                    new (AmVoid,"neutral","Correct. You have one more event you must recall.", flipped: true ),
+                    new (AmCenti, "sad", "I know what you mean. I don't know if I have the strength to do it." ),
+                    new (AmVoid,"neutral","I've been watching you. You do.", flipped: true ),
+
                 ]
             }},
             {"Centi_Memory_1", new(){
+                type = NodeType.@event,
+                introDelay = false,
+                bg = "BGLunaAcademy",
+                lookup = [
+                    "vault",
+                    $"vault_{AmCenti}"
+                ],
+                dialogue = [
+                    new("T-769 days"),
+                    new(new Wait{secs = 2}),
+                    new(title: null),
+                    new(new Wait{secs = 1 }),
+                    new (AmLivingCenti, "neutral", "What were we here for again?" ),
+                    new (AmDrake, "We need a map to our next payload. I heard that this village had a mage with a map to a large cache of Stardust nearby.", true),
+                    new (AmKass, "mad", "Stop right there, pirates!" ),
+                    new (AmDrake, "Relax! We're just here for one thing and we'll be on our way.", true ),
+                    new (AmKass, "mad", "I don't care!" ),
+                    new (AmKass, "neutral", "You aren't getting anything on my watch!" ),
+                    new (AmDrake, "panic","There is no need for violence today.", true ),
+                    new(new Wait{secs = 1 }),
+                    new (AmLivingCenti, "Found it! We can get going now." ),
+                    new (AmKass, "Huh? When?!", true ),
+                    new (AmLivingCenti,  "While you two were arguing. I slipped away and got what we came for." ),
+                    new (AmDrake, "See! That wasn't so bad, was it?", true ),
+                    new (AmDrake,"We'll be out of your fur now.", true ),
+                    new (AmKass, "mad", "Oh no, you two aren't getting away that easily!" ),
+                    new (new BGAction(){action = "explosion"}),
+                    new (new Shake{amount = 25}),
+                    new(new Wait{secs = 3}),
+                    new (new BGAction(){action = "fire"}),
+                    new (AmDrake, "panic","...", true ),
+                    new (AmLivingCenti, "nervous", "What did you do?!" ),
+                    new (AmDrake, "panic","She... she lunged at me, so I shot at her.", true ),
+                    new (AmDrake, "panic","I must have missed and hit something explosive behind her...", true ),
+                    new (AmLivingCenti, "nervous", "The whole village is on fire!" ),
+                    new (AmLivingCenti, "nervous", "We need to get out of here, now!" ),
+                ]
+            }},
+            {"Centi_Memory_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGCentiSpace",
@@ -79,7 +121,7 @@ internal class MemoryDialogueCenti
                     $"vault_{AmCenti}"
                 ],
                 dialogue = [
-                    new("T-2456 days"),
+                    new("T-721 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 1 }),
@@ -88,7 +130,7 @@ internal class MemoryDialogueCenti
                     new (AmLivingCenti, "neutral", "You can't rush this! Mining out an asteroid this large takes time." ),
                     new (AmDrake, "We've been here for an hour! You sure this mining rig you stole works?", true ),
                     new (AmLivingCenti, "neutral", "Absolutely. This thing is top of the line!" ),
-                    new (AmLivingCenti, "neutral", "There! Crystallized stardust! This small clump is worth billions on the black market." ),
+                    new (AmLivingCenti, "neutral", "There! Crystallized stardust! Just this small clump is worth billions on the black market." ),
                     new (AmDrake, "Perfect... I'll take that and we'll be on our way!", true ),
                     new(new Wait{secs = 1 }),
                     new (new BGAction(){action = "alarm"}),
@@ -106,16 +148,16 @@ internal class MemoryDialogueCenti
                     new(new Wait{secs = 3 }),
                 ]
             }},
-            {"Centi_Memory_2", new(){
+            {"Centi_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGCentiSpace",
                 lookup = [
                     "vault", $"vault_{AmCenti}"
                 ],
-                requiredScenes = ["Centi_Memory_1"],
+                requiredScenes = ["Centi_Memory_2"],
                 dialogue = [
-                    new("T-2450 days"),
+                    new("T-623 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 1 }),
@@ -147,16 +189,19 @@ internal class MemoryDialogueCenti
                     new(AmCenti, "messitupsotheydisappear", "..."),
                 ]
             }},
-            {"Centi_Memory_3", new(){
+            {"Centi_Memory_Fight", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
                 lookup = [
                     "vault", $"vault_{AmCenti}"
                 ],
-                requiredScenes = ["Centi_Memory_2"],
+                requiredScenes = ["Centi_Memory_3"],
                 dialogue = [
+                    new("NO MORE"),
                     new(new Wait{secs = 2}),
+                    new(title: null),
+                    new (AmCull, "Wake up.", true),
                     new(AmCenti, "squint", "Something is off about this loop, I can feel it..."),
                     new (AmCull, "You would be correct.", true),
                     new (AmCenti, "squint", "What is going on, then?"),
@@ -230,7 +275,7 @@ internal class MemoryDialogueCenti
                 allPresent = [AmCenti, AmCull, AmVoid],
                 nonePresent = [AmLuna, AmJay, /*AmEva*/],
                 dialogue = [
-                    new (AmVoid, "1 <c=part>DIED</c> TH4T DA??." ),
+                    new (AmVoid, "1 <c=part>DIED</c> TH4T DA??Y." ),
                     new (AmCenti, "sad", "...")
                 ]
             }},
@@ -279,7 +324,7 @@ internal class MemoryDialogueCenti
                     new (AmCenti, "sob", "If part of you isn't dead, then there is something remaining."),
                     new (AmCenti, "cry", "Something... alive in me."),
                     new (AmLivingCenti, "ghost", "...", true),
-                    new (AmCenti, "sad", "You are gone. You have been for the last 6 years."),
+                    new (AmCenti, "sad", "You are gone. You have been for the last 2 years."),
                     new (AmCenti, "neutral", "But I am not. I am as alive as you once were."),
                     new (AmCenti, "neutral", "I may live inside a different body than I once did, but I am very much alive."),
                     new (AmLivingCenti, "fade", "...", true),

@@ -53,6 +53,18 @@ internal class StoryDialogueJay
                 dialogue = [
                     new (AmCat, "squint", "Judging by the fact that space travel has not been revolutionized recently, it didn't work out?", flipped: true ),
                     new (AmJay,"nervous","You could say that." ),
+                    new (AmCat, "squint", "Also, I'm not entirely surprised Dizzy helped out.", flipped: true ),
+                    new (AmJay,"neutral","Ha, he's always been like that." ),
+                ]
+            }},
+            {"Jay_Intro_2", new(){
+                type = NodeType.@event,
+                lookup = [ "zone_first" ],
+                once = true,
+                allPresent = [ AmJay ],
+                requiredScenes = ["Jay_Intro_1", "Jay_Memory_2"],
+                bg = "BGRunStart",
+                dialogue = [
                     new (AmCat, "neutral", "That \"bat dude\" she mentioned, I think I know who that is. His name is Smiff.", flipped: true ),
                     new (AmJay,"neutral","Really? I need to talk to him!" ),
                     new (AmCat, "neutral", "No guarantee we see him, but we can try!", flipped: true ),
@@ -85,16 +97,16 @@ internal class StoryDialogueJay
                     new(AmCat, "worried","What was that about, anyways?", flipped: true),
                     new(AmJay, "gameover","..."),
                     new(AmJay, "sad", "I'll tell you after the loop."),
-                    new (new SetMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 2})
+                    new (new SetMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 3})
                 ]
             }},
-            {"Jay_Intro_2", new(){
+            {"Jay_Intro_3", new(){
                 type = NodeType.@event,
                 lookup = [ "zone_first" ],
                 once = true,
                 priority = true,
                 allPresent = [ AmJay ],
-                requiredScenes = ["Jay_Intro_1", "Jay_Memory_2"],
+                requiredScenes = ["Jay_Intro_2", "Jay_Memory_3"],
                 bg = "BGRunStart",
                 dialogue = [
                     new (AmCat, "worried", "Oh, I'm so sorry. That can't have been easy to go through.", flipped: true ),
@@ -112,13 +124,15 @@ internal class StoryDialogueJay
                 bg = "BGRunStart",
                 requiredScenes = [ "Jay_Intro_0", "Jay_Memory_3" ],
                 dialogue = [
-                    new (AmDizzy, "Do you remember what kind of part your sister bought off Smiff?", true),
+                    new (AmDizzy, "Hey, do you remember what kind of part your sister bought off Smiff?", true),
                     new (AmJay, "squint", "Yeah, it was some sort of crystal like thing. I don't remember exactly. It was destroyed in the blast."),
                     new (AmDizzy, "crystal", "Like this?", true), 
                     new (AmJay, "nervous", "Where did you get that?!"),
                     new (AmDizzy, "crystal", "These things are everywhere. They last between each loop, so everytime we turn the big crystal to dust some more get scattered about.", true),
                     new (AmDizzy, "crystal", "They have some weird time-warping properties, if my tests are to be believed.", true), 
-                    new (AmJay, "squint", "I guess that would make for some fast engines..."),
+                    new (AmJay, "squint", "That's why you wanted me to make an engine with it!"),
+                    new (AmDizzy, "Exactly!", true),
+
                 ]
             }},
             {"Jay_Isaac_0", new(){
@@ -158,12 +172,12 @@ internal class StoryDialogueJay
                 once = true,
                 bg = "BGRunStart",
                 allPresent = [ AmJay, AmDrake ],
-                requiredScenes = [ "Jay_Post_Smiff", "Jay_Memory_2"],
+                requiredScenes = [ "Jay_Post_Smiff", "Jay_Memory_3"],
                 dialogue = [
                     new (AmDrake, "squint","What kinda beef you got with Smiff?", true),
                     new (AmJay, "angry", "He is the reason my sister is dead."),
                     new (AmDrake, "squint","Really? THAT guy? He's harmless. How would he even do that?", true),
-                    new (AmJay, "angry", "He sold her a faulty part that ended up causing a critical failure in an engine, causing an explosion that killed her."),
+                    new (AmJay, "angry", "He sold her a part he damaged that ended up causing a critical failure in an engine, causing an explosion that killed her."),
                     new (AmDrake, "panic", "Oh.", true)
                 ]
             }},

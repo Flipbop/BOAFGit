@@ -5,6 +5,7 @@ using FSPRO;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
 using Nickel;
+using OneOf.Types;
 
 
 namespace Flipbop.BOAF;
@@ -58,7 +59,7 @@ public class Backgrounds
         State s2 = s;
         for (int i = 0; i < __result.Count; i++) {
             if (((ARunWinCharChoice)__result[i].actions[0]).deck.Equals(ModEntry.Instance.JayDeck.Deck)) {
-                if ((s2.storyVars.HasEverSeen("RunWinWho_Jay_2") || s2.storyVars.HasEverSeen("Jay_Post_Smiff")) && !s2.storyVars.HasEverSeen("Jay_Intro_2")) {
+                if ((s2.storyVars.HasEverSeen("RunWinWho_Jay_3") || s2.storyVars.HasEverSeen("Jay_Post_Smiff")) && !s2.storyVars.HasEverSeen("Jay_Intro_3")) {
                     __result.RemoveAt(i);
                     i--;
                 }
@@ -120,6 +121,8 @@ public class Backgrounds
         public bool village = false;
         public bool academy = false;
         public bool fire = false;
+        public bool explosion = false;
+        public bool blackout = false;
         
         public override void OnAction(State s, string action) {
             if (action == "village")
@@ -133,6 +136,7 @@ public class Backgrounds
                 village = true;
                 academy = false;
                 fire = true;
+                blackout = false;
             }
 
             if (action == "academy")
@@ -141,11 +145,18 @@ public class Backgrounds
                 village = false;
                 fire = false;
             }
+            if (action == "explosion")
+            {
+                explosion = true;
+                blackout = true;
+            }
         }
 
         public override void Render(G g, double t, Vec offset) {
             Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
             BGComponents.Letterbox();
+            if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
+            if (blackout) Draw.Fill(Colors.black);
         }
     }
     
@@ -232,14 +243,14 @@ public class Backgrounds
                 charPickDeck = null;
                 s.storyVars.runWinChar = null;
                 charPickTimer = null;
-                s.storyVars.memoryUnlockLevel[ModEntry.Instance.JayDeck.Deck] = 1;
+                s.storyVars.memoryUnlockLevel[ModEntry.Instance.JayDeck.Deck] = 2;
                 s.ChangeRoute(s.MakeRunWinRoute);
             }
             else if (action == "runwinwho_reset_Luna") {
                 charPickDeck = null;
                 s.storyVars.runWinChar = null;
                 charPickTimer = null;
-                s.storyVars.memoryUnlockLevel[ModEntry.Instance.LunaDeck.Deck] = 1;
+                s.storyVars.memoryUnlockLevel[ModEntry.Instance.LunaDeck.Deck] = 2;
                 s.ChangeRoute(s.MakeRunWinRoute);
             }
             else if (action == "runwinwho_reset_Centi") {

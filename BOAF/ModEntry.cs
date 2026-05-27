@@ -1214,6 +1214,16 @@ public sealed class ModEntry : SimpleMod
 		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
 		{
 			CharacterType = KassCharacter.CharacterType,
+			LoopTag = "mad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i =>
+					helper.Content.Sprites
+						.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Kass/Mad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new CharacterAnimationConfigurationV2()
+		{
+			CharacterType = KassCharacter.CharacterType,
 			LoopTag = "dying",
 			Frames = Enumerable.Range(0, 4)
 				.Select(i =>

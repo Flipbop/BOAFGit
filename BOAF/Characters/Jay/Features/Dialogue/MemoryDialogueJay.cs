@@ -23,31 +23,12 @@ internal class MemoryDialogueJay
                     new (AmVoid,"neutral","In a way.", flipped: true),
                     new (AmJay, "neutral", "But why? According to CAT, almost everyone else is missing their memories." ),
                     new (AmVoid,"neutral","I need you to be whole again.", flipped: true),
+                    new (AmJay, "squint", "Whole? In what sense?" ),
                     new (AmVoid,"neutral","You may remember your past, but that does not mean you have not pushed it deep down.", flipped: true),
                     new (AmVoid,"neutral","I need you to remember her.", flipped: true),
                 ]
             }},
             {"RunWinWho_Jay_2", new(){
-                type = NodeType.@event,
-                introDelay = false,
-                allPresent = [AmJay],
-                bg = "BGRunWinCustom",
-                lookup = [
-                    $"runWin_{AmJay}"
-                ],
-                requiredScenes = [
-                    "RunWinWho_Jay_1"
-                ],
-                dialogue = [
-                    new(new Wait{secs = 3}),
-                    new (AmJay, "neutral", "Back here again. What for?" ),
-                    new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?", flipped: true ),
-                    new (AmJay, "neutral", "The person Valv bought the part from. CAT says his name is Smiff." ),
-                    new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here.", flipped: true ),
-                    new (new BGAction(){action = "runwinwho_reset_Jay"}),
-                ]
-            }},
-            {"RunWinWho_Jay_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 allPresent = [AmJay],
@@ -57,15 +38,34 @@ internal class MemoryDialogueJay
                     $"runWin_{AmJay}"
                 ],
                 requiredScenes = [
-                    "Jay_Post_Smiff", "Jay_Memory_2"
+                    "RunWinWho_Jay_1"
                 ],
                 dialogue = [
                     new(new Wait{secs = 3}),
-                    new (AmJay, "neutral", "Is that it? Am I \"whole\" now?" ),
-                    new (AmVoid,"neutral","Almost. You are still grieving. I may not be able to help with that, but I know someone that can.", flipped: true ),
-                    new (AmJay, "neutral", "Then what?" ),
-                    new (AmVoid,"neutral","We will see.", flipped: true ),
-                    new (new SetMemoryLevel(){chararcter = ModEntry.Instance.JayDeck.Deck, level = 3})
+                    new (AmJay, "neutral", "Now what?" ),
+                    new (AmVoid,"neutral","That is only part of the whole story. You still have more to tell.", flipped: true ),
+                    new (AmJay, "cry", "But reliving these moments hurts." ),
+                    new (AmVoid,"neutral","I know, but you must persevere. For her.", flipped: true ),
+                ]
+            }},
+            {"RunWinWho_Jay_3", new(){
+                type = NodeType.@event,
+                introDelay = false,
+                allPresent = [AmJay],
+                bg = "BGRunWinCustom",
+                lookup = [
+                    $"runWin_{AmJay}"
+                ],
+                requiredScenes = [
+                    "Jay_Post_Smiff" ,"RunWinWho_Jay_2"
+                ],
+                dialogue = [
+                    new(new Wait{secs = 3}),
+                    new (AmJay, "neutral", "Back here again. What for?" ),
+                    new (AmVoid,"neutral","I am not sure. You know who you are searching for, yes?", flipped: true ),
+                    new (AmJay, "neutral", "The person Valv bought the part from. CAT says his name is Smiff." ),
+                    new (AmVoid,"neutral","That is correct. As of now, there is nothing I can do for you here.", flipped: true ),
+                    new (new BGAction(){action = "runwinwho_reset_Jay"}),
                 ]
             }},
             {"Jay_Memory_1", new(){
@@ -77,13 +77,48 @@ internal class MemoryDialogueJay
                     $"vault_{AmJay}"
                 ],
                 dialogue = [
+                    new("T-106 days"),
+                    new(new Wait{secs = 2}),
+                    new(title: null),
+                    new(new Wait{secs = 1 }),
+                    new (AmValv, "neutral", "Who's calling you?", flipped: true ),
+                    new (AmJay,"neutral","Let me check." ),
+                    new(new Wait{secs = 1 }),
+                    new (AmDizzy, "neutral", "Hello!", flipped: true  ),
+                    new (AmJay,"neutral","Dizzy! Long time no talk. " ),
+                    new (AmValv, "neutral", "Hi Dizzy! How have you been?", flipped: true ),
+                    new (AmDizzy, "neutral", "Pretty good! Got a new contract on a mysterious ship. I get to do loads of groundbreaking research here!", flipped: true  ),
+                    new (AmJay,"neutral","That's great! What are you researching?" ),
+                    new (AmDizzy, "neutral", "That's what I am calling about, actually. I know you and your sister have been trying to design a new lightspeed engine, and I think I have just the thing to help you out. For the sake of research, of course.", flipped: true  ),
+                    new (AmJay,"neutral","Oh? What is it, exactly?" ),
+                    new (AmDizzy, "neutral", "I can't say, I'm under an NDA.", flipped: true  ),
+                    new (AmDizzy, "neutral", "But I *can* just so happen to lose the part you need in space nearby for a pirate to pick up. You'll have to buy it off of them though.", flipped: true  ),
+                    new (AmDizzy, "neutral", "It's a small piece of a crystal. Very volatile, be careful not to damage it.", flipped: true  ),
+                    new (AmValv,"squint","What if the pirate damages it?" ),
+                    new (AmDizzy, "neutral", "Better hope they don't.", flipped: true  ),
+                    new (AmDizzy, "failtoloadimageplease", "*click*", flipped: true  ),
+                    new (AmJay,"neutral","You think you can handle that, Valv?" ),
+                    new (AmValv, "neutral", "Shouldn't be too hard to get that part. I'll head out now.", flipped: true ),
+
+                ]
+            }},
+            {"Jay_Memory_2", new(){
+                type = NodeType.@event,
+                introDelay = false,
+                bg = "BGJayWorkshop",
+                lookup = [
+                    "vault",
+                    $"vault_{AmJay}"
+                ],
+                requiredScenes = ["Jay_Memory_1"],
+                dialogue = [
                     new("T-98 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
                     new(new Wait{secs = 1 }),
                     new (AmValv, "neutral", "What's up, bro!", flipped: true ),
-                    new (AmJay,"neutral","Valv! It's been some time. Did you get the part I needed?" ),
-                    new (AmValv, "neutral", "Yup! Bought it off of some bat dude. Drove a hard bargain, saying it was from some weird ship.", flipped: true  ),
+                    new (AmJay,"neutral","Valv, you're back! Did you get the part I needed?" ),
+                    new (AmValv, "neutral", "Yup! Bought it off of some bat dude. Drove a hard bargain, saying he stole it from some weird ship.", flipped: true  ),
                     new (AmJay,"neutral","Excellent! With this, I think I'll be able to finish my prototype engine within the next week or so." ),
                     new (AmValv, "neutral", "We're gonna be so rich!", flipped: true  ),
                     new (AmJay,"squint","That's not the point." ),
@@ -92,14 +127,14 @@ internal class MemoryDialogueJay
                     new (AmJay,"neutral","Oh of course." ),
                 ]
             }},
-            {"Jay_Memory_2", new(){
+            {"Jay_Memory_3", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGJayWorkshop",
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Jay_Memory_1"],
+                requiredScenes = ["Jay_Memory_2"],
                 dialogue = [
                     new("T-94 days"),
                     new(new Wait{secs = 2}),
@@ -114,7 +149,7 @@ internal class MemoryDialogueJay
                     new (AmJay, "neutral", "It's very good. If this holds, then it's finally finished!" ),
                     new (new BGAction(){action = "alarm"}),
                     new(new Wait{secs = 1}),
-                    new (AmJay, "nervous", "Uh oh. The part you bought seems unable to hold!" ),
+                    new (AmJay, "nervous", "Uh oh. The part we got seems unable to hold!" ),
                     new (AmValv,"angry","We were so close!", flipped: true  ),
                     new (AmJay, "nervous", "Shutting down power!" ),
                     new(new Wait{secs = 1}),
@@ -125,7 +160,6 @@ internal class MemoryDialogueJay
                     new (new Shake{amount = 25}),
                     new (new BGAction{action = "blackout"}),
                     new(new Wait{secs = 5}),
-                    new (new SetBG(){bg = "BGJayWorkshop"}),
                     new (new BGAction(){action = "sadness"}),
                     new (AmJay, "damaged", "Valv! Where are you?!" ),
                     new (new Wait{secs = 2}),
@@ -144,17 +178,18 @@ internal class MemoryDialogueJay
 
                 ]
             }},
-            {"Jay_Memory_3", new(){
+            {"Jay_Memory_Fight", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
                 lookup = [
                     "vault", $"vault_{AmJay}"
                 ],
-                requiredScenes = ["Jay_Memory_2"],
+                requiredScenes = ["Jay_Memory_3"],
                 dialogue = [
+                    new("END THE PAIN"),
                     new(new Wait{secs = 2}),
-                    new (AmJay, "gameover", "..." ),
+                    new(title: null),
                     new (AmCull,"neutral","Wake up.", flipped: true ),
                     new (AmJay, "squint", "Huh? Oh, another loop already?" ),
                     new (AmCull,"neutral","Not exactly. It's time to face the source of your problem.", flipped: true ),
@@ -239,7 +274,7 @@ internal class MemoryDialogueJay
                 allPresent = [AmJay, AmCull, AmVoid],
                 nonePresent = [AmLuna, AmCenti,/* AmEva*/],
                 dialogue = [
-                    new (AmVoid, "1S TH??AT IT? AM 1 <c=part>\"WHOLE\"</c> N0W?" ),
+                    new (AmVoid, "Y0U TH1NK YO??U C4N <c=part>HANDLE THAT?</c>" ),
                     new (AmJay, "tear", "...")
 
                 ]

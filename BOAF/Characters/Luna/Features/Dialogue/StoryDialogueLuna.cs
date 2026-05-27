@@ -109,12 +109,12 @@ internal class StoryDialogueLuna
                 requiredScenes = [ "Luna_Intro_0_PREEMPTIVE", "Centi_Intro_0_PREEMPTIVE"],
                 dialogue = [
                     new (AmLuna, "Centi, have you noticed your special Cores are loaded with Stardust?"),
-                    new (AmCenti, "squint","They are?", true),
-                    new (AmLuna,  "One hundred percent."),
-                    new (AmCenti,"squint","Does that... mean anything?", true),
+                    new (AmCenti, "squint","I have.", true),
+                    new (AmLuna, "squint", "How do you know about that?"),
+                    new (AmCenti,"It's how I made them. I used Stardust I found to design and build them.", true),
+                    new (AmLuna,"Is that where they get all their power from?"),
+                    new (AmCenti, "I guess so. Do you think you could use them?", true),
                     new (AmLuna, "I can't use it, the Stardust is too densely packed into the core for me to do anything with it."),
-                    new (AmLuna,"I just thought it was cool! It's probably where they get all their power from!"),
-                    new (AmCenti, "I guess so.", true)
                 ]
             }},
         });
