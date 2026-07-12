@@ -95,6 +95,7 @@ internal class MemoryDialogueLuna
                     "vault",
                     $"vault_{AmLuna}"
                 ],
+                requiredScenes = ["Luna_Memory_1"],
                 dialogue = [
                     new("T-784 days"),
                     new(new Wait{secs = 2}),
@@ -122,7 +123,7 @@ internal class MemoryDialogueLuna
                 lookup = [
                     "vault", $"vault_{AmLuna}"
                 ],
-                requiredScenes = ["Luna_Memory_1"],
+                requiredScenes = ["Luna_Memory_2"],
                 dialogue = [
                     new("T-768 days"),
                     new(new Wait{secs = 2}),
@@ -163,19 +164,20 @@ internal class MemoryDialogueLuna
                     new (AmLuna, "sob", "If I didn't leave for school this wouldn't have happened..."),
                     new (AmLuna, "sob", "..."),
                     new (AmLuna, "sob", "I could have saved her if I was here."),
+                    new (new BGAction(){action = "unlock_fight"}),
                 ]
             }},
-            {"Luna_Memory_Fight", new(){
+            {"Luna_Memory_4", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
                 lookup = [
                     "vault", $"vault_{AmLuna}"
                 ],
-                requiredScenes = ["Luna_Memory_2"],
+                requiredScenes = ["Luna_Memory_3"],
                 dialogue = [
                     new("LET GO"),
-                    new(new Wait{secs = 2}),
+                    new(new Wait{secs = 5}),
                     new(title: null),                    
                     new (AmCull, "Wake up.", true),
                     new (AmLuna, "squint", "Five more minutes..."),

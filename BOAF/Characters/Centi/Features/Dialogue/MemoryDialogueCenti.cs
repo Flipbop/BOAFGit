@@ -187,9 +187,10 @@ internal class MemoryDialogueCenti
                     new(AmCenti, "angry", "Settle down. Maybe start a farm. All I know right now is I want you out of my life for good."),
                     new(AmCenti, "angry", "Goodbye, Drake. I hope our paths never cross."),
                     new(AmCenti, "messitupsotheydisappear", "..."),
+                    new (new BGAction(){action = "unlock_fight"}),
                 ]
             }},
-            {"Centi_Memory_Fight", new(){
+            {"Centi_Memory_4", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
@@ -199,7 +200,7 @@ internal class MemoryDialogueCenti
                 requiredScenes = ["Centi_Memory_3"],
                 dialogue = [
                     new("NO MORE"),
-                    new(new Wait{secs = 2}),
+                    new(new Wait{secs = 5}),
                     new(title: null),
                     new (AmCull, "Wake up.", true),
                     new(AmCenti, "squint", "Something is off about this loop, I can feel it..."),

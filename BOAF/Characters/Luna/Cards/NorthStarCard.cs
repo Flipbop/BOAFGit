@@ -52,22 +52,22 @@ internal sealed class NorthStarCard : Card, IRegisterable
 		
 		if (upgrade == Upgrade.A)
 		{
-			actions.Add(new AStatus(){status = Status.hermes, statusAmount = 1, targetPlayer = true, disabled = flipped});
+			actions.Add(new AMove(){dir = flipped ? -1 : 1, targetPlayer = true, disabled = flipped});
 			actions.Add(actionA);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){status = Status.hermes, statusAmount = 1, targetPlayer = true, disabled = !flipped});
+			actions.Add(new AMove(){dir = flipped ? 2 : -2, targetPlayer = true, disabled = flipped});
 		} else if (upgrade == Upgrade.B)
 		{
-			actions.Add(new AStatus(){status = Status.hermes, statusAmount = 2, targetPlayer = true, disabled = flipped});
+			actions.Add(new AMove(){dir = flipped ? -1 : 1, targetPlayer = true, disabled = flipped});
 			actions.Add(actionB);
 			actions.Add(new ADummyAction());
 			actions.Add(new AStatus() { status = Status.evade, statusAmount = 1, targetPlayer = true });
 		} else 
 		{
-			actions.Add(new AStatus(){status = Status.hermes, statusAmount = 1, targetPlayer = true, disabled = flipped});
+			actions.Add(new AMove(){dir = flipped ? -1 : 1, targetPlayer = true, disabled = flipped});
 			actions.Add(actionNone);
 			actions.Add(new ADummyAction());
-			actions.Add(new AStatus(){status = Status.hermes, statusAmount = 1, targetPlayer = true, disabled = !flipped});
+			actions.Add(new AMove(){dir = flipped ? 2 : -2, targetPlayer = true, disabled = flipped});
 		}
 		return actions;
 	}

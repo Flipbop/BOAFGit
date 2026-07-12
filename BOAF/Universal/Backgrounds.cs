@@ -99,6 +99,7 @@ public class Backgrounds
                 blackout = false;
             }
             if (action == "blackout") blackout = true;
+            if (action == "unlock_fight") { s.storyVars.memoryUnlockLevel[ModEntry.Instance.JayDeck.Deck] = 4; }
         }
 
         public override void Render(G g, double t, Vec offset) {
@@ -133,7 +134,7 @@ public class Backgrounds
             }
             if (action == "fire")
             {
-                village = true;
+                village = false;
                 academy = false;
                 fire = true;
                 blackout = false;
@@ -150,11 +151,14 @@ public class Backgrounds
                 explosion = true;
                 blackout = true;
             }
+            if (action == "unlock_fight") { s.storyVars.memoryUnlockLevel[ModEntry.Instance.LunaDeck.Deck] = 4; }
+
         }
 
         public override void Render(G g, double t, Vec offset) {
-            Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
             BGComponents.Letterbox();
+            if (village) Draw.Sprite(ModEntry.Instance.BGLunaVillageSprite.Sprite, 0, 0);
+            if (fire) Draw.Sprite(ModEntry.Instance.BGLunaVillageFireSprite.Sprite, 0, 0);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
         }
@@ -181,12 +185,13 @@ public class Backgrounds
                 alarm = false;
                 argument = true;
             }
+            if (action == "unlock_fight") { s.storyVars.memoryUnlockLevel[ModEntry.Instance.CentiDeck.Deck] = 4; }
+
         }
 
         public override void Render(G g, double t, Vec offset) {
-            Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
             BGComponents.Letterbox();
-
+            Draw.Sprite(ModEntry.Instance.BGCentiSpaceSprite.Sprite, 0, 0);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
             if (alarm) Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);

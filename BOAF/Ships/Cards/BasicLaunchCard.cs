@@ -20,7 +20,7 @@ internal sealed class BasicLaunchCard : CannonColorless, IRegisterable
 				dontOffer = true
 			},
 			Art = StableSpr.cards_colorless,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship", "card", "BasicShotDual", "name"]).Localize
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["ship", "card", "BasicLaunch", "name"]).Localize
 		});
 	}
 

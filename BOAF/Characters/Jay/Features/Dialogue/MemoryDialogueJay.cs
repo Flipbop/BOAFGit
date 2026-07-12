@@ -149,7 +149,7 @@ internal class MemoryDialogueJay
                     new (AmJay, "neutral", "It's very good. If this holds, then it's finally finished!" ),
                     new (new BGAction(){action = "alarm"}),
                     new(new Wait{secs = 1}),
-                    new (AmJay, "nervous", "Uh oh. The part we got seems unable to hold!" ),
+                    new (AmJay, "nervous", "Uh oh. The crystal we got seems unable to hold!" ),
                     new (AmValv,"angry","We were so close!", flipped: true  ),
                     new (AmJay, "nervous", "Shutting down power!" ),
                     new(new Wait{secs = 1}),
@@ -175,10 +175,11 @@ internal class MemoryDialogueJay
                     new (AmJay, "damagedcry", "If I-I just... paid more attention..." ),
                     new (AmJay, "damagedcry", "..." ),
                     new (AmJay, "damagedcry", "How will I ever forgive myself..." ),
+                    new (new BGAction(){action = "unlock_fight"}),
 
                 ]
             }},
-            {"Jay_Memory_Fight", new(){
+            {"Jay_Memory_4", new(){
                 type = NodeType.@event,
                 introDelay = false,
                 bg = "BGBattleMemory",
@@ -188,7 +189,7 @@ internal class MemoryDialogueJay
                 requiredScenes = ["Jay_Memory_3"],
                 dialogue = [
                     new("END THE PAIN"),
-                    new(new Wait{secs = 2}),
+                    new(new Wait{secs = 5}),
                     new(title: null),
                     new (AmCull,"neutral","Wake up.", flipped: true ),
                     new (AmJay, "squint", "Huh? Oh, another loop already?" ),

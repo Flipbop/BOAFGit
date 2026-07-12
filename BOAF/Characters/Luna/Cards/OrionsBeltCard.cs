@@ -42,10 +42,10 @@ internal sealed class OrionsBeltCard : Card, IRegisterable
 				new AAttack() {damage = GetDmg(s, 1), stunEnemy = true},
 			],
 			_ => [
-				new AMove(){dir = -2, targetPlayer = true, disabled = flipped},
+				new AMove(){dir = flipped ? -2 : 2, targetPlayer = true, disabled = flipped},
 				new AAttack() {damage = GetDmg(s, 1), piercing = true, disabled = flipped},
 				new ADummyAction(),
-				new AMove(){dir = 2, targetPlayer = true, disabled = !flipped},
+				new AMove(){dir = flipped ? 2 : -2, targetPlayer = true, disabled = flipped},
 				new AAttack() {damage = GetDmg(s, 1), stunEnemy = true, disabled = !flipped},
 			]
 		};

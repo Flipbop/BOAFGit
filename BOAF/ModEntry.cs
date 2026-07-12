@@ -169,6 +169,11 @@ public sealed class ModEntry : SimpleMod
 	
 	#endregion
 	public ISpriteEntry BGJayWorkshopSprite { get; }
+	public ISpriteEntry BGLunaVillageSprite { get; }
+	public ISpriteEntry BGLunaVillageFireSprite { get; }
+	//public ISpriteEntry BGLunaAcademySprite { get; }
+	public ISpriteEntry BGCentiSpaceSprite { get; }
+
 	public IModHelper helper { get; }
 	
 	
@@ -524,6 +529,11 @@ public sealed class ModEntry : SimpleMod
 		neptuneChassisSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Ship/Neptune/neptune_chassis.png"));
 		
 		BGJayWorkshopSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGJayWorkshop.png"));
+		BGLunaVillageSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGLunaVillage.png"));
+		BGLunaVillageFireSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGLunaVillageFire.png"));
+		//BGLunaAcademySprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGLunaAcademy.png"));
+		BGCentiSpaceSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Backgrounds/BGCentiSpace.png"));
+
 		#endregion
 		
 		this.helper = helper;
