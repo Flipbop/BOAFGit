@@ -104,7 +104,6 @@ public class Backgrounds
 
         public override void Render(G g, double t, Vec offset) {
             Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
-            BGComponents.Letterbox();
 
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (alarm)
@@ -114,7 +113,7 @@ public class Backgrounds
             }
             if (blackout) Draw.Fill(Colors.black);
 
-
+            BGComponents.Letterbox();
         }
     }
     
@@ -156,11 +155,12 @@ public class Backgrounds
         }
 
         public override void Render(G g, double t, Vec offset) {
-            BGComponents.Letterbox();
             if (village) Draw.Sprite(ModEntry.Instance.BGLunaVillageSprite.Sprite, 0, 0);
             if (fire) Draw.Sprite(ModEntry.Instance.BGLunaVillageFireSprite.Sprite, 0, 0);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
+            
+            BGComponents.Letterbox();
         }
     }
     
@@ -190,11 +190,14 @@ public class Backgrounds
         }
 
         public override void Render(G g, double t, Vec offset) {
-            BGComponents.Letterbox();
+            Vec offset2 = new Vec(10.0, 10.0) * g.state.time;
+            BGComponents.NormalStars(g, g.state.time, offset2);
             Draw.Sprite(ModEntry.Instance.BGCentiSpaceSprite.Sprite, 0, 0);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
             if (alarm) Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);
+            
+            BGComponents.Letterbox();
         }
     }
     
