@@ -103,15 +103,28 @@ public class Backgrounds
         }
 
         public override void Render(G g, double t, Vec offset) {
-            Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 0);
 
+            Color color1 = new Color("333333");
+            Draw.Fill(color1);
+            
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (alarm)
             {
                 Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);
-                Glow.Draw(Vec.FromAngle(250), 250, Colors.redd);
+                Glow.Draw(Vec.FromAngle(250), 500, Colors.redd);
             }
-            if (blackout) Draw.Fill(Colors.black);
+
+            if (blackout)
+            {
+                Draw.Fill(Colors.black);
+            } else if (sadness)
+            {
+                Draw.Sprite(ModEntry.Instance.BGJayWorkshopExplodedSprite.Sprite, 0, 38);
+            }
+            else
+            {
+                Draw.Sprite(ModEntry.Instance.BGJayWorkshopSprite.Sprite, 0, 38);
+            }
 
             BGComponents.Letterbox();
         }
@@ -155,8 +168,11 @@ public class Backgrounds
         }
 
         public override void Render(G g, double t, Vec offset) {
-            if (village) Draw.Sprite(ModEntry.Instance.BGLunaVillageSprite.Sprite, 0, 0);
-            if (fire) Draw.Sprite(ModEntry.Instance.BGLunaVillageFireSprite.Sprite, 0, 0);
+            Vec offset2 = new Vec(10.0, 10.0) * g.state.time;
+            BGComponents.NormalStars(g, g.state.time, offset2);
+            if (village) Draw.Sprite(ModEntry.Instance.BGLunaVillageSprite.Sprite, 0, 38);
+            if (academy) Draw.Sprite(ModEntry.Instance.BGLunaAcademySprite.Sprite, 0, 38);
+            if (fire) Draw.Sprite(ModEntry.Instance.BGLunaVillageFireSprite.Sprite, 0, 38);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
             
@@ -192,7 +208,7 @@ public class Backgrounds
         public override void Render(G g, double t, Vec offset) {
             Vec offset2 = new Vec(10.0, 10.0) * g.state.time;
             BGComponents.NormalStars(g, g.state.time, offset2);
-            Draw.Sprite(ModEntry.Instance.BGCentiSpaceSprite.Sprite, 0, 0);
+            Draw.Sprite(ModEntry.Instance.BGCentiSpaceSprite.Sprite, 0, 38);
             if (explosion) Audio.Auto(FSPRO.Event.Hits_ShipExplosion);
             if (blackout) Draw.Fill(Colors.black);
             if (alarm) Audio.Auto(FSPRO.Event.Scenes_CoreAlarm);

@@ -85,6 +85,7 @@ internal class MemoryDialogueCenti
                     new("T-769 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
+                    new (new BGAction(){action = "village"}),
                     new(new Wait{secs = 1 }),
                     new (AmLivingCenti, "neutral", "What were we here for again?" ),
                     new (AmDrake, "We need a map to our next payload. I heard that this village had a mage with a map to a large cache of Stardust nearby.", true),

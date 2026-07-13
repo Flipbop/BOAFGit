@@ -94,7 +94,7 @@ internal class MemoryDialogueJay
                     new (AmDizzy, "neutral", "I can't say, I'm under an NDA.", flipped: true  ),
                     new (AmDizzy, "neutral", "But I *can* just so happen to lose the part you need in space nearby for a pirate to pick up. You'll have to buy it off of them though.", flipped: true  ),
                     new (AmDizzy, "neutral", "It's a small piece of a crystal. Very volatile, be careful not to damage it.", flipped: true  ),
-                    new (AmValv,"squint","What if the pirate damages it?" ),
+                    new (AmValv,"neutral","What if the pirate damages it?" ),
                     new (AmDizzy, "neutral", "Better hope they don't.", flipped: true  ),
                     new (AmDizzy, "failtoloadimageplease", "*click*", flipped: true  ),
                     new (AmJay,"neutral","You think you can handle that, Valv?" ),

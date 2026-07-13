@@ -55,7 +55,7 @@ internal class MemoryDialogueLuna
             {"Luna_Memory_1", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGBlack",
+                bg = "BGLunaAcademy",
                 lookup = [
                     "vault",
                     $"vault_{AmLuna}"
@@ -64,6 +64,7 @@ internal class MemoryDialogueLuna
                     new("T-1035 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
+                    new (new BGAction(){action = "village"}),
                     new(new Wait{secs = 2}),
                     new (AmLuna, "Close your eyes, I have something to show you."),
                     new (AmKass, "squint", "Okay, but it better not be another frog.", true),
@@ -90,7 +91,7 @@ internal class MemoryDialogueLuna
             {"Luna_Memory_2", new(){
                 type = NodeType.@event,
                 introDelay = false,
-                bg = "BGBlack",
+                bg = "BGLunaAcademy",
                 lookup = [
                     "vault",
                     $"vault_{AmLuna}"
@@ -100,6 +101,7 @@ internal class MemoryDialogueLuna
                     new("T-784 days"),
                     new(new Wait{secs = 2}),
                     new(title: null),
+                    new (new BGAction(){action = "academy"}),
                     new(new Wait{secs = 2}),
                     new (AmLuna, "Bye Kass! Have a good night! Love you!"),
                     new (AmKass, "neutral", "Bye Luna! Study hard! Love you too!", true),
@@ -112,7 +114,7 @@ internal class MemoryDialogueLuna
                     new (AmLuna, "Yeah, I had to leave her to come here. It's fine though, she can handle herself and our village doesn't really have anything of value anyways."),
                     new (AmDillian, "That's good, would be terrible if something happened.", true),
                     new (AmLuna, "I've been away for so long, I should visit her sometime soon."),
-                    new (AmKass, "This semester is almost over, why don't you visit her then?", true),
+                    new (AmDillian, "This semester is almost over, why don't you visit her then?", true),
                     new (AmLuna, "Good idea!"),
                 ]
             }},
@@ -126,10 +128,11 @@ internal class MemoryDialogueLuna
                 requiredScenes = ["Luna_Memory_2"],
                 dialogue = [
                     new("T-768 days"),
-                    new(new Wait{secs = 2}),
-                    new(title: null),
+                    
                     new(new Wait{secs = 2}),
                     new (new BGAction(){action = "academy"}),
+                    new(title: null),
+                    new(new Wait{secs = 2}),
                     new (AmDillian, "Hey Luna!", true),
                     new (AmLuna, "squint", "What is it? I was just packing up to visit Kass."),
                     new (AmDillian, "You might want to leave soon.", true),
