@@ -5,10 +5,9 @@ using System.Reflection;
 using daisyowl.text;
 using Shockah.Kokoro;
 
-
 namespace Flipbop.BOAF;
 
-internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
+internal sealed class ControlZCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,12 +18,12 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CentiDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
-				upgradesTo = [Upgrade.A, Upgrade.B]
+				upgradesTo = [Upgrade.A, Upgrade.B],
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/LastStand.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "LastStand", "name"]).Localize
+			Art = StableSpr.cards_colorless,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "ControlZ", "name"]).Localize
 		});
 	}
 
@@ -32,47 +31,34 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ?  1 : 2,
-			exhaust = true,
+			cost = 0,
+			retain = upgrade == Upgrade.B,
 			description =
 				ModEntry.Instance.Localizations.Localize([
-					"Centi", "card", "LastStand", "description", upgrade.ToString()
+					"Jay", "card", "ControlZ", "description", upgrade.ToString()
 				]),
-			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
-	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
-	{
-		this.SetIsCoreDependent(true);
-		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
-		{
-			ModEntry.Instance.CoreDependentTrait
-		};
-		return cardTraitEntries;
-	}
+
 	public override List<CardAction> GetActions(State s, Combat c)
-		=> upgrade switch
-			{
-			
-				Upgrade.B =>
-				[
-					new ALastStand() {bUpgrade = true}
-				],
-				_ =>
-				[
-					new ALastStand() {bUpgrade = false}
-				]
-			
+		=>upgrade switch
+		{
+			Upgrade.A =>
+			[
+				new AReconfigure(){Amount = 1, reverse = true},
+				new ADetect(){Amount = 1}
+			],
+			_ => [
+				new AReconfigure(){Amount = 1, reverse = true}
+			]
 		};
 	
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not LastStandCard || args.Card.upgrade != Upgrade.B)
+			if (args.Card is not ControlZCard c)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}
 	}
-
-}
-
+};

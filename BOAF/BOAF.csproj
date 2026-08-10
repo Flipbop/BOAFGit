@@ -20,6 +20,8 @@
 		<PackageReference Include="EnumByNameSourceGenerator" Version="1.1.2" PrivateAssets="All" ExcludeAssets="runtime" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Characters\Eva\Actions\" />
+	  <Folder Include="Characters\Eva\Artifacts\" />
 	  <Folder Include="docs\images\" />
 	</ItemGroup>
 </Project>

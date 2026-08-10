@@ -5,26 +5,25 @@ using System.Reflection;
 using daisyowl.text;
 using Shockah.Kokoro;
 
-
 namespace Flipbop.BOAF;
 
-internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
+internal sealed class FactoryResetCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
 		ModEntry.Instance.KokoroApi.CardRendering.RegisterHook(new Hook());
-
+		
 		helper.Content.Cards.RegisterCard(MethodBase.GetCurrentMethod()!.DeclaringType!.Name, new()
 		{
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CentiDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/LastStand.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "LastStand", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/FactoryReset.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "FactoryReset", "name"]).Localize
 		});
 	}
 
@@ -32,47 +31,35 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ?  1 : 2,
-			exhaust = true,
+			cost = 1,
 			description =
 				ModEntry.Instance.Localizations.Localize([
-					"Centi", "card", "LastStand", "description", upgrade.ToString()
+					"Jay", "card", "FactoryReset", "description", upgrade.ToString()
 				]),
-			artOverlay = ModEntry.Instance.RareCentiBorder
+			retain = true,
+			recycle = upgrade == Upgrade.B
 		};
-	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
-	{
-		this.SetIsCoreDependent(true);
-		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
-		{
-			ModEntry.Instance.CoreDependentTrait
-		};
-		return cardTraitEntries;
-	}
+
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
-			{
-			
-				Upgrade.B =>
-				[
-					new ALastStand() {bUpgrade = true}
-				],
-				_ =>
-				[
-					new ALastStand() {bUpgrade = false}
-				]
-			
+		{
+			Upgrade.A => [
+				new AFactoryResetManager.AFactoryReset(),
+				new ADetect(){Amount = 3}
+			],
+			_ => [
+				new AFactoryResetManager.AFactoryReset(),
+				new ADetect(){Amount = 2}
+			]
 		};
 	
 	private sealed class Hook : IKokoroApi.IV2.ICardRenderingApi.IHook
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not LastStandCard || args.Card.upgrade != Upgrade.B)
+			if (args.Card is not FactoryResetCard)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}
 	}
-
 }
-

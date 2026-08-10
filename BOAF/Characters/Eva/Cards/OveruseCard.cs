@@ -8,7 +8,7 @@ using Shockah.Kokoro;
 
 namespace Flipbop.BOAF;
 
-internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
+internal sealed class OveruseCard : Card, IRegisterable
 {
 	public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
 	{
@@ -19,12 +19,12 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 			CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
 			Meta = new()
 			{
-				deck = ModEntry.Instance.CentiDeck.Deck,
+				deck = ModEntry.Instance.JayDeck.Deck,
 				rarity = ModEntry.GetCardRarity(MethodBase.GetCurrentMethod()!.DeclaringType!),
 				upgradesTo = [Upgrade.A, Upgrade.B]
 			},
-			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Cards/LastStand.png")).Sprite,
-			Name = ModEntry.Instance.AnyLocalizations.Bind(["Centi","card", "LastStand", "name"]).Localize
+			Art = StableSpr.cards_colorless,//helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Jay/Cards/Overuse.png")).Sprite,
+			Name = ModEntry.Instance.AnyLocalizations.Bind(["Jay","card", "Overuse", "name"]).Localize
 		});
 	}
 
@@ -32,34 +32,27 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 		=> new()
 		{
 			artTint = "FFFFFF",
-			cost = upgrade == Upgrade.A ?  1 : 2,
+			cost = upgrade == Upgrade.A ?  2 : 3,
 			exhaust = true,
 			description =
 				ModEntry.Instance.Localizations.Localize([
-					"Centi", "card", "LastStand", "description", upgrade.ToString()
+					"Jay", "card", "Overuse", "description", upgrade.ToString()
 				]),
-			artOverlay = ModEntry.Instance.RareCentiBorder
 		};
-	public IReadOnlySet<ICardTraitEntry> GetInnateTraits(State state)
-	{
-		this.SetIsCoreDependent(true);
-		HashSet<ICardTraitEntry> cardTraitEntries = new HashSet<ICardTraitEntry>()
-		{
-			ModEntry.Instance.CoreDependentTrait
-		};
-		return cardTraitEntries;
-	}
+
 	public override List<CardAction> GetActions(State s, Combat c)
 		=> upgrade switch
 			{
 			
 				Upgrade.B =>
 				[
-					new ALastStand() {bUpgrade = true}
+					new ADetect(){Amount = 5},
+					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.brittle}
 				],
 				_ =>
 				[
-					new ALastStand() {bUpgrade = false}
+					new ADetect(){Amount = 4},
+					new APartModManager.APartModification(){part = s.ship.parts[0], modifier = PDamMod.weak}
 				]
 			
 		};
@@ -68,7 +61,7 @@ internal sealed class LastStandCard : Card, IRegisterable, IHasCustomCardTraits
 	{
 		public Font? ReplaceTextCardFont(IKokoroApi.IV2.ICardRenderingApi.IHook.IReplaceTextCardFontArgs args)
 		{
-			if (args.Card is not LastStandCard || args.Card.upgrade != Upgrade.B)
+			if (args.Card is not OveruseCard)
 				return null;
 			return ModEntry.Instance.KokoroApi.Assets.PinchCompactFont;
 		}

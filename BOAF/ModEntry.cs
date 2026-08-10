@@ -136,6 +136,11 @@ public sealed class ModEntry : SimpleMod
 	internal INonPlayableCharacterEntryV2 LivingCentiCharacter { get; }
 
 	#endregion
+	#region Eva
+	internal IDeckEntry EvaDeck { get; }
+	internal IPlayableCharacterEntryV2 EvaCharacter { get; }
+	internal ISpriteEntry EvaFullBody { get; set; }
+	#endregion
 	
 	#region Ships
 	internal IShipEntry ThanatosShip { get; }
@@ -608,6 +613,14 @@ public sealed class ModEntry : SimpleMod
 			DefaultCardArt = StableSpr.cards_colorless,
 			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/FrameCommon.png")).Sprite,
 			Name = this.AnyLocalizations.Bind(["Centi","character", "name"]).Localize,
+			ShineColorOverride = _ => new Color(0, 0, 0),
+		});
+		EvaDeck = helper.Content.Decks.RegisterDeck("Eva", new()
+		{
+			Definition = new() { color = new("ff5349"), titleColor = Colors.black },
+			DefaultCardArt = StableSpr.cards_colorless,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Eva/FrameCommon.png")).Sprite,
+			Name = this.AnyLocalizations.Bind(["Eva","character", "name"]).Localize,
 			ShineColorOverride = _ => new Color(0, 0, 0),
 		});
 		
@@ -1502,6 +1515,106 @@ public sealed class ModEntry : SimpleMod
 		CentiFullBody = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Centi/Character/FullBody.png"));
 		BGRunWin.charFullBodySprites.Add(CentiDeck.Deck, CentiFullBody.Sprite);
 		# endregion
+		#region Eva Character
+		
+		
+		
+		EvaCharacter = helper.Content.Characters.V2.RegisterPlayableCharacter("Eva", new()
+		{
+			Deck = EvaDeck.Deck,
+			Description = this.AnyLocalizations.Bind(["Eva","character", "description"]).Localize,
+			BorderSprite = helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Eva/CharacterFrame.png")).Sprite,
+			NeutralAnimation = new()
+			{
+				CharacterType = EvaDeck.UniqueName,
+				LoopTag = "neutral",
+				Frames = Enumerable.Range(0, 4)
+					.Select(i =>
+						helper.Content.Sprites
+							.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Neutral/{i}.png"))
+							.Sprite)
+					.ToList()
+			},
+			MiniAnimation = new()
+			{
+				CharacterType = EvaDeck.UniqueName,
+				LoopTag = "mini",
+				Frames = [
+					helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/Eva/Character/mini.png")).Sprite
+				]
+			},
+			Starters = new()
+			{
+				cards = [
+					
+				]
+			},
+			SoloStarters = new StarterDeck()
+			{
+				cards = [
+					
+					],
+			},
+			ExeCardType = typeof(EvaExeCard)
+		});
+		
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "gameover",
+			Frames = Enumerable.Range(0, 1)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/GameOver/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "squint",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Squint/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "nervous",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Nervous/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "angry",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Angry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "tear",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Cry/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "sad",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Sad/{i}.png")).Sprite)
+				.ToList()
+		});
+		helper.Content.Characters.V2.RegisterCharacterAnimation(new()
+		{
+			CharacterType = EvaDeck.UniqueName,
+			LoopTag = "sob",
+			Frames = Enumerable.Range(0, 4)
+				.Select(i => helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile($"assets/Eva/Character/Sob/{i}.png")).Sprite)
+				.ToList()
+		});
+		#endregion 
 		
 		#region Ships
 		ThanatosShip = helper.Content.Ships.RegisterShip("Thanatos", new ShipConfiguration()
